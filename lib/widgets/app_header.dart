@@ -43,7 +43,7 @@ class _AppHeaderState extends ConsumerState<AppHeader> {
                   Icon(Icons.local_shipping_outlined, color: Colors.white, size: 16),
                   SizedBox(width: 6),
                   Text(
-                    '1000 TL Üzeri Ücretsiz Kargo | Orijinal & Garantili Parça',
+                    '1000 TL Üzeri Ücretsiz Kargo | 17 Haneli Şase (VIN) Doğrulaması',
                     style: TextStyle(color: Colors.white, fontSize: 12),
                   ),
                 ],

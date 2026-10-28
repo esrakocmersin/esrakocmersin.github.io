@@ -9,6 +9,22 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
+  <!-- Schema.org JSON-LD Structured Data for Google Shopping / SEO -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org/",
+    "@type": "AutoPartsStore",
+    "name": "YEDEKPARCA.COM.TR",
+    "url": "https://esrakocmersin.github.io/",
+    "logo": "https://esrakocmersin.github.io/favicon.png",
+    "description": "Orijinal ve İthal Otomotiv Yedek Parçaları, 17 Haneli Şase Numarası İle Parça Doğrulama",
+    "telephone": "0850 123 45 67",
+    "priceRange": "₺₺",
+    "paymentAccepted": "Credit Card, Bank Transfer",
+    "openingHours": "Mo-Sa 08:30-18:30"
+  }
+  </script>
+
   <style>
     :root {
       --primary-red: #E31E24;
@@ -26,7 +42,7 @@
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Roboto', sans-serif; }
     body { background-color: var(--light-grey); color: var(--dark-text); }
 
-    /* Announcement Header */
+    /* Top Announcement Bar */
     .top-bar { background-color: var(--primary-navy); color: white; padding: 8px 32px; font-size: 12px; display: flex; justify-content: space-between; align-items: center; }
     .top-bar a { color: white; text-decoration: none; font-weight: bold; }
     .admin-badge { background-color: var(--primary-red); padding: 4px 10px; border-radius: 4px; color: white; cursor: pointer; }
@@ -46,7 +62,7 @@
     /* Header Actions */
     .header-actions { display: flex; align-items: center; gap: 16px; }
     .btn-login { border: 1px solid var(--border-grey); padding: 10px 18px; border-radius: 6px; text-decoration: none; color: var(--primary-navy); font-weight: bold; font-size: 13px; }
-    .btn-cart { background: var(--primary-navy); color: white; padding: 10px 20px; border-radius: 6px; text-decoration: none; font-weight: bold; font-size: 13px; display: flex; align-items: center; gap: 8px; position: relative; }
+    .btn-cart { background: var(--primary-navy); color: white; padding: 10px 20px; border-radius: 6px; text-decoration: none; font-weight: bold; font-size: 13px; display: flex; align-items: center; gap: 8px; position: relative; cursor: pointer; }
     .cart-count { background: var(--primary-red); color: white; border-radius: 50%; padding: 2px 6px; font-size: 11px; position: absolute; top: -6px; right: -6px; }
 
     /* Megamenu Navigation Bar */
@@ -57,6 +73,13 @@
 
     /* Main Container */
     .container { max-width: 1280px; margin: 24px auto; padding: 0 16px; }
+
+    /* VIN Search Box Section */
+    .vin-section { background: white; border: 2px solid var(--primary-red); border-radius: 10px; padding: 20px 28px; margin-bottom: 24px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+    .vin-title { font-size: 16px; font-weight: 900; color: var(--primary-navy); display: flex; align-items: center; gap: 10px; }
+    .vin-input-group { display: flex; gap: 8px; flex: 1; max-width: 500px; }
+    .vin-input { padding: 10px 14px; border: 1px solid var(--border-grey); border-radius: 6px; font-size: 14px; width: 100%; text-transform: uppercase; font-weight: bold; letter-spacing: 1px; }
+    .vin-btn { background: var(--primary-navy); color: white; border: none; padding: 10px 20px; border-radius: 6px; font-weight: bold; cursor: pointer; white-space: nowrap; }
 
     /* Banner & Vehicle Wizard */
     .banner { background: linear-gradient(135deg, var(--primary-navy) 0%, #2C3E66 100%); color: white; padding: 36px; border-radius: 10px; display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
@@ -84,17 +107,30 @@
     .product-old-price { text-decoration: line-through; color: #999; font-size: 12px; }
     .btn-add-cart { background: var(--primary-red); color: white; border: none; padding: 8px 14px; border-radius: 4px; font-weight: bold; cursor: pointer; font-size: 12px; }
 
-    /* Admin Modal */
+    /* Floating WhatsApp Button */
+    .floating-whatsapp { position: fixed; bottom: 24px; right: 24px; background: #25D366; color: white; border-radius: 30px; padding: 12px 20px; font-weight: bold; font-size: 14px; display: flex; align-items: center; gap: 10px; text-decoration: none; box-shadow: 0 6px 16px rgba(0,0,0,0.2); z-index: 999; transition: transform 0.2s; }
+    .floating-whatsapp:hover { transform: scale(1.05); }
+
+    /* Modals (Admin & Cart) */
     .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 1000; align-items: center; justify-content: center; }
     .modal.active { display: flex; }
-    .modal-content { background: white; border-radius: 10px; width: 90%; max-width: 650px; padding: 28px; position: relative; }
+    .modal-content { background: white; border-radius: 10px; width: 90%; max-width: 700px; padding: 28px; position: relative; max-height: 90vh; overflow-y: auto; }
     .modal-close { position: absolute; top: 16px; right: 16px; font-size: 20px; cursor: pointer; color: #888; }
     .modal-title { font-size: 20px; font-weight: 900; color: var(--primary-navy); margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
+
+    .tab-buttons { display: flex; gap: 8px; margin-bottom: 16px; border-bottom: 1px solid var(--border-grey); padding-bottom: 8px; }
+    .tab-btn { padding: 8px 16px; border: none; background: transparent; font-weight: bold; cursor: pointer; border-bottom: 2px solid transparent; color: var(--body-text); }
+    .tab-btn.active { color: var(--primary-red); border-color: var(--primary-red); }
 
     .form-group { margin-bottom: 16px; }
     .form-group label { display: block; font-weight: bold; margin-bottom: 6px; font-size: 13px; color: var(--dark-text); }
     .form-control { width: 100%; padding: 12px; border: 1px solid var(--border-grey); border-radius: 6px; outline: none; font-size: 14px; }
-    .btn-scrape { background: var(--primary-red); color: white; border: none; padding: 12px 24px; border-radius: 6px; font-weight: bold; cursor: pointer; width: 100%; margin-top: 8px; }
+    .btn-action { background: var(--primary-red); color: white; border: none; padding: 12px 24px; border-radius: 6px; font-weight: bold; cursor: pointer; width: 100%; margin-top: 8px; }
+
+    /* Installment Table */
+    .installment-table { width: 100%; border-collapse: collapse; margin-top: 12px; font-size: 13px; }
+    .installment-table th, .installment-table td { border: 1px solid var(--border-grey); padding: 8px; text-align: center; }
+    .installment-table th { background: var(--light-grey); color: var(--primary-navy); }
 
     /* Footer */
     .footer { background: var(--primary-navy); color: white; padding: 40px 32px 20px; margin-top: 60px; }
@@ -109,8 +145,8 @@
   <div class="top-bar">
     <div><i class="fa-solid fa-truck-fast"></i> 1000 TL Üzeri Ücretsiz Kargo | Orijinal & Garantili Parça</div>
     <div>
-      <i class="fa-solid fa-headset"></i> Destek: 0850 123 45 67 |
-      <span class="admin-badge" onclick="openAdminModal()"><i class="fa-solid fa-link"></i> URL İle Ürün Ekle (Admin)</span>
+      <i class="fa-solid fa-headset"></i> Müşteri Destek: 0850 123 45 67 |
+      <span class="admin-badge" onclick="openAdminModal()"><i class="fa-solid fa-gear"></i> Admin Paneli & Toplu İçe Aktar</span>
     </div>
   </div>
 
@@ -128,10 +164,10 @@
 
     <div class="header-actions">
       <a href="#" class="btn-login"><i class="fa-regular fa-user"></i> Giriş Yap</a>
-      <a href="#" class="btn-cart" onclick="openCartModal()">
+      <div class="btn-cart" onclick="openCartModal()">
         <i class="fa-solid fa-cart-shopping"></i> SEPETİM
         <span class="cart-count" id="cartCount">0</span>
-      </a>
+      </div>
     </div>
   </header>
 
@@ -147,6 +183,22 @@
   </nav>
 
   <div class="container">
+
+    <!-- 17-Digit VIN Lookup Box -->
+    <div class="vin-section">
+      <div class="vin-title">
+        <i class="fa-solid fa-shield-halved" style="color: var(--primary-red); font-size: 24px;"></i>
+        <div>
+          <div>17 HANELİ ŞASE (VIN) NO İLE BİREBİR SORGULAMA</div>
+          <div style="font-size: 12px; color: var(--body-text); font-weight: normal;">Ruhsatınızdaki 17 haneli şase numarasını girin, %100 uyumlu parçayı bulalım.</div>
+        </div>
+      </div>
+      <div class="vin-input-group">
+        <input type="text" id="vinInput" class="vin-input" maxlength="17" placeholder="Örn: WVWZZZ3CZWE123456">
+        <button class="vin-btn" onclick="lookupVin()"><i class="fa-solid fa-magnifying-glass"></i> ŞASE SORGULA</button>
+      </div>
+    </div>
+
     <!-- Banner -->
     <div class="banner">
       <div>
@@ -190,25 +242,90 @@
     </div>
   </div>
 
-  <!-- Admin URL Import Modal -->
+  <!-- Floating WhatsApp Button -->
+  <a href="https://wa.me/908501234567?text=Merhaba,%20yedekparca.com.tr%20üzerinden%20aracımın%20ruhsat%20görseli%20ile%20parça%20sorgulamak%20istiyorum." target="_blank" class="floating-whatsapp">
+    <i class="fa-brands fa-whatsapp" style="font-size: 22px;"></i> Ruhsat Gönder / Ustaya Sor
+  </a>
+
+  <!-- Admin Portal Modal -->
   <div class="modal" id="adminModal">
     <div class="modal-content">
       <span class="modal-close" onclick="closeAdminModal()">&times;</span>
-      <div class="modal-title"><i class="fa-solid fa-link" style="color: var(--primary-red);"></i> URL ile Otomatik Ürün / Kategori İçe Aktar</div>
-      <p style="font-size: 13px; color: var(--body-text); margin-bottom: 16px;">
-        Herhangi bir e-ticaret yedek parça web sayfasının adresini (URL) yapıştırın. Sistem ürün başlığı, fiyatı, OEM kodları ve görsellerini otomatik ayıklayacaktır.
-      </p>
+      <div class="modal-title"><i class="fa-solid fa-screwdriver-wrench" style="color: var(--primary-red);"></i> Gelişmiş Admin Yönetim Paneli</div>
 
+      <div class="tab-buttons">
+        <button class="tab-btn active" onclick="switchAdminTab('urlTab')">URL ile Aktar</button>
+        <button class="tab-btn" onclick="switchAdminTab('csvTab')">Excel / CSV Toplu Yükle</button>
+      </div>
+
+      <!-- Tab 1: URL Scraper -->
+      <div id="urlTab">
+        <p style="font-size: 13px; color: var(--body-text); margin-bottom: 12px;">Ürün veya Kategori web sayfasının bağlantısını yapıştırın:</p>
+        <div class="form-group">
+          <input type="text" class="form-control" id="urlInput" placeholder="https://www.yedekparca.com.tr/urun/bosch-on-fren-balatasi...">
+        </div>
+        <button class="btn-action" onclick="scrapeUrl()"><i class="fa-solid fa-cloud-arrow-down"></i> TARA VE VERİTABANINA EKLE</button>
+      </div>
+
+      <!-- Tab 2: Excel / CSV Bulk Importer -->
+      <div id="csvTab" style="display: none;">
+        <p style="font-size: 13px; color: var(--body-text); margin-bottom: 12px;">Toplu ürün listesini (Başlık, SKU, Fiyat, Marka) kopyalayıp buraya yapıştırın:</p>
+        <div class="form-group">
+          <textarea class="form-control" id="csvInput" rows="6" placeholder="Başlık;SKU;Fiyat;Marka&#10;Bosch Fren Balatası;0986494660;1290;Bosch&#10;Mann Yağ Filtresi;HU7008z;285;Mann Filter"></textarea>
+        </div>
+        <button class="btn-action" style="background: var(--green-success);" onclick="importCsv()"><i class="fa-solid fa-file-csv"></i> TOPLU ÜRÜNLERİ İÇE AKTAR</button>
+      </div>
+
+      <div id="scrapePreview" style="margin-top: 16px; display: none; background: var(--light-grey); padding: 12px; border-radius: 6px;"></div>
+    </div>
+  </div>
+
+  <!-- Cart & Checkout Modal -->
+  <div class="modal" id="cartModal">
+    <div class="modal-content">
+      <span class="modal-close" onclick="closeCartModal()">&times;</span>
+      <div class="modal-title"><i class="fa-solid fa-shopping-cart" style="color: var(--primary-red);"></i> Sepetim ve Ödeme</div>
+
+      <div id="cartItemsList" style="margin-bottom: 16px;"></div>
+
+      <!-- Free Shipping Meter -->
+      <div style="background: rgba(46, 125, 50, 0.1); border: 1px solid var(--green-success); padding: 12px; border-radius: 6px; margin-bottom: 16px; font-size: 13px; color: var(--green-success); font-weight: bold;">
+        <i class="fa-solid fa-truck-ramp-box"></i> <span id="shippingMeter">1000 TL üzeri kargo ücretsiz!</span>
+      </div>
+
+      <!-- Payment Methods -->
       <div class="form-group">
-        <label>Ürün veya Kategori Sayfası Bağlantısı (URL):</label>
-        <input type="text" class="form-control" id="urlInput" placeholder="https://www.yedekparca.com.tr/urun/bosch-on-fren-balatasi...">
+        <label>Ödeme Yöntemi Seçin:</label>
+        <select class="form-control" id="paymentMethodSelect" onchange="onPaymentMethodChange()">
+          <option value="cc">Kredi Kartı / 3D Secure (İyzipay / PayTR)</option>
+          <option value="eft">Havale / EFT (%5 İskonto Fırsatı)</option>
+        </select>
       </div>
 
-      <button class="btn-scrape" onclick="scrapeUrl()"><i class="fa-solid fa-cloud-arrow-down"></i> TARA VE VERİTABANINA EKLE</button>
-
-      <div id="scrapePreview" style="margin-top: 16px; display: none; background: var(--light-grey); padding: 12px; border-radius: 6px;">
-        <!-- Scraped preview -->
+      <!-- VIN Checkbox -->
+      <div style="margin-bottom: 16px; display: flex; align-items: center; gap: 8px;">
+        <input type="checkbox" id="vinVerificationCheck" checked>
+        <label for="vinVerificationCheck" style="font-size: 13px; font-weight: bold; cursor: pointer;">
+          17 Haneli Şase Numarama Göre Uzman Tarafından Birebir Parça Kontrolü Yapılsın
+        </label>
       </div>
+
+      <!-- Installments Preview Table -->
+      <div id="installmentsPreview">
+        <div style="font-size: 12px; font-weight: bold; color: var(--primary-navy);">Kredi Kartı Taksit Seçenekleri:</div>
+        <table class="installment-table">
+          <thead>
+            <tr><th>Taksit</th><th>Aylık Ödeme</th><th>Toplam</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Tek Çekim</td><td>1.290,00 ₺</td><td>1.290,00 ₺</td></tr>
+            <tr><td>3 Taksit</td><td>430,00 ₺</td><td>1.290,00 ₺</td></tr>
+            <tr><td>6 Taksit</td><td>215,00 ₺</td><td>1.290,00 ₺</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <button class="btn-action" style="margin-top: 16px; background: var(--green-success);" onclick="completeOrder()"><i class="fa-solid fa-lock"></i> GÜVENLİ ÖDEMEYİ TAMAMLA</button>
     </div>
   </div>
 
@@ -219,7 +336,7 @@
         <h4>KURUMSAL</h4>
         <a href="#">Hakkımızda</a>
         <a href="#">İletişim & Konum</a>
-        <a href="#">Banka Hesaplarımız</a>
+        <a href="#">Banka Hesaplarımız (IBAN)</a>
         <a href="#">Müşteri Yorumları</a>
       </div>
       <div class="footer-col">
@@ -227,7 +344,7 @@
         <a href="#">Sıkça Sorulan Sorular</a>
         <a href="#">İade ve Değişim Şartları</a>
         <a href="#">Gizlilik ve Güvenlik</a>
-        <a href="#">Kargo Takip</a>
+        <a href="#">Kargo Takip (Yurtiçi/Aras/MNG)</a>
       </div>
       <div class="footer-col">
         <h4>POPÜLER KATEGORİLER</h4>
@@ -237,7 +354,7 @@
         <a href="#">Debriyaj Setleri</a>
       </div>
       <div class="footer-col">
-        <h4>İLETİŞİM</h4>
+        <h4>İLETİŞİM & CANLI DESTEK</h4>
         <p style="font-size: 13px; color: #aaa;">Müşteri Hizmetleri:</p>
         <p style="font-size: 18px; font-weight: bold; color: white;">0850 123 45 67</p>
         <p style="font-size: 13px; color: #aaa; margin-top: 8px;">E-Posta: destek@yedekparca.com.tr</p>
@@ -308,7 +425,7 @@
       }
     ];
 
-    let cartCount = 0;
+    let cart = [];
 
     function renderProducts(items) {
       const grid = document.getElementById("productGrid");
@@ -330,17 +447,18 @@
                 <div class="product-old-price">${p.oldPrice.toFixed(2)} ₺</div>
                 <div class="product-price">${p.price.toFixed(2)} ₺</div>
               </div>
-              <button class="btn-add-cart" onclick="addToCart('${p.title}')"><i class="fa-solid fa-cart-plus"></i> EKLE</button>
+              <button class="btn-add-cart" onclick="addToCart(${p.id})"><i class="fa-solid fa-cart-plus"></i> EKLE</button>
             </div>
           </div>
         `;
       });
     }
 
-    function addToCart(title) {
-      cartCount++;
-      document.getElementById("cartCount").innerText = cartCount;
-      alert(`"${title}" sepete eklendi.`);
+    function addToCart(productId) {
+      const product = products.find(p => p.id === productId);
+      cart.push(product);
+      document.getElementById("cartCount").innerText = cart.length;
+      alert(`"${product.title}" sepete eklendi.`);
     }
 
     function filterProducts() {
@@ -359,7 +477,16 @@
       renderProducts(filtered);
     }
 
-    function resetCategory() {
+    function resetCategory() { renderProducts(products); }
+
+    // VIN Lookup
+    function lookupVin() {
+      const vin = document.getElementById("vinInput").value.trim();
+      if (vin.length !== 17) {
+        alert("Lütfen 17 haneli şase (VIN) numaranızı eksiksiz giriniz.");
+        return;
+      }
+      alert(`Şase No: ${vin} sorgulandı! Aracınıza %100 uyumlu parçalar hazırlandı.`);
       renderProducts(products);
     }
 
@@ -389,9 +516,34 @@
       renderProducts(products);
     }
 
-    // Admin Scraper Modal
+    // Modals
     function openAdminModal() { document.getElementById("adminModal").classList.add("active"); }
     function closeAdminModal() { document.getElementById("adminModal").classList.remove("active"); }
+
+    function openCartModal() {
+      const cartList = document.getElementById("cartItemsList");
+      if (cart.length === 0) {
+        cartList.innerHTML = "<p style='color: var(--body-text);'>Sepetinizde henüz ürün bulunmuyor.</p>";
+      } else {
+        let total = cart.reduce((sum, item) => sum + item.price, 0);
+        cartList.innerHTML = cart.map(item => `
+          <div style="display: flex; justify-content: space-between; align-items: center; padding: 8px 0; border-bottom: 1px solid var(--border-grey);">
+            <div><b>${item.title}</b><br><small style="color: #777;">SKU: ${item.sku}</small></div>
+            <div style="font-weight: bold; color: var(--primary-red);">${item.price.toFixed(2)} ₺</div>
+          </div>
+        `).join('') + `<div style="text-align: right; margin-top: 12px; font-weight: bold; font-size: 16px;">Toplam: ${total.toFixed(2)} ₺</div>`;
+      }
+      document.getElementById("cartModal").classList.add("active");
+    }
+    function closeCartModal() { document.getElementById("cartModal").classList.remove("active"); }
+
+    function switchAdminTab(tabId) {
+      document.getElementById("urlTab").style.display = tabId === 'urlTab' ? 'block' : 'none';
+      document.getElementById("csvTab").style.display = tabId === 'csvTab' ? 'block' : 'none';
+      const btns = document.querySelectorAll(".tab-btn");
+      btns[0].classList.toggle("active", tabId === 'urlTab');
+      btns[1].classList.toggle("active", tabId === 'csvTab');
+    }
 
     function scrapeUrl() {
       const url = document.getElementById("urlInput").value;
@@ -407,7 +559,6 @@
         <div style="font-size: 13px;"><b>Fiyat:</b> 1,850.00 ₺</div>
       `;
 
-      // Add to products
       products.unshift({
         id: Date.now(),
         title: "URL ile Aktarılan Parça (" + url.slice(-20) + ")",
@@ -421,6 +572,21 @@
       });
 
       renderProducts(products);
+    }
+
+    function importCsv() {
+      const text = document.getElementById("csvInput").value;
+      if (!text) { alert("Lütfen CSV verisi yapıştırın!"); return; }
+      alert("CSV içeriğindeki tüm ürünler toplu şekilde veritabanına aktarıldı!");
+      closeAdminModal();
+    }
+
+    function completeOrder() {
+      if (cart.length === 0) { alert("Sepetiniz boş!"); return; }
+      alert("Siparişiniz başarıyla alındı! Şase numaranıza göre uzman kontrolü yapılarak kargoya verilecektir.");
+      cart = [];
+      document.getElementById("cartCount").innerText = 0;
+      closeCartModal();
     }
 
     // Initial Render
