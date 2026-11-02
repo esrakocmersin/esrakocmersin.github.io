@@ -14716,10 +14716,54 @@ const COURSE_LESSONS = {
 
 if (typeof window !== 'undefined') window.COURSE_LESSONS = COURSE_LESSONS;
 
-const $ = (s, r) => (r || document).querySelector(s);
-const esc = s => String(s == null ? '' : s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-
 const CoursePlayer = (() => {
+  const $ = (s, r) => {
+    const root = r || (typeof document !== 'undefined' ? document : null);
+    return (root && typeof root.querySelector === 'function') ? root.querySelector(s) : null;
+  };
+  const esc = s => String(s == null ? '' : s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+
+  function safeToast(msg) {
+    if (typeof window !== 'undefined' && typeof window.toast === 'function') {
+      try { window.toast(msg); return; } catch(e){}
+    }
+    if (typeof toast === 'function') {
+      try { toast(msg); return; } catch(e){}
+    }
+    if (typeof document !== 'undefined') {
+      const t = document.getElementById('toast');
+      if (t) {
+        const d = document.createElement('div');
+        d.innerHTML = msg;
+        t.appendChild(d);
+        setTimeout(() => {
+          try {
+            if (typeof d.remove === 'function') d.remove();
+            else if (d.parentNode) d.parentNode.removeChild(d);
+          } catch(e){}
+        }, 3200);
+      }
+    }
+  }
+
+  function safeSfx(type) {
+    if (typeof window !== 'undefined' && typeof window.appSfx === 'function') {
+      try { window.appSfx(type); return; } catch(e){}
+    }
+    if (typeof appSfx === 'function') {
+      try { appSfx(type); } catch(e){}
+    }
+  }
+
+  function safeConfetti(count) {
+    if (typeof window !== 'undefined' && typeof window.appConfetti === 'function') {
+      try { window.appConfetti(count); return; } catch(e){}
+    }
+    if (typeof appConfetti === 'function') {
+      try { appConfetti(count); } catch(e){}
+    }
+  }
+
   const CP = {
     unitId: null,
     step: 0,
@@ -14740,6 +14784,23 @@ const CoursePlayer = (() => {
   };
 
   const LTR = ['A', 'B', 'C', 'D'];
+
+
+  function close() {
+    stopAudio();
+    const m = document.getElementById('modal');
+    if (m) m.classList.add('hidden');
+    const mb = document.getElementById('modalBox');
+    if (mb) {
+      mb.classList.remove('theater');
+      mb.innerHTML = '';
+    }
+    if (typeof closeModal === 'function') {
+      try { closeModal(); } catch(e){}
+    } else if (typeof window !== 'undefined' && typeof window.closeModal === 'function') {
+      try { window.closeModal(); } catch(e){}
+    }
+  }
 
   function stopAudio() {
     CP.tok++;
@@ -14817,7 +14878,7 @@ const CoursePlayer = (() => {
       CP.audio.muted = !CP.audio.muted;
       const btn = document.getElementById('cpMuteBtn');
       if (btn) btn.innerHTML = CP.audio.muted ? '🔇 Sessiz' : '🔊 Ses Açık';
-      toast(CP.audio.muted ? '🔇 Ses kapatıldı' : '🔊 Ses açıldı');
+      safeToast(CP.audio.muted ? '🔇 Ses kapatıldı' : '🔊 Ses açıldı');
     }
   }
 
@@ -14827,8 +14888,13 @@ const CoursePlayer = (() => {
       CP.countdownTimer = null;
     }
     const cdEl = document.getElementById('cpNextCountdown');
-    if (cdEl) cdEl.remove();
-    toast('⏸ Otomatik geçiş durduruldu');
+    if (cdEl) {
+      try {
+        if (typeof cdEl.remove === 'function') cdEl.remove();
+        else if (cdEl.parentNode) cdEl.parentNode.removeChild(cdEl);
+      } catch (e) {}
+    }
+    safeToast('⏸ Otomatik geçiş durduruldu');
   }
 
   function initStageSwipe() {
@@ -14849,10 +14915,10 @@ const CoursePlayer = (() => {
         if (Math.abs(dx) > 60 && Math.abs(dx) > Math.abs(dy) * 1.5) {
           if (dx < 0) {
             nextStep();
-            toast('Sonraki Adım ⏭');
+            safeToast('Sonraki Adım ⏭');
           } else {
             prevStep();
-            toast('⏮ Önceki Adım');
+            safeToast('⏮ Önceki Adım');
           }
         }
       }
@@ -15182,7 +15248,7 @@ const CoursePlayer = (() => {
         }, 1200);
       } else {
         setTimeout(() => {
-          toast('🎉 Konu anlatımı bitti! Teste başlayabilirsin.');
+          safeToast('🎉 Konu anlatımı bitti! Teste başlayabilirsin.');
         }, 800);
       }
     }
@@ -15195,7 +15261,7 @@ const CoursePlayer = (() => {
       btn.textContent = CP.autoAdvance ? '⏩ Otomatik: Açık' : '⏸ Otomatik: Kapalı';
       btn.style.color = CP.autoAdvance ? '#86efac' : 'inherit';
     }
-    toast(CP.autoAdvance ? '⏩ Otomatik ilerleme açıldı' : '⏸ Otomatik ilerleme kapatıldı');
+    safeToast(CP.autoAdvance ? '⏩ Otomatik ilerleme açıldı' : '⏸ Otomatik ilerleme kapatıldı');
   }
 
   function printWorksheet(unitId) {
@@ -15249,7 +15315,9 @@ const CoursePlayer = (() => {
 
     if (typeof printHTML === 'function') {
       printHTML(html);
-    } else {
+    } else if (typeof window !== 'undefined' && typeof window.printHTML === 'function') {
+      window.printHTML(html);
+    } else if (typeof window !== 'undefined' && typeof window.print === 'function') {
       window.print();
     }
   }
@@ -15281,7 +15349,7 @@ const CoursePlayer = (() => {
             <button class="btn sm ghost" onclick="CoursePlayer.toggleStageFullscreen()" id="cpFsBtn" title="Videoyu Tam Ekran Yap">⛶ Tam Ekran</button>
             <button class="btn sm ghost" onclick="CoursePlayer.printWorksheet('${lesson.id}')" title="Bu ünitenin 10 soruluk testini A4 çalışma kağıdı olarak yazdır">🖨️ Test Çıktısı</button>
             <button class="btn sm warn" onclick="CoursePlayer.startQuiz('${lesson.id}')" title="Testi Başlat">📝 10 Soruluk Test</button>
-            <button class="btn sm ghost" onclick="closeModal()" title="Kapat">✕</button>
+            <button class="btn sm ghost" onclick="CoursePlayer.close()" title="Kapat">✕</button>
           </div>
         </div>
 
@@ -15501,7 +15569,7 @@ const CoursePlayer = (() => {
           </div>
           <div style="display:flex;align-items:center;gap:8px">
             <button class="btn sm ghost" onclick="CoursePlayer.open('${lesson.id}')">🎬 Konuya Geri Dön</button>
-            <button class="btn sm ghost" onclick="closeModal()">✕</button>
+            <button class="btn sm ghost" onclick="CoursePlayer.close()">✕</button>
           </div>
         </div>
 
@@ -15542,7 +15610,7 @@ const CoursePlayer = (() => {
     const isCorrect = idx === q.answer;
     if (isCorrect) CP.score++;
     CP.answers[CP.qIdx] = { selected: idx, ok: isCorrect };
-    appSfx(isCorrect ? 'ok' : 'bad');
+    safeSfx(isCorrect ? 'ok' : 'bad');
     renderQuizQ();
   }
 
@@ -15561,10 +15629,10 @@ const CoursePlayer = (() => {
     stopAudio();
     const lesson = COURSE_LESSONS[CP.unitId];
     if (!lesson) return;
-    appConfetti(140);
-    appSfx('win');
+    safeConfetti(140);
+    safeSfx('win');
 
-    const u = cur();
+    const u = (typeof cur === 'function') ? cur() : (typeof window !== 'undefined' && typeof window.cur === 'function' ? window.cur() : null);
     const totalQ = lesson.quiz.length;
     const xpReward = Math.max(15, CP.score * 5);
     const goldReward = Math.max(5, CP.score * 3);
@@ -15581,18 +15649,18 @@ const CoursePlayer = (() => {
           };
         }
         // Sınıfa atanmış eşleşen ödev varsa otomatik tamamla ve ödüllendir
-        if (u.classId) {
-          db.assignments.filter(a => a.classId === u.classId && a.moduleId === CP.unitId && !a.doneBy.includes(u.id)).forEach(a => {
+        if (u.classId && typeof db !== 'undefined' && db && db.assignments) {
+          db.assignments.filter(a => a.classId === u.classId && a.moduleId === CP.unitId && a.doneBy && !a.doneBy.includes(u.id)).forEach(a => {
             a.doneBy.push(u.id);
             u.asgDone = (u.asgDone || 0) + 1;
-            gain(u, a.xp || 15, a.gold || 10);
-            toast('📚 Ödev tamamlandı: ' + esc(a.title));
+            if (typeof gain === 'function') gain(u, a.xp || 15, a.gold || 10);
+            safeToast('📚 Ödev tamamlandı: ' + esc(a.title));
           });
         }
       }
-      gain(u, xpReward, goldReward);
-      bumpStat(u, lesson.subject, CP.score >= 7);
-      save();
+      if (typeof gain === 'function') gain(u, xpReward, goldReward);
+      if (typeof bumpStat === 'function') bumpStat(u, lesson.subject, CP.score >= 7);
+      if (typeof save === 'function') save();
     }
 
     const mb = $('#modalBox');
@@ -15640,7 +15708,7 @@ const CoursePlayer = (() => {
           <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:8px">
             <button class="btn ok" onclick="CoursePlayer.startQuiz('${lesson.id}')">🔄 Testi Tekrar Çöz</button>
             <button class="btn" onclick="CoursePlayer.open('${lesson.id}')">🎬 Konu Anlatımını Yeniden İzle</button>
-            <button class="btn ghost" onclick="closeModal()">✅ Tamamla ve Derslere Dön</button>
+            <button class="btn ghost" onclick="CoursePlayer.close()">✅ Tamamla ve Derslere Dön</button>
           </div>
         </div>
 
@@ -15712,14 +15780,14 @@ const CoursePlayer = (() => {
         if (!CP.audio) { try { CP.audio = new Audio(); } catch(x){} }
         if (CP.audio) {
           CP.audio.volume = Math.min(1, Math.round((CP.audio.volume + 0.1) * 10) / 10);
-          toast(`🔊 Ses Düzeyi: %${Math.round(CP.audio.volume * 100)}`);
+          safeToast(`🔊 Ses Düzeyi: %${Math.round(CP.audio.volume * 100)}`);
         }
       } else if (e.code === 'ArrowDown') {
         e.preventDefault();
         if (!CP.audio) { try { CP.audio = new Audio(); } catch(x){} }
         if (CP.audio) {
           CP.audio.volume = Math.max(0, Math.round((CP.audio.volume - 0.1) * 10) / 10);
-          toast(`🔉 Ses Düzeyi: %${Math.round(CP.audio.volume * 100)}`);
+          safeToast(`🔉 Ses Düzeyi: %${Math.round(CP.audio.volume * 100)}`);
         }
       } else if (e.key === 'm' || e.key === 'M') {
         toggleMute();
@@ -15736,6 +15804,7 @@ const CoursePlayer = (() => {
   }
 
   return {
+    close,
     toggleStageFullscreen,
     toggleMute,
     cancelAutoAdvance,
