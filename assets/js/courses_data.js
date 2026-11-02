@@ -1428,6 +1428,7 @@ const COURSE_LESSONS = {
     "subject": "Türkçe",
     "unitNo": "5. Ünite",
     "title": "Cümlede Anlam ve Yargılar",
+    "cover": "assets/images/tr_u5_pixar.jpg",
     "icon": "🇹🇷",
     "steps": [
       {
