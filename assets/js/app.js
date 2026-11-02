@@ -1456,6 +1456,8 @@ function coursesTab(u){
       const moreCount = unit.topics.length > 3 ? `<span class="video-topic-pill">+${unit.topics.length - 3}</span>` : '';
       const prog = u && u.courseProgress ? u.courseProgress[unit.id] : null;
       const isDone = !!prog;
+      const lessonData = (typeof COURSE_LESSONS !== 'undefined' && COURSE_LESSONS[unit.id]) || null;
+      const coverImg = (lessonData && lessonData.cover) || unit.cover || null;
 
       return `
         <div class="video-card ${isDone ? 'done' : ''}" 
@@ -1464,11 +1466,16 @@ function coursesTab(u){
              style="${matchSearch ? '' : 'display:none;'}cursor:pointer;"
              onclick="CoursePlayer.open('${unit.id}')">
           <div class="video-thumb" style="background:linear-gradient(135deg, ${sub.color}33 0%, #0f172a 100%)">
-            <div class="video-thumb-bg">${sub.icon}</div>
-            <span class="video-badge-unit">${t.term}. Dönem · ${esc(unit.unitNo)}</span>
-            <span class="video-badge-ready" style="${isDone ? 'background:rgba(16,185,129,0.35);border-color:#10b981;color:#6ee7b7' : (COURSE_LESSONS[unit.id] ? 'background:rgba(16,185,129,0.3);border-color:#10b981;color:#6ee7b7' : '')}">${isDone ? `🏆 Tamamlandı (${prog.score}/10)` : (COURSE_LESSONS[unit.id] ? '🎬 Ders & Test Hazır!' : '🎬 Video Alanı')}</span>
-            <div class="play-btn-circle" title="Videoyu İzle" onclick="event.stopPropagation();CoursePlayer.open('${unit.id}')">▶</div>
-            <span class="video-badge-duration">⏱️ ${unit.duration || '12 dk'}</span>
+            ${coverImg ? `
+              <img src="${coverImg}" class="video-thumb-img" alt="${esc(unit.unitTitle)}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1;" loading="lazy">
+              <div class="video-thumb-overlay" style="position:absolute;inset:0;background:linear-gradient(to top, rgba(15,23,42,0.85) 0%, rgba(15,23,42,0.2) 50%, rgba(15,23,42,0.4) 100%);z-index:2;pointer-events:none;"></div>
+            ` : `
+              <div class="video-thumb-bg">${sub.icon}</div>
+            `}
+            <span class="video-badge-unit" style="z-index:3;">${t.term}. Dönem · ${esc(unit.unitNo)}</span>
+            <span class="video-badge-ready" style="z-index:3;${isDone ? 'background:rgba(16,185,129,0.35);border-color:#10b981;color:#6ee7b7' : (COURSE_LESSONS[unit.id] ? 'background:rgba(16,185,129,0.3);border-color:#10b981;color:#6ee7b7' : '')}">${isDone ? `🏆 Tamamlandı (${prog.score}/10)` : (COURSE_LESSONS[unit.id] ? '🎬 Ders & Test Hazır!' : '🎬 Video Alanı')}</span>
+            <div class="play-btn-circle" style="z-index:3;" title="Videoyu İzle" onclick="event.stopPropagation();CoursePlayer.open('${unit.id}')">▶</div>
+            <span class="video-badge-duration" style="z-index:3;">⏱️ ${unit.duration || '12 dk'}</span>
           </div>
           <div class="video-card-body">
             <h4 class="video-unit-title">${esc(unit.unitNo)}: ${esc(unit.unitTitle)}</h4>

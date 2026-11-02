@@ -11,12 +11,13 @@ const COURSE_LESSONS = {
     "subject": "Türkçe",
     "unitNo": "1. Ünite",
     "title": "Harf-Hece ve Sözcükte Anlam",
+    "cover": "assets/images/tr_u1_pixar.jpg",
     "icon": "🇹🇷",
     "steps": [
       {
         "title": "Alfabemiz ve 29 Harf Dünyası",
         "badge": "1. Adım: Harfler",
-        "slide": "assets/images/tr_u1_pixar.jpg",
+        "slide": "assets/images/harfler_tablosu.svg",
         "narration": "Merhaba sevgili dördüncü sınıf kâşifim! Ben Bilge Baykuş. Bugün Türkçe dersimizin ilk ve en önemli konusu olan harfleri, heceleri, gerçek, mecaz ve terim anlamı adım adım keşfedeceğiz. Hazır mısın? Güzel dilimiz Türkçenin alfabesinde tam yirmi dokuz harf vardır. Bu harflerin sekiz tanesi ünlü, yani sesli harftir; yirmi bir tanesi ise ünsüz, yani sessiz harftir. Ünlü harflerimiz ikiye ayrılır: Kalın ünlüler A, I, O, U ve ince ünlüler E, İ, Ö, Ü. Kalın ünlüler gırtlaktan tok çıkar, ince ünlüler ise ağzın önünden zarifçe söylenir. Unutma; Türkçede her hecede mutlaka bir ünlü harf bulunur!",
         "audio": "assets/audio/courses/tr-u1_s1.mp3",
         "slideTitle": "Alfabemiz ve 29 Harf Dünyası",
@@ -389,12 +390,13 @@ const COURSE_LESSONS = {
     "subject": "Türkçe",
     "unitNo": "2. Ünite",
     "title": "Kelime Yapısı ve Anlam İlişkileri",
+    "cover": "assets/images/tr_u2_pixar.jpg",
     "icon": "🇹🇷",
     "steps": [
       {
         "title": "Kök ve Ek Nedir? Basit Kelimeler",
         "badge": "1. Adım: Kelime Kökü",
-        "slide": "assets/images/tr_u2_pixar.jpg",
+        "slide": "assets/images/kelime_yapisi.svg",
         "narration": "Merhaba sevgili dördüncü sınıf kâşifim! Bu dersimizde kelimelerin sihirli dünyasına yolculuk yapıyoruz. Bir sözcüğün anlamlı en küçük parçasına kök denir. Örneğin \"göz\", \"ev\", \"balık\" birer köktür. Yapım eki almamış, kök durumundaki sözcüklere ise basit sözcükler diyoruz. \"Kitaplar\" veya \"evimiz\" kelimeleri çekim eki alsa bile anlamları değişmediği için yine basittir.",
         "audio": "assets/audio/courses/tr-u2_s1.mp3",
         "slideTitle": "Kök ve Ek Nedir? Basit Kelimeler",
@@ -738,12 +740,13 @@ const COURSE_LESSONS = {
     "subject": "Türkçe",
     "unitNo": "3. Ünite",
     "title": "Metin Türleri ve Deyimler",
+    "cover": "assets/images/tr_u3_pixar.jpg",
     "icon": "🇹🇷",
     "steps": [
       {
         "title": "Hikâye ve Hikâye Unsurları",
         "badge": "1. Adım: Hikâye Unsurları",
-        "slide": "assets/images/tr_u3_pixar.jpg",
+        "slide": "assets/images/metin_turleri_deyimler.svg",
         "narration": "Merhaba sevgili kâşif! Bir hikâyeyi okurken içindeki gizli şifreleri çözmeye ne dersin? Her hikâyenin dört temel unsuru vardır: Yaşanan olay, olayın geçtiği yer, olayın yaşandığı zaman ve olayda yer alan kişiler ya da kahramanlar. Bu dört unsuru bulduğunda hikâyeyi tam anlamıyla kavramış olursun!",
         "audio": "assets/audio/courses/tr-u3_s1.mp3",
         "slideTitle": "Hikâye ve Hikâye Unsurları",
