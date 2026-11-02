@@ -14777,6 +14777,109 @@ const CoursePlayer = (() => {
     box.innerHTML = `<span class="cp-caption-badge">${esc(badge || 'Önemli')}</span><span class="cp-caption-text">${esc(text)}</span>`;
   }
 
+    function fmtTime(sec) {
+    if (isNaN(sec) || sec < 0) sec = 0;
+    const m = Math.floor(sec / 60);
+    const s = Math.floor(sec % 60);
+    return m + ':' + (s < 10 ? '0' : '') + s;
+  }
+
+  function updateProgressUI() {
+    const curTimeEl = document.getElementById('cpCurTime');
+    const totTimeEl = document.getElementById('cpTotTime');
+    const bar = document.getElementById('cpTimelineFill');
+    const playBtn = document.getElementById('cpStagePlayBtn');
+    
+    if (playBtn) {
+      playBtn.classList.toggle('playing', !CP.paused && CP.audioPlaying);
+      playBtn.innerHTML = (CP.paused || !CP.audioPlaying) ? '▶' : '⏸';
+    }
+
+    if (CP.audio && CP.audio.duration) {
+      const cur = CP.audio.currentTime;
+      const dur = CP.audio.duration;
+      const pct = Math.min(100, (cur / dur) * 100);
+      if (bar) bar.style.width = pct + '%';
+      if (curTimeEl) curTimeEl.textContent = fmtTime(cur);
+      if (totTimeEl) totTimeEl.textContent = fmtTime(dur);
+    }
+  }
+
+  function seek(e) {
+    if (!CP.audio || !CP.audio.duration) return;
+    const tl = document.getElementById('cpTimeline');
+    if (!tl) return;
+    const rect = tl.getBoundingClientRect();
+    const clickX = e.clientX - rect.left;
+    const pct = Math.max(0, Math.min(1, clickX / rect.width));
+    CP.audio.currentTime = pct * CP.audio.duration;
+    updateProgressUI();
+  }
+
+  function jumpToStep(idx) {
+    const lesson = COURSE_LESSONS[CP.unitId];
+    if (!lesson || idx < 0 || idx >= lesson.steps.length) return;
+    CP.step = idx;
+    CP.paused = false;
+    renderStep();
+    playStepAudio(lesson.steps[CP.step], onStepEnded);
+  }
+
+  function skipSeconds(sec) {
+    if (!CP.audio) return;
+    CP.audio.currentTime = Math.max(0, Math.min(CP.audio.duration || 9999, CP.audio.currentTime + sec));
+    updateProgressUI();
+  }
+
+  function handleStageTap(e) {
+    // If user clicked fullscreen button or caption box, ignore
+    if (e.target.closest('button') || e.target.closest('.cp-caption-overlay') || e.target.closest('#cpStagePlayBtn')) return;
+    
+    const stage = document.getElementById('cpStage');
+    if (!stage) return;
+    const rect = stage.getBoundingClientRect();
+    const clickX = e.clientX - rect.left;
+    
+    // Check double tap timing
+    const now = Date.now();
+    if (!stage._lastTap) stage._lastTap = 0;
+    const diff = now - stage._lastTap;
+    stage._lastTap = now;
+
+    if (diff < 320 && diff > 50) {
+      // Double tap detected: Left 35% rewinds 5s, Right 35% forwards 5s, Center toggles pause
+      const pct = clickX / rect.width;
+      if (pct < 0.35) {
+        skipSeconds(-5);
+        showRipple(rect.width * 0.25, '⏪ -5s');
+      } else if (pct > 0.65) {
+        skipSeconds(5);
+        showRipple(rect.width * 0.75, '⏩ +5s');
+      } else {
+        togglePause();
+      }
+    } else {
+      // Single tap toggles play/pause after brief grace period if not double tapped
+      clearTimeout(stage._singleTapTimer);
+      stage._singleTapTimer = setTimeout(() => {
+        if (Date.now() - stage._lastTap >= 300) {
+          togglePause();
+        }
+      }, 300);
+    }
+  }
+
+  function showRipple(leftPx, text) {
+    const stage = document.getElementById('cpStage');
+    if (!stage) return;
+    const rip = document.createElement('div');
+    rip.className = 'cp-seek-ripple';
+    rip.style.left = (leftPx - 45) + 'px';
+    rip.textContent = text;
+    stage.appendChild(rip);
+    setTimeout(() => { try { rip.remove(); } catch(x){} }, 550);
+  }
+
   function playSubSteps(stepObj, alive, onEnd) {
     if (!stepObj || !stepObj.then || !stepObj.then.length) {
       CP.audioPlaying = false;
@@ -15062,39 +15165,67 @@ const CoursePlayer = (() => {
         </div>
 
         <!-- Sinematik 16:9 Video Sahnesi -->
-        <div class="cp-stage" id="cpStage">
+        <!-- Bölüm Adımları Hızlı Geçiş Butonları (Chapter Pills) -->
+        <div class="cp-steps-bar">
+          ${lesson.steps.map((st, i) => `
+            <div class="cp-step-pill ${i === CP.step ? 'active' : ''}" onclick="CoursePlayer.jumpToStep(${i})">
+              ${i + 1}. Adım ${i === CP.step ? '▶' : ''}
+            </div>
+          `).join('')}
+        </div>
+
+        <!-- Sinematik 16:9 Video Sahnesi (Dokunmatik ve Tıklanabilir) -->
+        <div class="cp-stage" id="cpStage" onclick="CoursePlayer.handleStageTap(event)" title="Tek tık: Durdur/Başlat · Çift tık: 5 sn İleri/Geri">
           <img class="cp-slide-img" src="${s.slide}" alt="${esc(s.title)}"/>
-          <!-- Küçük ve sadece adım numarasını belirten sade rozet: resmin üstünü kapatmaz -->
+          
+          <!-- Zarif ve sade adım rozeti: resmin üstünü kapatmaz -->
           <span class="cp-step-badge">📌 ${esc(s.badge ? s.badge.replace(/:.*$/, '') : ('Adım ' + (CP.step + 1)))}</span>
+          
+          <!-- Merkez Oynat/Durdur Butonu (Video Ortasında) -->
+          <div class="cp-stage-play-btn" id="cpStagePlayBtn" onclick="event.stopPropagation();CoursePlayer.togglePause()">
+            ${CP.paused ? '▶' : '⏸'}
+          </div>
+
           <!-- Video içi tek tıkla tam ekran yapma butonu -->
-          <button class="btn xs ghost" onclick="CoursePlayer.toggleStageFullscreen()" style="position:absolute;bottom:10px;right:10px;z-index:20;background:rgba(0,0,0,0.72);backdrop-filter:blur(4px);border:1px solid rgba(255,255,255,0.3);color:#fff;border-radius:6px;padding:3px 8px;font-size:11px" title="Tam Ekran">⛶ Tam Ekran</button>
+          <button class="btn xs ghost" onclick="event.stopPropagation();CoursePlayer.toggleStageFullscreen()" style="position:absolute;bottom:10px;right:10px;z-index:20;background:rgba(0,0,0,0.75);backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,0.3);color:#fff;border-radius:6px;padding:4px 9px;font-size:11px" title="Tam Ekran">⛶ Tam Ekran</button>
+          
           <div class="cp-speaker-badge" id="cpSpeakerPill">
             <span class="owl-icon">🦉</span>
             <span>Bilge Baykuş</span>
           </div>
+          
           <div id="cpCaptionBox" class="cp-caption-overlay">
             <span class="cp-caption-badge">${esc(s.badge || 'Bilgi')}</span>
             <span class="cp-caption-text">${esc(s.title)}</span>
           </div>
         </div>
 
-        <!-- Zaman Çizelgesi -->
-        <div class="cp-timeline" title="Ders İlerlemesi">
-          <div class="cp-timeline-fill" style="width:${timelinePercent}%"></div>
+        <!-- Etkileşimli Canlı İlerleme Çubuğu ve Süre Göstergesi -->
+        <div style="display:flex;flex-direction:column;gap:4px">
+          <div class="cp-timeline" id="cpTimeline" onclick="CoursePlayer.seek(event)" title="İstediğin saniyeye atlamak için tıkla">
+            <div class="cp-timeline-fill" id="cpTimelineFill" style="width:0%"></div>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:0 2px">
+            <span class="cp-time-text" id="cpCurTime">0:00</span>
+            <small class="muted" style="font-size:10px">İstediğin yere atlamak için çizgiye dokun</small>
+            <span class="cp-time-text" id="cpTotTime">0:00</span>
+          </div>
         </div>
 
         <!-- Kontrol Çubuğu -->
         <div class="cp-controls">
           <div class="cp-ctrl-btns">
             <button class="btn sm" onclick="CoursePlayer.togglePause()" id="cpPauseBtn">${CP.paused ? '▶ Sesi Sürdür' : '⏸ Duraklat'}</button>
-            <button class="btn sm ghost" onclick="CoursePlayer.replayCurrentStep()" title="Adımı Tekrar Dinle">🔄 Tekrar Dinle</button>
-            ${CP.step > 0 ? `<button class="btn sm ghost" onclick="CoursePlayer.prevStep()">⏪ Önceki</button>` : ''}
-            ${CP.step < totalSteps - 1 ? `<button class="btn sm ok" onclick="CoursePlayer.nextStep()">Sonraki Adım ⏩</button>` : `<button class="btn sm ok" onclick="CoursePlayer.startQuiz('${lesson.id}')">🎉 10 Soruluk Teste Geç 🎯</button>`}
+            <button class="btn sm ghost" onclick="CoursePlayer.skipSeconds(-5)" title="5 saniye geri al">⏪ -5sn</button>
+            <button class="btn sm ghost" onclick="CoursePlayer.skipSeconds(5)" title="5 saniye ileri sar">⏩ +5sn</button>
+            <button class="btn sm ghost" onclick="CoursePlayer.replayCurrentStep()" title="Adımı Baştan Dinle">🔄 Tekrar</button>
+            ${CP.step > 0 ? `<button class="btn sm ghost" onclick="CoursePlayer.prevStep()">⏮ Önceki Adım</button>` : ''}
+            ${CP.step < totalSteps - 1 ? `<button class="btn sm ok" onclick="CoursePlayer.nextStep()">Sonraki Adım ⏭</button>` : `<button class="btn sm ok" onclick="CoursePlayer.startQuiz('${lesson.id}')">🎉 10 Soruluk Teste Geç 🎯</button>`}
           </div>
-          <div style="display:flex;align-items:center;gap:8px">
-            <small class="muted" style="font-size:11px">Otomatik sesli anlatım açık</small>
+          <div style="display:flex;align-items:center;gap:6px">
+            <span style="font-size:11px;color:var(--m)">Adım ${CP.step + 1} / ${totalSteps}</span>
           </div>
-        </div>
+        </div></div>
       </div>
     `;
   }
@@ -15431,6 +15562,10 @@ const CoursePlayer = (() => {
 
   return {
     toggleStageFullscreen,
+    seek,
+    jumpToStep,
+    skipSeconds,
+    handleStageTap,
     open,
     renderStep,
     nextStep,

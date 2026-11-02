@@ -491,3 +491,146 @@ html { scroll-behavior: smooth; }
     font-size: 11.5px !important;
   }
 }
+
+/* ================= VİDEO VE SES OYNATICI ULTRA MÜKEMMELLEŞTİRME ================= */
+.cp-stage {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16/9;
+  background: radial-gradient(circle at center, #111827 0%, #030712 100%);
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+}
+
+/* Büyük orta oynat/duraklat butonu */
+.cp-stage-play-btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 68px;
+  height: 68px;
+  background: rgba(15, 23, 42, 0.75);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  border-radius: 50%;
+  color: #fff;
+  font-size: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 25;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 6px 25px rgba(0,0,0,0.6);
+}
+.cp-stage-play-btn:hover {
+  transform: translate(-50%, -50%) scale(1.12);
+  background: rgba(99, 102, 241, 0.9);
+  border-color: #fff;
+}
+.cp-stage-play-btn.playing {
+  opacity: 0;
+  pointer-events: none;
+}
+.cp-stage:hover .cp-stage-play-btn.playing {
+  opacity: 0.85;
+  pointer-events: auto;
+}
+
+/* Tıklanabilir ve Canlı İlerleyen Zaman Çubuğu */
+.cp-timeline {
+  width: 100%;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 6px;
+  overflow: hidden;
+  cursor: pointer;
+  position: relative;
+  transition: height 0.2s;
+}
+.cp-timeline:hover {
+  height: 11px;
+}
+.cp-timeline-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #6366f1, #ec4899, #f59e0b);
+  border-radius: 6px;
+  transition: width 0.15s linear;
+  box-shadow: 0 0 10px rgba(99, 102, 241, 0.6);
+}
+
+/* Bölüm Adım Butonları (Chapter Pills) */
+.cp-steps-bar {
+  display: flex;
+  gap: 6px;
+  overflow-x: auto;
+  padding: 4px 0 2px 0;
+  scrollbar-width: none;
+}
+.cp-steps-bar::-webkit-scrollbar {
+  display: none;
+}
+.cp-step-pill {
+  flex: 1;
+  min-width: 70px;
+  padding: 5px 8px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--m);
+  cursor: pointer;
+  text-align: center;
+  white-space: nowrap;
+  transition: all 0.2s;
+}
+.cp-step-pill:hover {
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+}
+.cp-step-pill.active {
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.35), rgba(168, 85, 247, 0.35));
+  border-color: #818cf8;
+  color: #fff;
+  box-shadow: 0 0 10px rgba(99, 102, 241, 0.4);
+}
+
+/* Zaman Göstergesi (Örn: 0:14 / 0:38) */
+.cp-time-text {
+  font-size: 11.5px;
+  font-family: monospace;
+  font-weight: 700;
+  color: #cbd5e1;
+}
+
+/* Çift Tıklama Efekti */
+.cp-seek-ripple {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 90px;
+  height: 90px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  color: #fff;
+  z-index: 30;
+  pointer-events: none;
+  animation: cpRipple 0.5s ease-out forwards;
+}
+@keyframes cpRipple {
+  0% { transform: translateY(-50%) scale(0.6); opacity: 1; }
+  100% { transform: translateY(-50%) scale(1.4); opacity: 0; }
+}
