@@ -10337,7 +10337,7 @@ const COURSE_LESSONS = {
         "badge": "1. Adım: Çocuk Sevgisi",
         "slide": "assets/images/din_u3_cocuk_sevgisi.svg",
         "slideTitle": "Hazreti Muhammed'in Çocuklara Sevgisi",
-        "narration": "Merhaba sevgili kaşif! Peygamberimiz Hazreti Muhammed (sallallahu aleyhi ve sellem) çocukları çok ama çok severdi. Sokakta yürürken karşılaştığı çocuklara ilk selamı o verirdi; bu onların ne kadar değerli olduğunu hissettirirdi. Torunları Hazreti Hasan ve Hazreti Hüseyin namaz kılarken sırtına çıktığında, onlar inene kadar secdeden kalkmazdı. Kız ve erkek çocuklar arasında hiçbir zaman ayrım yapmaz, hepsini eşit sevgi ve şefkatle kucaklardı.",
+        "narration": "Merhaba sevgili kaşif! Peygamberimiz Hazreti Muhammed (sallallahu aleyhi ve sellem) çocukları çok ama çok severdi. Sokakta yürürken karşılaştığı çocuklara ilk selamı o verirdi; bu onların ne kadar değerli olduğunu hissettirirdi. Torunları Hazreti Hasan ve Hazreti Hüseyin namaz kılarken sırtına çıktığında, onlar inene kadar secdeden kalkmazdı. Kız ve erkek çocuklar arasında hiçbir zaman ayrım yapmaz, hepsini eşit sevgi ve şefkatle kucaklardı. Çünkü Peygamberimize göre çocuklar birer çiçektir ve sevgiye en çok layık olan varlıklardır.",
         "audio": "assets/audio/courses/din-u3_s1.mp3",
         "emo": "🕊️",
         "then": [
@@ -10366,7 +10366,7 @@ const COURSE_LESSONS = {
         "badge": "2. Adım: Toplum Sevgisi",
         "slide": "assets/images/din_u3_toplum_sevgisi.svg",
         "slideTitle": "Toplum Sevgisi: Merhamet ve Eşitlik",
-        "narration": "Peygamberimiz Hazreti Muhammed (sallallahu aleyhi ve sellem) tüm insanlara karşı derin bir sevgi ve merhamet beslerdi. Hastaları bizzat ziyaret eder, yoksulların ve yetimlerin yanında olur, onlara elinden gelen yardımı yapardı. Kendisine kötülük edenlere bile beddua etmez; 'Allah'ım onları bağışla, çünkü bilmiyorlar' diyerek af dilerdi. Onun meclisinde zengin ile fakir, güçlü ile zayıf aynı değeri görürdü; hiç kimse diğerinden üstün tutulmazdı.",
+        "narration": "Peygamberimiz Hazreti Muhammed (sallallahu aleyhi ve sellem) tüm insanlara karşı derin bir sevgi ve merhamet beslerdi. Hastaları bizzat ziyaret eder, yoksulların ve yetimlerin yanında olur, onlara elinden gelen yardımı yapardı. Kendisine kötülük edenlere bile beddua etmez; 'Allah'ım onları bağışla, çünkü bilmiyorlar' diyerek af dilerdi. Meclisinde hiç kimse ayrıcalıklı değildi; zengin ile fakir, güçlü ile zayıf yan yana oturur, hepsi eşit muamele görürdü. Bu, gerçek kardeşliğin ve adaletin ta kendisiydi.",
         "audio": "assets/audio/courses/din-u3_s2.mp3",
         "emo": "❤️",
         "then": [
@@ -10389,7 +10389,7 @@ const COURSE_LESSONS = {
         "badge": "3. Adım: Doğa & Alın Teri",
         "slide": "assets/images/din_u3_doga_sevgisi.svg",
         "slideTitle": "Doğa, Hayvan ve Alın Teri Sevgisi",
-        "narration": "Peygamberimiz hayvanlara eziyet edenleri sertçe uyarmış, kuş yuvalarının bozulmasını kesinlikle yasaklamıştır. 'Kıyametin kopacağını bilseniz bile elinizdeki fidanı dikiniz' buyurarak doğayı korumayı emretmiştir. Kendisi de gençliğinde çobanlık ve ticaret yaparak alın teriyle geçinmiş; kendi söküğünü bizzat dikmiştir. 'Hiç kimse kendi elinin emeğinden daha hayırlı bir rızık yememiştir' diyerek helal kazancın kutsallığını öğretmiştir.",
+        "narration": "Peygamberimiz hayvanlara eziyet edenleri sertçe uyarmış, kuş yuvalarının bozulmasını kesinlikle yasaklamıştır. 'Kıyametin kopacağını bilseniz bile elinizdeki fidanı dikiniz' buyurarak doğayı ve yeşili korumayı emretmiştir. Kendisi de gençliğinde çobanlık ve ticaret yaparak alın teriyle geçinmiş; kendi söküğünü ve ayakkabısını bizzat tamir etmiştir. 'Hiç kimse kendi elinin emeğinden daha hayırlı bir rızık yememiştir' diyerek dürüst çalışmanın ve helal kazancın kutsallığını öğretmiştir.",
         "audio": "assets/audio/courses/din-u3_s3.mp3",
         "emo": "🌿",
         "then": [
@@ -10412,7 +10412,7 @@ const COURSE_LESSONS = {
         "badge": "4. Adım: Salavat Duaları",
         "slide": "assets/images/din_u3_salli_barik.svg",
         "slideTitle": "Namazın Son Oturuşu: Salli ve Barik Duaları",
-        "narration": "Namazların son oturuşunda Ettehiyyatü'den sonra okunan Allahümme Salli ve Allahümme Barik duaları, Peygamber Efendimize ve onun kutlu ailesine yönelik birer sevgi, saygı ve rahmet duasıdır. Bu dualarda Hazreti İbrahim'e ve ailesine yapılan dua gibi Hazreti Muhammed'e de rahmet, bereket ve şan dilenmektedir. Peygamberimizin adı her anıldığında 'Sallallahu aleyhi ve sellem' demek de ona duyulan sevginin ve vefanın bir göstergesidir.",
+        "narration": "Namazların son oturuşunda Ettehiyyatü'den sonra okunan Allahümme Salli ve Allahümme Barik duaları, Peygamber Efendimize ve onun kutlu ailesine yönelik birer sevgi, saygı ve rahmet duasıdır. Bu dualarda Hazreti İbrahim'e ve ailesine yapılan dua gibi Hazreti Muhammed'e de rahmet, bereket ve şan dilenmektedir. Peygamberimizin adı her anıldığında 'Sallallahu aleyhi ve sellem' diyerek salavat getirmek de ona duyulan derin sevginin ve vefanın en güzel ifadesidir.",
         "audio": "assets/audio/courses/din-u3_s4.mp3",
         "emo": "🤲",
         "then": [
@@ -14958,7 +14958,10 @@ const CoursePlayer = (() => {
       CP.audio.playbackRate = CP.speed;
       CP.audio.onended = () => {
         if (!alive()) return;
-        playSubSteps(stepObj, alive, onEnd);
+        CP.audioPlaying = false;
+        updateSpeakerUI(false);
+        updatePlayButtonUI();
+        if (onEnd) onEnd();
       };
       CP.audio.onerror = () => {
         if (!alive()) return;
@@ -15022,7 +15025,13 @@ const CoursePlayer = (() => {
       u.lang = 'tr-TR';
       u.rate = 0.95 * CP.speed;
       const voices = speechSynthesis.getVoices();
-      const v = voices.find(x => x.lang && x.lang.toLowerCase().startsWith('tr'));
+      const v = voices.find(x => x.lang && x.lang.toLowerCase().startsWith('tr') && (
+        x.name.toLowerCase().includes('emel') ||
+        x.name.toLowerCase().includes('filiz') ||
+        x.name.toLowerCase().includes('female') ||
+        x.name.toLowerCase().includes('seda') ||
+        x.name.toLowerCase().includes('kadın')
+      )) || voices.find(x => x.lang && x.lang.toLowerCase().startsWith('tr'));
       if (v) u.voice = v;
       u.onend = () => {
         if (!alive()) return;

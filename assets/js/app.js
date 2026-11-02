@@ -104,7 +104,8 @@ function browserSpeak(text, lang){
   if(!('speechSynthesis' in window)){toast('Tarayıcın sesli okumayı desteklemiyor.');return;}
   speechSynthesis.cancel();
   const u=new SpeechSynthesisUtterance(lang.startsWith("tr")?fixPronunciation(text):text);const l=lang||'tr-TR';u.lang=l;u.rate=.9;
-  const v=speechSynthesis.getVoices().find(v=>v.lang&&v.lang.toLowerCase().startsWith(l.slice(0,2).toLowerCase()));
+  const voices=speechSynthesis.getVoices();
+  const v=voices.find(v=>v.lang&&v.lang.toLowerCase().startsWith(l.slice(0,2).toLowerCase())&&(v.name.toLowerCase().includes('emel')||v.name.toLowerCase().includes('filiz')||v.name.toLowerCase().includes('female')||v.name.toLowerCase().includes('seda')||v.name.toLowerCase().includes('kadın')))||voices.find(v=>v.lang&&v.lang.toLowerCase().startsWith(l.slice(0,2).toLowerCase()));
   if(v)u.voice=v;speechSynthesis.speak(u);
 }
 async function ttsFetch(text, lang, style){
