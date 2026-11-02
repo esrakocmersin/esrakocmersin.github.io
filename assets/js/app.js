@@ -1,5 +1,5 @@
 'use strict';
-const SERVER_JS = "// Bilgi Evreni 4D Ultimate - Ev Sunucusu (bagimliliksiz Node.js)\n// Calistirma: node server.js   (veya baslat.bat)\nconst http = require('http');\nconst fs = require('fs');\nconst path = require('path');\nconst os = require('os');\nconst crypto = require('crypto');\nconst { spawn, execFile } = require('child_process');\n\nconst PORT = process.env.PORT || 3000;\nconst DIR = __dirname;\nconst DB_FILE = path.join(DIR, 'veritabani.json');\nconst INDEX_FILE = path.join(DIR, 'index.html');\nconst MAX_BODY = 8 * 1024 * 1024;\n\n// ---------- Dogal ses (Microsoft Emel Neural, Python edge-tts) ----------\nconst PY_SCRIPT = path.join(DIR, 'ses_motoru.py');\nconst TTS_DIR = path.join(DIR, 'ses_onbellek');\nconst TTS_VERSION = 'v1';\nconst TTS_MAX_TEXT = 4000;\nconst TTS_MAX_PARALLEL = 3;\nconst TTS_LANGS = ['tr-TR', 'en-US'];\nconst TTS_STYLES = ['ders', 'coskulu', 'sakin'];\nconst tts = { ready: false, python: null, ffmpeg: false, error: 'Henuz kontrol edilmedi', checkedAt: 0 };\nlet ttsActive = 0;\nconst ttsWaiting = [];\nconst ttsInflight = new Map();\n\nfunction tryRun(cmd, args) {\n  return new Promise((resolve) => {\n    execFile(cmd, args, { windowsHide: true, timeout: 20000 }, (err) => resolve(!err));\n  });\n}\n\nasync function detectTts() {\n  tts.checkedAt = Date.now();\n  if (!fs.existsSync(PY_SCRIPT)) { tts.ready = false; tts.error = 'ses_motoru.py bulunamadi'; return; }\n  const candidates = [process.env.PYTHON, 'python', 'py', 'python3'].filter(Boolean);\n  let found = null;\n  for (const c of candidates) {\n    if (await tryRun(c, ['-c', 'import edge_tts'])) { found = c; break; }\n  }\n  tts.ffmpeg = await tryRun('ffmpeg', ['-version']);\n  if (found) {\n    tts.ready = true; tts.python = found; tts.error = '';\n  } else {\n    tts.ready = false; tts.python = null;\n    tts.error = 'Python veya edge-tts kurulu degil (pip install edge-tts)';\n  }\n}\n\nfunction pruneTtsCache(max) {\n  try {\n    const files = fs.readdirSync(TTS_DIR).filter((f) => f.endsWith('.mp3')).map((f) => {\n      const p = path.join(TTS_DIR, f);\n      return { p, t: fs.statSync(p).mtimeMs };\n    }).sort((a, b) => a.t - b.t);\n    files.slice(0, Math.max(0, files.length - max)).forEach((f) => { try { fs.unlinkSync(f.p); } catch (e) {} });\n  } catch (e) {}\n}\n\nfunction ttsRunSlot(job) {\n  if (ttsActive < TTS_MAX_PARALLEL) { ttsActive++; job(); } else { ttsWaiting.push(job); }\n}\nfunction ttsRelease() {\n  ttsActive--;\n  const next = ttsWaiting.shift();\n  if (next) { ttsActive++; next(); }\n}\n\nfunction ttsGenerate(text, lang, style) {\n  const key = crypto.createHash('sha1').update([TTS_VERSION, lang, style, text].join('|')).digest('hex');\n  const out = path.join(TTS_DIR, key + '.mp3');\n  if (fs.existsSync(out)) return Promise.resolve(out);\n  if (ttsInflight.has(key)) return ttsInflight.get(key);\n  const p = new Promise((resolve, reject) => {\n    ttsRunSlot(() => {\n      fs.mkdirSync(TTS_DIR, { recursive: true });\n      const txt = path.join(TTS_DIR, key + '.txt');\n      const tmpOut = path.join(TTS_DIR, key + '.tmp.mp3');\n      fs.writeFileSync(txt, text, 'utf8');\n      const args = ['-X', 'utf8', PY_SCRIPT, '--text-file', txt, '--out', tmpOut, '--lang', lang, '--style', style];\n      const child = spawn(tts.python, args, { windowsHide: true });\n      let err = '';\n      child.stderr.on('data', (d) => { err += d.toString(); });\n      const timer = setTimeout(() => { try { child.kill(); } catch (e) {} }, 90000);\n      const finish = (e) => {\n        clearTimeout(timer);\n        try { fs.unlinkSync(txt); } catch (x) {}\n        ttsRelease();\n        if (e) { try { fs.unlinkSync(tmpOut); } catch (x) {} return reject(e); }\n        try { fs.renameSync(tmpOut, out); resolve(out); } catch (x) { reject(x); }\n      };\n      child.on('error', (e) => finish(e));\n      child.on('close', (code) => {\n        if (code === 0 && fs.existsSync(tmpOut)) finish(null);\n        else finish(new Error('ses_motoru.py hata kodu ' + code + ': ' + err.trim().slice(-300)));\n      });\n    });\n  });\n  ttsInflight.set(key, p);\n  const clear = () => ttsInflight.delete(key);\n  p.then(clear, clear);\n  return p;\n}\n\nfunction readDb() {\n  try {\n    if (!fs.existsSync(DB_FILE)) return null;\n    return JSON.parse(fs.readFileSync(DB_FILE, 'utf8'));\n  } catch (e) {\n    console.error('Veritabani okunamadi:', e.message);\n    return null;\n  }\n}\n\nfunction writeDb(obj) {\n  const tmp = DB_FILE + '.tmp';\n  fs.writeFileSync(tmp, JSON.stringify(obj, null, 2), 'utf8');\n  fs.renameSync(tmp, DB_FILE);\n}\n\nfunction send(res, code, body, type) {\n  res.writeHead(code, {\n    'Content-Type': type || 'application/json; charset=utf-8',\n    'Cache-Control': 'no-store'\n  });\n  res.end(typeof body === 'string' || Buffer.isBuffer(body) ? body : JSON.stringify(body));\n}\n\nconst server = http.createServer((req, res) => {\n  const url = req.url.split('?')[0];\n\n  if (req.method === 'GET' && (url === '/' || url === '/index.html')) {\n    if (!fs.existsSync(INDEX_FILE)) return send(res, 404, 'index.html bulunamadi. server.js ile ayni klasore koyun.', 'text/plain; charset=utf-8');\n    return send(res, 200, fs.readFileSync(INDEX_FILE), 'text/html; charset=utf-8');\n  }\n\n  if (req.method === 'GET' && url === '/api/ping') {\n    const db = readDb();\n    return send(res, 200, { ok: true, hasDb: !!db, updatedAt: db ? db.updatedAt || 0 : 0, time: Date.now() });\n  }\n\n  if (req.method === 'GET' && url === '/api/db') {\n    const db = readDb();\n    return send(res, 200, { ok: true, db: db });\n  }\n\n  if (req.method === 'GET' && url === '/api/tts/status') {\n    return send(res, 200, { ok: true, ready: tts.ready, ffmpeg: tts.ffmpeg, voice: 'tr-TR-EmelNeural', error: tts.error });\n  }\n\n  if (req.method === 'POST' && url === '/api/tts') {\n    let size = 0;\n    const chunks = [];\n    req.on('data', (c) => {\n      size += c.length;\n      if (size > 32 * 1024) { send(res, 413, { ok: false, error: 'Metin cok uzun' }); req.destroy(); return; }\n      chunks.push(c);\n    });\n    req.on('end', async () => {\n      if (size > 32 * 1024) return;\n      let body;\n      try { body = JSON.parse(Buffer.concat(chunks).toString('utf8')); } catch (e) { return send(res, 400, { ok: false, error: 'JSON okunamadi' }); }\n      const text = String(body && body.text || '').trim();\n      const lang = TTS_LANGS.includes(body.lang) ? body.lang : 'tr-TR';\n      const style = TTS_STYLES.includes(body.style) ? body.style : 'ders';\n      if (!text || text.length > TTS_MAX_TEXT) return send(res, 400, { ok: false, error: 'Metin bos veya cok uzun' });\n      if (!tts.ready && Date.now() - tts.checkedAt > 30000) await detectTts();\n      if (!tts.ready) return send(res, 503, { ok: false, error: tts.error });\n      try {\n        const file = await ttsGenerate(text, lang, style);\n        const stat = fs.statSync(file);\n        res.writeHead(200, { 'Content-Type': 'audio/mpeg', 'Content-Length': stat.size, 'Cache-Control': 'public, max-age=86400' });\n        fs.createReadStream(file).pipe(res);\n      } catch (e) {\n        console.error('TTS hatasi:', e.message);\n        send(res, 500, { ok: false, error: 'Ses uretilemedi' });\n      }\n    });\n    return;\n  }\n\n  if (req.method === 'GET' && url === '/api/backup') {\n    const db = readDb() || {};\n    res.writeHead(200, {\n      'Content-Type': 'application/json; charset=utf-8',\n      'Content-Disposition': 'attachment; filename=\"veritabani-yedek.json\"'\n    });\n    return res.end(JSON.stringify(db, null, 2));\n  }\n\n  if (req.method === 'POST' && url === '/api/db') {\n    let size = 0;\n    const chunks = [];\n    req.on('data', (c) => {\n      size += c.length;\n      if (size > MAX_BODY) {\n        send(res, 413, { ok: false, error: 'Veri cok buyuk' });\n        req.destroy();\n        return;\n      }\n      chunks.push(c);\n    });\n    req.on('end', () => {\n      if (size > MAX_BODY) return;\n      try {\n        const incoming = JSON.parse(Buffer.concat(chunks).toString('utf8'));\n        if (!incoming || !Array.isArray(incoming.users)) {\n          return send(res, 400, { ok: false, error: 'Gecersiz veritabani bicimi' });\n        }\n        const current = readDb();\n        const force = req.headers['x-force'] === '1';\n        if (current && !force && (current.updatedAt || 0) > (incoming.updatedAt || 0)) {\n          return send(res, 409, { ok: false, error: 'Sunucudaki veri daha yeni', db: current });\n        }\n        writeDb(incoming);\n        return send(res, 200, { ok: true, updatedAt: incoming.updatedAt || 0 });\n      } catch (e) {\n        return send(res, 400, { ok: false, error: 'JSON okunamadi' });\n      }\n    });\n    return;\n  }\n\n  send(res, 404, { ok: false, error: 'Bulunamadi' });\n});\n\nserver.listen(PORT, '0.0.0.0', () => {\n  console.log('==============================================');\n  console.log(' BILGI EVRENI 4D ULTIMATE - Sunucu calisiyor');\n  console.log('==============================================');\n  console.log(' Bu bilgisayardan : http://localhost:' + PORT);\n  const nets = os.networkInterfaces();\n  Object.keys(nets).forEach((name) => {\n    nets[name].forEach((n) => {\n      if (n.family === 'IPv4' && !n.internal) {\n        console.log(' Ayni agdaki cihaz : http://' + n.address + ':' + PORT + '  (' + name + ')');\n      }\n    });\n  });\n  console.log(' Veritabani        : ' + DB_FILE);\n  pruneTtsCache(600);\n  detectTts().then(() => {\n    if (tts.ready) console.log(' Dogal ses (Emel)  : HAZIR (' + tts.python + (tts.ffmpeg ? ', ffmpeg var: nefes+duraklama acik' : ', ffmpeg YOK: nefes/duraklama eklenmez') + ')');\n    else console.log(' Dogal ses (Emel)  : KAPALI - ' + tts.error + ' (tarayici sesi kullanilir)');\n  });\n  console.log(' Durdurmak icin bu pencereyi kapatin.');\n});";
+const SERVER_JS = "// Bilgi Evreni 4D Ultimate - Ev Sunucusu (bagimliliksiz Node.js)\n// Calistirma: node server.js   (veya baslat.bat)\nconst http = require('http');\nconst fs = require('fs');\nconst path = require('path');\nconst os = require('os');\nconst crypto = require('crypto');\nconst { spawn, execFile } = require('child_process');\n\nconst PORT = process.env.PORT || 3000;\nconst DIR = __dirname;\nconst DB_FILE = path.join(DIR, 'veritabani.json');\nconst INDEX_FILE = path.join(DIR, 'index.html');\nconst MAX_BODY = 8 * 1024 * 1024;\n\n// ---------- Dogal ses (Microsoft Emel Neural, Python edge-tts) ----------\nconst PY_SCRIPT = path.join(DIR, 'ses_motoru.py');\nconst TTS_DIR = path.join(DIR, 'ses_onbellek');\nconst TTS_VERSION = 'v1';\nconst TTS_MAX_TEXT = 4000;\nconst TTS_MAX_PARALLEL = 3;\nconst TTS_LANGS = ['tr-TR', 'en-US'];\nconst TTS_STYLES = ['ders', 'coskulu', 'sakin'];\nconst tts = { ready: false, python: null, ffmpeg: false, error: 'Henuz kontrol edilmedi', checkedAt: 0 };\nlet ttsActive = 0;\nconst ttsWaiting = [];\nconst ttsInflight = new Map();\n\nfunction tryRun(cmd, args) {\n  return new Promise((resolve) => {\n    execFile(cmd, args, { windowsHide: true, timeout: 20000 }, (err) => resolve(!err));\n  });\n}\n\nasync function detectTts() {\n  tts.checkedAt = Date.now();\n  if (!fs.existsSync(PY_SCRIPT)) { tts.ready = false; tts.error = 'ses_motoru.py bulunamadi'; return; }\n  const candidates = [process.env.PYTHON, 'python', 'py', 'python3'].filter(Boolean);\n  let found = null;\n  for (const c of candidates) {\n    if (await tryRun(c, ['-c', 'import edge_tts'])) { found = c; break; }\n  }\n  tts.ffmpeg = await tryRun('ffmpeg', ['-version']);\n  if (found) {\n    tts.ready = true; tts.python = found; tts.error = '';\n  } else {\n    tts.ready = false; tts.python = null;\n    tts.error = 'Python veya edge-tts kurulu degil (pip install edge-tts)';\n  }\n}\n\nfunction pruneTtsCache(max) {\n  try {\n    const files = fs.readdirSync(TTS_DIR).filter((f) => f.endsWith('.mp3')).map((f) => {\n      const p = path.join(TTS_DIR, f);\n      return { p, t: fs.statSync(p).mtimeMs };\n    }).sort((a, b) => a.t - b.t);\n    files.slice(0, Math.max(0, files.length - max)).forEach((f) => { try { fs.unlinkSync(f.p); } catch (e) {} });\n  } catch (e) {}\n}\n\nfunction ttsRunSlot(job) {\n  if (ttsActive < TTS_MAX_PARALLEL) { ttsActive++; job(); } else { ttsWaiting.push(job); }\n}\nfunction ttsRelease() {\n  ttsActive--;\n  const next = ttsWaiting.shift();\n  if (next) { ttsActive++; next(); }\n}\n\nfunction ttsGenerate(text, lang, style) {\n  const key = crypto.createHash('sha1').update([TTS_VERSION, lang, style, text].join('|')).digest('hex');\n  const out = path.join(TTS_DIR, key + '.mp3');\n  if (fs.existsSync(out)) return Promise.resolve(out);\n  if (ttsInflight.has(key)) return ttsInflight.get(key);\n  const p = new Promise((resolve, reject) => {\n    ttsRunSlot(() => {\n      fs.mkdirSync(TTS_DIR, { recursive: true });\n      const txt = path.join(TTS_DIR, key + '.txt');\n      const tmpOut = path.join(TTS_DIR, key + '.tmp.mp3');\n      fs.writeFileSync(txt, text, 'utf8');\n      const args = ['-X', 'utf8', PY_SCRIPT, '--text-file', txt, '--out', tmpOut, '--lang', lang, '--style', style];\n      const child = spawn(tts.python, args, { windowsHide: true });\n      let err = '';\n      child.stderr.on('data', (d) => { err += d.toString(); });\n      const timer = setTimeout(() => { try { child.kill(); } catch (e) {} }, 90000);\n      const finish = (e) => {\n        clearTimeout(timer);\n        try { fs.unlinkSync(txt); } catch (x) {}\n        ttsRelease();\n        if (e) { try { fs.unlinkSync(tmpOut); } catch (x) {} return reject(e); }\n        try { fs.renameSync(tmpOut, out); resolve(out); } catch (x) { reject(x); }\n      };\n      child.on('error', (e) => finish(e));\n      child.on('close', (code) => {\n        if (code === 0 && fs.existsSync(tmpOut)) finish(null);\n        else finish(new Error('ses_motoru.py hata kodu ' + code + ': ' + err.trim().slice(-300)));\n      });\n    });\n  });\n  ttsInflight.set(key, p);\n  const clear = () => ttsInflight.delete(key);\n  p.then(clear, clear);\n  return p;\n}\n\nfunction readDb() {\n  try {\n    if (!fs.existsSync(DB_FILE)) return null;\n    return JSON.parse(fs.readFileSync(DB_FILE, 'utf8'));\n  } catch (e) {\n    console.error('Veritabani okunamadi:', e.message);\n    return null;\n  }\n}\n\nfunction writeDb(obj) {\n  const tmp = DB_FILE + '.tmp';\n  fs.writeFileSync(tmp, JSON.stringify(obj, null, 2), 'utf8');\n  fs.renameSync(tmp, DB_FILE);\n}\n\nfunction setCors(res) {\n  res.setHeader('Access-Control-Allow-Origin', '*');\n  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');\n  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, X-Force, Authorization');\n}\n\nfunction send(res, code, body, type) {\n  setCors(res);\n  res.writeHead(code, {\n    'Content-Type': type || 'application/json; charset=utf-8',\n    'Cache-Control': 'no-store'\n  });\n  res.end(typeof body === 'string' || Buffer.isBuffer(body) ? body : JSON.stringify(body));\n}\n\nconst server = http.createServer((req, res) => {\n  setCors(res);\n\n  // Preflight OPTIONS sorgusu (GitHub Pages / Render.com CORS uyumu)\n  if (req.method === 'OPTIONS') {\n    res.writeHead(204);\n    return res.end();\n  }\n\n  const url = req.url.split('?')[0];\n\n  if (req.method === 'GET' && (url === '/' || url === '/index.html')) {\n    if (!fs.existsSync(INDEX_FILE)) {\n      return send(res, 200, {\n        ok: true,\n        service: 'Bilgi Evreni 4D API Sunucusu',\n        status: 'online',\n        cors: 'enabled',\n        time: Date.now()\n      });\n    }\n    return send(res, 200, fs.readFileSync(INDEX_FILE), 'text/html; charset=utf-8');\n  }\n\n  // Statik dosya servisi (assets klasoru altindaki resim, doku ve sesler)\n  if (req.method === 'GET' && url.startsWith('/assets/')) {\n    const rel = decodeURIComponent(url.replace(/^\\/+/, ''));\n    const safePath = path.normalize(path.join(DIR, rel));\n    if (safePath.startsWith(DIR) && fs.existsSync(safePath) && fs.statSync(safePath).isFile()) {\n      const ext = path.extname(safePath).toLowerCase();\n      const mimes = {\n        '.jpg': 'image/jpeg',\n        '.jpeg': 'image/jpeg',\n        '.png': 'image/png',\n        '.webp': 'image/webp',\n        '.svg': 'image/svg+xml',\n        '.mp3': 'audio/mpeg',\n        '.json': 'application/json; charset=utf-8',\n        '.css': 'text/css; charset=utf-8',\n        '.js': 'application/javascript; charset=utf-8'\n      };\n      res.writeHead(200, {\n        'Content-Type': mimes[ext] || 'application/octet-stream',\n        'Cache-Control': 'public, max-age=604800'\n      });\n      return fs.createReadStream(safePath).pipe(res);\n    }\n    return send(res, 404, { ok: false, error: 'Dosya bulunamadi' });\n  }\n\n  if (req.method === 'GET' && url === '/api/ping') {\n    const db = readDb();\n    return send(res, 200, {\n      ok: true,\n      hasDb: !!db,\n      updatedAt: db ? db.updatedAt || 0 : 0,\n      userCount: db && Array.isArray(db.users) ? db.users.length : 0,\n      time: Date.now()\n    });\n  }\n\n  if (req.method === 'GET' && url === '/api/db') {\n    const db = readDb();\n    return send(res, 200, { ok: true, db: db });\n  }\n\n  if (req.method === 'GET' && url === '/api/tts/status') {\n    return send(res, 200, { ok: true, ready: tts.ready, ffmpeg: tts.ffmpeg, voice: 'tr-TR-EmelNeural', error: tts.error });\n  }\n\n  if (req.method === 'POST' && url === '/api/tts') {\n    let size = 0;\n    const chunks = [];\n    req.on('data', (c) => {\n      size += c.length;\n      if (size > 32 * 1024) { send(res, 413, { ok: false, error: 'Metin cok uzun' }); req.destroy(); return; }\n      chunks.push(c);\n    });\n    req.on('end', async () => {\n      if (size > 32 * 1024) return;\n      let body;\n      try { body = JSON.parse(Buffer.concat(chunks).toString('utf8')); } catch (e) { return send(res, 400, { ok: false, error: 'JSON okunamadi' }); }\n      const text = String(body && body.text || '').trim();\n      const lang = TTS_LANGS.includes(body.lang) ? body.lang : 'tr-TR';\n      const style = TTS_STYLES.includes(body.style) ? body.style : 'ders';\n      if (!text || text.length > TTS_MAX_TEXT) return send(res, 400, { ok: false, error: 'Metin bos veya cok uzun' });\n      if (!tts.ready && Date.now() - tts.checkedAt > 30000) await detectTts();\n      if (!tts.ready) return send(res, 503, { ok: false, error: tts.error });\n      try {\n        const file = await ttsGenerate(text, lang, style);\n        const stat = fs.statSync(file);\n        res.writeHead(200, { 'Content-Type': 'audio/mpeg', 'Content-Length': stat.size, 'Cache-Control': 'public, max-age=86400' });\n        fs.createReadStream(file).pipe(res);\n      } catch (e) {\n        console.error('TTS hatasi:', e.message);\n        send(res, 500, { ok: false, error: 'Ses uretilemedi' });\n      }\n    });\n    return;\n  }\n\n  if (req.method === 'GET' && url === '/api/backup') {\n    const db = readDb() || {};\n    res.writeHead(200, {\n      'Content-Type': 'application/json; charset=utf-8',\n      'Content-Disposition': 'attachment; filename=\"veritabani-yedek.json\"'\n    });\n    return res.end(JSON.stringify(db, null, 2));\n  }\n\n  if (req.method === 'POST' && url === '/api/db') {\n    let size = 0;\n    const chunks = [];\n    req.on('data', (c) => {\n      size += c.length;\n      if (size > MAX_BODY) {\n        send(res, 413, { ok: false, error: 'Veri cok buyuk' });\n        req.destroy();\n        return;\n      }\n      chunks.push(c);\n    });\n    req.on('end', () => {\n      if (size > MAX_BODY) return;\n      try {\n        const incoming = JSON.parse(Buffer.concat(chunks).toString('utf8'));\n        if (!incoming || !Array.isArray(incoming.users)) {\n          return send(res, 400, { ok: false, error: 'Gecersiz veritabani bicimi' });\n        }\n        const current = readDb();\n        const force = req.headers['x-force'] === '1';\n        if (current && !force && (current.updatedAt || 0) > (incoming.updatedAt || 0)) {\n          return send(res, 409, { ok: false, error: 'Sunucudaki veri daha yeni', db: current });\n        }\n        writeDb(incoming);\n        return send(res, 200, { ok: true, updatedAt: incoming.updatedAt || 0 });\n      } catch (e) {\n        return send(res, 400, { ok: false, error: 'JSON okunamadi' });\n      }\n    });\n    return;\n  }\n\n  send(res, 404, { ok: false, error: 'Bulunamadi' });\n});\n\nserver.listen(PORT, '0.0.0.0', () => {\n  console.log('==============================================');\n  console.log(' BILGI EVRENI 4D ULTIMATE - Sunucu calisiyor');\n  console.log('==============================================');\n  console.log(' Bu bilgisayardan : http://localhost:' + PORT);\n  const nets = os.networkInterfaces();\n  Object.keys(nets).forEach((name) => {\n    nets[name].forEach((n) => {\n      if (n.family === 'IPv4' && !n.internal) {\n        console.log(' Ayni agdaki cihaz : http://' + n.address + ':' + PORT + '  (' + name + ')');\n      }\n    });\n  });\n  console.log(' Veritabani        : ' + DB_FILE);\n  pruneTtsCache(600);\n  detectTts().then(() => {\n    if (tts.ready) console.log(' Dogal ses (Emel)  : HAZIR (' + tts.python + (tts.ffmpeg ? ', ffmpeg var: nefes+duraklama acik' : ', ffmpeg YOK: nefes/duraklama eklenmez') + ')');\n    else console.log(' Dogal ses (Emel)  : KAPALI - ' + tts.error + ' (tarayici sesi kullanilir)');\n  });\n  console.log(' Durdurmak icin bu pencereyi kapatin.');\n});";
 const BAT_FILE = "@echo off\r\nchcp 65001 >nul\r\ntitle Bilgi Evreni 4D Sunucu\r\ncd /d \"%~dp0\"\r\nwhere node >nul 2>nul\r\nif errorlevel 1 (\r\n  echo Node.js kurulu degil. Lutfen https://nodejs.org adresinden kurun.\r\n  pause\r\n  exit /b 1\r\n)\r\nif not exist index.html (\r\n  echo index.html bulunamadi. server.js ile ayni klasorde olmali.\r\n  pause\r\n  exit /b 1\r\n)\r\n\r\nrem --- Dogal ses (Microsoft Emel Neural) icin Python + edge-tts kontrolu ---\r\nset PYCMD=\r\nwhere python >nul 2>nul && set PYCMD=python\r\nif \"%PYCMD%\"==\"\" where py >nul 2>nul && set PYCMD=py\r\nif \"%PYCMD%\"==\"\" (\r\n  echo [Bilgi] Python bulunamadi: dogal ses kapali, tarayici sesi kullanilacak.\r\n  echo         Emel sesi icin https://www.python.org adresinden Python kurun.\r\n) else (\r\n  %PYCMD% -c \"import edge_tts\" >nul 2>nul\r\n  if errorlevel 1 (\r\n    echo edge-tts kuruluyor, lutfen bekleyin...\r\n    %PYCMD% -m pip install --quiet --disable-pip-version-check edge-tts\r\n  )\r\n)\r\nwhere ffmpeg >nul 2>nul\r\nif errorlevel 1 echo [Bilgi] ffmpeg yok: ses calisir ama nefes ve duraklama eklenmez. Onerilen: winget install ffmpeg\r\n\r\nstart \"\" cmd /c \"ping -n 3 127.0.0.1 >nul & start http://localhost:3000\"\r\nnode server.js\r\npause";
 const PY_FILE = "# -*- coding: utf-8 -*-\n\"\"\"\nBilgi Evreni 4D - Dogal Ses Motoru\n==================================\nMicrosoft Neural sesi (tr-TR-EmelNeural) + ffmpeg ile \"insan gibi\" seslendirme:\n  * Cumleler tek tek, duygusuna gore (neseli / heyecanli / merakli / sakin) okunur\n  * Cumleler arasina dogal duraklama ve hafif NEFES sesi eklenir\n  * Her cumlede ritim ve ton cok az degistirilir (robotik tekduzeligi kirar)\n\nKullanim:\n  python ses_motoru.py --text-file metin.txt --out ses.mp3 [--lang tr-TR] [--style ders|coskulu|sakin] [--nefes 1]\nGereksinim:\n  pip install edge-tts      (ffmpeg varsa nefes/duraklama eklenir, yoksa sade birlestirme yapilir)\n\"\"\"\nimport argparse\nimport asyncio\nimport hashlib\nimport os\nimport random\nimport re\nimport shutil\nimport subprocess\nimport sys\nimport tempfile\n\ntry:\n    import edge_tts\nexcept ImportError:\n    sys.stderr.write(\"edge-tts kurulu degil. Kurmak icin: pip install edge-tts\\n\")\n    sys.exit(2)\n\nVOICE_TR = \"tr-TR-EmelNeural\"\nVOICE_EN = \"en-US-JennyNeural\"\nVOICE_EN_WORD = \"en-US-AnaNeural\"   # tek kelimelerde sevimli cocuk tonu\n\n# rate: yuzde, pitch: Hz. (excl/ques/joy/first/last) = (rate_artisi, pitch_artisi)\nSTYLES = {\n    \"ders\": dict(rate=-3, pitch=2, vol=0, excl=(8, 6), ques=(-1, 9), joy=(6, 7),\n                 first=(2, 2), last=(-7, 2), pause=(0.34, 0.55), comma=0.16),\n    \"coskulu\": dict(rate=2, pitch=4, vol=3, excl=(12, 9), ques=(2, 12), joy=(10, 10),\n                    first=(4, 3), last=(-6, 3), pause=(0.28, 0.45), comma=0.13),\n    \"sakin\": dict(rate=-8, pitch=0, vol=0, excl=(3, 3), ques=(-3, 5), joy=(2, 3),\n                  first=(0, 1), last=(-8, 0), pause=(0.45, 0.7), comma=0.2),\n}\n\nJOY_RE = re.compile(\n    r\"^(merhaba|selam|harika|bravo|aferin|s[uü]per|hadi|haydi|tebrikler|\"\n    r\"muhte[sş]em|m[uü]kemmel|[cç]ok g[uü]zel|hoş geldin|ho[sş] geldin|g[oö]r[uü][sş]elim|\"\n    r\"hello|hi|great|wonderful|well done|let's|come on)\",\n    re.IGNORECASE,\n)\nEMOJI_RE = re.compile(\"[\\U0001F000-\\U0001FFFF\\u2600-\\u27BF\\u2B00-\\u2BFF\\uFE0F\\u200D]\")\n\n\ndef log(msg):\n    sys.stderr.write(str(msg) + \"\\n\")\n\n\ndef clamp(v, lo, hi):\n    return max(lo, min(hi, v))\n\n\ndef normalize_text(text, lang):\n    \"\"\"Sesli okuma icin metni temizler (emoji, sembol, kesir...).\"\"\"\n    t = EMOJI_RE.sub(\"\", text)\n    t = t.replace(\"\\r\", \"\\n\")\n    if lang.startswith(\"tr\"):\n        t = re.sub(r\"(\\d+)\\s*/\\s*(\\d+)\", r\"\\1 bölü \\2\", t)\n        t = t.replace(\"×\", \" çarpı \").replace(\"÷\", \" bölü \").replace(\"°\", \" derece \")\n        t = re.sub(r\"(?<=\\d)\\s*\\+\\s*(?=\\d)\", \" artı \", t)\n        t = re.sub(r\"(?<=\\d)\\s*=\\s*(?=\\d)\", \" eşittir \", t)\n        t = t.replace(\"4D\", \"dört de\").replace(\" TL\", \" Türk lirası\")\n    t = re.sub(r\"[ \\t]+\", \" \", t)\n    return t.strip()\n\n\ndef split_sentences(text):\n    \"\"\"[(cumle, durak_turu)] dondurur. durak_turu: 'sentence' | 'comma' | 'para'.\"\"\"\n    out = []\n    paragraphs = [p.strip() for p in re.split(r\"\\n\\s*\\n|\\n\", text) if p.strip()]\n    for pi, para in enumerate(paragraphs):\n        sents = [s.strip() for s in re.split(r\"(?<=[.!?…])\\s+\", para) if s.strip()]\n        for si, s in enumerate(sents):\n            parts = [s]\n            if len(s) > 120:  # uzun cumleyi virgul/noktali virgulden bol -> dogal nefes\n                chunks = [c.strip() for c in re.split(r\"(?<=[,;:])\\s+\", s) if c.strip()]\n                parts, cur = [], \"\"\n                for c in chunks:\n                    if cur and len(cur) + len(c) > 90:\n                        parts.append(cur)\n                        cur = c\n                    else:\n                        cur = (cur + \" \" + c).strip()\n                if cur:\n                    parts.append(cur)\n            for k, p in enumerate(parts):\n                last_part = k == len(parts) - 1\n                if not last_part:\n                    kind = \"comma\"\n                elif si == len(sents) - 1 and pi < len(paragraphs) - 1:\n                    kind = \"para\"\n                else:\n                    kind = \"sentence\"\n                out.append((p, kind))\n    if out:\n        out[-1] = (out[-1][0], \"end\")\n    return out\n\n\ndef emotion(sentence, idx, n, st, rng, kind_prev):\n    rate, pitch, vol = st[\"rate\"], st[\"pitch\"], st[\"vol\"]\n    t = sentence.strip()\n    if t.endswith(\"!\"):\n        rate += st[\"excl\"][0]; pitch += st[\"excl\"][1]; vol += 4\n    elif t.endswith(\"?\"):\n        rate += st[\"ques\"][0]; pitch += st[\"ques\"][1]\n    if JOY_RE.match(t):\n        rate += st[\"joy\"][0]; pitch += st[\"joy\"][1]; vol += 3\n    if n > 1 and idx == 0:\n        rate += st[\"first\"][0]; pitch += st[\"first\"][1]\n    if n > 1 and idx == n - 1:\n        rate += st[\"last\"][0]; pitch += st[\"last\"][1]\n    # cumleden cumleye kucuk, rastgele (ama tekrarlanabilir) degisim: monotonlugu kirar\n    rate += rng.randint(-2, 2)\n    pitch += rng.randint(-2, 2)\n    return clamp(rate, -30, 30), clamp(pitch, -20, 25), clamp(vol, -10, 15)\n\n\nasync def synth_one(text, voice, rate, pitch, vol, path, sem):\n    async with sem:\n        last_err = None\n        for attempt in range(4):\n            try:\n                comm = edge_tts.Communicate(\n                    text, voice,\n                    rate=\"%+d%%\" % rate, pitch=\"%+dHz\" % pitch, volume=\"%+d%%\" % vol,\n                )\n                await comm.save(path)\n                if os.path.exists(path) and os.path.getsize(path) > 200:\n                    return\n                last_err = RuntimeError(\"bos ses dosyasi\")\n            except Exception as e:  # ag hatasi vb. -> tekrar dene\n                last_err = e\n            await asyncio.sleep(0.8 * (attempt + 1))\n        raise last_err\n\n\ndef build_plan(text, lang, style_name):\n    st = STYLES.get(style_name, STYLES[\"ders\"])\n    seed = int(hashlib.sha1((text + style_name).encode(\"utf-8\")).hexdigest()[:8], 16)\n    rng = random.Random(seed)\n    is_tr = lang.lower().startswith(\"tr\")\n    clean = normalize_text(text, lang)\n    words = re.findall(r\"\\w+\", clean, re.UNICODE)\n\n    # Ingilizce tek kelime: once normal, sonra yavas tekrar (kelime ogretimi)\n    if not is_tr and len(words) == 1:\n        w = clean.strip(\" .!?\")\n        return [\n            dict(text=w + \"!\", voice=VOICE_EN_WORD, rate=0, pitch=6, vol=4, kind=\"word\"),\n            dict(text=w + \".\", voice=VOICE_EN_WORD, rate=-20, pitch=2, vol=0, kind=\"end\"),\n        ], st\n\n    voice = VOICE_TR if is_tr else VOICE_EN\n    sents = split_sentences(clean)\n    n = len(sents)\n    plan, prev = [], None\n    for i, (s, kind) in enumerate(sents):\n        r, p, v = emotion(s, i, n, st, rng, prev)\n        plan.append(dict(text=s, voice=voice, rate=r, pitch=p, vol=v, kind=kind))\n        prev = kind\n    return plan, st\n\n\ndef find_ffmpeg():\n    return shutil.which(\"ffmpeg\")\n\n\ndef stitch_ffmpeg(ffmpeg, plan, files, st, nefes, out_path, rng):\n    \"\"\"Cumleleri; duraklama + nefes sesiyle birlestirir, ses seviyesini dengeler.\"\"\"\n    inputs, filters, labels = [], [], []\n    idx = 0\n\n    def add_file(path):\n        nonlocal idx\n        inputs.extend([\"-i\", path])\n        # Microsoft sesi her parcanin basina/sonuna ~0.3-0.5 sn sessizlik koyar: kirpip ritmi biz belirleriz\n        trim = (\"silenceremove=start_periods=1:start_threshold=-48dB:start_silence=0.04,areverse,\"\n                \"silenceremove=start_periods=1:start_threshold=-48dB:start_silence=0.06,areverse\")\n        filters.append(\"[%d:a]aresample=24000,aformat=sample_fmts=fltp:channel_layouts=mono,%s[a%d]\" % (idx, trim, idx))\n        labels.append(\"[a%d]\" % idx)\n        idx += 1\n\n    def add_silence(sec):\n        nonlocal idx\n        inputs.extend([\"-f\", \"lavfi\", \"-t\", \"%.3f\" % sec, \"-i\", \"anullsrc=r=24000:cl=mono\"])\n        filters.append(\"[%d:a]aformat=sample_fmts=fltp:channel_layouts=mono[a%d]\" % (idx, idx))\n        labels.append(\"[a%d]\" % idx)\n        idx += 1\n\n    def add_breath(sec):\n        nonlocal idx\n        inputs.extend([\"-f\", \"lavfi\", \"-t\", \"%.3f\" % sec, \"-i\",\n                       \"anoisesrc=r=24000:c=pink:a=0.6:d=%.3f\" % sec])\n        fo = max(0.05, sec * 0.55)\n        filters.append(\n            \"[%d:a]highpass=f=260,lowpass=f=2400,afade=t=in:st=0:d=%.3f,afade=t=out:st=%.3f:d=%.3f,\"\n            \"volume=0.15,aformat=sample_fmts=fltp:channel_layouts=mono[a%d]\"\n            % (idx, sec * 0.45, sec - fo, fo, idx))\n        labels.append(\"[a%d]\" % idx)\n        idx += 1\n\n    add_silence(0.12)\n    speech_since_breath = 0.0\n    for i, (item, f) in enumerate(zip(plan, files)):\n        add_file(f)\n        speech_since_breath += len(item[\"text\"]) / 14.0   # yaklasik konusma suresi (sn)\n        kind = item[\"kind\"]\n        if kind == \"end\":\n            add_silence(0.25)\n            break\n        if kind == \"comma\":\n            add_silence(st[\"comma\"] + rng.uniform(0, 0.06))\n        elif kind == \"word\":\n            add_silence(0.7)\n        else:\n            base = rng.uniform(*st[\"pause\"])\n            if kind == \"para\":\n                base += 0.35\n            # yeterince uzun konusulduysa nefes al: 'hhh' + kisa sessizlik\n            if nefes and (speech_since_breath > 5.5 or kind == \"para\"):\n                add_silence(base * 0.45)\n                add_breath(rng.uniform(0.26, 0.38))\n                add_silence(0.05)\n                speech_since_breath = 0.0\n            else:\n                add_silence(base)\n\n    chain = \"\".join(labels) + \"concat=n=%d:v=0:a=1,loudnorm=I=-16:TP=-1.5:LRA=9[out]\" % len(labels)\n    filter_complex = \";\".join(filters + [chain])\n    cmd = [ffmpeg, \"-y\", \"-hide_banner\", \"-loglevel\", \"error\"] + inputs + [\n        \"-filter_complex\", filter_complex, \"-map\", \"[out]\",\n        \"-c:a\", \"libmp3lame\", \"-b:a\", \"64k\", \"-ar\", \"24000\", \"-ac\", \"1\", out_path]\n    r = subprocess.run(cmd, capture_output=True, text=True)\n    if r.returncode != 0:\n        raise RuntimeError(\"ffmpeg hatasi: \" + (r.stderr or \"\")[-400:])\n\n\ndef stitch_plain(files, out_path):\n    \"\"\"ffmpeg yoksa: mp3 parcalarini ardarda ekle (nefes/duraklama olmaz).\"\"\"\n    with open(out_path, \"wb\") as o:\n        for f in files:\n            with open(f, \"rb\") as i:\n                o.write(i.read())\n\n\nasync def main_async(args):\n    with open(args.text_file, \"r\", encoding=\"utf-8\") as fh:\n        text = fh.read()\n    if not text.strip():\n        raise SystemExit(\"Bos metin.\")\n    plan, st = build_plan(text, args.lang, args.style)\n    if not plan:\n        raise SystemExit(\"Okunacak metin yok.\")\n    seed = int(hashlib.sha1(text.encode(\"utf-8\")).hexdigest()[:8], 16)\n    rng = random.Random(seed + 7)\n\n    tmp = tempfile.mkdtemp(prefix=\"bev_ses_\")\n    try:\n        sem = asyncio.Semaphore(4)\n        files = [os.path.join(tmp, \"s%03d.mp3\" % i) for i in range(len(plan))]\n        await asyncio.gather(*[\n            synth_one(p[\"text\"], p[\"voice\"], p[\"rate\"], p[\"pitch\"], p[\"vol\"], f, sem)\n            for p, f in zip(plan, files)\n        ])\n        ff = find_ffmpeg()\n        out_tmp = os.path.join(tmp, \"final.mp3\")\n        if ff:\n            try:\n                stitch_ffmpeg(ff, plan, files, st, bool(args.nefes), out_tmp, rng)\n            except Exception as e:\n                log(\"Uyari: ffmpeg birlestirme basarisiz, sade birlestirme kullaniliyor. \" + str(e))\n                stitch_plain(files, out_tmp)\n        else:\n            log(\"Uyari: ffmpeg bulunamadi; nefes ve duraklama eklenemedi (sade birlestirme).\")\n            stitch_plain(files, out_tmp)\n        os.makedirs(os.path.dirname(os.path.abspath(args.out)), exist_ok=True)\n        shutil.move(out_tmp, args.out)\n    finally:\n        shutil.rmtree(tmp, ignore_errors=True)\n\n\ndef main():\n    ap = argparse.ArgumentParser(description=\"Bilgi Evreni 4D dogal ses motoru (Microsoft Emel Neural)\")\n    ap.add_argument(\"--text-file\", required=True, help=\"UTF-8 metin dosyasi\")\n    ap.add_argument(\"--out\", required=True, help=\"cikis .mp3 yolu\")\n    ap.add_argument(\"--lang\", default=\"tr-TR\", choices=[\"tr-TR\", \"en-US\"])\n    ap.add_argument(\"--style\", default=\"ders\", choices=sorted(STYLES.keys()))\n    ap.add_argument(\"--nefes\", type=int, default=1, help=\"1: nefes sesi ekle, 0: ekleme\")\n    args = ap.parse_args()\n    try:\n        if sys.platform == \"win32\":\n            asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())\n        asyncio.run(main_async(args))\n    except SystemExit:\n        raise\n    except Exception as e:\n        log(\"HATA: %s\" % e)\n        sys.exit(1)\n\n\nif __name__ == \"__main__\":\n    main()\n";
 const LS_KEY = 'bilgievreni4d_v3';
@@ -53,6 +53,31 @@ function modal(html){$('#modalBox').innerHTML=html;$('#modal').classList.remove(
 function closeModal(){if(window.CoursePlayer)CoursePlayer.stopAudio();$('#modal').classList.add('hidden');$('#modalBox').classList.remove('theater');$('#modalBox').innerHTML='';render();}
 function download(name, text, mime){const b=new Blob([text],{type:mime||'text/plain;charset=utf-8'});const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download=name;document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove();},500);}
 function printHTML(html){const p=$('#printArea');p.innerHTML=html;document.body.classList.add('printing');const done=()=>{document.body.classList.remove('printing');p.innerHTML='';window.removeEventListener('afterprint',done);};window.addEventListener('afterprint',done);setTimeout(()=>window.print(),150);}
+/* ---------- API Adresi & Bulut (Render.com / GitHub Pages uyumu) ---------- */
+function getApiBase() {
+  try {
+    const p = new URLSearchParams(window.location.search);
+    const q = p.get('api');
+    if (q) {
+      const c = q.trim().replace(/\/+$/, '');
+      localStorage.setItem('be4d_api_url', c);
+      return c;
+    }
+  } catch (e) {}
+  const saved = localStorage.getItem('be4d_api_url');
+  if (saved && saved.trim()) return saved.trim().replace(/\/+$/, '');
+  if (window.DEFAULT_RENDER_API && window.DEFAULT_RENDER_API.trim()) {
+    return window.DEFAULT_RENDER_API.trim().replace(/\/+$/, '');
+  }
+  return '';
+}
+
+function hasServerEndpoint() {
+  if (location.protocol === 'file:') return !!getApiBase();
+  if (location.hostname.includes('github.io')) return !!getApiBase();
+  return true;
+}
+
 /* ---------- Doğal ses: Microsoft Emel Neural (sunucu + Python edge-tts), yedek: tarayıcı sesi ---------- */
 const voice = {audio:null, tok:0, fail:0, cache:new Map()};
 function browserSpeak(text, lang){
@@ -65,7 +90,8 @@ function browserSpeak(text, lang){
 async function ttsFetch(text, lang, style){
   const key=lang+'|'+style+'|'+text;
   if(voice.cache.has(key))return voice.cache.get(key);
-  const r=await fetch('/api/tts',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({text,lang,style})});
+  const base=getApiBase();
+  const r=await fetch(base+'/api/tts',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({text,lang,style})});
   if(!r.ok){const e=new Error('tts '+r.status);e.status=r.status;throw e;}
   const url=URL.createObjectURL(await r.blob());
   if(voice.cache.size>=80){const k=voice.cache.keys().next().value;URL.revokeObjectURL(voice.cache.get(k));voice.cache.delete(k);}
@@ -179,33 +205,54 @@ function normalize(d){
 }
 function mkUserKeep(x){const b=mkUser({});for(const k in b){if(x[k]===undefined||x[k]===null)x[k]=b[k];}if(!x.stats||typeof x.stats!=='object')x.stats={};if(!x.courseProgress||typeof x.courseProgress!=='object')x.courseProgress={};return x;}
 
-/* ---------- Kayıt & Senkronizasyon (LocalStorage + Node sunucusu) ---------- */
+/* ---------- Kayıt & Senkronizasyon (LocalStorage + Node / Render.com sunucusu) ---------- */
 let db = null;
 const syncState = {server:false,last:0};
 let pushT = null, pendingRender = false;
 function loadLocal(){try{const r=localStorage.getItem(LS_KEY);return r?JSON.parse(r):null;}catch(e){return null;}}
 function save(){db.updatedAt=Date.now();try{localStorage.setItem(LS_KEY,JSON.stringify(db));}catch(e){}pushSoon();}
 function pushSoon(){clearTimeout(pushT);pushT=setTimeout(()=>pushNow(false),400);}
+
 async function pushNow(force){
-  if(location.protocol==='file:'){updSync();return;}
+  if(!hasServerEndpoint()){updSync();return;}
   try{
-    const r=await fetch('/api/db',{method:'POST',headers:{'Content-Type':'application/json','X-Force':force?'1':'0'},body:JSON.stringify(db)});
-    if(r.status===409){const j=await r.json();if(j.db)adopt(j.db,true);}
-    else if(r.ok){syncState.server=true;syncState.last=Date.now();}
+    const base=getApiBase();
+    const r=await fetch(base+'/api/db',{
+      method:'POST',
+      headers:{'Content-Type':'application/json','X-Force':force?'1':'0'},
+      body:JSON.stringify(db)
+    });
+    if(r.status===409){
+      const j=await r.json();
+      if(j.db)adopt(j.db,true);
+    }else if(r.ok){
+      syncState.server=true;
+      syncState.last=Date.now();
+    }
   }catch(e){syncState.server=false;}
   updSync();
 }
+
 async function pullNow(initial){
-  if(location.protocol==='file:'){updSync();return;}
+  if(!hasServerEndpoint()){updSync();return;}
   try{
-    const r=await fetch('/api/db',{cache:'no-store'});const j=await r.json();syncState.server=true;
-    if(!j.db){await pushNow(false);}
-    else{const sv=j.db.updatedAt||0,lc=db.updatedAt||0;if(sv>lc)adopt(j.db,!initial);else if(sv<lc)await pushNow(false);}
+    const base=getApiBase();
+    const r=await fetch(base+'/api/db',{cache:'no-store'});
+    const j=await r.json();
+    syncState.server=true;
+    if(!j.db){
+      await pushNow(false);
+    }else{
+      const sv=j.db.updatedAt||0,lc=db.updatedAt||0;
+      if(sv>lc)adopt(j.db,!initial);
+      else if(sv<lc)await pushNow(false);
+    }
     syncState.last=Date.now();
   }catch(e){syncState.server=false;}
   if(pendingRender&&safeToRender()){pendingRender=false;render();}
   updSync();
 }
+
 function safeToRender(){
   const ae=document.activeElement;
   if(ae&&['INPUT','TEXTAREA','SELECT'].includes(ae.tagName))return false;
@@ -213,13 +260,54 @@ function safeToRender(){
   if(!$('#modal').classList.contains('hidden'))return false;
   return true;
 }
+
 function adopt(d,doRender){
   db=normalize(d);try{localStorage.setItem(LS_KEY,JSON.stringify(db));}catch(e){}
   if(session.uid&&!byId(session.uid)){session={uid:null,stack:[]};saveSession();}
   if(doRender){if(safeToRender())render();else pendingRender=true;}
 }
-function updSync(){const e=$('#syncBadge');if(e)e.innerHTML=location.protocol==='file:'?'💾 Yerel mod':(syncState.server?'🟢 Sunucu bağlı':'🟠 Sunucuya ulaşılamıyor');const s=$('#syncInfo');if(s)s.innerHTML=syncInfoText();}
-function syncInfoText(){return (location.protocol==='file:'?'💾 Dosya olarak açıldı: veriler sadece bu tarayıcının LocalStorage alanında tutulur.':(syncState.server?'🟢 Sunucu bağlı. Son eşitleme: '+(syncState.last?fmtDate(syncState.last):'-'):'🟠 Sunucuya ulaşılamıyor; veriler LocalStorage\'da tutuluyor ve sunucu gelince eşitlenecek.'));}
+
+function updSync(){
+  const e=$('#syncBadge');
+  const base=getApiBase();
+  const isGh=location.hostname.includes('github.io');
+  let label='';
+  if(location.protocol==='file:'&&!base){
+    label='💾 Yerel mod';
+  }else if(base){
+    label=syncState.server?'☁️ Render Bulut Aktif':'🟠 Render Aranıyor...';
+  }else if(isGh){
+    label='⚙️ Render API Gerekli';
+  }else{
+    label=syncState.server?'🟢 Sunucu bağlı':'🟠 Sunucuya ulaşılamıyor';
+  }
+  if(e){
+    e.innerHTML=label;
+    e.style.cursor='pointer';
+    e.onclick=()=>A.quickApiModal();
+  }
+  const s=$('#syncInfo');
+  if(s)s.innerHTML=syncInfoText();
+}
+
+function syncInfoText(){
+  const base=getApiBase();
+  const isGh=location.hostname.includes('github.io');
+  if(location.protocol==='file:'&&!base){
+    return '💾 Dosya olarak açıldı: veriler bu tarayıcının LocalStorage alanında tutulur.';
+  }
+  if(base){
+    return syncState.server
+      ? `☁️ <b>Render Bulut Sunucusuna Bağlı:</b> <code>${esc(base)}</code> (Son eşitleme: ${syncState.last?fmtDate(syncState.last):'-'})`
+      : `🟠 <b>Render Bulut Sunucusuna Bağlanılamıyor:</b> <code>${esc(base)}</code> <button class="btn sm ghost" style="padding:2px 8px;font-size:11px" onclick="A.quickApiModal()">⚙️ Ayarla</button><br><small style="color:var(--muted)">Not: Render ücretsiz planında sunucu 15 dk işlem yapılmazsa uyur. İlk açılışta uyanması 30-45 saniye sürebilir; verileriniz bu sırada LocalStorage'da güvendedir.</small>`;
+  }
+  if(isGh){
+    return `ℹ️ <b>GitHub Pages Yayını Aktif:</b> Ortak veritabanı senkronizasyonu için Render Web Servisi API adresinizi bağlayın. <button class="btn sm ok" style="padding:2px 8px;font-size:11px" onclick="A.quickApiModal()">☁️ Render Adresini Gir</button>`;
+  }
+  return syncState.server
+    ? '🟢 Sunucu bağlı. Son eşitleme: '+(syncState.last?fmtDate(syncState.last):'-')
+    : '🟠 Sunucuya ulaşılamıyor; veriler LocalStorage\'da tutuluyor ve sunucu gelince eşitlenecek.';
+}
 
 /* ---------- Oturum ---------- */
 let session = JSON.parse(sessionStorage.getItem(SS_KEY) || 'null') || {uid:null,stack:[]};
@@ -2229,11 +2317,38 @@ A.exportResultsCSV=()=>{
   download('okul-sinav-sonuclari.csv',csv,'text/csv;charset=utf-8');toast('📥 Sınav sonuçları CSV olarak indirildi');
 };
 
-/* --- 4) Ev Sunucusu & Bakım --- */
+/* --- 4) Ev Sunucusu, GitHub Pages & Render.com Bulut Entegrasyonu --- */
 function admServer(){
-  return `<div class="card"><h3>🏠 Ev Sunucusu Kurulumu (1 dakika)</h3><ol><li>Aşağıdan <b>server.js</b>, <b>baslat.bat</b> ve <b>ses_motoru.py</b> dosyalarını indirin.</li><li><b>index.html</b> dosyasını da aynı klasöre kaydedin.</li><li>Bilgisayarınızda <a href="https://nodejs.org" target="_blank" rel="noopener" style="color:var(--a2)">Node.js</a> kuruluysa <b>baslat.bat</b> dosyasına çift tıklayın.</li><li>Tarayıcıda <b>http://localhost:3000</b> açılır; aynı Wi-Fi'deki cihazlar konsolda yazan IP adresini kullanır. Veriler <b>veritabani.json</b> dosyasına otomatik kaydedilir.</li></ol>
+  const base = getApiBase();
+  return `<div class="card" style="border:1px solid rgba(99,102,241,0.35);background:linear-gradient(180deg,rgba(99,102,241,0.06),transparent)">
+    <div class="row between" style="margin-top:0;flex-wrap:wrap;gap:8px">
+      <h3>☁️ GitHub Pages & Render.com Canlı Yayın & Veritabanı</h3>
+      <span class="chip" style="background:${syncState.server?'var(--ok)':'var(--warn)'};color:#fff">${syncState.server?'🟢 Bulut DB Bağlı':'🟠 Bağlantı Bekleniyor'}</span>
+    </div>
+    <p style="margin:8px 0;line-height:1.5">
+      Sitenizi <b>https://esrakocmersin.github.io</b> adresinde ücretsiz yayınlayıp öğrenci, ödev ve sınav verilerini <b>Render.com</b> üzerindeki Node.js veritabanı servisinizle senkronize edebilirsiniz.
+    </p>
+    <div style="background:var(--card);border:1px solid var(--border);border-radius:8px;padding:12px;margin:10px 0">
+      <label style="font-weight:600;display:block;margin-bottom:6px">Render.com Backend Servis Adresiniz (API URL):</label>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center">
+        <input id="cfgRenderUrl" type="url" placeholder="https://bilgi-evreni-api.onrender.com" value="${esc(base)}" style="flex:1;min-width:260px;padding:9px 12px;border-radius:8px;border:1px solid var(--border);background:var(--bg);color:var(--txt)">
+        <button class="btn ok" onclick="A.testAndSaveApi()">🔗 Bağlan & Test Et</button>
+        <button class="btn ghost" onclick="A.resetApiUrl()">🔄 Sıfırla (Yerel Mod)</button>
+      </div>
+      <div id="renderApiStatus" style="margin-top:8px;font-size:0.88rem"></div>
+    </div>
+    <div style="font-size:0.85rem;color:var(--muted);line-height:1.5">
+      💡 <b>Hızlı Kurulum Özeti (3 Adım):</b><br>
+      1. Bu projenin tüm dosyalarını GitHub'da <b>esrakocmersin.github.io</b> deposuna yükleyin.<br>
+      2. <b>render.com</b>'a ücretsiz üye olup <b>New Web Service</b> deyin ve bu depoyu bağlayın. (Start Command: <code>node server.js</code>)<br>
+      3. Render'ın oluşturduğu <code>https://....onrender.com</code> adresini yukarıdaki kutuya yapıştırıp <b>Bağlan & Test Et</b>'e tıklayın!
+    </div>
+  </div>
+
+  <div class="card"><h3>🏠 Yerel Ev Sunucusu (Offline / Ağ Paylaşımı)</h3><ol><li>Aşağıdan <b>server.js</b>, <b>baslat.bat</b> ve <b>ses_motoru.py</b> dosyalarını indirin.</li><li><b>index.html</b> dosyasını da aynı klasöre kaydedin.</li><li>Bilgisayarınızda <a href="https://nodejs.org" target="_blank" rel="noopener" style="color:var(--a2)">Node.js</a> kuruluysa <b>baslat.bat</b> dosyasına çift tıklayın.</li><li>Tarayıcıda <b>http://localhost:3000</b> açılır; aynı Wi-Fi'deki cihazlar konsolda yazan IP adresini kullanır. Veriler <b>veritabani.json</b> dosyasına otomatik kaydedilir.</li></ol>
   <div class="row" style="flex-wrap:wrap;gap:8px"><button class="btn" onclick="A.dl('server')">⬇️ server.js İndir</button><button class="btn" onclick="A.dl('bat')">⬇️ baslat.bat İndir</button><button class="btn" onclick="A.dl('py')">⬇️ ses_motoru.py İndir</button><button class="btn" onclick="A.dl('index')">⬇️ index.html İndir</button></div>
   <p class="muted">Güvenlik notu: Veriler yerel ağda güvenle çalışacak şekilde tasarlanmıştır. Sunucuyu doğrudan internete açmadan yerel Wi-Fi ağınızda kullanınız.</p></div>
+
   <div class="card"><div class="row between" style="margin-top:0;flex-wrap:wrap;gap:8px"><h3>🔄 Senkronizasyon, Yedekleme & Veritabanı Bakımı</h3><button class="btn sm" onclick="A.cleanDb()">🧹 Veritabanını Onar & Yetimleri Temizle</button></div><p id="syncInfo">${syncInfoText()}</p>
   <div class="row" style="flex-wrap:wrap;gap:8px"><button class="btn" onclick="A.syncNow()">🔄 Şimdi Eşitle</button><button class="btn warn" onclick="A.forcePush()">⬆️ Yerel Veriyi Sunucuya Zorla Yaz</button><button class="btn ghost" onclick="A.dl('json')">💾 .json Yedeği Al</button><label class="btn ghost" style="cursor:pointer;flex-direction:row;color:inherit">📂 Yedek Yükle<input type="file" accept=".json,application/json" class="hidden" onchange="A.restore(this)"></label><button class="btn danger" onclick="A.resetAll()">♻️ Demo Verilere Sıfırla</button></div></div>
   <div class="card"><div class="row between" style="margin-top:0;flex-wrap:wrap;gap:8px"><h3>🎙️ Doğal Ses Motoru (Microsoft Emel Neural)</h3><span class="chip" style="background:var(--card2);border:1px solid var(--ok);color:var(--ok)">🟢 173 / 173 Ünite MP3 Sesi Aktif</span></div><p id="ttsInfo" class="muted">Kontrol ediliyor...</p>
@@ -2264,9 +2379,10 @@ A.cleanDb=()=>{
 
 A.ttsStatus=async()=>{
   const e=$('#ttsInfo');if(!e)return;
-  if(location.protocol==='file:'){e.textContent='🟢 173 ünite ses dosyası hazır (Yerel modda doğrudan MP3 oynatılır).';return;}
+  const base=getApiBase();
+  if(!hasServerEndpoint()){e.textContent='🟢 173 ünite ses dosyası hazır (Yerel modda doğrudan MP3 oynatılır).';return;}
   try{
-    const j=await (await fetch('/api/tts/status',{cache:'no-store'})).json();
+    const j=await (await fetch(base+'/api/tts/status',{cache:'no-store'})).json();
     e.innerHTML=j.ready?'🟢 Emel sesi hazır'+(j.ffmpeg?' • nefes ve duraklama açık':' • ⚠️ ffmpeg yok: sade ses'):'🟠 Kapalı: '+esc(j.error)+' → <code>pip install edge-tts</code>';
   }catch(x){e.textContent='🟢 173 ünite ses dosyası assets/audio/courses/ altında hazır.';}
 };
@@ -2292,6 +2408,105 @@ A.restore=inp=>{
   rd.readAsText(f);
 };
 A.resetAll=()=>{if(!confirm('TÜM veriler silinip demo veriler yüklenecek. Emin misiniz?'))return;db=seedDb();save();pushNow(true);session={uid:null,stack:[]};saveSession();render();};
+
+A.quickApiModal = () => {
+  const base = getApiBase();
+  modal(`<div style="min-width:320px;max-width:480px">
+    <h3>☁️ Sunucu & Veritabanı Bağlantısı</h3>
+    <p style="margin:10px 0;font-size:0.92rem;line-height:1.5">
+      Mevcut Durum: <b>${location.protocol==='file:'?'💾 Yerel Dosya Modu':(syncState.server?'🟢 Bağlı ('+(base?esc(base):'localhost')+')':'🟠 Bağlantı Bekleniyor')}</b>
+    </p>
+    <label style="display:block;margin-top:10px;font-weight:600">Render.com veya Uzak API Sunucu Adresi:</label>
+    <input id="quickRenderUrl" type="url" placeholder="https://bilgi-evreni-api.onrender.com" value="${esc(base)}" style="width:100%;margin-top:6px;padding:9px 12px;border-radius:8px;border:1px solid var(--border);background:var(--bg);color:var(--txt)">
+    <div id="quickApiStatus" style="margin-top:8px;font-size:0.88rem"></div>
+    <div class="row" style="margin-top:16px;justify-content:flex-end;gap:8px">
+      <button class="btn ghost" onclick="closeModal()">Kapat</button>
+      <button class="btn ghost" onclick="localStorage.removeItem('be4d_api_url');updSync();closeModal();toast('Yerel moda dönüldü');">Sıfırla</button>
+      <button class="btn ok" onclick="A.quickApiSave()">🔗 Test Et & Kaydet</button>
+    </div>
+  </div>`);
+};
+
+A.quickApiSave = async () => {
+  const inp = $('#quickRenderUrl');
+  const out = $('#quickApiStatus');
+  if (!inp || !out) return;
+  let url = (inp.value || '').trim().replace(/\/+$/, '');
+  if (!url) {
+    localStorage.removeItem('be4d_api_url');
+    updSync();
+    closeModal();
+    toast('Yerel mod aktif');
+    return;
+  }
+  if (!url.startsWith('http://') && !url.startsWith('https://')) {
+    url = 'https://' + url;
+    inp.value = url;
+  }
+  out.innerHTML = '<span style="color:var(--muted)">⏳ Bağlantı test ediliyor... (Render uyanırken 30-45 saniye sürebilir)</span>';
+  try {
+    const t0 = Date.now();
+    const res = await fetch(url + '/api/ping', { cache: 'no-store' });
+    const j = await res.json();
+    const ms = Date.now() - t0;
+    if (j.ok) {
+      localStorage.setItem('be4d_api_url', url);
+      out.innerHTML = `<span style="color:var(--ok);font-weight:600">✅ Başarılı! (${ms}ms)</span>`;
+      updSync();
+      pullNow(false);
+      setTimeout(() => { closeModal(); toast('☁️ Render veritabanı başarıyla bağlandı!'); }, 600);
+    } else {
+      out.innerHTML = '<span style="color:var(--err)">⚠️ Sunucu hata döndürdü.</span>';
+    }
+  } catch (e) {
+    out.innerHTML = `<span style="color:var(--err)">❌ Bağlanılamadı: ${esc(e.message)}</span>`;
+  }
+};
+
+A.testAndSaveApi = async () => {
+  const inp = $('#cfgRenderUrl');
+  const out = $('#renderApiStatus');
+  if (!inp || !out) return;
+  let url = (inp.value || '').trim().replace(/\/+$/, '');
+  if (!url) {
+    localStorage.removeItem('be4d_api_url');
+    out.innerHTML = '<span style="color:var(--warn)">ℹ️ Adres temizlendi. Yerel mod aktif.</span>';
+    updSync();
+    return;
+  }
+  if (!url.startsWith('http://') && !url.startsWith('https://')) {
+    url = 'https://' + url;
+    inp.value = url;
+  }
+  out.innerHTML = '<span style="color:var(--muted)">⏳ Sunucuya ping gönderiliyor (Render soğuk açılışında 30-45 saniye sürebilir)...</span>';
+  try {
+    const t0 = Date.now();
+    const res = await fetch(url + '/api/ping', { cache: 'no-store' });
+    const j = await res.json();
+    const ms = Date.now() - t0;
+    if (j.ok) {
+      localStorage.setItem('be4d_api_url', url);
+      out.innerHTML = `<span style="color:var(--ok);font-weight:600">✅ Bağlantı Başarılı! (${ms}ms)</span><br><small style="color:var(--txt)">Sunucuda veritabanı: ${j.hasDb ? 'Mevcut (' + (j.userCount || 0) + ' kayıtlı kullanıcı)' : 'Henüz boş (ilk senkronizasyonla yüklenecektir)'}. Ayarlar kaydedildi.</small>`;
+      updSync();
+      pullNow(false);
+      toast('☁️ Render bağlantısı sağlandı ve kaydedildi!');
+    } else {
+      out.innerHTML = `<span style="color:var(--err)">⚠️ Sunucu geçerli yanıt dönmedi: ${esc(JSON.stringify(j))}</span>`;
+    }
+  } catch (err) {
+    out.innerHTML = `<span style="color:var(--err);font-weight:600">❌ Bağlantı Başarısız!</span><br><small style="color:var(--txt)">Hata: ${esc(err.message)}.<br>• Render Web Servisinizin "Live" durumunda olduğundan emin olun.<br>• URL adresini kontrol edin.</small>`;
+  }
+  updSync();
+};
+
+A.resetApiUrl = () => {
+  localStorage.removeItem('be4d_api_url');
+  const inp = $('#cfgRenderUrl'); if (inp) inp.value = '';
+  const out = $('#renderApiStatus'); if (out) out.innerHTML = '<span style="color:var(--ok)">🔄 Sıfırlandı. Yerel sunucu moduna geçildi.</span>';
+  updSync();
+  pullNow(false);
+  toast('Yerel sunucu moduna dönüldü');
+};
 
 /* --- 5) AdSense Merkezi --- */
 function admAds(){

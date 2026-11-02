@@ -1,0 +1,22 @@
+{
+  "name": "bilgi-evreni-4d",
+  "version": "1.0.0",
+  "description": "Bilgi Evreni 4D Ultimate - 4. Sinif Egitim Platformu ve Veritabani Sunucusu",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "keywords": [
+    "education",
+    "meb",
+    "4-sinif",
+    "threejs",
+    "render",
+    "github-pages"
+  ],
+  "author": "Esra Koc Mersin",
+  "license": "ISC"
+}

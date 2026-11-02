@@ -120,7 +120,14 @@ function writeDb(obj) {
   fs.renameSync(tmp, DB_FILE);
 }
 
+function setCors(res) {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, X-Force, Authorization');
+}
+
 function send(res, code, body, type) {
+  setCors(res);
   res.writeHead(code, {
     'Content-Type': type || 'application/json; charset=utf-8',
     'Cache-Control': 'no-store'
@@ -129,10 +136,26 @@ function send(res, code, body, type) {
 }
 
 const server = http.createServer((req, res) => {
+  setCors(res);
+
+  // Preflight OPTIONS sorgusu (GitHub Pages / Render.com CORS uyumu)
+  if (req.method === 'OPTIONS') {
+    res.writeHead(204);
+    return res.end();
+  }
+
   const url = req.url.split('?')[0];
 
   if (req.method === 'GET' && (url === '/' || url === '/index.html')) {
-    if (!fs.existsSync(INDEX_FILE)) return send(res, 404, 'index.html bulunamadi. server.js ile ayni klasore koyun.', 'text/plain; charset=utf-8');
+    if (!fs.existsSync(INDEX_FILE)) {
+      return send(res, 200, {
+        ok: true,
+        service: 'Bilgi Evreni 4D API Sunucusu',
+        status: 'online',
+        cors: 'enabled',
+        time: Date.now()
+      });
+    }
     return send(res, 200, fs.readFileSync(INDEX_FILE), 'text/html; charset=utf-8');
   }
 
@@ -164,7 +187,13 @@ const server = http.createServer((req, res) => {
 
   if (req.method === 'GET' && url === '/api/ping') {
     const db = readDb();
-    return send(res, 200, { ok: true, hasDb: !!db, updatedAt: db ? db.updatedAt || 0 : 0, time: Date.now() });
+    return send(res, 200, {
+      ok: true,
+      hasDb: !!db,
+      updatedAt: db ? db.updatedAt || 0 : 0,
+      userCount: db && Array.isArray(db.users) ? db.users.length : 0,
+      time: Date.now()
+    });
   }
 
   if (req.method === 'GET' && url === '/api/db') {
