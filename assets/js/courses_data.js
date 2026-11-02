@@ -15005,40 +15005,32 @@ const CoursePlayer = (() => {
   }
 
   function handleStageTap(e) {
-    // If user clicked fullscreen button or caption box, ignore
-    if (e.target.closest('button') || e.target.closest('.cp-caption-overlay') || e.target.closest('#cpStagePlayBtn')) return;
+    // Butonlara veya çıkış butonuna tıklanmışsa engelle
+    if (e && e.target && typeof e.target.closest === 'function') {
+      if (e.target.closest('button') || e.target.closest('.cp-caption-overlay') || e.target.closest('#cpStagePlayBtn')) return;
+    }
     
     const stage = document.getElementById('cpStage');
     if (!stage) return;
-    const rect = stage.getBoundingClientRect();
-    const clickX = e.clientX - rect.left;
     
-    // Check double tap timing
+    // Çift tıklama kontrolü (Double click / double tap)
     const now = Date.now();
     if (!stage._lastTap) stage._lastTap = 0;
     const diff = now - stage._lastTap;
     stage._lastTap = now;
 
-    if (diff < 320 && diff > 50) {
-      // Double tap detected: Left 35% rewinds 5s, Right 35% forwards 5s, Center toggles pause
-      const pct = clickX / rect.width;
-      if (pct < 0.35) {
-        skipSeconds(-5);
-        showRipple(rect.width * 0.25, '⏪ -5s');
-      } else if (pct > 0.65) {
-        skipSeconds(5);
-        showRipple(rect.width * 0.75, '⏩ +5s');
-      } else {
-        togglePause();
-      }
+    if (diff < 320 && diff > 40) {
+      // Çift tıklama: Tam ekran yap / eski haline döndür
+      clearTimeout(stage._singleTapTimer);
+      stage._singleTapTimer = null;
+      stage._lastTap = 0;
+      toggleStageFullscreen();
     } else {
-      // Single tap toggles play/pause after brief grace period if not double tapped
+      // Tek tıklama: Durdur / Başlat (çift tıklama beklenerek 260ms sonra uygulanır)
       clearTimeout(stage._singleTapTimer);
       stage._singleTapTimer = setTimeout(() => {
-        if (Date.now() - stage._lastTap >= 300) {
-          togglePause();
-        }
-      }, 300);
+        togglePause();
+      }, 260);
     }
   }
 
@@ -15407,13 +15399,8 @@ const CoursePlayer = (() => {
         </div>
 
         <!-- Sinematik 16:9 Video Sahnesi (Dokunmatik ve Tıklanabilir - Tamamen Temiz) -->
-        <div class="cp-stage" id="cpStage" onclick="CoursePlayer.handleStageTap(event)" title="Tek tık: Durdur/Başlat · Çift tık: 5 sn İleri/Geri">
+        <div class="cp-stage" id="cpStage" onclick="CoursePlayer.handleStageTap(event)" ondblclick="event.preventDefault();CoursePlayer.toggleStageFullscreen()" title="Tek tık: Durdur / Başlat · Çift tık: Tam Ekran">
           <img class="cp-slide-img" src="${s.slide}" alt="${esc(s.title)}"/>
-          
-          <!-- Merkez Oynat/Durdur Butonu (Oynatılırken gizlenir, videonun üstünü kapatmaz) -->
-          <div class="cp-stage-play-btn ${(!CP.paused && CP.audioPlaying) ? 'playing' : ''}" id="cpStagePlayBtn" onclick="event.stopPropagation();CoursePlayer.togglePause()">
-            ${(!CP.paused && CP.audioPlaying) ? '⏸' : '▶'}
-          </div>
 
           <!-- Tam ekranda görünen çıkış butonu -->
           <button class="cp-fullscreen-exit-btn" onclick="event.stopPropagation();CoursePlayer.toggleStageFullscreen()" title="Tam Ekrandan Çık">✕ Küçült</button>
