@@ -12448,7 +12448,8 @@ const CoursePlayer = (() => {
     quizActive: false,
     qIdx: 0,
     answers: [],
-    score: 0
+    score: 0,
+    updateSpeakerUI: (t) => updateSpeakerUI(t)
   };
 
   const LTR = ['A', 'B', 'C', 'D'];
@@ -12469,7 +12470,7 @@ const CoursePlayer = (() => {
     const myTok = ++CP.tok;
     const alive = () => myTok === CP.tok;
     CP.audioPlaying = true;
-    CP.updateSpeakerUI(true);
+    updateSpeakerUI(true);
 
     if (serverVoiceOn()) {
       ttsGet(text, 'tr-TR', 'ders').then(url => {
@@ -12480,7 +12481,7 @@ const CoursePlayer = (() => {
         CP.audio.onended = () => {
           if (!alive()) return;
           CP.audioPlaying = false;
-          CP.updateSpeakerUI(false);
+          updateSpeakerUI(false);
           if (onEnd) onEnd();
         };
         CP.audio.onerror = () => {
@@ -12516,13 +12517,13 @@ const CoursePlayer = (() => {
       u.onend = () => {
         if (!alive()) return;
         CP.audioPlaying = false;
-        CP.updateSpeakerUI(false);
+        updateSpeakerUI(false);
         if (onEnd) onEnd();
       };
       u.onerror = () => {
         if (!alive()) return;
         CP.audioPlaying = false;
-        CP.updateSpeakerUI(false);
+        updateSpeakerUI(false);
         if (onEnd) onEnd();
       };
       speechSynthesis.speak(u);
@@ -12538,14 +12539,28 @@ const CoursePlayer = (() => {
 
   function open(unitId) {
     const lesson = COURSE_LESSONS[unitId];
-    if (!lesson) return;
+    if (!lesson) {
+      console.warn('Lesson not found for unitId:', unitId);
+      return;
+    }
+    stopAudio();
+    if (!CP.audio) {
+      try { CP.audio = new Audio(); } catch (e) {}
+    }
     CP.unitId = unitId;
     CP.step = 0;
     CP.speed = 1.0;
     CP.paused = false;
     CP.quizActive = false;
+
+    const m = $('#modal');
+    if (m) m.classList.remove('hidden');
     const mb = $('#modalBox');
-    if (mb) mb.classList.add('theater');
+    if (mb) {
+      mb.classList.add('theater');
+      mb.style.display = 'block';
+    }
+
     renderStep();
     playStepAudio(lesson.steps[0].narration);
   }
@@ -12669,6 +12684,15 @@ const CoursePlayer = (() => {
     CP.qIdx = 0;
     CP.answers = [];
     CP.score = 0;
+
+    const m = $('#modal');
+    if (m) m.classList.remove('hidden');
+    const mb = $('#modalBox');
+    if (mb) {
+      mb.classList.add('theater');
+      mb.style.display = 'block';
+    }
+
     renderQuizQ();
   }
 
@@ -13429,12 +13453,12 @@ function coursesTab(u){
              data-title="${esc(unit.unitTitle)}" 
              data-topics="${esc(unit.topics.join(' '))}"
              style="${matchSearch ? '' : 'display:none;'}"
-             onclick="A.openVideoModal('${sub.id}', '${unit.id}')">
+             onclick="CoursePlayer.open('${unit.id}')" style="cursor:pointer;">
           <div class="video-thumb" style="background:linear-gradient(135deg, ${sub.color}33 0%, #0f172a 100%)">
             <div class="video-thumb-bg">${sub.icon}</div>
             <span class="video-badge-unit">${t.term}. Dönem · ${esc(unit.unitNo)}</span>
             <span class="video-badge-ready" style="${COURSE_LESSONS[unit.id] ? 'background:rgba(16,185,129,0.3);border-color:#10b981;color:#6ee7b7' : ''}">${COURSE_LESSONS[unit.id] ? '🎬 Ders & Test Hazır!' : '🎬 Video Alanı'}</span>
-            <div class="play-btn-circle" title="Videoyu İzle">▶</div>
+            <div class="play-btn-circle" title="Videoyu İzle" onclick="event.stopPropagation();CoursePlayer.open('${unit.id}')">▶</div>
             <span class="video-badge-duration">⏱️ ${unit.duration || '12 dk'}</span>
           </div>
           <div class="video-card-body">
@@ -13444,7 +13468,7 @@ function coursesTab(u){
             </div>
             <div class="video-card-footer">
               <span>${COURSE_LESSONS[unit.id] ? '✅ Sesli Anlatım + 10 Soru' : '⏳ Hazırlanıyor'}</span>
-              <span class="video-card-btn-action" style="${COURSE_LESSONS[unit.id] ? 'color:#10b981' : ''}">${COURSE_LESSONS[unit.id] ? 'Dersi Başlat ▶' : 'İzle ▶'}</span>
+              <span class="video-card-btn-action" style="${COURSE_LESSONS[unit.id] ? 'color:#10b981' : ''}" onclick="event.stopPropagation();CoursePlayer.open('${unit.id}')">${COURSE_LESSONS[unit.id] ? 'Dersi Başlat ▶' : 'İzle ▶'}</span>
             </div>
           </div>
         </div>
