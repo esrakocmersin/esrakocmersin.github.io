@@ -3124,6 +3124,7 @@ const COURSE_LESSONS = {
     "subject": "Matematik",
     "unitNo": "3. Ünite",
     "title": "Kesirler ve Kesirlerle İşlemler",
+    "cover": "assets/images/mat_u3_pixar.jpg",
     "icon": "🍰",
     "steps": [
       {
