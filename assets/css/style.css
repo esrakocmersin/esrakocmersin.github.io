@@ -290,9 +290,15 @@ td.pw:hover{text-decoration:underline}
 .cp-stage{position:relative;width:100%;aspect-ratio:16/9;background:#090d16;border-radius:14px;overflow:hidden;border:1px solid rgba(255,255,255,0.12);box-shadow:0 8px 30px rgba(0,0,0,0.6);display:flex;align-items:center;justify-content:center}
 @media(max-width:640px){.cp-stage{aspect-ratio:4/3}}
 .cp-slide-img{width:100%;height:100%;object-fit:contain;background:#090d16;user-select:none}
-.cp-step-badge{position:absolute;top:12px;left:12px;background:rgba(0,0,0,0.75);backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,0.2);padding:4px 10px;border-radius:8px;font-size:11px;font-weight:800;color:#fff;z-index:10}
-.cp-speaker-badge{position:absolute;top:12px;right:12px;background:rgba(99,102,241,0.25);border:1px solid rgba(99,102,241,0.5);backdrop-filter:blur(6px);padding:4px 10px;border-radius:8px;font-size:11px;font-weight:800;color:#c7d2fe;display:flex;align-items:center;gap:6px;z-index:10}
-.cp-speaker-badge .owl-icon{font-size:15px;display:inline-block;transition:transform .2s}
+/* Video Üstü Başlık ve Bilgi Barı (Videonun Üzerini Asla Örtmez) */
+.cp-topic-bar{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:8px 12px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:10px;flex-wrap:wrap}
+.cp-topic-info{display:flex;align-items:center;gap:8px;flex:1;min-width:180px}
+.cp-topic-badge{background:rgba(99,102,241,0.25);border:1px solid rgba(99,102,241,0.5);color:#c7d2fe;font-size:11px;font-weight:800;padding:3px 8px;border-radius:6px;white-space:nowrap}
+.cp-topic-title{font-size:13.5px;font-weight:700;color:#fff;line-height:1.35;margin:0}
+.cp-topic-actions{display:flex;align-items:center;gap:8px}
+
+.cp-speaker-badge{background:rgba(99,102,241,0.2);border:1px solid rgba(99,102,241,0.4);backdrop-filter:blur(6px);padding:3px 8px;border-radius:6px;font-size:11px;font-weight:700;color:#c7d2fe;display:inline-flex;align-items:center;gap:5px}
+.cp-speaker-badge .owl-icon{font-size:13px;display:inline-block;transition:transform .2s}
 .cp-speaker-badge.talking .owl-icon{animation:talkPulse 0.4s infinite alternate}
 @keyframes talkPulse{from{transform:scale(1)}to{transform:scale(1.35) rotate(-5deg)}}
 
@@ -332,24 +338,24 @@ td.pw:hover{text-decoration:underline}
 html { scroll-behavior: smooth; }
 
 /* Sinematik Altyazı ve Vurgu Kartı */
+/* Sinematik Altyazı ve Vurgu Kartı (Videonun Altında Temiz ve Ferah) */
 .cp-caption-overlay {
-  position: absolute;
-  bottom: 16px;
-  left: 20px;
-  right: 20px;
-  background: rgba(15, 23, 42, 0.88);
+  position: relative;
+  width: 100%;
+  background: rgba(15, 23, 42, 0.85);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  border-radius: 12px;
-  padding: 10px 16px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 10px;
+  padding: 8px 14px;
   color: #f8fafc;
   display: flex;
   align-items: center;
-  gap: 12px;
-  z-index: 15;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
-  animation: cpFadeUp 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  gap: 10px;
+  z-index: 5;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+  animation: cpFadeUp 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  box-sizing: border-box;
 }
 .cp-caption-badge {
   background: linear-gradient(135deg, #6366f1, #8b5cf6);
@@ -448,28 +454,24 @@ html { scroll-behavior: smooth; }
   .cp-slide-img {
     object-fit: contain !important;
   }
-  /* Rozet ve Bilge Baykuş rozetleri telefonda küçülüp sadeleşsin */
-  .cp-step-badge {
-    top: 6px !important;
-    left: 6px !important;
-    font-size: 9.5px !important;
-    padding: 3px 7px !important;
-    max-width: 60% !important;
-    white-space: nowrap !important;
-    overflow: hidden !important;
-    text-overflow: ellipsis !important;
+  /* Video üstü başlık ve ses barı telefonda ferah */
+  .cp-topic-bar {
+    padding: 6px 8px !important;
+    gap: 6px !important;
+  }
+  .cp-topic-badge {
+    font-size: 10px !important;
+    padding: 2px 6px !important;
+  }
+  .cp-topic-title {
+    font-size: 12px !important;
   }
   .cp-speaker-badge {
-    top: 6px !important;
-    right: 6px !important;
-    font-size: 9.5px !important;
-    padding: 3px 7px !important;
+    font-size: 10px !important;
+    padding: 2px 6px !important;
   }
-  /* Altyazı vurgu kutusu telefonda küçük ve temiz */
+  /* Altyazı vurgu kutusu telefonda temiz */
   .cp-caption-overlay {
-    bottom: 8px !important;
-    left: 8px !important;
-    right: 8px !important;
     padding: 6px 10px !important;
     gap: 6px !important;
     border-radius: 8px !important;

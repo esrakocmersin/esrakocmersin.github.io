@@ -15174,31 +15174,36 @@ const CoursePlayer = (() => {
           `).join('')}
         </div>
 
-        <!-- Sinematik 16:9 Video Sahnesi (Dokunmatik ve Tıklanabilir) -->
+        <!-- Video Üstü Konu Başlığı ve Bilgi Barı (Videonun üzerini hiçbir şey örtmez) -->
+        <div class="cp-topic-bar">
+          <div class="cp-topic-info">
+            <span class="cp-topic-badge">📌 ${esc(s.badge ? s.badge.replace(/:.*$/, '') : ('Adım ' + (CP.step + 1)))}</span>
+            <span class="cp-topic-title">${esc(s.title)}</span>
+          </div>
+          <div class="cp-topic-actions">
+            <div class="cp-speaker-badge" id="cpSpeakerPill" title="Sesli Anlatım">
+              <span class="owl-icon">🔊</span>
+              <span>Anlatım</span>
+            </div>
+            <button class="btn xs ghost" onclick="CoursePlayer.toggleStageFullscreen()" title="Videoyu Tam Ekran Yap">⛶ Tam Ekran</button>
+          </div>
+        </div>
+
+        <!-- Sinematik 16:9 Video Sahnesi (Dokunmatik ve Tıklanabilir - Tamamen Temiz) -->
         <div class="cp-stage" id="cpStage" onclick="CoursePlayer.handleStageTap(event)" title="Tek tık: Durdur/Başlat · Çift tık: 5 sn İleri/Geri">
           <img class="cp-slide-img" src="${s.slide}" alt="${esc(s.title)}"/>
           
-          <!-- Zarif ve sade adım rozeti: resmin üstünü kapatmaz -->
-          <span class="cp-step-badge">📌 ${esc(s.badge ? s.badge.replace(/:.*$/, '') : ('Adım ' + (CP.step + 1)))}</span>
-          
-          <!-- Merkez Oynat/Durdur Butonu (Video Ortasında) -->
+          <!-- Merkez Oynat/Durdur Butonu (Oynatılırken gizlenir, videonun üstünü kapatmaz) -->
           <div class="cp-stage-play-btn" id="cpStagePlayBtn" onclick="event.stopPropagation();CoursePlayer.togglePause()">
             ${CP.paused ? '▶' : '⏸'}
           </div>
 
-          <!-- Video içi tek tıkla tam ekran yapma butonu -->
-          <button class="btn xs ghost" onclick="event.stopPropagation();CoursePlayer.toggleStageFullscreen()" style="position:absolute;bottom:10px;right:10px;z-index:20;background:rgba(0,0,0,0.75);backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,0.3);color:#fff;border-radius:6px;padding:4px 9px;font-size:11px" title="Tam Ekran">⛶ Tam Ekran</button>
-          
-          <div class="cp-speaker-badge" id="cpSpeakerPill">
-            <span class="owl-icon">🦉</span>
-            <span>Bilge Baykuş</span>
-          </div>
-          
-          <div id="cpCaptionBox" class="cp-caption-overlay">
-            <span class="cp-caption-badge">${esc(s.badge || 'Bilgi')}</span>
-            <span class="cp-caption-text">${esc(s.title)}</span>
-          </div>
+          <!-- Tam ekranda görünen çıkış butonu -->
+          <button class="cp-fullscreen-exit-btn" onclick="event.stopPropagation();CoursePlayer.toggleStageFullscreen()" title="Tam Ekrandan Çık">✕ Küçült</button>
         </div>
+
+        <!-- Canlı Altyazı / Anlatım Şeridi (Videonun Altında, Resmin Üzerini Asla Kapatmaz) -->
+        <div id="cpCaptionBox" class="cp-caption-overlay" style="display:none"></div>
 
         <!-- Etkileşimli Canlı İlerleme Çubuğu ve Süre Göstergesi -->
         <div style="display:flex;flex-direction:column;gap:4px">
