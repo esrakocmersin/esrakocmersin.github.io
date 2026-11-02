@@ -14716,6 +14716,9 @@ const COURSE_LESSONS = {
 
 if (typeof window !== 'undefined') window.COURSE_LESSONS = COURSE_LESSONS;
 
+const $ = (s, r) => (r || document).querySelector(s);
+const esc = s => String(s == null ? '' : s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+
 const CoursePlayer = (() => {
   const CP = {
     unitId: null,
@@ -14730,6 +14733,9 @@ const CoursePlayer = (() => {
     qIdx: 0,
     answers: [],
     score: 0,
+    completedSteps: new Set(),
+    countdownTimer: null,
+    countdownSec: 0,
     updateSpeakerUI: (t) => updateSpeakerUI(t)
   };
 
@@ -15141,6 +15147,11 @@ const CoursePlayer = (() => {
     CP.speed = 1.0;
     CP.paused = false;
     CP.quizActive = false;
+    CP.completedSteps = new Set();
+    if (CP.countdownTimer) {
+      clearInterval(CP.countdownTimer);
+      CP.countdownTimer = null;
+    }
 
     const m = $('#modal');
     if (m) m.classList.remove('hidden');
@@ -15278,8 +15289,8 @@ const CoursePlayer = (() => {
         <!-- Bölüm Adımları Hızlı Geçiş Butonları (Chapter Pills) -->
         <div class="cp-steps-bar" id="cpStepsBar">
           ${lesson.steps.map((st, i) => `
-            <div class="cp-step-pill ${i === CP.step ? 'active' : ''} ${CP.completedSteps.has(i) ? 'completed' : ''}" onclick="CoursePlayer.jumpToStep(${i})">
-              ${CP.completedSteps.has(i) ? '✓ ' : ''}${i + 1}. Adım ${i === CP.step ? '▶' : ''}
+            <div class="cp-step-pill ${i === CP.step ? 'active' : ''} ${(CP.completedSteps && CP.completedSteps.has(i)) ? 'completed' : ''}" onclick="CoursePlayer.jumpToStep(${i})">
+              ${(CP.completedSteps && CP.completedSteps.has(i)) ? '✓ ' : ''}${i + 1}. Adım ${i === CP.step ? '▶' : ''}
             </div>
           `).join('')}
         </div>
@@ -15408,6 +15419,7 @@ const CoursePlayer = (() => {
       }
     }
     updateSpeakerUI(!CP.paused);
+    updatePlayButtonUI();
   }
 
   function toggleSpeed() {
