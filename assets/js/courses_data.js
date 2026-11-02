@@ -3474,6 +3474,7 @@ const COURSE_LESSONS = {
     "subject": "Matematik",
     "unitNo": "4. Ünite",
     "title": "Zamanı Ölçme ve Veri Değerlendirme",
+    "cover": "assets/images/mat_u4_pixar.jpg",
     "icon": "⏱️",
     "steps": [
       {
