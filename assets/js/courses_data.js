@@ -2786,6 +2786,7 @@ const COURSE_LESSONS = {
     "subject": "Matematik",
     "unitNo": "2. Ünite",
     "title": "Doğal Sayılarla Çarpma ve Bölme",
+    "cover": "assets/images/mat_u2_pixar.jpg",
     "icon": "✖️",
     "steps": [
       {
