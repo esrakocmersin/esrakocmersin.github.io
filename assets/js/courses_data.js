@@ -18,35 +18,145 @@ const COURSE_LESSONS = {
         "badge": "1. Adım: Harfler",
         "slide": "assets/images/harfler_tablosu.svg",
         "narration": "Merhaba sevgili dördüncü sınıf kâşifim! Ben Bilge Baykuş. Bugün Türkçe dersimizin ilk ve en önemli konusu olan harfleri, heceleri, gerçek, mecaz ve terim anlamı adım adım keşfedeceğiz. Hazır mısın? Güzel dilimiz Türkçenin alfabesinde tam yirmi dokuz harf vardır. Bu harflerin sekiz tanesi ünlü, yani sesli harftir; yirmi bir tanesi ise ünsüz, yani sessiz harftir. Ünlü harflerimiz ikiye ayrılır: Kalın ünlüler A, I, O, U ve ince ünlüler E, İ, Ö, Ü. Kalın ünlüler gırtlaktan tok çıkar, ince ünlüler ise ağzın önünden zarifçe söylenir. Unutma; Türkçede her hecede mutlaka bir ünlü harf bulunur!",
-        "audio": "assets/audio/courses/tr-u1_s1.mp3"
+        "audio": "assets/audio/courses/tr-u1_s1.mp3",
+        "slideTitle": "Alfabemiz ve 29 Harf Dünyası",
+        "emo": "📖",
+        "then": [
+          {
+            "text": "Merhaba sevgili dördüncü sınıf kâşifim!",
+            "lang": "tr-TR",
+            "cap": "📖 Alfabemiz ve 29 Harf Dünyası",
+            "emo": "📖"
+          },
+          {
+            "text": "Bu harflerin sekiz tanesi ünlü, yani sesli harftir; yirmi bir tanesi ise ünsüz, yani sessiz harftir.",
+            "lang": "tr-TR",
+            "cap": "✨ Türkçe Kuralı: Alfabemiz ve 29 Harf D",
+            "emo": "✨"
+          },
+          {
+            "text": "Unutma; Türkçede her hecede mutlaka bir ünlü harf bulunur!",
+            "lang": "tr-TR",
+            "cap": "🎯 Altın Kural",
+            "emo": "🎯"
+          }
+        ]
       },
       {
         "title": "Hece Treni ve Satır Sonu Kuralları",
         "badge": "2. Adım: Heceler",
         "slide": "assets/images/hece_treni.svg",
         "narration": "Şimdi hece trenimize binelim! Hece, ağzımızın tek bir hareketiyle çıkan sestir. Bir sözcükte kaç hece olduğunu bulmanın en sihirli yolu nedir biliyor musun? O sözcükteki ünlü harfleri saymak! Örneğin Cumhuriyet kelimesinde u, u, i ve e olmak üzere dört ünlü harf vardır; yani bu sözcük tam dört hecelidir! Peki satır sonuna sığmayan sözcükleri nasıl böleriz? Dikkat: Satır sonunda veya satır başında asla tek bir harf yalnız bırakılamaz! Araba sözcüğünü a tire raba diye bölemezsin; mutlaka ara tire ba şeklinde bölmelisin. Ayrıca özel isimlerde kesme işareti satır sonuna denk gelirse sadece kesme işareti konur, kısa çizgi konmaz!",
-        "audio": "assets/audio/courses/tr-u1_s2.mp3"
+        "audio": "assets/audio/courses/tr-u1_s2.mp3",
+        "slideTitle": "Hece Treni ve Satır Sonu Kuralları",
+        "emo": "📖",
+        "then": [
+          {
+            "text": "Şimdi hece trenimize binelim!",
+            "lang": "tr-TR",
+            "cap": "📖 Heceler",
+            "emo": "📖"
+          },
+          {
+            "text": "Örneğin Cumhuriyet kelimesinde u, u, i ve e olmak üzere dört ünlü harf vardır; yani bu sözcük tam dört hecelidir!",
+            "lang": "tr-TR",
+            "cap": "✨ Türkçe Kuralı: Hece Treni ve Satır So",
+            "emo": "✨"
+          },
+          {
+            "text": "Ayrıca özel isimlerde kesme işareti satır sonuna denk gelirse sadece kesme işareti konur, kısa çizgi konmaz!",
+            "lang": "tr-TR",
+            "cap": "🎯 Altın Kural",
+            "emo": "🎯"
+          }
+        ]
       },
       {
         "title": "Sözcükte Gerçek (Temel) Anlam",
         "badge": "3. Adım: Gerçek Anlam",
         "slide": "assets/images/gercek_mecaz_terim.svg",
         "narration": "Geldik sözcüklerin anlam dünyasına! İlk durağımız Gerçek Anlam, yani Temel Anlam. Bir sözcüğü duyduğumuzda veya okuduğumuzda aklımıza gelen ilk, asıl ve sözlükteki anlamıdır. Herkes için aynı somut durumu ifade eder. Örneğin: Sıcak havada dondurma eridi dediğimizde erimek sözcüğü maddenin ısıyla sıvılaşmasıdır, yani gerçek anlamdır! Hava bugün çok sıcak dediğimizde havanın ısısını anlatır, yine gerçek anlamdır. Taş çok ağırdı dediğimizde tartılabilen fiziksel kütledir, tamamen gerçek anlamdır!",
-        "audio": "assets/audio/courses/tr-u1_s3.mp3"
+        "audio": "assets/audio/courses/tr-u1_s3.mp3",
+        "slideTitle": "Sözcükte Gerçek (Temel) Anlam",
+        "emo": "📖",
+        "then": [
+          {
+            "text": "Geldik sözcüklerin anlam dünyasına!",
+            "lang": "tr-TR",
+            "cap": "📖 Sözcükte Gerçek (Temel) Anlam",
+            "emo": "📖"
+          },
+          {
+            "text": "Herkes için aynı somut durumu ifade eder.",
+            "lang": "tr-TR",
+            "cap": "✨ Türkçe Kuralı: Sözcükte Gerçek (Temel",
+            "emo": "✨"
+          },
+          {
+            "text": "Taş çok ağırdı dediğimizde tartılabilen fiziksel kütledir, tamamen gerçek anlamdır!",
+            "lang": "tr-TR",
+            "cap": "🎯 Altın Kural",
+            "emo": "🎯"
+          }
+        ]
       },
       {
         "title": "Mecaz Anlam: Hayal Gücünün Kanatları",
         "badge": "4. Adım: Mecaz Anlam",
         "slide": "assets/images/gercek_mecaz_terim.svg",
         "narration": "Peki ya mecaz anlam nedir? Sözcüğün gerçek anlamından tamamen uzaklaşarak kazandığı yeni ve soyut anlama mecaz anlam denir. Burada sözcükler hayal gücümüzle yepyeni duygular anlatır! Örneğin: Arkadaşının sözlerine kalbi kırıldı cümlesini düşünelim. Bir kalp bardak gibi çıt diye kırılıp parçalanabilir mi? Hayır! Burada kırılmak, gücenmek ve üzülmek anlamındadır; yani mecazdır! Ya da: Bize çok soğuk davrandı dediğimizde hava ısısından değil, ilgisiz ve mesafeli davranmaktan bahsederiz. Bu da mecaz anlamdır!",
-        "audio": "assets/audio/courses/tr-u1_s4.mp3"
+        "audio": "assets/audio/courses/tr-u1_s4.mp3",
+        "slideTitle": "Mecaz Anlam: Hayal Gücünün Kanatları",
+        "emo": "📖",
+        "then": [
+          {
+            "text": "Peki ya mecaz anlam nedir?",
+            "lang": "tr-TR",
+            "cap": "📖 Mecaz Anlam",
+            "emo": "📖"
+          },
+          {
+            "text": "Bir kalp bardak gibi çıt diye kırılıp parçalanabilir mi?",
+            "lang": "tr-TR",
+            "cap": "✨ Türkçe Kuralı: Mecaz Anlam: Hayal Güc",
+            "emo": "✨"
+          },
+          {
+            "text": "Bu da mecaz anlamdır!",
+            "lang": "tr-TR",
+            "cap": "🎯 Altın Kural",
+            "emo": "🎯"
+          }
+        ]
       },
       {
         "title": "Terim Anlam ve Ünite Özeti",
         "badge": "5. Adım: Terim Anlam",
         "slide": "assets/images/gercek_mecaz_terim.svg",
         "narration": "Ve son durağımız: Terim Anlam! Bilim, sanat, spor veya bir meslek alanına ait özel kavramları anlatan sözcüklere terim denir. Matematikte üçgen, açı, kesir; sporda penaltı, korner, smaç; tiyatroda perde ve sahne; müzikte ise nota ve sol anahtarı birer terimdir! Eğer bir doktor 'Gözüne miyop teşhisi koydum' derse miyop tıbbi bir terimdir. Ama 'Öğretmenin gözüne girdi' dersek bu mecaz anlamdır. İşte bu kadar kolay! Harika dinledin, konuyu mükemmel kavradın. Şimdi öğrendiklerini pekiştirmek için on soruluk büyük ünite testine geçiyoruz. Bakalım kaçta kaç yapacaksın, haydi başla!",
-        "audio": "assets/audio/courses/tr-u1_s5.mp3"
+        "audio": "assets/audio/courses/tr-u1_s5.mp3",
+        "slideTitle": "Terim Anlam ve Ünite Özeti",
+        "emo": "📖",
+        "then": [
+          {
+            "text": "Ve son durağımız: Terim Anlam!",
+            "lang": "tr-TR",
+            "cap": "📖 Terim Anlam ve Ünite Özeti",
+            "emo": "📖"
+          },
+          {
+            "text": "Ama 'Öğretmenin gözüne girdi' dersek bu mecaz anlamdır.",
+            "lang": "tr-TR",
+            "cap": "✨ Türkçe Kuralı: Terim Anlam ve Ünite Ö",
+            "emo": "✨"
+          },
+          {
+            "text": "Bakalım kaçta kaç yapacaksın, haydi başla!",
+            "lang": "tr-TR",
+            "cap": "🎯 Altın Kural",
+            "emo": "🎯"
+          }
+        ]
       }
     ],
     "quiz": [
@@ -286,28 +396,116 @@ const COURSE_LESSONS = {
         "badge": "1. Adım: Kelime Kökü",
         "slide": "assets/images/kelime_yapisi.svg",
         "narration": "Merhaba sevgili dördüncü sınıf kâşifim! Bu dersimizde kelimelerin sihirli dünyasına yolculuk yapıyoruz. Bir sözcüğün anlamlı en küçük parçasına kök denir. Örneğin \"göz\", \"ev\", \"balık\" birer köktür. Yapım eki almamış, kök durumundaki sözcüklere ise basit sözcükler diyoruz. \"Kitaplar\" veya \"evimiz\" kelimeleri çekim eki alsa bile anlamları değişmediği için yine basittir.",
-        "audio": "assets/audio/courses/tr-u2_s1.mp3"
+        "audio": "assets/audio/courses/tr-u2_s1.mp3",
+        "slideTitle": "Kök ve Ek Nedir? Basit Kelimeler",
+        "emo": "📖",
+        "then": [
+          {
+            "text": "Merhaba sevgili dördüncü sınıf kâşifim!",
+            "lang": "tr-TR",
+            "cap": "📖 Kelime Kökü",
+            "emo": "📖"
+          },
+          {
+            "text": "Örneğin \"göz\", \"ev\", \"balık\" birer köktür.",
+            "lang": "tr-TR",
+            "cap": "✨ Türkçe Kuralı: Kök ve Ek Nedir? Basit",
+            "emo": "✨"
+          },
+          {
+            "text": "\"Kitaplar\" veya \"evimiz\" kelimeleri çekim eki alsa bile anlamları değişmediği için yine basittir.",
+            "lang": "tr-TR",
+            "cap": "🎯 Altın Kural",
+            "emo": "🎯"
+          }
+        ]
       },
       {
         "title": "Türemiş Kelimeler ve Yapım Ekleri",
         "badge": "2. Adım: Yeni Kelimeler",
         "slide": "assets/images/kelime_yapisi.svg",
         "narration": "Geldik türemiş kelimelere! Bir köke yapım eki eklenerek yepyeni anlamlı bir sözcük oluşturuluyorsa buna türemiş kelime denir. Örneğin \"göz\" organımızken, sonuna \"lük\" eklenince \"gözlük\" eşyası olur! \"Tuz\" yiyecekken \"tuzluk\" kap olur. Dilimizde en çok kullanılan yapım ekleri lik, ci, li ve siz ekleridir. Unutma, yapım eki yeni bir kelime doğurur!",
-        "audio": "assets/audio/courses/tr-u2_s2.mp3"
+        "audio": "assets/audio/courses/tr-u2_s2.mp3",
+        "slideTitle": "Türemiş Kelimeler ve Yapım Ekleri",
+        "emo": "📖",
+        "then": [
+          {
+            "text": "Geldik türemiş kelimelere!",
+            "lang": "tr-TR",
+            "cap": "📖 Yeni Kelimeler",
+            "emo": "📖"
+          },
+          {
+            "text": "\"Tuz\" yiyecekken \"tuzluk\" kap olur.",
+            "lang": "tr-TR",
+            "cap": "✨ Türkçe Kuralı: Türemiş Kelimeler ve Y",
+            "emo": "✨"
+          },
+          {
+            "text": "Unutma, yapım eki yeni bir kelime doğurur!",
+            "lang": "tr-TR",
+            "cap": "🎯 Altın Kural",
+            "emo": "🎯"
+          }
+        ]
       },
       {
         "title": "Bileşik Kelimeler: Güçlerini Birleştirenler",
         "badge": "3. Adım: Bileşik Sözcükler",
         "slide": "assets/images/kelime_yapisi.svg",
         "narration": "Bazen iki ayrı kelime el ele tutuşur ve yepyeni tek bir kavramı anlatır. İşte bunlara bileşik kelimeler denir! Örneğin \"Afyon\" ve \"Karahisar\" birleşince \"Afyonkarahisar\" şehri, \"aslan\" ve \"ağzı\" birleşince \"aslanağzı\" çiçeği, \"kuş\" ve \"burnu\" birleşince lezzetli bir çay olan \"kuşburnu\" oluşur. Bileşik kelimeler daima bitişik yazılır.",
-        "audio": "assets/audio/courses/tr-u2_s3.mp3"
+        "audio": "assets/audio/courses/tr-u2_s3.mp3",
+        "slideTitle": "Bileşik Kelimeler: Güçlerini Birleştirenler",
+        "emo": "📖",
+        "then": [
+          {
+            "text": "Bazen iki ayrı kelime el ele tutuşur ve yepyeni tek bir kavramı anlatır.",
+            "lang": "tr-TR",
+            "cap": "📖 Bileşik Sözcükler",
+            "emo": "📖"
+          },
+          {
+            "text": "Örneğin \"Afyon\" ve \"Karahisar\" birleşince \"Afyonkarahisar\" şehri, \"aslan\" ve \"ağzı\" birleşince \"aslanağzı\" çiçeği, \"kuş\" ve \"burnu\" birleşince lezzetli bir çay olan \"kuşburnu\" oluşur.",
+            "lang": "tr-TR",
+            "cap": "✨ Türkçe Kuralı: Bileşik Kelimeler: Güç",
+            "emo": "✨"
+          },
+          {
+            "text": "Bileşik kelimeler daima bitişik yazılır.",
+            "lang": "tr-TR",
+            "cap": "🎯 Altın Kural",
+            "emo": "🎯"
+          }
+        ]
       },
       {
         "title": "Eş Anlam, Zıt Anlam ve Sesteş Sözcükler",
         "badge": "4. Adım: Anlam İlişkileri",
         "slide": "assets/images/kelime_yapisi.svg",
         "narration": "Son adımımızda kelimelerin dostluklarına bakalım. Yazılışları farklı ama anlamları aynı olan sözcüklere eş anlamlı kelimeler denir; \"al - kırmızı\", \"mektep - okul\" gibi. Anlamca birbirinin tam tersi olanlara zıt anlamlı kelimeler denir; \"soğuk - sıcak\", \"gece - gündüz\" gibi. Yazılışları aynı fakat anlamları tamamen farklı olanlara ise sesteş kelimeler deriz; nehir kenarındaki \"çay\" ile içtiğimiz \"çay\" gibi!",
-        "audio": "assets/audio/courses/tr-u2_s4.mp3"
+        "audio": "assets/audio/courses/tr-u2_s4.mp3",
+        "slideTitle": "Eş Anlam, Zıt Anlam ve Sesteş Sözcükler",
+        "emo": "📖",
+        "then": [
+          {
+            "text": "Son adımımızda kelimelerin dostluklarına bakalım.",
+            "lang": "tr-TR",
+            "cap": "📖 Anlam İlişkileri",
+            "emo": "📖"
+          },
+          {
+            "text": "Anlamca birbirinin tam tersi olanlara zıt anlamlı kelimeler denir; \"soğuk - sıcak\", \"gece - gündüz\" gibi.",
+            "lang": "tr-TR",
+            "cap": "✨ Türkçe Kuralı: Eş Anlam, Zıt Anlam ve",
+            "emo": "✨"
+          },
+          {
+            "text": "Yazılışları aynı fakat anlamları tamamen farklı olanlara ise sesteş kelimeler deriz; nehir kenarındaki \"çay\" ile içtiğimiz \"çay\" gibi!",
+            "lang": "tr-TR",
+            "cap": "🎯 Altın Kural",
+            "emo": "🎯"
+          }
+        ]
       }
     ],
     "questions": [
@@ -547,28 +745,110 @@ const COURSE_LESSONS = {
         "badge": "1. Adım: Hikâye Unsurları",
         "slide": "assets/images/metin_turleri_deyimler.svg",
         "narration": "Merhaba sevgili kâşif! Bir hikâyeyi okurken içindeki gizli şifreleri çözmeye ne dersin? Her hikâyenin dört temel unsuru vardır: Yaşanan olay, olayın geçtiği yer, olayın yaşandığı zaman ve olayda yer alan kişiler ya da kahramanlar. Bu dört unsuru bulduğunda hikâyeyi tam anlamıyla kavramış olursun!",
-        "audio": "assets/audio/courses/tr-u3_s1.mp3"
+        "audio": "assets/audio/courses/tr-u3_s1.mp3",
+        "slideTitle": "Hikâye ve Hikâye Unsurları",
+        "emo": "📖",
+        "then": [
+          {
+            "text": "Merhaba sevgili kâşif!",
+            "lang": "tr-TR",
+            "cap": "📖 Hikâye ve Hikâye Unsurları",
+            "emo": "📖"
+          },
+          {
+            "text": "Her hikâyenin dört temel unsuru vardır: Yaşanan olay, olayın geçtiği yer, olayın yaşandığı zaman ve olayda yer alan kişiler ya da kahramanlar.",
+            "lang": "tr-TR",
+            "cap": "✨ Türkçe Kuralı: Hikâye ve Hikâye Unsur",
+            "emo": "✨"
+          },
+          {
+            "text": "Bu dört unsuru bulduğunda hikâyeyi tam anlamıyla kavramış olursun!",
+            "lang": "tr-TR",
+            "cap": "🎯 Altın Kural",
+            "emo": "🎯"
+          }
+        ]
       },
       {
         "title": "Masal ve Şiir Dünyası",
         "badge": "2. Adım: Masal ve Şiir",
         "slide": "assets/images/metin_turleri_deyimler.svg",
         "narration": "Şimdi masalların büyülü dünyasındayız! Masallar genellikle \"Bir varmış, bir yokmuş\" tekerlemesiyle başlar. Periler, devler, konuşan hayvanlar gibi olağanüstü kahramanlar içerir ve yer ile zaman belirsizdir. Şiirler ise duygularımızın ritmidir! Şiirin her satırına dize veya mısra, dört dizelik gruplara ise kıta veya dörtlük denir. Şiiri yazan kişiye ise şair deriz.",
-        "audio": "assets/audio/courses/tr-u3_s2.mp3"
+        "audio": "assets/audio/courses/tr-u3_s2.mp3",
+        "slideTitle": "Masal ve Şiir Dünyası",
+        "emo": "📖",
+        "then": [
+          {
+            "text": "Şimdi masalların büyülü dünyasındayız!",
+            "lang": "tr-TR",
+            "cap": "📖 Masal ve Şiir Dünyası",
+            "emo": "📖"
+          },
+          {
+            "text": "Şiirler ise duygularımızın ritmidir!",
+            "lang": "tr-TR",
+            "cap": "✨ Türkçe Kuralı: Masal ve Şiir Dünyası",
+            "emo": "✨"
+          },
+          {
+            "text": "Şiiri yazan kişiye ise şair deriz.",
+            "lang": "tr-TR",
+            "cap": "🎯 Altın Kural",
+            "emo": "🎯"
+          }
+        ]
       },
       {
         "title": "Deyimlerin Renkli Dünyası",
         "badge": "3. Adım: Deyimler",
         "slide": "assets/images/metin_turleri_deyimler.svg",
         "narration": "Türkçemizi süsleyen harika kalıplaşmış sözlerimiz vardır: Deyimler! Deyimler en az iki sözcükten oluşur ve genellikle mecaz anlam taşır. Sözcüklerin yerleri asla değiştirilemez! Örneğin çok sevinen biri için \"Etekleri zil çalıyor\" deriz. Dikkatle gizlice dinleyene ise \"Kulak kabartıyor\" deriz. Deyimler bir durumu anlatır, atasözleri gibi öğüt vermez.",
-        "audio": "assets/audio/courses/tr-u3_s3.mp3"
+        "audio": "assets/audio/courses/tr-u3_s3.mp3",
+        "slideTitle": "Deyimlerin Renkli Dünyası",
+        "emo": "📖",
+        "then": [
+          {
+            "text": "Türkçemizi süsleyen harika kalıplaşmış sözlerimiz vardır: Deyimler!",
+            "lang": "tr-TR",
+            "cap": "📖 Deyimlerin Renkli Dünyası",
+            "emo": "📖"
+          },
+          {
+            "text": "Örneğin çok sevinen biri için \"Etekleri zil çalıyor\" deriz.",
+            "lang": "tr-TR",
+            "cap": "✨ Türkçe Kuralı: Deyimlerin Renkli Düny",
+            "emo": "✨"
+          },
+          {
+            "text": "Deyimler bir durumu anlatır, atasözleri gibi öğüt vermez.",
+            "lang": "tr-TR",
+            "cap": "🎯 Altın Kural",
+            "emo": "🎯"
+          }
+        ]
       },
       {
         "title": "Atasözü ile Deyim Arasındaki Fark",
         "badge": "4. Adım: Farkı Yakala",
         "slide": "assets/images/metin_turleri_deyimler.svg",
         "narration": "Harika bir ipucu: \"Deyim mi, atasözü mü?\" diye düşünüyorsan şuna dikkat et: Atasözleri geçmişten gelen derin hayat tecrübesi ve öğüt içerir. \"Damlaya damlaya göl olur\" bir atasözüdür ve bize tutumlu olmayı öğütler. \"Gözden düşmek\" ise anlık bir durumu anlatır ve bir deyimdir!",
-        "audio": "assets/audio/courses/tr-u3_s4.mp3"
+        "audio": "assets/audio/courses/tr-u3_s4.mp3",
+        "slideTitle": "Atasözü ile Deyim Arasındaki Fark",
+        "emo": "📖",
+        "then": [
+          {
+            "text": "Harika bir ipucu: \"Deyim mi, atasözü mü?\" diye düşünüyorsan şuna dikkat et: Atasözleri geçmişten gelen derin hayat tecrübesi ve öğüt içerir.",
+            "lang": "tr-TR",
+            "cap": "📖 Farkı Yakala",
+            "emo": "📖"
+          },
+          {
+            "text": "\"Damlaya damlaya göl olur\" bir atasözüdür ve bize tutumlu olmayı öğütler.",
+            "lang": "tr-TR",
+            "cap": "✨ Türkçe Kuralı: Atasözü ile Deyim Aras",
+            "emo": "✨"
+          }
+        ]
       }
     ],
     "questions": [
@@ -808,28 +1088,110 @@ const COURSE_LESSONS = {
         "badge": "1. Adım: İsim & Sıfat",
         "slide": "assets/images/sozcuk_turleri_cumle.svg",
         "narration": "Merhaba sevgili kâşif! Cümleleri kuran sözcüklerin rollerini öğreniyoruz. Varlıkları tanıtan sözcüklere isim (ad) denir: \"masa\", \"kedi\", \"çiçek\". İsimlerin önüne gelerek onların rengini, durumunu, sayısını veya işaretini belirten sözcüklere ise sıfat yani önad denir! \"Kırmızı elma\", \"üç kalem\", \"bu çocuk\" dediğimizde baştaki sözcükler birer sıfattır.",
-        "audio": "assets/audio/courses/tr-u4_s1.mp3"
+        "audio": "assets/audio/courses/tr-u4_s1.mp3",
+        "slideTitle": "İsimler ve Sıfatlar (Önadlar)",
+        "emo": "📖",
+        "then": [
+          {
+            "text": "Merhaba sevgili kâşif!",
+            "lang": "tr-TR",
+            "cap": "📖 İsimler ve Sıfatlar (Önadlar)",
+            "emo": "📖"
+          },
+          {
+            "text": "Varlıkları tanıtan sözcüklere isim (ad) denir: \"masa\", \"kedi\", \"çiçek\".",
+            "lang": "tr-TR",
+            "cap": "✨ Türkçe Kuralı: İsimler ve Sıfatlar (Ö",
+            "emo": "✨"
+          },
+          {
+            "text": "\"Kırmızı elma\", \"üç kalem\", \"bu çocuk\" dediğimizde baştaki sözcükler birer sıfattır.",
+            "lang": "tr-TR",
+            "cap": "🎯 Altın Kural",
+            "emo": "🎯"
+          }
+        ]
       },
       {
         "title": "Zamirler (Adıllar) ve Fiiller (Eylemler)",
         "badge": "2. Adım: Zamir & Fiil",
         "slide": "assets/images/sozcuk_turleri_cumle.svg",
         "narration": "İsmin yerine geçen gizli kahramanlara zamir (adıl) denir: \"Ali geldi\" yerine \"O geldi\", \"kitabı aldım\" yerine \"bunu aldım\" deriz. İş, oluş ve hareket bildiren, zaman eki alan sözcüklere ise fiil yani eylem deriz: \"koşmak\", \"okudu\", \"yazıyor\", \"gelecek\". Fiil olmadan cümle tamamlanamaz!",
-        "audio": "assets/audio/courses/tr-u4_s2.mp3"
+        "audio": "assets/audio/courses/tr-u4_s2.mp3",
+        "slideTitle": "Zamirler (Adıllar) ve Fiiller (Eylemler)",
+        "emo": "📖",
+        "then": [
+          {
+            "text": "İsmin yerine geçen gizli kahramanlara zamir (adıl) denir: \"Ali geldi\" yerine \"O geldi\", \"kitabı aldım\" yerine \"bunu aldım\" deriz.",
+            "lang": "tr-TR",
+            "cap": "📖 Zamir & Fiil",
+            "emo": "📖"
+          },
+          {
+            "text": "İş, oluş ve hareket bildiren, zaman eki alan sözcüklere ise fiil yani eylem deriz: \"koşmak\", \"okudu\", \"yazıyor\", \"gelecek\".",
+            "lang": "tr-TR",
+            "cap": "✨ Türkçe Kuralı: Zamirler (Adıllar) ve ",
+            "emo": "✨"
+          }
+        ]
       },
       {
         "title": "Cümlenin Temel Direği: Yüklem ve Özne",
         "badge": "3. Adım: Cümlenin Ögeleri",
         "slide": "assets/images/sozcuk_turleri_cumle.svg",
         "narration": "Bir cümleyi ayakta tutan iki büyük direk vardır. İlki yargıyı ve işi bildiren Yüklemdir! Kurallı cümlelerde yüklem genellikle cümlenin en sonundadır. İkinci direk ise o işi yapan Öz許nedir! Yükleme \"Kim?\" veya \"Ne?\" sorusunu sorduğumuzda bize hemen özneyi verir. Örneğin: \"Zeynep kitap okudu.\" cümlesinde okudu Yüklem, okuyan kim? Zeynep Öznedir!",
-        "audio": "assets/audio/courses/tr-u4_s3.mp3"
+        "audio": "assets/audio/courses/tr-u4_s3.mp3",
+        "slideTitle": "Cümlenin Temel Direği: Yüklem ve Özne",
+        "emo": "📖",
+        "then": [
+          {
+            "text": "Bir cümleyi ayakta tutan iki büyük direk vardır.",
+            "lang": "tr-TR",
+            "cap": "📖 Cümlenin Ögeleri",
+            "emo": "📖"
+          },
+          {
+            "text": "İkinci direk ise o işi yapan Öz許nedir!",
+            "lang": "tr-TR",
+            "cap": "✨ Türkçe Kuralı: Cümlenin Temel Direği:",
+            "emo": "✨"
+          },
+          {
+            "text": "Örneğin: \"Zeynep kitap okudu.\" cümlesinde okudu Yüklem, okuyan kim?",
+            "lang": "tr-TR",
+            "cap": "🎯 Altın Kural",
+            "emo": "🎯"
+          }
+        ]
       },
       {
         "title": "Nesne ve Kurallı Cümle Düzeni",
         "badge": "4. Adım: Nesne ve Düzen",
         "slide": "assets/images/sozcuk_turleri_cumle.svg",
         "narration": "Yapılan işten etkilenen varlığa Nesne denir. Yükleme \"Neyi?\", \"Kimi?\" veya \"Ne?\" diye sorduğumuzda nesneyi buluruz: \"Zeynep neyi okudu? Kitabı!\" Kitap burada nesnedir. Türkçemizde kurallı bir cümlede sıra: Özne + Nesne/Tümleç + Yüklem şeklindedir. Yüklem cümlenin sonunda olmalıdır.",
-        "audio": "assets/audio/courses/tr-u4_s4.mp3"
+        "audio": "assets/audio/courses/tr-u4_s4.mp3",
+        "slideTitle": "Nesne ve Kurallı Cümle Düzeni",
+        "emo": "📖",
+        "then": [
+          {
+            "text": "Yapılan işten etkilenen varlığa Nesne denir.",
+            "lang": "tr-TR",
+            "cap": "📖 Nesne ve Kurallı Cümle Düzeni",
+            "emo": "📖"
+          },
+          {
+            "text": "Kitabı!\" Kitap burada nesnedir.",
+            "lang": "tr-TR",
+            "cap": "✨ Türkçe Kuralı: Nesne ve Kurallı Cümle",
+            "emo": "✨"
+          },
+          {
+            "text": "Yüklem cümlenin sonunda olmalıdır.",
+            "lang": "tr-TR",
+            "cap": "🎯 Altın Kural",
+            "emo": "🎯"
+          }
+        ]
       }
     ],
     "questions": [
@@ -1069,28 +1431,104 @@ const COURSE_LESSONS = {
         "badge": "1. Adım: Yargı Türleri",
         "slide": "assets/images/cumlede_anlam_yargilar.svg",
         "narration": "Merhaba sevgili kâşif! Bugün düşüncelerimizi tartıyoruz. Doğruluğu ya da yanlışlığı kişiden kişiye değişmeyen, herkesçe kabul edilen kanıtlanabilir cümlelere Nesnel Yargı deriz. Örneğin: \"Türkiye'nin başkenti Ankara'dır.\" Kişisel beğeni, duygu ve zevk içeren cümlelere ise Öznel Yargı deriz: \"En güzel renk mavidir.\" Biri kanıtlanır, diğeri zevktir!",
-        "audio": "assets/audio/courses/tr-u5_s1.mp3"
+        "audio": "assets/audio/courses/tr-u5_s1.mp3",
+        "slideTitle": "Öznel ve Nesnel Yargılar",
+        "emo": "📖",
+        "then": [
+          {
+            "text": "Merhaba sevgili kâşif!",
+            "lang": "tr-TR",
+            "cap": "📖 Öznel ve Nesnel Yargılar",
+            "emo": "📖"
+          },
+          {
+            "text": "Doğruluğu ya da yanlışlığı kişiden kişiye değişmeyen, herkesçe kabul edilen kanıtlanabilir cümlelere Nesnel Yargı deriz.",
+            "lang": "tr-TR",
+            "cap": "✨ Türkçe Kuralı: Öznel ve Nesnel Yargıl",
+            "emo": "✨"
+          },
+          {
+            "text": "Örneğin: \"Türkiye'nin başkenti Ankara'dır.\" Kişisel beğeni, duygu ve zevk içeren cümlelere ise Öznel Yargı deriz: \"En güzel renk mavidir.\" Biri kanıtlanır, diğeri zevktir!",
+            "lang": "tr-TR",
+            "cap": "🎯 Altın Kural",
+            "emo": "🎯"
+          }
+        ]
       },
       {
         "title": "Neden-Sonuç ve Amaç-Sonuç Cümleleri",
         "badge": "2. Adım: Sebep & Amaç",
         "slide": "assets/images/cumlede_anlam_yargilar.svg",
         "narration": "Bir eylemin hangi gerekçeyle yapıldığını anlatan cümlelere Neden-Sonuç cümleleri denir: \"Kar yağdığı için okullar tatil edildi.\" Neden? Kar yağdı! Sonuç? Okullar tatil edildi. Eğer bir hedef için yapılıyorsa buna Amaç-Sonuç deriz: \"Sınavı kazanmak amacıyla çok çalıştı.\" Cümleye \"Hangi amaçla?\" diye sorarak farkı hemen bulabilirsin.",
-        "audio": "assets/audio/courses/tr-u5_s2.mp3"
+        "audio": "assets/audio/courses/tr-u5_s2.mp3",
+        "slideTitle": "Neden-Sonuç ve Amaç-Sonuç Cümleleri",
+        "emo": "📖",
+        "then": [
+          {
+            "text": "Bir eylemin hangi gerekçeyle yapıldığını anlatan cümlelere Neden-Sonuç cümleleri denir: \"Kar yağdığı için okullar tatil edildi.\" Neden?",
+            "lang": "tr-TR",
+            "cap": "📖 Sebep & Amaç",
+            "emo": "📖"
+          },
+          {
+            "text": "Okullar tatil edildi.",
+            "lang": "tr-TR",
+            "cap": "✨ Türkçe Kuralı: Neden-Sonuç ve Amaç-So",
+            "emo": "✨"
+          }
+        ]
       },
       {
         "title": "Karşılaştırma İfadeleri",
         "badge": "3. Adım: Karşılaştırma",
         "slide": "assets/images/cumlede_anlam_yargilar.svg",
         "narration": "En az iki farklı varlık, olay ya da durumu birbiriyle kıyaslayan cümlelere Karşılaştırma İfadesi denir. Bu cümlelerde \"daha, en, göre, kadar, benzer şekilde\" gibi anahtar kelimeler kullanılır. Örneğin: \"Zürafa, filden daha uzundur.\" veya \"Sınıfın en çalışkanı Ayşe'dir.\" dediğimizde karşılaştırma yapmış oluruz.",
-        "audio": "assets/audio/courses/tr-u5_s3.mp3"
+        "audio": "assets/audio/courses/tr-u5_s3.mp3",
+        "slideTitle": "Karşılaştırma İfadeleri",
+        "emo": "📖",
+        "then": [
+          {
+            "text": "En az iki farklı varlık, olay ya da durumu birbiriyle kıyaslayan cümlelere Karşılaştırma İfadesi denir.",
+            "lang": "tr-TR",
+            "cap": "📖 Karşılaştırma İfadeleri",
+            "emo": "📖"
+          },
+          {
+            "text": "Bu cümlelerde \"daha, en, göre, kadar, benzer şekilde\" gibi anahtar kelimeler kullanılır.",
+            "lang": "tr-TR",
+            "cap": "✨ Türkçe Kuralı: Karşılaştırma İfadeler",
+            "emo": "✨"
+          }
+        ]
       },
       {
         "title": "Genel ve Özel İfadeler",
         "badge": "4. Adım: Genel & Özel",
         "slide": "assets/images/cumlede_anlam_yargilar.svg",
         "narration": "Bir sözcük bütün bir türü kapsıyorsa Genel İfade, o türün tek bir örneğini anlatıyorsa Özel İfade olur. \"Meyveler sağlığa çok faydalıdır\" dediğimizde meyve geneldir. \"Amasya elması çok suludur\" dediğimizde ise elmanın özel bir çeşidini kastetmiş oluruz. Genelden özele sıralama yapmak düşüncelerimizi netleştirir.",
-        "audio": "assets/audio/courses/tr-u5_s4.mp3"
+        "audio": "assets/audio/courses/tr-u5_s4.mp3",
+        "slideTitle": "Genel ve Özel İfadeler",
+        "emo": "📖",
+        "then": [
+          {
+            "text": "Bir sözcük bütün bir türü kapsıyorsa Genel İfade, o türün tek bir örneğini anlatıyorsa Özel İfade olur.",
+            "lang": "tr-TR",
+            "cap": "📖 Genel ve Özel İfadeler",
+            "emo": "📖"
+          },
+          {
+            "text": "\"Amasya elması çok suludur\" dediğimizde ise elmanın özel bir çeşidini kastetmiş oluruz.",
+            "lang": "tr-TR",
+            "cap": "✨ Türkçe Kuralı: Genel ve Özel İfadeler",
+            "emo": "✨"
+          },
+          {
+            "text": "Genelden özele sıralama yapmak düşüncelerimizi netleştirir.",
+            "lang": "tr-TR",
+            "cap": "🎯 Altın Kural",
+            "emo": "🎯"
+          }
+        ]
       }
     ],
     "questions": [
@@ -1330,28 +1768,98 @@ const COURSE_LESSONS = {
         "badge": "1. Adım: Büyük Harfler",
         "slide": "assets/images/yazim_ve_noktalama.svg",
         "narration": "Merhaba sevgili kâşif! Doğru ve tertemiz yazmanın kurallarını keşfediyoruz. Cümleler daima büyük harfle başlar. Kişi adları, soyadları, ülke, şehir, cadde ve sokak adları özel isimdir ve mutlaka büyük harfle yazılır! Özel isimlere gelen ekler kesme işaretiyle ayrılır: \"Ali'nin\", \"İstanbul'a\" gibi. Ancak çoğul eki \"-ler / -lar\" kesmeyle ayrılmaz: \"Türkler\", \"Ahmetler\" şeklinde bitişik yazılır.",
-        "audio": "assets/audio/courses/tr-u6_s1.mp3"
+        "audio": "assets/audio/courses/tr-u6_s1.mp3",
+        "slideTitle": "Büyük Harflerin Kullanımı ve Özel İsimler",
+        "emo": "📖",
+        "then": [
+          {
+            "text": "Merhaba sevgili kâşif!",
+            "lang": "tr-TR",
+            "cap": "📖 Büyük Harfler",
+            "emo": "📖"
+          },
+          {
+            "text": "Kişi adları, soyadları, ülke, şehir, cadde ve sokak adları özel isimdir ve mutlaka büyük harfle yazılır!",
+            "lang": "tr-TR",
+            "cap": "✨ Türkçe Kuralı: Büyük Harflerin Kullan",
+            "emo": "✨"
+          },
+          {
+            "text": "Ancak çoğul eki \"-ler / -lar\" kesmeyle ayrılmaz: \"Türkler\", \"Ahmetler\" şeklinde bitişik yazılır.",
+            "lang": "tr-TR",
+            "cap": "🎯 Altın Kural",
+            "emo": "🎯"
+          }
+        ]
       },
       {
         "title": "Soru Eki \"-mi\" ve Bağlaç Olan \"-de / -da\"",
         "badge": "2. Adım: Kritik Ekler",
         "slide": "assets/images/yazim_ve_noktalama.svg",
         "narration": "İki altın kural: Soru eki olan \"mı, mi, mu, mü\" kendinden önceki sözcükten daima AYRI yazılır: \"Gelir misin?\", \"Bitti mi?\" İkincisi: Bağlaç olan \"de / da\" ayrı yazılır. İpucumuz şu: Cümleden \"de\"yi çıkardığında cümlenin anlamı bozulmuyorsa o bir bağlaçtır ve ayrı yazılır! \"Sen de gel.\" Ama yer bildiren bulunma eki bitişik yazılır: \"Kalemim evde kaldı.\"",
-        "audio": "assets/audio/courses/tr-u6_s2.mp3"
+        "audio": "assets/audio/courses/tr-u6_s2.mp3",
+        "slideTitle": "Soru Eki \"-mi\" ve Bağlaç Olan \"-de / -da\"",
+        "emo": "📖",
+        "then": [
+          {
+            "text": "İki altın kural: Soru eki olan \"mı, mi, mu, mü\" kendinden önceki sözcükten daima AYRI yazılır: \"Gelir misin?\", \"Bitti mi?\" İkincisi: Bağlaç olan \"de / da\" ayrı yazılır.",
+            "lang": "tr-TR",
+            "cap": "📖 Kritik Ekler",
+            "emo": "📖"
+          },
+          {
+            "text": "İpucumuz şu: Cümleden \"de\"yi çıkardığında cümlenin anlamı bozulmuyorsa o bir bağlaçtır ve ayrı yazılır!",
+            "lang": "tr-TR",
+            "cap": "✨ Türkçe Kuralı: Soru Eki \"-mi\" ve Bağl",
+            "emo": "✨"
+          }
+        ]
       },
       {
         "title": "Nokta, Virgül ve İki Nokta",
         "badge": "3. Adım: Temel Noktalama",
         "slide": "assets/images/yazim_ve_noktalama.svg",
         "narration": "Tamamlanmış cümlelerin sonuna Nokta konur. Ayrıca saat ve dakikaların arasına tek nokta konur: 09.30 gibi! Virgül ise birbiri ardınca sıralanan eş görevli kelimeleri ayırır: \"Pazardan elma, armut, muz aldık.\" İki nokta ise kendisinden sonra açıklama yapılacak veya konuşma başlayacak yerlere konur.",
-        "audio": "assets/audio/courses/tr-u6_s3.mp3"
+        "audio": "assets/audio/courses/tr-u6_s3.mp3",
+        "slideTitle": "Nokta, Virgül ve İki Nokta",
+        "emo": "📖",
+        "then": [
+          {
+            "text": "Tamamlanmış cümlelerin sonuna Nokta konur.",
+            "lang": "tr-TR",
+            "cap": "📖 Nokta, Virgül ve İki Nokta",
+            "emo": "📖"
+          },
+          {
+            "text": "Ayrıca saat ve dakikaların arasına tek nokta konur: 09.30 gibi!",
+            "lang": "tr-TR",
+            "cap": "✨ Türkçe Kuralı: Nokta, Virgül ve İki N",
+            "emo": "✨"
+          }
+        ]
       },
       {
         "title": "Ünlem, Soru ve Kesme İşareti",
         "badge": "4. Adım: Duygu ve Soru",
         "slide": "assets/images/yazim_ve_noktalama.svg",
         "narration": "Soru bildiren cümlelerin sonuna Soru İşareti konur. Sevinç, korku, heyecan veya şaşkınlık bildiren cümlelerin sonuna Ünlem İşareti konur: \"Eyvah, yangın var!\" Tırnak işareti ise başkasından aktarılan sözleri aynen göstermek için kullanılır. Noktalama işaretleri cümlelerimizin trafik ışıklarıdır, trafiği düzenler!",
-        "audio": "assets/audio/courses/tr-u6_s4.mp3"
+        "audio": "assets/audio/courses/tr-u6_s4.mp3",
+        "slideTitle": "Ünlem, Soru ve Kesme İşareti",
+        "emo": "📖",
+        "then": [
+          {
+            "text": "Soru bildiren cümlelerin sonuna Soru İşareti konur.",
+            "lang": "tr-TR",
+            "cap": "📖 Ünlem, Soru ve Kesme İşareti",
+            "emo": "📖"
+          },
+          {
+            "text": "Sevinç, korku, heyecan veya şaşkınlık bildiren cümlelerin sonuna Ünlem İşareti konur: \"Eyvah, yangın var!\" Tırnak işareti ise başkasından aktarılan sözleri aynen göstermek için kullanılır.",
+            "lang": "tr-TR",
+            "cap": "✨ Türkçe Kuralı: Ünlem, Soru ve Kesme İ",
+            "emo": "✨"
+          }
+        ]
       }
     ],
     "questions": [
@@ -1591,28 +2099,104 @@ const COURSE_LESSONS = {
         "badge": "1. Adım: Görsel Okuma",
         "slide": "assets/images/gorsel_okuma_soz_sanatlari.svg",
         "narration": "Merhaba sevgili kâşif! Yazıların yanında resimler, fotoğraflar, simgeler ve grafikler de konuşur! Bir tablodaki verileri okumak, trafik levhalarının taşıdığı uyarıları kavramak ya da bir karikatürün verdiği ana fikri anlamak \"Görsel Okuma\"dır. Dikkatli bir gözlemci, resimdeki küçük bir ayrıntıdan kahramanın duygusunu hemen çözebilir.",
-        "audio": "assets/audio/courses/tr-u7_s1.mp3"
+        "audio": "assets/audio/courses/tr-u7_s1.mp3",
+        "slideTitle": "Görsel Okuma ve Grafik Yorumlama",
+        "emo": "📖",
+        "then": [
+          {
+            "text": "Merhaba sevgili kâşif!",
+            "lang": "tr-TR",
+            "cap": "📖 Görsel Okuma",
+            "emo": "📖"
+          },
+          {
+            "text": "Bir tablodaki verileri okumak, trafik levhalarının taşıdığı uyarıları kavramak ya da bir karikatürün verdiği ana fikri anlamak \"Görsel Okuma\"dır.",
+            "lang": "tr-TR",
+            "cap": "✨ Türkçe Kuralı: Görsel Okuma ve Grafik",
+            "emo": "✨"
+          },
+          {
+            "text": "Dikkatli bir gözlemci, resimdeki küçük bir ayrıntıdan kahramanın duygusunu hemen çözebilir.",
+            "lang": "tr-TR",
+            "cap": "🎯 Altın Kural",
+            "emo": "🎯"
+          }
+        ]
       },
       {
         "title": "Benzetme Sanatı (Teşbih)",
         "badge": "2. Adım: Benzetme",
         "slide": "assets/images/gorsel_okuma_soz_sanatlari.svg",
         "narration": "Söz sanatları dilimize büyüleyici bir zarafet katar. İlk sanatımız Benzetme! Aralarında ilgi bulunan iki şeyden zayıf olanın güçlü olana benzetilmesidir. En çok kullanılan anahtar kelime \"gibi\" sözcüğüdür! Örneğin: \"Aslan gibi cesur askerlerimiz\", \"Pamuk gibi yumuşak ekmek\", \"İnci gibi parlayan dişler\". Benzetme anlatımı zenginleştirir.",
-        "audio": "assets/audio/courses/tr-u7_s2.mp3"
+        "audio": "assets/audio/courses/tr-u7_s2.mp3",
+        "slideTitle": "Benzetme Sanatı (Teşbih)",
+        "emo": "📖",
+        "then": [
+          {
+            "text": "Söz sanatları dilimize büyüleyici bir zarafet katar.",
+            "lang": "tr-TR",
+            "cap": "📖 Benzetme Sanatı (Teşbih)",
+            "emo": "📖"
+          },
+          {
+            "text": "En çok kullanılan anahtar kelime \"gibi\" sözcüğüdür!",
+            "lang": "tr-TR",
+            "cap": "✨ Türkçe Kuralı: Benzetme Sanatı (Teşbi",
+            "emo": "✨"
+          },
+          {
+            "text": "Benzetme anlatımı zenginleştirir.",
+            "lang": "tr-TR",
+            "cap": "🎯 Altın Kural",
+            "emo": "🎯"
+          }
+        ]
       },
       {
         "title": "Kişileştirme Sanatı (Teşhis)",
         "badge": "3. Adım: Kişileştirme",
         "slide": "assets/images/gorsel_okuma_soz_sanatlari.svg",
         "narration": "İnsana ait konuşma, gülme, ağlama veya düşünme gibi özellikleri insan dışındaki varlıklara ya da hayvanlara aktarma sanatına Kişileştirme denir. Örneğin: \"Güneş neşeyle gülümsedi.\", \"Rüzgâr kulağıma şarkılar fısıldadı.\", \"Ağaçlar hüzünle yapraklarını döktü.\" Bu sanatı masallarda ve fabllarda çok sık görürüz!",
-        "audio": "assets/audio/courses/tr-u7_s3.mp3"
+        "audio": "assets/audio/courses/tr-u7_s3.mp3",
+        "slideTitle": "Kişileştirme Sanatı (Teşhis)",
+        "emo": "📖",
+        "then": [
+          {
+            "text": "İnsana ait konuşma, gülme, ağlama veya düşünme gibi özellikleri insan dışındaki varlıklara ya da hayvanlara aktarma sanatına Kişileştirme denir.",
+            "lang": "tr-TR",
+            "cap": "📖 Kişileştirme Sanatı (Teşhis)",
+            "emo": "📖"
+          },
+          {
+            "text": "Örneğin: \"Güneş neşeyle gülümsedi.\", \"Rüzgâr kulağıma şarkılar fısıldadı.\", \"Ağaçlar hüzünle yapraklarını döktü.\" Bu sanatı masallarda ve fabllarda çok sık görürüz!",
+            "lang": "tr-TR",
+            "cap": "✨ Türkçe Kuralı: Kişileştirme Sanatı (T",
+            "emo": "✨"
+          }
+        ]
       },
       {
         "title": "Betimleme (Tasvir): Kelimelerle Resim Çizmek",
         "badge": "4. Adım: Betimleme",
         "slide": "assets/images/gorsel_okuma_soz_sanatlari.svg",
         "narration": "Bir yeri, kişiyi veya nesneyi okuyucunun gözünde canlandıracak şekilde ayrıntılarıyla anlatma sanatına Betimleme denir. Renkler, kokular, sesler, şekiller öyle güzel anlatılır ki gözlerimizi kapattığımızda kendimizi o manzaranın tam içinde hissederiz. Kelimeler adeta bir fırça, cümleler ise birer tablodur!",
-        "audio": "assets/audio/courses/tr-u7_s4.mp3"
+        "audio": "assets/audio/courses/tr-u7_s4.mp3",
+        "slideTitle": "Betimleme (Tasvir): Kelimelerle Resim Çizmek",
+        "emo": "📖",
+        "then": [
+          {
+            "text": "Bir yeri, kişiyi veya nesneyi okuyucunun gözünde canlandıracak şekilde ayrıntılarıyla anlatma sanatına Betimleme denir.",
+            "lang": "tr-TR",
+            "cap": "📖 Betimleme",
+            "emo": "📖"
+          },
+          {
+            "text": "Renkler, kokular, sesler, şekiller öyle güzel anlatılır ki gözlerimizi kapattığımızda kendimizi o manzaranın tam içinde hissederiz.",
+            "lang": "tr-TR",
+            "cap": "✨ Türkçe Kuralı: Betimleme (Tasvir): Ke",
+            "emo": "✨"
+          }
+        ]
       }
     ],
     "questions": [
@@ -1852,28 +2436,116 @@ const COURSE_LESSONS = {
         "badge": "1. Adım: Basamak & Bölük",
         "slide": "assets/images/dogal_sayilar_dort_islem.svg",
         "narration": "Merhaba sevgili dördüncü sınıf matematik kâşifim! Artık binlerin, yüz binlerin dünyasındayız! Büyük sayıları kolayca okumak için sayıları sağdan sola üçerli gruplara yani bölüklere ayırırız. İlk üçlü \"Birler Bölüğü\", ikinci üçlü ise \"Binler Bölüğü\"dür. Örneğin 425.680 sayısını okurken önce binler bölüğünü söyler, araya \"bin\" kelimesini koyar ve birler bölüğünü ekleriz: Dört yüz yirmi beş bin altı yüz seksen!",
-        "audio": "assets/audio/courses/mat-u1_s1.mp3"
+        "audio": "assets/audio/courses/mat-u1_s1.mp3",
+        "slideTitle": "4, 5 ve 6 Basamaklı Doğal Sayılar",
+        "emo": "🔢",
+        "then": [
+          {
+            "text": "Merhaba sevgili dördüncü sınıf matematik kâşifim!",
+            "lang": "tr-TR",
+            "cap": "🔢 Basamak & Bölük",
+            "emo": "🔢"
+          },
+          {
+            "text": "Büyük sayıları kolayca okumak için sayıları sağdan sola üçerli gruplara yani bölüklere ayırırız.",
+            "lang": "tr-TR",
+            "cap": "✨ Matematik İpucu: 4, 5 ve 6 Basamaklı Do",
+            "emo": "✨"
+          },
+          {
+            "text": "Örneğin 425.680 sayısını okurken önce binler bölüğünü söyler, araya \"bin\" kelimesini koyar ve birler bölüğünü ekleriz: Dört yüz yirmi beş bin altı yüz seksen!",
+            "lang": "tr-TR",
+            "cap": "🎯 Altın Kural",
+            "emo": "🎯"
+          }
+        ]
       },
       {
         "title": "Basamak Değeri ve Sayıları Yuvarlama",
         "badge": "2. Adım: Değerler & Yuvarlama",
         "slide": "assets/images/dogal_sayilar_dort_islem.svg",
         "narration": "Bir rakamın bulunduğu basamağa göre aldığı değere \"Basamak Değeri\" denir. Sayıları en yakın onluğa yuvarlarken birler basamağına bakarız: 5 ve üzeriyse üst onluğa, 5'ten küçükse alt onluğa yuvarlarız. Yüzlüğe yuvarlarken ise onlar basamağına bakarız. Yuvarlama işlemi bize zihinden hesap yaparken ve tahmin ederken müthiş bir hız kazandırır!",
-        "audio": "assets/audio/courses/mat-u1_s2.mp3"
+        "audio": "assets/audio/courses/mat-u1_s2.mp3",
+        "slideTitle": "Basamak Değeri ve Sayıları Yuvarlama",
+        "emo": "🔢",
+        "then": [
+          {
+            "text": "Bir rakamın bulunduğu basamağa göre aldığı değere \"Basamak Değeri\" denir.",
+            "lang": "tr-TR",
+            "cap": "🔢 Değerler & Yuvarlama",
+            "emo": "🔢"
+          },
+          {
+            "text": "Yüzlüğe yuvarlarken ise onlar basamağına bakarız.",
+            "lang": "tr-TR",
+            "cap": "✨ Matematik İpucu: Basamak Değeri ve Sayı",
+            "emo": "✨"
+          },
+          {
+            "text": "Yuvarlama işlemi bize zihinden hesap yaparken ve tahmin ederken müthiş bir hız kazandırır!",
+            "lang": "tr-TR",
+            "cap": "🎯 Altın Kural",
+            "emo": "🎯"
+          }
+        ]
       },
       {
         "title": "Eldeli Toplama İşlemi",
         "badge": "3. Adım: Toplama",
         "slide": "assets/images/dogal_sayilar_dort_islem.svg",
         "narration": "Toplama işlemine daima en sağdan, yani birler basamağından başlarız. Birler basamağındaki toplam 10 veya üzerindeyse, eldeyi hemen onlar basamağının üzerine yazarız. Eldeyi unutmamak toplamanın en kritik sırrıdır! Basamakları alt alta tam hizalamak ise işlem hatalarını tamamen önler.",
-        "audio": "assets/audio/courses/mat-u1_s3.mp3"
+        "audio": "assets/audio/courses/mat-u1_s3.mp3",
+        "slideTitle": "Eldeli Toplama İşlemi",
+        "emo": "🔢",
+        "then": [
+          {
+            "text": "Toplama işlemine daima en sağdan, yani birler basamağından başlarız.",
+            "lang": "tr-TR",
+            "cap": "🔢 Eldeli Toplama İşlemi",
+            "emo": "🔢"
+          },
+          {
+            "text": "Eldeyi unutmamak toplamanın en kritik sırrıdır!",
+            "lang": "tr-TR",
+            "cap": "✨ Matematik İpucu: Eldeli Toplama İşlemi",
+            "emo": "✨"
+          },
+          {
+            "text": "Basamakları alt alta tam hizalamak ise işlem hatalarını tamamen önler.",
+            "lang": "tr-TR",
+            "cap": "🎯 Altın Kural",
+            "emo": "🎯"
+          }
+        ]
       },
       {
         "title": "Onluk Bozarak Çıkarma İşlemi",
         "badge": "4. Adım: Çıkarma",
         "slide": "assets/images/dogal_sayilar_dort_islem.svg",
         "narration": "Çıkarma işleminde üstteki rakam alttakinden küçükse sol komşuya gider ve bir onluk bozarız! Artık sayımız on fazlası olur, komşumuz ise bir azalır. Komşuda sıfır varsa bir yandaki basamağa devam ederiz. Çıkarma işlemimizi kontrol etmek için: Çıkan ile Farkı topladığımızda mutlaka Eksilen sayıyı vermelidir!",
-        "audio": "assets/audio/courses/mat-u1_s4.mp3"
+        "audio": "assets/audio/courses/mat-u1_s4.mp3",
+        "slideTitle": "Onluk Bozarak Çıkarma İşlemi",
+        "emo": "🔢",
+        "then": [
+          {
+            "text": "Çıkarma işleminde üstteki rakam alttakinden küçükse sol komşuya gider ve bir onluk bozarız!",
+            "lang": "tr-TR",
+            "cap": "🔢 Onluk Bozarak Çıkarma İşlemi",
+            "emo": "🔢"
+          },
+          {
+            "text": "Komşuda sıfır varsa bir yandaki basamağa devam ederiz.",
+            "lang": "tr-TR",
+            "cap": "✨ Matematik İpucu: Onluk Bozarak Çıkarma ",
+            "emo": "✨"
+          },
+          {
+            "text": "Çıkarma işlemimizi kontrol etmek için: Çıkan ile Farkı topladığımızda mutlaka Eksilen sayıyı vermelidir!",
+            "lang": "tr-TR",
+            "cap": "🎯 Altın Kural",
+            "emo": "🎯"
+          }
+        ]
       }
     ],
     "questions": [
@@ -2113,28 +2785,104 @@ const COURSE_LESSONS = {
         "badge": "1. Adım: Çarpma",
         "slide": "assets/images/carpma_bolme_islemleri.svg",
         "narration": "Merhaba kâşif! Çarpma işlemi tekrarlı toplamaların süper kahramanıdır. İki basamaklı sayılarla çarpma yaparken en önemli adım: İkinci çarpanın onlar basamağındaki rakamla çarparken bulduğumuz sonucu bir basamak SOLA kaydırarak yazmaktır! Çünkü onlar basamağıyla çarpıyoruz. Basamakları düzgün kaydırıp toplarsak sonuca kusursuz ulaşırız.",
-        "audio": "assets/audio/courses/mat-u2_s1.mp3"
+        "audio": "assets/audio/courses/mat-u2_s1.mp3",
+        "slideTitle": "Çarpma İşlemi ve Basamak Kaydırma Kuralı",
+        "emo": "🔢",
+        "then": [
+          {
+            "text": "Çarpma işlemi tekrarlı toplamaların süper kahramanıdır.",
+            "lang": "tr-TR",
+            "cap": "🔢 Çarpma",
+            "emo": "🔢"
+          },
+          {
+            "text": "Çünkü onlar basamağıyla çarpıyoruz.",
+            "lang": "tr-TR",
+            "cap": "✨ Matematik İpucu: Çarpma İşlemi ve Basam",
+            "emo": "✨"
+          },
+          {
+            "text": "Basamakları düzgün kaydırıp toplarsak sonuca kusursuz ulaşırız.",
+            "lang": "tr-TR",
+            "cap": "🎯 Altın Kural",
+            "emo": "🎯"
+          }
+        ]
       },
       {
         "title": "Kısa Yoldan 10, 100 ve 1000 ile Çarpma",
         "badge": "2. Adım: Hızlı Çarpma",
         "slide": "assets/images/carpma_bolme_islemleri.svg",
         "narration": "Zihinden işlem yapmak çok kolay! Bir sayıyı 10 ile çarparken sağına 1 sıfır, 100 ile çarparken 2 sıfır, 1000 ile çarparken 3 sıfır ekleriz. Örneğin 45 ile 100'ü çarparken işlem yapmaya gerek yok; 45'in sağına 2 sıfır koyarız ve cevap hemen 4500 olur!",
-        "audio": "assets/audio/courses/mat-u2_s2.mp3"
+        "audio": "assets/audio/courses/mat-u2_s2.mp3",
+        "slideTitle": "Kısa Yoldan 10, 100 ve 1000 ile Çarpma",
+        "emo": "🔢",
+        "then": [
+          {
+            "text": "Zihinden işlem yapmak çok kolay!",
+            "lang": "tr-TR",
+            "cap": "🔢 Hızlı Çarpma",
+            "emo": "🔢"
+          },
+          {
+            "text": "Bir sayıyı 10 ile çarparken sağına 1 sıfır, 100 ile çarparken 2 sıfır, 1000 ile çarparken 3 sıfır ekleriz.",
+            "lang": "tr-TR",
+            "cap": "✨ Matematik İpucu: Kısa Yoldan 10, 100 ve",
+            "emo": "✨"
+          }
+        ]
       },
       {
         "title": "Bölme İşlemi ve Kalan İlişkisi",
         "badge": "3. Adım: Bölme & Kalan",
         "slide": "assets/images/carpma_bolme_islemleri.svg",
         "narration": "Bölme işlemi paylaştırmaktır. Bölünen, Bölen, Bölüm ve Kalandan oluşur. İşte matematiğin altın kuralı: Kalan sayı DAİMA bölenden KÜÇÜK olmak zorundadır! Eğer kalan bölene eşit ya da büyük çıkarsa bölme işlemimiz eksik kalmış demektir. Kalan sıfır ise buna kalansız bölme deriz.",
-        "audio": "assets/audio/courses/mat-u2_s3.mp3"
+        "audio": "assets/audio/courses/mat-u2_s3.mp3",
+        "slideTitle": "Bölme İşlemi ve Kalan İlişkisi",
+        "emo": "🔢",
+        "then": [
+          {
+            "text": "Bölme işlemi paylaştırmaktır.",
+            "lang": "tr-TR",
+            "cap": "🔢 Bölme İşlemi ve Kalan İlişkisi",
+            "emo": "🔢"
+          },
+          {
+            "text": "İşte matematiğin altın kuralı: Kalan sayı DAİMA bölenden KÜÇÜK olmak zorundadır!",
+            "lang": "tr-TR",
+            "cap": "✨ Matematik İpucu: Bölme İşlemi ve Kalan ",
+            "emo": "✨"
+          },
+          {
+            "text": "Kalan sıfır ise buna kalansız bölme deriz.",
+            "lang": "tr-TR",
+            "cap": "🎯 Altın Kural",
+            "emo": "🎯"
+          }
+        ]
       },
       {
         "title": "Bölüneni Bulma Formülü ve Sağlama",
         "badge": "4. Adım: Formül & Kontrol",
         "slide": "assets/images/carpma_bolme_islemleri.svg",
         "narration": "Bir bölme işleminde bölünen sayıyı bulmak için şu formülü kullanırız: Bölünen = (Bölen × Bölüm) + Kalan. Örneğin bölen 8, bölüm 12 ve kalan 5 ise: 8 çarpı 12 eşittir 96, 5 eklersek bölünen sayı 101'dir! İşte bu kadar kolay.",
-        "audio": "assets/audio/courses/mat-u2_s4.mp3"
+        "audio": "assets/audio/courses/mat-u2_s4.mp3",
+        "slideTitle": "Bölüneni Bulma Formülü ve Sağlama",
+        "emo": "🔢",
+        "then": [
+          {
+            "text": "Bir bölme işleminde bölünen sayıyı bulmak için şu formülü kullanırız: Bölünen = (Bölen × Bölüm) + Kalan.",
+            "lang": "tr-TR",
+            "cap": "🔢 Formül & Kontrol",
+            "emo": "🔢"
+          },
+          {
+            "text": "Örneğin bölen 8, bölüm 12 ve kalan 5 ise: 8 çarpı 12 eşittir 96, 5 eklersek bölünen sayı 101'dir!",
+            "lang": "tr-TR",
+            "cap": "✨ Matematik İpucu: Bölüneni Bulma Formülü",
+            "emo": "✨"
+          }
+        ]
       }
     ],
     "questions": [
@@ -2374,28 +3122,116 @@ const COURSE_LESSONS = {
         "badge": "1. Adım: Kesir Türleri",
         "slide": "assets/images/kesirler_ve_islemler.svg",
         "narration": "Merhaba genç matematikçi! Kesirler bir bütünün eşit parçalarını gösterir. Pay üstte alınan parça, payda altta bütünü böldüğümüz parça sayısıdır. Payı paydasından küçük olan kesirlere Basit Kesir denir (3/5 gibi). Payı paydasına eşit veya büyük olanlara Bileşik Kesir denir (7/4 veya 5/5). Bir tam sayı ve basit kesirden oluşanlara ise Tam Sayılı Kesir deriz (2 tam 1/3).",
-        "audio": "assets/audio/courses/mat-u3_s1.mp3"
+        "audio": "assets/audio/courses/mat-u3_s1.mp3",
+        "slideTitle": "Kesir Çeşitleri: Basit, Bileşik ve Tam Sayılı",
+        "emo": "🔢",
+        "then": [
+          {
+            "text": "Merhaba genç matematikçi!",
+            "lang": "tr-TR",
+            "cap": "🔢 Kesir Türleri",
+            "emo": "🔢"
+          },
+          {
+            "text": "Payı paydasından küçük olan kesirlere Basit Kesir denir (3/5 gibi).",
+            "lang": "tr-TR",
+            "cap": "✨ Matematik İpucu: Kesir Çeşitleri: Basit",
+            "emo": "✨"
+          },
+          {
+            "text": "Bir tam sayı ve basit kesirden oluşanlara ise Tam Sayılı Kesir deriz (2 tam 1/3).",
+            "lang": "tr-TR",
+            "cap": "🎯 Altın Kural",
+            "emo": "🎯"
+          }
+        ]
       },
       {
         "title": "Birim Kesir ve Sayı Doğrusunda Gösterme",
         "badge": "2. Adım: Birim Kesir",
         "slide": "assets/images/kesirler_ve_islemler.svg",
         "narration": "Payı daima 1 olan kesirlere Birim Kesir denir: 1/4, 1/8 gibi. Basit kesirler sayı doğrusunda daima 0 ile 1 arasındadır. 0 ile 1 arasını payda kadar eşit parçaya böler, pay kadar ilerleriz. Payları eşit birim kesirlerde paydası küçük olan parça DAHA BÜYÜKTÜR! Çünkü pastayı daha az kişiye bölmüşüzdür.",
-        "audio": "assets/audio/courses/mat-u3_s2.mp3"
+        "audio": "assets/audio/courses/mat-u3_s2.mp3",
+        "slideTitle": "Birim Kesir ve Sayı Doğrusunda Gösterme",
+        "emo": "🔢",
+        "then": [
+          {
+            "text": "Payı daima 1 olan kesirlere Birim Kesir denir: 1/4, 1/8 gibi.",
+            "lang": "tr-TR",
+            "cap": "🔢 Birim Kesir",
+            "emo": "🔢"
+          },
+          {
+            "text": "0 ile 1 arasını payda kadar eşit parçaya böler, pay kadar ilerleriz.",
+            "lang": "tr-TR",
+            "cap": "✨ Matematik İpucu: Birim Kesir ve Sayı Do",
+            "emo": "✨"
+          },
+          {
+            "text": "Çünkü pastayı daha az kişiye bölmüşüzdür.",
+            "lang": "tr-TR",
+            "cap": "🎯 Altın Kural",
+            "emo": "🎯"
+          }
+        ]
       },
       {
         "title": "Paydaları Eşit Kesirlerle Toplama ve Çıkarma",
         "badge": "3. Adım: Kesir İşlemleri",
         "slide": "assets/images/kesirler_ve_islemler.svg",
         "narration": "İşte en kritik kuralımız: Kesirlerde toplama ve çıkarma yaparken paydalar eşitse YALNIZCA paylar toplanır veya çıkarılır, ortak payda AYNEN yazılır! Asla paydalar toplanmaz! Örneğin: 2/7 ile 3/7'yi toplarsak 5/7 eder. 6/9'dan 2/9'u çıkarırsak 4/9 kalır.",
-        "audio": "assets/audio/courses/mat-u3_s3.mp3"
+        "audio": "assets/audio/courses/mat-u3_s3.mp3",
+        "slideTitle": "Paydaları Eşit Kesirlerle Toplama ve Çıkarma",
+        "emo": "🔢",
+        "then": [
+          {
+            "text": "İşte en kritik kuralımız: Kesirlerde toplama ve çıkarma yaparken paydalar eşitse YALNIZCA paylar toplanır veya çıkarılır, ortak payda AYNEN yazılır!",
+            "lang": "tr-TR",
+            "cap": "🔢 Kesir İşlemleri",
+            "emo": "🔢"
+          },
+          {
+            "text": "Örneğin: 2/7 ile 3/7'yi toplarsak 5/7 eder.",
+            "lang": "tr-TR",
+            "cap": "✨ Matematik İpucu: Paydaları Eşit Kesirle",
+            "emo": "✨"
+          },
+          {
+            "text": "6/9'dan 2/9'u çıkarırsak 4/9 kalır.",
+            "lang": "tr-TR",
+            "cap": "🎯 Altın Kural",
+            "emo": "🎯"
+          }
+        ]
       },
       {
         "title": "Bir Çokluğun Belirtilen Kesrini Bulma",
         "badge": "4. Adım: Kesir Problemleri",
         "slide": "assets/images/kesirler_ve_islemler.svg",
         "narration": "60 sayfalık kitabın 3/5'ini okuyan Ali kaç sayfa okumuştur? Bu problemi çözmek için altın formül: Sayıyı önce paydaya böl, sonra çıkan sonucu pay ile çarp! 60 bölü 5 eşittir 12. 12 çarpı 3 eşittir 36 sayfa! Kesir problemleri işte bu kadar keyiflidir.",
-        "audio": "assets/audio/courses/mat-u3_s4.mp3"
+        "audio": "assets/audio/courses/mat-u3_s4.mp3",
+        "slideTitle": "Bir Çokluğun Belirtilen Kesrini Bulma",
+        "emo": "🔢",
+        "then": [
+          {
+            "text": "60 sayfalık kitabın 3/5'ini okuyan Ali kaç sayfa okumuştur?",
+            "lang": "tr-TR",
+            "cap": "🔢 Kesir Problemleri",
+            "emo": "🔢"
+          },
+          {
+            "text": "60 bölü 5 eşittir 12.",
+            "lang": "tr-TR",
+            "cap": "✨ Matematik İpucu: Bir Çokluğun Belirtile",
+            "emo": "✨"
+          },
+          {
+            "text": "Kesir problemleri işte bu kadar keyiflidir.",
+            "lang": "tr-TR",
+            "cap": "🎯 Altın Kural",
+            "emo": "🎯"
+          }
+        ]
       }
     ],
     "questions": [
@@ -2635,28 +3471,104 @@ const COURSE_LESSONS = {
         "badge": "1. Adım: Zaman Dönüşümleri",
         "slide": "assets/images/zaman_ve_veri_olcme.svg",
         "narration": "Merhaba zaman yolcusu! Zamanı doğru ölçmek hayatımızı düzenler. 1 saat 60 dakikadır. Yarım saat 30 dakika, çeyrek saat 15 dakikadır. 1 dakika ise 60 saniyedir. 1 gün 24 saattir ve Dünya'nın kendi ekseni etrafında 1 tur dönmesiyle oluşur. 1 yıl ise 365 gün 6 saat, yani 52 hafta veya 12 aydır!",
-        "audio": "assets/audio/courses/mat-u4_s1.mp3"
+        "audio": "assets/audio/courses/mat-u4_s1.mp3",
+        "slideTitle": "Zaman Ölçü Birimleri ve Dönüşümler",
+        "emo": "🔢",
+        "then": [
+          {
+            "text": "Merhaba zaman yolcusu!",
+            "lang": "tr-TR",
+            "cap": "🔢 Zaman Dönüşümleri",
+            "emo": "🔢"
+          },
+          {
+            "text": "Yarım saat 30 dakika, çeyrek saat 15 dakikadır.",
+            "lang": "tr-TR",
+            "cap": "✨ Matematik İpucu: Zaman Ölçü Birimleri v",
+            "emo": "✨"
+          },
+          {
+            "text": "1 yıl ise 365 gün 6 saat, yani 52 hafta veya 12 aydır!",
+            "lang": "tr-TR",
+            "cap": "🎯 Altın Kural",
+            "emo": "🎯"
+          }
+        ]
       },
       {
         "title": "Artık Yıl ve Süre Hesaplama",
         "badge": "2. Adım: Süre Hesapları",
         "slide": "assets/images/zaman_ve_veri_olcme.svg",
         "narration": "Yıldaki 6 saatlik fazlalıklar 4 yılda bir tam 24 saat, yani 1 gün eder! Bu bir gün Şubat ayına eklenir ve o yıl Şubat 29 çeker. İşte bu yıla Artık Yıl denir ve yıl 366 gün olur. Süre hesaplarken bitiş saatinden başlangıç saatini çıkarırız. Dakika yetmezse saatten 60 dakika ödünç alırız!",
-        "audio": "assets/audio/courses/mat-u4_s2.mp3"
+        "audio": "assets/audio/courses/mat-u4_s2.mp3",
+        "slideTitle": "Artık Yıl ve Süre Hesaplama",
+        "emo": "🔢",
+        "then": [
+          {
+            "text": "Yıldaki 6 saatlik fazlalıklar 4 yılda bir tam 24 saat, yani 1 gün eder!",
+            "lang": "tr-TR",
+            "cap": "🔢 Artık Yıl ve Süre Hesaplama",
+            "emo": "🔢"
+          },
+          {
+            "text": "İşte bu yıla Artık Yıl denir ve yıl 366 gün olur.",
+            "lang": "tr-TR",
+            "cap": "✨ Matematik İpucu: Artık Yıl ve Süre Hesa",
+            "emo": "✨"
+          },
+          {
+            "text": "Dakika yetmezse saatten 60 dakika ödünç alırız!",
+            "lang": "tr-TR",
+            "cap": "🎯 Altın Kural",
+            "emo": "🎯"
+          }
+        ]
       },
       {
         "title": "Çetele ve Sıklık Tablosu",
         "badge": "3. Adım: Veri Toplama",
         "slide": "assets/images/zaman_ve_veri_olcme.svg",
         "narration": "Bir sınıfta anket yapıp en sevilen meyveleri topladığımızda bunu önce çizgilerle gösteririz. Her 5 sayım için 4 dikey ve 1 yatay çizgi çizeriz; buna Çetele Tablosu denir. Çeteledeki çizgileri sayıp rakamlarla yazdığımızda ise Sıklık Tablosu elde etmiş oluruz.",
-        "audio": "assets/audio/courses/mat-u4_s3.mp3"
+        "audio": "assets/audio/courses/mat-u4_s3.mp3",
+        "slideTitle": "Çetele ve Sıklık Tablosu",
+        "emo": "🔢",
+        "then": [
+          {
+            "text": "Bir sınıfta anket yapıp en sevilen meyveleri topladığımızda bunu önce çizgilerle gösteririz.",
+            "lang": "tr-TR",
+            "cap": "🔢 Çetele ve Sıklık Tablosu",
+            "emo": "🔢"
+          },
+          {
+            "text": "Her 5 sayım için 4 dikey ve 1 yatay çizgi çizeriz; buna Çetele Tablosu denir.",
+            "lang": "tr-TR",
+            "cap": "✨ Matematik İpucu: Çetele ve Sıklık Tablo",
+            "emo": "✨"
+          }
+        ]
       },
       {
         "title": "Sütun Grafiği ve Grafik Yorumlama",
         "badge": "4. Adım: Sütun Grafiği",
         "slide": "assets/images/zaman_ve_veri_olcme.svg",
         "narration": "Topladığımız verileri sütunlar halinde çizdiğimizde Sütun Grafiği oluşur. Her grafiğin mutlaka bir başlığı olmalı ve eksenlerindeki birimler belirtilmelidir. Sütun grafiğinde en yüksek sütun en çok tercih edileni, en alçak sütun ise en az olanı anında görmemizi sağlar!",
-        "audio": "assets/audio/courses/mat-u4_s4.mp3"
+        "audio": "assets/audio/courses/mat-u4_s4.mp3",
+        "slideTitle": "Sütun Grafiği ve Grafik Yorumlama",
+        "emo": "🔢",
+        "then": [
+          {
+            "text": "Topladığımız verileri sütunlar halinde çizdiğimizde Sütun Grafiği oluşur.",
+            "lang": "tr-TR",
+            "cap": "🔢 Sütun Grafiği",
+            "emo": "🔢"
+          },
+          {
+            "text": "Her grafiğin mutlaka bir başlığı olmalı ve eksenlerindeki birimler belirtilmelidir.",
+            "lang": "tr-TR",
+            "cap": "✨ Matematik İpucu: Sütun Grafiği ve Grafi",
+            "emo": "✨"
+          }
+        ]
       }
     ],
     "questions": [
@@ -2896,28 +3808,116 @@ const COURSE_LESSONS = {
         "badge": "1. Adım: Açılar",
         "slide": "assets/images/geometri_ve_uzamsal.svg",
         "narration": "Merhaba genç mimar! Açılar geometrinin temelidir. Başlangıç noktası ortak iki ışının açıklığına Açı denir. Tam 90 derecelik açıya Dik Açı denir; kare ve odamızın köşeleri dik açıdır. 90 dereceden küçük açılara Dar Açı (0°-89°), 90 ile 180 derece arasındakilere Geniş Açı (91°-179°), tam 180 dereceye ise Doğru Açı deriz. Açıları iletki (açıölçer) ile ölçeriz.",
-        "audio": "assets/audio/courses/mat-u5_s1.mp3"
+        "audio": "assets/audio/courses/mat-u5_s1.mp3",
+        "slideTitle": "Açı Çeşitleri ve İletki ile Ölçüm",
+        "emo": "🔢",
+        "then": [
+          {
+            "text": "Merhaba genç mimar!",
+            "lang": "tr-TR",
+            "cap": "🔢 Açılar",
+            "emo": "🔢"
+          },
+          {
+            "text": "Tam 90 derecelik açıya Dik Açı denir; kare ve odamızın köşeleri dik açıdır.",
+            "lang": "tr-TR",
+            "cap": "✨ Matematik İpucu: Açı Çeşitleri ve İletk",
+            "emo": "✨"
+          },
+          {
+            "text": "Açıları iletki (açıölçer) ile ölçeriz.",
+            "lang": "tr-TR",
+            "cap": "🎯 Altın Kural",
+            "emo": "🎯"
+          }
+        ]
       },
       {
         "title": "Üçgen, Kare ve Dikdörtgenin Özellikleri",
         "badge": "2. Adım: Temel Şekiller",
         "slide": "assets/images/geometri_ve_uzamsal.svg",
         "narration": "Üçgenin 3 kenarı, 3 köşesi vardır ve iç açıları toplamı daima 180 derecedir! Kare 4 eşit kenardan ve 4 dik açıdan oluşur. Dikdörtgenin ise karşılıklı kenarları birbirine eşittir ve açıları 90 derecedir. Dörtgenlerin iç açıları toplamı 360 derecedir. Komşu olmayan köşeleri birleştiren çizgiye Köşegen denir. Üçgenin köşegeni yoktur!",
-        "audio": "assets/audio/courses/mat-u5_s2.mp3"
+        "audio": "assets/audio/courses/mat-u5_s2.mp3",
+        "slideTitle": "Üçgen, Kare ve Dikdörtgenin Özellikleri",
+        "emo": "🔢",
+        "then": [
+          {
+            "text": "Üçgenin 3 kenarı, 3 köşesi vardır ve iç açıları toplamı daima 180 derecedir!",
+            "lang": "tr-TR",
+            "cap": "🔢 Temel Şekiller",
+            "emo": "🔢"
+          },
+          {
+            "text": "Dörtgenlerin iç açıları toplamı 360 derecedir.",
+            "lang": "tr-TR",
+            "cap": "✨ Matematik İpucu: Üçgen, Kare ve Dikdört",
+            "emo": "✨"
+          },
+          {
+            "text": "Üçgenin köşegeni yoktur!",
+            "lang": "tr-TR",
+            "cap": "🎯 Altın Kural",
+            "emo": "🎯"
+          }
+        ]
       },
       {
         "title": "Geometrik Cisimler: Küp ve Prizmalar",
         "badge": "3. Adım: 3 Boyutlu Cisimler",
         "slide": "assets/images/geometri_ve_uzamsal.svg",
         "narration": "3 boyutlu cisimler hacim kaplar. Küpün 6 eş kare yüzü, 8 köşesi ve 12 ayrıtı vardır. Kare prizma, dikdörtgenler prizması da aynı köşe ve ayrıt sayısına sahiptir ama yüzleri farklı şekillerdedir. Silindir, koni ve kürenin ise eğri yüzeyleri vardır, köşeleri ve ayrıtları yoktur.",
-        "audio": "assets/audio/courses/mat-u5_s3.mp3"
+        "audio": "assets/audio/courses/mat-u5_s3.mp3",
+        "slideTitle": "Geometrik Cisimler: Küp ve Prizmalar",
+        "emo": "🔢",
+        "then": [
+          {
+            "text": "3 boyutlu cisimler hacim kaplar.",
+            "lang": "tr-TR",
+            "cap": "🔢 3 Boyutlu Cisimler",
+            "emo": "🔢"
+          },
+          {
+            "text": "Kare prizma, dikdörtgenler prizması da aynı köşe ve ayrıt sayısına sahiptir ama yüzleri farklı şekillerdedir.",
+            "lang": "tr-TR",
+            "cap": "✨ Matematik İpucu: Geometrik Cisimler: Kü",
+            "emo": "✨"
+          },
+          {
+            "text": "Silindir, koni ve kürenin ise eğri yüzeyleri vardır, köşeleri ve ayrıtları yoktur.",
+            "lang": "tr-TR",
+            "cap": "🎯 Altın Kural",
+            "emo": "🎯"
+          }
+        ]
       },
       {
         "title": "Simetri ve Simetri Doğrusu",
         "badge": "4. Adım: Simetri",
         "slide": "assets/images/geometri_ve_uzamsal.svg",
         "narration": "Bir şekli tam ortadan ikiye katladığımızda iki parça birbiriyle birebir çakışıyorsa o şekil simetriktir! Katlama çizgisine Simetri Doğrusu denir. Aynadaki görüntümüz ayna simetrisidir. Kelebeğin kanatları doğadaki en muhteşem simetri örneğidir.",
-        "audio": "assets/audio/courses/mat-u5_s4.mp3"
+        "audio": "assets/audio/courses/mat-u5_s4.mp3",
+        "slideTitle": "Simetri ve Simetri Doğrusu",
+        "emo": "🔢",
+        "then": [
+          {
+            "text": "Bir şekli tam ortadan ikiye katladığımızda iki parça birbiriyle birebir çakışıyorsa o şekil simetriktir!",
+            "lang": "tr-TR",
+            "cap": "🔢 Simetri ve Simetri Doğrusu",
+            "emo": "🔢"
+          },
+          {
+            "text": "Aynadaki görüntümüz ayna simetrisidir.",
+            "lang": "tr-TR",
+            "cap": "✨ Matematik İpucu: Simetri ve Simetri Doğ",
+            "emo": "✨"
+          },
+          {
+            "text": "Kelebeğin kanatları doğadaki en muhteşem simetri örneğidir.",
+            "lang": "tr-TR",
+            "cap": "🎯 Altın Kural",
+            "emo": "🎯"
+          }
+        ]
       }
     ],
     "questions": [
@@ -3157,28 +4157,110 @@ const COURSE_LESSONS = {
         "badge": "1. Adım: Uzunluk",
         "slide": "assets/images/uzunluk_cevre_alan.svg",
         "narration": "Merhaba genç araştırmacı! Dünyayı metreyle ölçüyoruz! Standart uzunluk ölçü birimi metredir (m). Şehirler arası yolları kilometreyle (km) ölçeriz: 1 km tam 1000 metredir! Boyumuzu, defterimizi santimetreyle (cm) ölçeriz: 1 m = 100 cm. Silgimizi veya böcekleri ise milimetreyle (mm) ölçeriz: 1 cm = 10 mm.",
-        "audio": "assets/audio/courses/mat-u6_s1.mp3"
+        "audio": "assets/audio/courses/mat-u6_s1.mp3",
+        "slideTitle": "Uzunluk Ölçü Birimleri ve Dönüşümler",
+        "emo": "🔢",
+        "then": [
+          {
+            "text": "Merhaba genç araştırmacı!",
+            "lang": "tr-TR",
+            "cap": "🔢 Uzunluk",
+            "emo": "🔢"
+          },
+          {
+            "text": "Şehirler arası yolları kilometreyle (km) ölçeriz: 1 km tam 1000 metredir!",
+            "lang": "tr-TR",
+            "cap": "✨ Matematik İpucu: Uzunluk Ölçü Birimleri",
+            "emo": "✨"
+          },
+          {
+            "text": "Silgimizi veya böcekleri ise milimetreyle (mm) ölçeriz: 1 cm = 10 mm.",
+            "lang": "tr-TR",
+            "cap": "🎯 Altın Kural",
+            "emo": "🎯"
+          }
+        ]
       },
       {
         "title": "Geometrik Şekillerin Çevresini Hesaplama",
         "badge": "2. Adım: Çevre",
         "slide": "assets/images/uzunluk_cevre_alan.svg",
         "narration": "Çevre, bir geometrik şeklin etrafını saran tüm dış kenar uzunluklarının toplamıdır! Karenin çevresi bir kenarının 4 ile çarpımıdır (Ç = 4 × a). Dikdörtgenin çevresi ise: 2 × (Kısa kenar + Uzun kenar) formülüyle bulunur. Kenarları toplarken birimlerin aynı (cm, m) olmasına dikkat etmeliyiz.",
-        "audio": "assets/audio/courses/mat-u6_s2.mp3"
+        "audio": "assets/audio/courses/mat-u6_s2.mp3",
+        "slideTitle": "Geometrik Şekillerin Çevresini Hesaplama",
+        "emo": "🔢",
+        "then": [
+          {
+            "text": "Çevre, bir geometrik şeklin etrafını saran tüm dış kenar uzunluklarının toplamıdır!",
+            "lang": "tr-TR",
+            "cap": "🔢 Çevre",
+            "emo": "🔢"
+          },
+          {
+            "text": "Dikdörtgenin çevresi ise: 2 × (Kısa kenar + Uzun kenar) formülüyle bulunur.",
+            "lang": "tr-TR",
+            "cap": "✨ Matematik İpucu: Geometrik Şekillerin Ç",
+            "emo": "✨"
+          },
+          {
+            "text": "Kenarları toplarken birimlerin aynı (cm, m) olmasına dikkat etmeliyiz.",
+            "lang": "tr-TR",
+            "cap": "🎯 Altın Kural",
+            "emo": "🎯"
+          }
+        ]
       },
       {
         "title": "Alan Ölçme ve Birim Kare",
         "badge": "3. Adım: Alan",
         "slide": "assets/images/uzunluk_cevre_alan.svg",
         "narration": "Çevre etraftaki sınırdır, Alan ise o sınırın İÇİNDE kaplanan yüzeydir! Alanı ölçmek için standart birim kareleri kullanırız. Dikdörtgenin alanı Kısa Kenar ile Uzun Kenarın çarpımıdır. Karenin alanı ise bir kenarının kendisiyle çarpımıdır (a × a). Halı kaplarken veya oda boyarken alan ölçüsünden faydalanırız.",
-        "audio": "assets/audio/courses/mat-u6_s3.mp3"
+        "audio": "assets/audio/courses/mat-u6_s3.mp3",
+        "slideTitle": "Alan Ölçme ve Birim Kare",
+        "emo": "🔢",
+        "then": [
+          {
+            "text": "Çevre etraftaki sınırdır, Alan ise o sınırın İÇİNDE kaplanan yüzeydir!",
+            "lang": "tr-TR",
+            "cap": "🔢 Alan Ölçme ve Birim Kare",
+            "emo": "🔢"
+          },
+          {
+            "text": "Dikdörtgenin alanı Kısa Kenar ile Uzun Kenarın çarpımıdır.",
+            "lang": "tr-TR",
+            "cap": "✨ Matematik İpucu: Alan Ölçme ve Birim Ka",
+            "emo": "✨"
+          },
+          {
+            "text": "Halı kaplarken veya oda boyarken alan ölçüsünden faydalanırız.",
+            "lang": "tr-TR",
+            "cap": "🎯 Altın Kural",
+            "emo": "🎯"
+          }
+        ]
       },
       {
         "title": "Çevre ve Alan Problemleri",
         "badge": "4. Adım: Problem Çözme",
         "slide": "assets/images/uzunluk_cevre_alan.svg",
         "narration": "Bir bahçenin etrafına 3 sıra tel çekilecekse ÇEVRE hesaplanır ve 3 ile çarpılır. Bahçenin içine çim ekilecekse ALAN hesaplanır! İki kavramı birbirinden ayırt etmek seni gerçek bir problem çözücüsü yapar.",
-        "audio": "assets/audio/courses/mat-u6_s4.mp3"
+        "audio": "assets/audio/courses/mat-u6_s4.mp3",
+        "slideTitle": "Çevre ve Alan Problemleri",
+        "emo": "🔢",
+        "then": [
+          {
+            "text": "Bir bahçenin etrafına 3 sıra tel çekilecekse ÇEVRE hesaplanır ve 3 ile çarpılır.",
+            "lang": "tr-TR",
+            "cap": "🔢 Çevre ve Alan Problemleri",
+            "emo": "🔢"
+          },
+          {
+            "text": "Bahçenin içine çim ekilecekse ALAN hesaplanır!",
+            "lang": "tr-TR",
+            "cap": "✨ Matematik İpucu: Çevre ve Alan Probleml",
+            "emo": "✨"
+          }
+        ]
       }
     ],
     "questions": [
@@ -3418,28 +4500,110 @@ const COURSE_LESSONS = {
         "badge": "1. Adım: Kütle Birimleri",
         "slide": "assets/images/tartma_ve_sivi_olcme.svg",
         "narration": "Merhaba kâşif! Maddelerin kütlesini tartarak ölçeriz. Temel kütle birimi kilogramdır (kg). Pazardaki meyveleri, vücut ağırlığımızı kilogramla ölçeriz. Daha hafif şeyleri gramla (g) ölçeriz: 1 kg tam 1000 gramdır! Altın, baharat veya ilaçları ise miligramla (mg) tartarız: 1 g = 1000 mg. Kamyon, kömür gibi devasa yükleri ise tonla (t) ölçeriz: 1 t = 1000 kg.",
-        "audio": "assets/audio/courses/mat-u7_s1.mp3"
+        "audio": "assets/audio/courses/mat-u7_s1.mp3",
+        "slideTitle": "Kütle Ölçü Birimleri (Tartma)",
+        "emo": "🔢",
+        "then": [
+          {
+            "text": "Maddelerin kütlesini tartarak ölçeriz.",
+            "lang": "tr-TR",
+            "cap": "🔢 Kütle Ölçü Birimleri (Tartma)",
+            "emo": "🔢"
+          },
+          {
+            "text": "Daha hafif şeyleri gramla (g) ölçeriz: 1 kg tam 1000 gramdır!",
+            "lang": "tr-TR",
+            "cap": "✨ Matematik İpucu: Kütle Ölçü Birimleri (",
+            "emo": "✨"
+          },
+          {
+            "text": "Kamyon, kömür gibi devasa yükleri ise tonla (t) ölçeriz: 1 t = 1000 kg.",
+            "lang": "tr-TR",
+            "cap": "🎯 Altın Kural",
+            "emo": "🎯"
+          }
+        ]
       },
       {
         "title": "Brüt Kütle, Dara ve Net Kütle",
         "badge": "2. Adım: Dara & Net Kütle",
         "slide": "assets/images/tartma_ve_sivi_olcme.svg",
         "narration": "Salçayı veya balı kavanozuyla tarttığımızda çıkan toplama Brüt Kütle denir. Boş kavanozun ağırlığına Dara denir! İçindeki gerçek salçanın veya balın kütlesine ise Net Kütle deriz. Formülümüz çok açık: Net Kütle = Brüt Kütle - Dara. Alışveriş yaparken sadece net kütleye para ödemeliyiz!",
-        "audio": "assets/audio/courses/mat-u7_s2.mp3"
+        "audio": "assets/audio/courses/mat-u7_s2.mp3",
+        "slideTitle": "Brüt Kütle, Dara ve Net Kütle",
+        "emo": "🔢",
+        "then": [
+          {
+            "text": "Salçayı veya balı kavanozuyla tarttığımızda çıkan toplama Brüt Kütle denir.",
+            "lang": "tr-TR",
+            "cap": "🔢 Brüt Kütle, Dara ve Net Kütle",
+            "emo": "🔢"
+          },
+          {
+            "text": "İçindeki gerçek salçanın veya balın kütlesine ise Net Kütle deriz.",
+            "lang": "tr-TR",
+            "cap": "✨ Matematik İpucu: Brüt Kütle, Dara ve Ne",
+            "emo": "✨"
+          },
+          {
+            "text": "Alışveriş yaparken sadece net kütleye para ödemeliyiz!",
+            "lang": "tr-TR",
+            "cap": "🎯 Altın Kural",
+            "emo": "🎯"
+          }
+        ]
       },
       {
         "title": "Sıvı Ölçme Birimleri: Litre ve Mililitre",
         "badge": "3. Adım: Sıvı Ölçümü",
         "slide": "assets/images/tartma_ve_sivi_olcme.svg",
         "narration": "Su, süt, benzin gibi akışkan maddeleri Litre (L) ile ölçeriz. 1 Litre tam 1000 mililitredir (mL). Yarım litre 500 mL, çeyrek litre ise 250 mL'dir. Bir meyve suyu kutusu genellikle 200 mL, şurup kaşığı ise 5 mL'dir. Sıvıları dereceli silindir kaplarla hassasça ölçeriz.",
-        "audio": "assets/audio/courses/mat-u7_s3.mp3"
+        "audio": "assets/audio/courses/mat-u7_s3.mp3",
+        "slideTitle": "Sıvı Ölçme Birimleri: Litre ve Mililitre",
+        "emo": "🔢",
+        "then": [
+          {
+            "text": "Su, süt, benzin gibi akışkan maddeleri Litre (L) ile ölçeriz.",
+            "lang": "tr-TR",
+            "cap": "🔢 Sıvı Ölçümü",
+            "emo": "🔢"
+          },
+          {
+            "text": "Yarım litre 500 mL, çeyrek litre ise 250 mL'dir.",
+            "lang": "tr-TR",
+            "cap": "✨ Matematik İpucu: Sıvı Ölçme Birimleri: ",
+            "emo": "✨"
+          },
+          {
+            "text": "Sıvıları dereceli silindir kaplarla hassasça ölçeriz.",
+            "lang": "tr-TR",
+            "cap": "🎯 Altın Kural",
+            "emo": "🎯"
+          }
+        ]
       },
       {
         "title": "Günlük Hayat Problemleri ve Tasarruf",
         "badge": "4. Adım: Su & İsraf",
         "slide": "assets/images/tartma_ve_sivi_olcme.svg",
         "narration": "Günde 2 litre su içmek sağlığımız için harikadır. Damlayan bir musluk günde onlarca litre suyu boşa akıtır! Sıvı ve kütle ölçümlerinde problem çözerken tüm birimleri aynı cinse çevirmeliyiz; litreleri mililitreye, kilogramları grama dönüştürerek kolayca sonuca ulaşırız.",
-        "audio": "assets/audio/courses/mat-u7_s4.mp3"
+        "audio": "assets/audio/courses/mat-u7_s4.mp3",
+        "slideTitle": "Günlük Hayat Problemleri ve Tasarruf",
+        "emo": "🔢",
+        "then": [
+          {
+            "text": "Günde 2 litre su içmek sağlığımız için harikadır.",
+            "lang": "tr-TR",
+            "cap": "🔢 Su & İsraf",
+            "emo": "🔢"
+          },
+          {
+            "text": "Damlayan bir musluk günde onlarca litre suyu boşa akıtır!",
+            "lang": "tr-TR",
+            "cap": "✨ Matematik İpucu: Günlük Hayat Problemle",
+            "emo": "✨"
+          }
+        ]
       }
     ],
     "questions": [
@@ -3679,28 +4843,116 @@ const COURSE_LESSONS = {
         "badge": "1. Adım: Merak",
         "slide": "assets/images/bilime_yolculuk.svg",
         "narration": "Merhaba sevgili genç kâşif! Bilime yolculuğumuz başlıyor. Bilim, çevremizde olup bitenleri anlama, soru sorma ve keşfetme merakıyla doğar. Neden elma yere düşer? Gökyüzü neden mavidir? İşte tüm bu sorular bilimin kıvılcımıdır. Merak eden, araştıran ve sorgulayan her çocuk geleceğin bir bilim insanıdır!",
-        "audio": "assets/audio/courses/fen-u1_s1.mp3"
+        "audio": "assets/audio/courses/fen-u1_s1.mp3",
+        "slideTitle": "Bilim Nedir? Merak ve Sorgulama",
+        "emo": "🧪",
+        "then": [
+          {
+            "text": "Merhaba sevgili genç kâşif!",
+            "lang": "tr-TR",
+            "cap": "🧪 Bilim Nedir? Merak ve Sorgulama",
+            "emo": "🧪"
+          },
+          {
+            "text": "Neden elma yere düşer?",
+            "lang": "tr-TR",
+            "cap": "✨ Bilimsel İlke: Bilim Nedir? Merak ve ",
+            "emo": "✨"
+          },
+          {
+            "text": "Merak eden, araştıran ve sorgulayan her çocuk geleceğin bir bilim insanıdır!",
+            "lang": "tr-TR",
+            "cap": "🎯 Altın Kural",
+            "emo": "🎯"
+          }
+        ]
       },
       {
         "title": "Gözlem, Deney ve Bilimsel Kanıt",
         "badge": "2. Adım: Deney",
         "slide": "assets/images/bilime_yolculuk.svg",
         "narration": "Bilim tahminlerle değil, sağlam kanıtlarla ilerler! Bilim insanları önce dikkatle gözlem yapar, ardından hipotez kurar ve bunu deneylerle test eder. Deneyler tekrarlandığında aynı sonucu veriyorsa bilgi güvenilirdir. Bilimsel bilgi objektiftir, yani kişiden kişiye değişmez, tarafsızdır.",
-        "audio": "assets/audio/courses/fen-u1_s2.mp3"
+        "audio": "assets/audio/courses/fen-u1_s2.mp3",
+        "slideTitle": "Gözlem, Deney ve Bilimsel Kanıt",
+        "emo": "🧪",
+        "then": [
+          {
+            "text": "Bilim tahminlerle değil, sağlam kanıtlarla ilerler!",
+            "lang": "tr-TR",
+            "cap": "🧪 Gözlem, Deney ve Bilimsel Kanıt",
+            "emo": "🧪"
+          },
+          {
+            "text": "Deneyler tekrarlandığında aynı sonucu veriyorsa bilgi güvenilirdir.",
+            "lang": "tr-TR",
+            "cap": "✨ Bilimsel İlke: Gözlem, Deney ve Bilim",
+            "emo": "✨"
+          },
+          {
+            "text": "Bilimsel bilgi objektiftir, yani kişiden kişiye değişmez, tarafsızdır.",
+            "lang": "tr-TR",
+            "cap": "🎯 Altın Kural",
+            "emo": "🎯"
+          }
+        ]
       },
       {
         "title": "Bilim İnsanlarının Özellikleri",
         "badge": "3. Adım: Bilim İnsanı",
         "slide": "assets/images/bilime_yolculuk.svg",
         "narration": "Bilim insanları sabırlı, azimli, dürüst ve tarafsızdır. Hatalarından asla korkmazlar! Thomas Edison ampulü bulana kadar binlerce kez başarısız deneme yaptı ama pes etmedi. Nobel ödüllü gururumuz Aziz Sancar, başarının sırrını çok çalışmak ve sabır olarak açıklar. Sen de bilim insanı gibi düşünebilirsin!",
-        "audio": "assets/audio/courses/fen-u1_s3.mp3"
+        "audio": "assets/audio/courses/fen-u1_s3.mp3",
+        "slideTitle": "Bilim İnsanlarının Özellikleri",
+        "emo": "🧪",
+        "then": [
+          {
+            "text": "Bilim insanları sabırlı, azimli, dürüst ve tarafsızdır.",
+            "lang": "tr-TR",
+            "cap": "🧪 Bilim İnsanlarının Özellikleri",
+            "emo": "🧪"
+          },
+          {
+            "text": "Thomas Edison ampulü bulana kadar binlerce kez başarısız deneme yaptı ama pes etmedi.",
+            "lang": "tr-TR",
+            "cap": "✨ Bilimsel İlke: Bilim İnsanlarının Öze",
+            "emo": "✨"
+          },
+          {
+            "text": "Sen de bilim insanı gibi düşünebilirsin!",
+            "lang": "tr-TR",
+            "cap": "🎯 Altın Kural",
+            "emo": "🎯"
+          }
+        ]
       },
       {
         "title": "Bilgi Kaynaklarının Güvenilirliği",
         "badge": "4. Adım: Doğru Bilgi",
         "slide": "assets/images/bilime_yolculuk.svg",
         "narration": "İnternette her gördüğümüz bilgiye hemen inanmamalıyız! Araştırma yaparken gov ve edu uzantılı resmi veya akademik kaynakları tercih etmeliyiz. Bilgiyi en az 2-3 farklı güvenilir kaynaktan doğrulamalıyız. Bilim dürüstlüktür, bu yüzden ödevlerimizde kullandığımız kaynakları mutlaka belirtmeliyiz.",
-        "audio": "assets/audio/courses/fen-u1_s4.mp3"
+        "audio": "assets/audio/courses/fen-u1_s4.mp3",
+        "slideTitle": "Bilgi Kaynaklarının Güvenilirliği",
+        "emo": "🧪",
+        "then": [
+          {
+            "text": "İnternette her gördüğümüz bilgiye hemen inanmamalıyız!",
+            "lang": "tr-TR",
+            "cap": "🧪 Doğru Bilgi",
+            "emo": "🧪"
+          },
+          {
+            "text": "Bilgiyi en az 2-3 farklı güvenilir kaynaktan doğrulamalıyız.",
+            "lang": "tr-TR",
+            "cap": "✨ Bilimsel İlke: Bilgi Kaynaklarının Gü",
+            "emo": "✨"
+          },
+          {
+            "text": "Bilim dürüstlüktür, bu yüzden ödevlerimizde kullandığımız kaynakları mutlaka belirtmeliyiz.",
+            "lang": "tr-TR",
+            "cap": "🎯 Altın Kural",
+            "emo": "🎯"
+          }
+        ]
       }
     ],
     "questions": [
@@ -3940,28 +5192,110 @@ const COURSE_LESSONS = {
         "badge": "1. Adım: Enerji Kaynakları",
         "slide": "assets/images/saglikli_besleniyorum.svg",
         "narration": "Merhaba kâşif! Koşmak, oynamak ve düşünmek için enerjiye ihtiyacımız var! Vücudumuzun birinci öncelikli enerji kaynağı Karbonhidratlardır: Ekmek, makarna, pilav, patates gibi. Yağlar ise yedek enerji depomuzdur ve organlarımızı soğuktan korur: Zeytinyağı, ceviz, fındık gibi. Ancak aşırı yağ ve şeker tüketimi obeziteye yol açabilir!",
-        "audio": "assets/audio/courses/fen-u2_s1.mp3"
+        "audio": "assets/audio/courses/fen-u2_s1.mp3",
+        "slideTitle": "Besin İçerikleri: Karbonhidratlar ve Yağlar",
+        "emo": "🧪",
+        "then": [
+          {
+            "text": "Koşmak, oynamak ve düşünmek için enerjiye ihtiyacımız var!",
+            "lang": "tr-TR",
+            "cap": "🧪 Enerji Kaynakları",
+            "emo": "🧪"
+          },
+          {
+            "text": "Yağlar ise yedek enerji depomuzdur ve organlarımızı soğuktan korur: Zeytinyağı, ceviz, fındık gibi.",
+            "lang": "tr-TR",
+            "cap": "✨ Bilimsel İlke: Besin İçerikleri: Karb",
+            "emo": "✨"
+          },
+          {
+            "text": "Ancak aşırı yağ ve şeker tüketimi obeziteye yol açabilir!",
+            "lang": "tr-TR",
+            "cap": "🎯 Altın Kural",
+            "emo": "🎯"
+          }
+        ]
       },
       {
         "title": "Proteinler: Yapıcı ve Onarıcı Kahramanlar",
         "badge": "2. Adım: Proteinler",
         "slide": "assets/images/saglikli_besleniyorum.svg",
         "narration": "Düştüğünde dizindeki yaranın nasıl iyileştiğini merak ettin mi? İşte bunu Proteinler yapar! Proteinler vücudumuzun yapıcı ve onarıcı besinleridir. Büyümemizi, kaslarımızın güçlenmesini ve yaralarımızın onarılmasını sağlarlar. Et, süt, yumurta, balık, tavuk ve mercimek zengin protein kaynaklarıdır.",
-        "audio": "assets/audio/courses/fen-u2_s2.mp3"
+        "audio": "assets/audio/courses/fen-u2_s2.mp3",
+        "slideTitle": "Proteinler: Yapıcı ve Onarıcı Kahramanlar",
+        "emo": "🧪",
+        "then": [
+          {
+            "text": "Düştüğünde dizindeki yaranın nasıl iyileştiğini merak ettin mi?",
+            "lang": "tr-TR",
+            "cap": "🧪 Proteinler",
+            "emo": "🧪"
+          },
+          {
+            "text": "Proteinler vücudumuzun yapıcı ve onarıcı besinleridir.",
+            "lang": "tr-TR",
+            "cap": "✨ Bilimsel İlke: Proteinler: Yapıcı ve ",
+            "emo": "✨"
+          },
+          {
+            "text": "Et, süt, yumurta, balık, tavuk ve mercimek zengin protein kaynaklarıdır.",
+            "lang": "tr-TR",
+            "cap": "🎯 Altın Kural",
+            "emo": "🎯"
+          }
+        ]
       },
       {
         "title": "Vitaminler, Su ve Mineraller: Düzenleyiciler",
         "badge": "3. Adım: Düzenleyiciler",
         "slide": "assets/images/saglikli_besleniyorum.svg",
         "narration": "Vitaminler, su ve mineraller vücudumuzun koruyucu kalkanı ve Düzenleyicileridir! Meyve ve sebzeler vitamin deposudur; bizi grip ve hastalıklardan korur. Mineraller kemik ve dişlerimizi çelik gibi güçlendirir. Su ise hayatın ta kendisidir! Günde en az 1.5 - 2 litre su içerek vücut ısımızı dengeler ve atıkları temizleriz.",
-        "audio": "assets/audio/courses/fen-u2_s3.mp3"
+        "audio": "assets/audio/courses/fen-u2_s3.mp3",
+        "slideTitle": "Vitaminler, Su ve Mineraller: Düzenleyiciler",
+        "emo": "🧪",
+        "then": [
+          {
+            "text": "Vitaminler, su ve mineraller vücudumuzun koruyucu kalkanı ve Düzenleyicileridir!",
+            "lang": "tr-TR",
+            "cap": "🧪 Düzenleyiciler",
+            "emo": "🧪"
+          },
+          {
+            "text": "Mineraller kemik ve dişlerimizi çelik gibi güçlendirir.",
+            "lang": "tr-TR",
+            "cap": "✨ Bilimsel İlke: Vitaminler, Su ve Mine",
+            "emo": "✨"
+          },
+          {
+            "text": "Günde en az 1.5 - 2 litre su içerek vücut ısımızı dengeler ve atıkları temizleriz.",
+            "lang": "tr-TR",
+            "cap": "🎯 Altın Kural",
+            "emo": "🎯"
+          }
+        ]
       },
       {
         "title": "Bilinçli Tüketici ve Sağlıklı Yaşam",
         "badge": "4. Adım: Bilinçli Yaşam",
         "slide": "assets/images/saglikli_besleniyorum.svg",
         "narration": "Marketten paketli gıda alırken mutlaka Son Tüketim Tarihine (SKT) ve TSE damgasına bakmalıyız. Paketi yırtık veya şişmiş ürünleri asla almamalıyız. Mevsiminde taze sebze ve meyve yemeli, zararlı alışkanlıklardan uzak durmalı ve tabağımıza yiyebileceğimiz kadar yemek alarak israfı önlemeliyiz!",
-        "audio": "assets/audio/courses/fen-u2_s4.mp3"
+        "audio": "assets/audio/courses/fen-u2_s4.mp3",
+        "slideTitle": "Bilinçli Tüketici ve Sağlıklı Yaşam",
+        "emo": "🧪",
+        "then": [
+          {
+            "text": "Marketten paketli gıda alırken mutlaka Son Tüketim Tarihine (SKT) ve TSE damgasına bakmalıyız.",
+            "lang": "tr-TR",
+            "cap": "🧪 Bilinçli Yaşam",
+            "emo": "🧪"
+          },
+          {
+            "text": "Paketi yırtık veya şişmiş ürünleri asla almamalıyız.",
+            "lang": "tr-TR",
+            "cap": "✨ Bilimsel İlke: Bilinçli Tüketici ve S",
+            "emo": "✨"
+          }
+        ]
       }
     ],
     "questions": [
@@ -4201,28 +5535,116 @@ const COURSE_LESSONS = {
         "badge": "1. Adım: Dünya Katmanları",
         "slide": "assets/images/dunyamizi_kesfedelim.svg",
         "narration": "Merhaba uzay kâşifim! Üzerinde yaşadığımız mavi gezegenimiz Dünya, kutuplardan hafif basık, ekvatordan şişkindir; bu özel küre şekline Geoit denir. Dünya'mız bir soğan gibi katmanlardan oluşur! Dışta Hava Küre (Atmosfer), Su Küre ve Taş Küre (Yer Kabuğu) yer alır. İçte ise kızgın erimiş lavlardan oluşan Manto (Ateş Küre) ve en merkezde en sıcak katman olan Çekirdek (Ağır Küre) bulunur.",
-        "audio": "assets/audio/courses/fen-u3_s1.mp3"
+        "audio": "assets/audio/courses/fen-u3_s1.mp3",
+        "slideTitle": "Dünya'mızın Şekli ve Katmanları",
+        "emo": "🧪",
+        "then": [
+          {
+            "text": "Merhaba uzay kâşifim!",
+            "lang": "tr-TR",
+            "cap": "🧪 Dünya'mızın Şekli ve Katmanları",
+            "emo": "🧪"
+          },
+          {
+            "text": "Dünya'mız bir soğan gibi katmanlardan oluşur!",
+            "lang": "tr-TR",
+            "cap": "✨ Bilimsel İlke: Dünya'mızın Şekli ve K",
+            "emo": "✨"
+          },
+          {
+            "text": "İçte ise kızgın erimiş lavlardan oluşan Manto (Ateş Küre) ve en merkezde en sıcak katman olan Çekirdek (Ağır Küre) bulunur.",
+            "lang": "tr-TR",
+            "cap": "🎯 Altın Kural",
+            "emo": "🎯"
+          }
+        ]
       },
       {
         "title": "Dünya'nın Dönme Hareketi: Gece ve Gündüz",
         "badge": "2. Adım: Dönme Hareketi",
         "slide": "assets/images/dunyamizi_kesfedelim.svg",
         "narration": "Dünya'mız hiç durmadan iki farklı hareket yapar! Birincisi: Kendi ekseni etrafında Dönme hareketidir. Batıdan doğuya doğru döner ve bir tam turunu tam 24 saatte, yani 1 günde tamamlar! Bu hareket sonucunda GECE ve GÜNDÜZ oluşur. Güneşe bakan taraf gündüzü, arkada kalan taraf geceyi yaşar. Ayrıca gün içinde gölge boylarımız değişir.",
-        "audio": "assets/audio/courses/fen-u3_s2.mp3"
+        "audio": "assets/audio/courses/fen-u3_s2.mp3",
+        "slideTitle": "Dünya'nın Dönme Hareketi: Gece ve Gündüz",
+        "emo": "🧪",
+        "then": [
+          {
+            "text": "Dünya'mız hiç durmadan iki farklı hareket yapar!",
+            "lang": "tr-TR",
+            "cap": "🧪 Dönme Hareketi",
+            "emo": "🧪"
+          },
+          {
+            "text": "Bu hareket sonucunda GECE ve GÜNDÜZ oluşur.",
+            "lang": "tr-TR",
+            "cap": "✨ Bilimsel İlke: Dünya'nın Dönme Hareke",
+            "emo": "✨"
+          },
+          {
+            "text": "Ayrıca gün içinde gölge boylarımız değişir.",
+            "lang": "tr-TR",
+            "cap": "🎯 Altın Kural",
+            "emo": "🎯"
+          }
+        ]
       },
       {
         "title": "Dünya'nın Dolanma Hareketi: Mevsimler",
         "badge": "3. Adım: Dolanma Hareketi",
         "slide": "assets/images/dunyamizi_kesfedelim.svg",
         "narration": "İkinci hareket: Dünya'nın Güneş etrafında Dolanma hareketidir! Dünya, Güneş etrafındaki elips şeklindeki yörüngesinde dolanır ve bu turunu 365 gün 6 saatte, yani 1 YILDA tamamlar! Eksen eğikliği ve dolanma hareketi sayesinde dört güzel mevsim oluşur: İlkbahar, Yaz, Sonbahar ve Kış! Yıl içinde sıcaklık farkları meydana gelir.",
-        "audio": "assets/audio/courses/fen-u3_s3.mp3"
+        "audio": "assets/audio/courses/fen-u3_s3.mp3",
+        "slideTitle": "Dünya'nın Dolanma Hareketi: Mevsimler",
+        "emo": "🧪",
+        "then": [
+          {
+            "text": "İkinci hareket: Dünya'nın Güneş etrafında Dolanma hareketidir!",
+            "lang": "tr-TR",
+            "cap": "🧪 Dolanma Hareketi",
+            "emo": "🧪"
+          },
+          {
+            "text": "Eksen eğikliği ve dolanma hareketi sayesinde dört güzel mevsim oluşur: İlkbahar, Yaz, Sonbahar ve Kış!",
+            "lang": "tr-TR",
+            "cap": "✨ Bilimsel İlke: Dünya'nın Dolanma Hare",
+            "emo": "✨"
+          },
+          {
+            "text": "Yıl içinde sıcaklık farkları meydana gelir.",
+            "lang": "tr-TR",
+            "cap": "🎯 Altın Kural",
+            "emo": "🎯"
+          }
+        ]
       },
       {
         "title": "Kayaçlar, Mineraller ve Fosiller",
         "badge": "4. Adım: Kayaçlar & Fosil",
         "slide": "assets/images/dunyamizi_kesfedelim.svg",
         "narration": "Üzerinde yürüdüğümüz yer kabuğu kayaçlardan oluşur. Kayaçların rengini ve sertliğini içlerindeki Mineraller belirler. Milyonlarca yıl önce yaşamış bitki ve hayvanların taşlaşmış kalıntılarına ise Fosil denir! Fosiller geçmişteki yaşam ve Dünya tarihi hakkında bize paha biçilmez ipuçları verir.",
-        "audio": "assets/audio/courses/fen-u3_s4.mp3"
+        "audio": "assets/audio/courses/fen-u3_s4.mp3",
+        "slideTitle": "Kayaçlar, Mineraller ve Fosiller",
+        "emo": "🧪",
+        "then": [
+          {
+            "text": "Üzerinde yürüdüğümüz yer kabuğu kayaçlardan oluşur.",
+            "lang": "tr-TR",
+            "cap": "🧪 Kayaçlar & Fosil",
+            "emo": "🧪"
+          },
+          {
+            "text": "Milyonlarca yıl önce yaşamış bitki ve hayvanların taşlaşmış kalıntılarına ise Fosil denir!",
+            "lang": "tr-TR",
+            "cap": "✨ Bilimsel İlke: Kayaçlar, Mineraller v",
+            "emo": "✨"
+          },
+          {
+            "text": "Fosiller geçmişteki yaşam ve Dünya tarihi hakkında bize paha biçilmez ipuçları verir.",
+            "lang": "tr-TR",
+            "cap": "🎯 Altın Kural",
+            "emo": "🎯"
+          }
+        ]
       }
     ],
     "questions": [
@@ -4462,28 +5884,110 @@ const COURSE_LESSONS = {
         "badge": "1. Adım: Maddenin Hâlleri",
         "slide": "assets/images/maddenin_degisimi.svg",
         "narration": "Merhaba genç kimyager! Çevremizdeki her şey maddedir. Maddeler doğada katı, sıvı ve gaz olmak üzere üç hâlde bulunur. Katıların belirli bir şekli ve hacmi vardır: Taş, tahta, buz gibi. Sıvıların hacmi bellidir ama şekli yoktur, konuldukları kabın şeklini alırlar: Su, süt gibi. Gazların ise ne belirli bir şekli ne de hacmi vardır, ortama hızla yayılırlar: Su buharı ve hava gibi.",
-        "audio": "assets/audio/courses/fen-u4_s1.mp3"
+        "audio": "assets/audio/courses/fen-u4_s1.mp3",
+        "slideTitle": "Maddenin Üç Hâli: Katı, Sıvı ve Gaz",
+        "emo": "🧪",
+        "then": [
+          {
+            "text": "Merhaba genç kimyager!",
+            "lang": "tr-TR",
+            "cap": "🧪 Maddenin Hâlleri",
+            "emo": "🧪"
+          },
+          {
+            "text": "Katıların belirli bir şekli ve hacmi vardır: Taş, tahta, buz gibi.",
+            "lang": "tr-TR",
+            "cap": "✨ Bilimsel İlke: Maddenin Üç Hâli: Katı",
+            "emo": "✨"
+          },
+          {
+            "text": "Gazların ise ne belirli bir şekli ne de hacmi vardır, ortama hızla yayılırlar: Su buharı ve hava gibi.",
+            "lang": "tr-TR",
+            "cap": "🎯 Altın Kural",
+            "emo": "🎯"
+          }
+        ]
       },
       {
         "title": "Hâl Değişimleri: Erime, Donma, Buharlaşma",
         "badge": "2. Adım: Hâl Değişimi",
         "slide": "assets/images/maddenin_degisimi.svg",
         "narration": "Maddeler ısı aldıklarında veya verdiklerinde bir hâlden diğerine geçerler! Katı bir maddenin ısı alarak sıvıya dönüşmesine Erime denir (Buzun suya dönüşmesi). Sıvı bir maddenin ısı vererek katıya dönüşmesine Donma denir (Suyun buza dönüşmesi). Sıvının ısı alarak gaz hâle geçmesine Buharlaşma, gazın ısı vererek sıvılaşmasına ise Yoğuşma denir!",
-        "audio": "assets/audio/courses/fen-u4_s2.mp3"
+        "audio": "assets/audio/courses/fen-u4_s2.mp3",
+        "slideTitle": "Hâl Değişimleri: Erime, Donma, Buharlaşma",
+        "emo": "🧪",
+        "then": [
+          {
+            "text": "Maddeler ısı aldıklarında veya verdiklerinde bir hâlden diğerine geçerler!",
+            "lang": "tr-TR",
+            "cap": "🧪 Hâl Değişimi",
+            "emo": "🧪"
+          },
+          {
+            "text": "Sıvı bir maddenin ısı vererek katıya dönüşmesine Donma denir (Suyun buza dönüşmesi).",
+            "lang": "tr-TR",
+            "cap": "✨ Bilimsel İlke: Hâl Değişimleri: Erime",
+            "emo": "✨"
+          },
+          {
+            "text": "Sıvının ısı alarak gaz hâle geçmesine Buharlaşma, gazın ısı vererek sıvılaşmasına ise Yoğuşma denir!",
+            "lang": "tr-TR",
+            "cap": "🎯 Altın Kural",
+            "emo": "🎯"
+          }
+        ]
       },
       {
         "title": "Isı ve Sıcaklık Arasındaki Fark",
         "badge": "3. Adım: Isı ve Sıcaklık",
         "slide": "assets/images/maddenin_degisimi.svg",
         "narration": "Bu iki kavramı asla karıştırma: Isı bir Enerji türüdür! Sıcak maddeden soğuk maddeye akar. Birimi Kalori veya Joule'dür. Sıcaklık ise bir enerji değildir; maddelerin tanecik hareketinin bir Ölçüsüdür ve Termometre ile ölçülür! Birimi Derece Selsiyus (°C)'tur. \"Havanın ısısı 25 derece\" demek yanlıştır; \"Havanın sıcaklığı 25 derece\" denmelidir!",
-        "audio": "assets/audio/courses/fen-u4_s3.mp3"
+        "audio": "assets/audio/courses/fen-u4_s3.mp3",
+        "slideTitle": "Isı ve Sıcaklık Arasındaki Fark",
+        "emo": "🧪",
+        "then": [
+          {
+            "text": "Bu iki kavramı asla karıştırma: Isı bir Enerji türüdür!",
+            "lang": "tr-TR",
+            "cap": "🧪 Isı ve Sıcaklık Arasındaki Fark",
+            "emo": "🧪"
+          },
+          {
+            "text": "Sıcaklık ise bir enerji değildir; maddelerin tanecik hareketinin bir Ölçüsüdür ve Termometre ile ölçülür!",
+            "lang": "tr-TR",
+            "cap": "✨ Bilimsel İlke: Isı ve Sıcaklık Arasın",
+            "emo": "✨"
+          },
+          {
+            "text": "\"Havanın ısısı 25 derece\" demek yanlıştır; \"Havanın sıcaklığı 25 derece\" denmelidir!",
+            "lang": "tr-TR",
+            "cap": "🎯 Altın Kural",
+            "emo": "🎯"
+          }
+        ]
       },
       {
         "title": "Saf Madde ve Karışımlar",
         "badge": "4. Adım: Saf Madde & Karışım",
         "slide": "assets/images/maddenin_degisimi.svg",
         "narration": "İçinde tek bir cins madde bulunduran maddelere Saf Madde denir: Saf su, demir, altın, tuz gibi. Birden fazla saf maddenin kendi özelliklerini kaybetmeden bir araya gelmesiyle oluşanlara ise Karışım denir: Salata, limonata, ayran, çorba gibi. Karışımları süzme, eleme ve mıknatısla kolayca birbirinden ayırabiliriz!",
-        "audio": "assets/audio/courses/fen-u4_s4.mp3"
+        "audio": "assets/audio/courses/fen-u4_s4.mp3",
+        "slideTitle": "Saf Madde ve Karışımlar",
+        "emo": "🧪",
+        "then": [
+          {
+            "text": "İçinde tek bir cins madde bulunduran maddelere Saf Madde denir: Saf su, demir, altın, tuz gibi.",
+            "lang": "tr-TR",
+            "cap": "🧪 Saf Madde ve Karışımlar",
+            "emo": "🧪"
+          },
+          {
+            "text": "Birden fazla saf maddenin kendi özelliklerini kaybetmeden bir araya gelmesiyle oluşanlara ise Karışım denir: Salata, limonata, ayran, çorba gibi.",
+            "lang": "tr-TR",
+            "cap": "✨ Bilimsel İlke: Saf Madde ve Karışımla",
+            "emo": "✨"
+          }
+        ]
       }
     ],
     "questions": [
@@ -4723,28 +6227,116 @@ const COURSE_LESSONS = {
         "badge": "1. Adım: Mıknatıs Kutupları",
         "slide": "assets/images/miknatis_alan.svg",
         "narration": "Merhaba genç fizikçi! Mıknatısların sihirli çekim gücüne hoş geldin. Mıknatıs, temas gerektirmeyen manyetik bir kuvvet uygular. Her mıknatısın iki kutbu vardır: Kuzey kutbu (N - North) ve Güney kutbu (S - South). Mıknatısı kaç parçaya bölersen böl, oluşan her yeni parçanın yine bir N ve bir S kutbu olur! Tek kutuplu mıknatıs olamaz.",
-        "audio": "assets/audio/courses/fen-u5_s1.mp3"
+        "audio": "assets/audio/courses/fen-u5_s1.mp3",
+        "slideTitle": "Mıknatıs Nedir ve Kutupları Nelerdir?",
+        "emo": "🧪",
+        "then": [
+          {
+            "text": "Merhaba genç fizikçi!",
+            "lang": "tr-TR",
+            "cap": "🧪 Mıknatıs Kutupları",
+            "emo": "🧪"
+          },
+          {
+            "text": "Her mıknatısın iki kutbu vardır: Kuzey kutbu (N - North) ve Güney kutbu (S - South).",
+            "lang": "tr-TR",
+            "cap": "✨ Bilimsel İlke: Mıknatıs Nedir ve Kutu",
+            "emo": "✨"
+          },
+          {
+            "text": "Tek kutuplu mıknatıs olamaz.",
+            "lang": "tr-TR",
+            "cap": "🎯 Altın Kural",
+            "emo": "🎯"
+          }
+        ]
       },
       {
         "title": "İtme ve Çekme Kuvveti",
         "badge": "2. Adım: İtme ve Çekme",
         "slide": "assets/images/miknatis_alan.svg",
         "narration": "İşte mıknatısların dans kuralı: Aynı kutuplar birbirini İTER! Yani N ile N ya da S ile S yan yana gelirse birbirini iter. Zıt kutuplar ise birbirini ÇEKER! Yani N kutbu ile S kutbu birbirini kuvvetle kendine çeker. Bu görünmez manyetik kuvvet aradaki boşluktan bile etki eder.",
-        "audio": "assets/audio/courses/fen-u5_s2.mp3"
+        "audio": "assets/audio/courses/fen-u5_s2.mp3",
+        "slideTitle": "İtme ve Çekme Kuvveti",
+        "emo": "🧪",
+        "then": [
+          {
+            "text": "İşte mıknatısların dans kuralı: Aynı kutuplar birbirini İTER!",
+            "lang": "tr-TR",
+            "cap": "🧪 İtme ve Çekme Kuvveti",
+            "emo": "🧪"
+          },
+          {
+            "text": "Zıt kutuplar ise birbirini ÇEKER!",
+            "lang": "tr-TR",
+            "cap": "✨ Bilimsel İlke: İtme ve Çekme Kuvveti",
+            "emo": "✨"
+          },
+          {
+            "text": "Bu görünmez manyetik kuvvet aradaki boşluktan bile etki eder.",
+            "lang": "tr-TR",
+            "cap": "🎯 Altın Kural",
+            "emo": "🎯"
+          }
+        ]
       },
       {
         "title": "Mıknatısın Etki Ettiği Maddeler",
         "badge": "3. Adım: Çekilen Maddeler",
         "slide": "assets/images/miknatis_alan.svg",
         "narration": "Mıknatıs her metali çekmez! Mıknatıs yalnızca demir, nikel ve kobalt metallerini ve bunlardan yapılan çivi, ataş, iğne gibi cisimleri çeker. Plastik, tahta, cam, kâğıt, kumaş, altın, gümüş ve alüminyumu ise ASLA çekmez! Mıknatıs yardımıyla hurdalıklardaki demirler diğer çöplerden kolayca ayrıştırılır.",
-        "audio": "assets/audio/courses/fen-u5_s3.mp3"
+        "audio": "assets/audio/courses/fen-u5_s3.mp3",
+        "slideTitle": "Mıknatısın Etki Ettiği Maddeler",
+        "emo": "🧪",
+        "then": [
+          {
+            "text": "Mıknatıs her metali çekmez!",
+            "lang": "tr-TR",
+            "cap": "🧪 Mıknatısın Etki Ettiği Maddeler",
+            "emo": "🧪"
+          },
+          {
+            "text": "Plastik, tahta, cam, kâğıt, kumaş, altın, gümüş ve alüminyumu ise ASLA çekmez!",
+            "lang": "tr-TR",
+            "cap": "✨ Bilimsel İlke: Mıknatısın Etki Ettiği",
+            "emo": "✨"
+          },
+          {
+            "text": "Mıknatıs yardımıyla hurdalıklardaki demirler diğer çöplerden kolayca ayrıştırılır.",
+            "lang": "tr-TR",
+            "cap": "🎯 Altın Kural",
+            "emo": "🎯"
+          }
+        ]
       },
       {
         "title": "Mıknatısın Günlük Yaşamdaki Alanları",
         "badge": "4. Adım: Kullanım Alanları",
         "slide": "assets/images/pusula_gulu.svg",
         "narration": "Mıknatıslar hayatımızın her yerindedir! Pusula ibresi minik bir mıknatıstır ve yönümüzü bulmamızı sağlar. Buzdolabı kapaklarının sıkıca kapanmasını mıknatıs sağlar. Hoparlörler, kulaklıklar, elektrik motorları ve rayların üzerinde havada uçarak giden süper hızlı Maglev trenleri mıknatıs teknolojisiyle çalışır. Ancak banka kartları ve telefonlara mıknatıs yaklaştırılmamalıdır!",
-        "audio": "assets/audio/courses/fen-u5_s4.mp3"
+        "audio": "assets/audio/courses/fen-u5_s4.mp3",
+        "slideTitle": "Mıknatısın Günlük Yaşamdaki Alanları",
+        "emo": "🧪",
+        "then": [
+          {
+            "text": "Mıknatıslar hayatımızın her yerindedir!",
+            "lang": "tr-TR",
+            "cap": "🧪 Kullanım Alanları",
+            "emo": "🧪"
+          },
+          {
+            "text": "Buzdolabı kapaklarının sıkıca kapanmasını mıknatıs sağlar.",
+            "lang": "tr-TR",
+            "cap": "✨ Bilimsel İlke: Mıknatısın Günlük Yaşa",
+            "emo": "✨"
+          },
+          {
+            "text": "Ancak banka kartları ve telefonlara mıknatıs yaklaştırılmamalıdır!",
+            "lang": "tr-TR",
+            "cap": "🎯 Altın Kural",
+            "emo": "🎯"
+          }
+        ]
       }
     ],
     "questions": [
@@ -4984,28 +6576,110 @@ const COURSE_LESSONS = {
         "badge": "1. Adım: Devre Elemanları",
         "slide": "assets/images/devre_semasi.svg",
         "narration": "Merhaba enerji dedektifi! Evlerimizdeki ışıkların nasıl yandığını keşfediyoruz. Basit bir elektrik devresinde 4 temel eleman vardır: Enerji kaynağımız Pil, ışık veren Ampul, elektriği taşıyan Bağlantı Kablosu ve devreyi açıp kapatan Anahtar! Ayrıca ampulü sabitleyen duya ve pili tutan pil yatağına da ihtiyaç duyarız.",
-        "audio": "assets/audio/courses/fen-u6_s1.mp3"
+        "audio": "assets/audio/courses/fen-u6_s1.mp3",
+        "slideTitle": "Basit Elektrik Devresi Elemanları",
+        "emo": "🧪",
+        "then": [
+          {
+            "text": "Merhaba enerji dedektifi!",
+            "lang": "tr-TR",
+            "cap": "🧪 Devre Elemanları",
+            "emo": "🧪"
+          },
+          {
+            "text": "Basit bir elektrik devresinde 4 temel eleman vardır: Enerji kaynağımız Pil, ışık veren Ampul, elektriği taşıyan Bağlantı Kablosu ve devreyi açıp kapatan Anahtar!",
+            "lang": "tr-TR",
+            "cap": "✨ Bilimsel İlke: Basit Elektrik Devresi",
+            "emo": "✨"
+          },
+          {
+            "text": "Ayrıca ampulü sabitleyen duya ve pili tutan pil yatağına da ihtiyaç duyarız.",
+            "lang": "tr-TR",
+            "cap": "🎯 Altın Kural",
+            "emo": "🎯"
+          }
+        ]
       },
       {
         "title": "Açık Devre ve Kapalı Devre",
         "badge": "2. Adım: Devre Durumları",
         "slide": "assets/images/devre_semasi.svg",
         "narration": "Ampulün ışık vermesi için elektrik akımının pilden çıkıp kesintisiz bir yol izlemesi gerekir. Anahtar kapatıldığında devre tamamlanır; buna Kapalı Devre denir ve ampul IŞIK VERİR! Anahtar açıkken ise yol kesilir; buna Açık Devre denir ve ampul IŞIK VERMEZ. Evlerimizdeki elektrik düğmelerine basmak aslında anahtarı kapatıp açmaktır!",
-        "audio": "assets/audio/courses/fen-u6_s2.mp3"
+        "audio": "assets/audio/courses/fen-u6_s2.mp3",
+        "slideTitle": "Açık Devre ve Kapalı Devre",
+        "emo": "🧪",
+        "then": [
+          {
+            "text": "Ampulün ışık vermesi için elektrik akımının pilden çıkıp kesintisiz bir yol izlemesi gerekir.",
+            "lang": "tr-TR",
+            "cap": "🧪 Açık Devre ve Kapalı Devre",
+            "emo": "🧪"
+          },
+          {
+            "text": "Anahtar açıkken ise yol kesilir; buna Açık Devre denir ve ampul IŞIK VERMEZ.",
+            "lang": "tr-TR",
+            "cap": "✨ Bilimsel İlke: Açık Devre ve Kapalı D",
+            "emo": "✨"
+          },
+          {
+            "text": "Evlerimizdeki elektrik düğmelerine basmak aslında anahtarı kapatıp açmaktır!",
+            "lang": "tr-TR",
+            "cap": "🎯 Altın Kural",
+            "emo": "🎯"
+          }
+        ]
       },
       {
         "title": "Ampul Neden Işık Vermez?",
         "badge": "3. Adım: Arıza Tespiti",
         "slide": "assets/images/devre_semasi.svg",
         "narration": "Bir dedektif gibi arıza arayalım: Eğer devrede ampul yanmıyorsa; pil bitmiş olabilir, kablo kopmuş veya temassızlık yapıyor olabilir, anahtar açık kalmış olabilir ya da ampulün içindeki ince tel (filaman) kopmuş, yani ampul patlamış olabilir. Bu kontrollerle sorunu hemen çözebilirsin.",
-        "audio": "assets/audio/courses/fen-u6_s3.mp3"
+        "audio": "assets/audio/courses/fen-u6_s3.mp3",
+        "slideTitle": "Ampul Neden Işık Vermez?",
+        "emo": "🧪",
+        "then": [
+          {
+            "text": "Bir dedektif gibi arıza arayalım: Eğer devrede ampul yanmıyorsa; pil bitmiş olabilir, kablo kopmuş veya temassızlık yapıyor olabilir, anahtar açık kalmış olabilir ya da ampulün içindeki ince tel (filaman) kopmuş, yani ampul patlamış olabilir.",
+            "lang": "tr-TR",
+            "cap": "🧪 Ampul Neden Işık Vermez?",
+            "emo": "🧪"
+          },
+          {
+            "text": "Bu kontrollerle sorunu hemen çözebilirsin.",
+            "lang": "tr-TR",
+            "cap": "✨ Bilimsel İlke: Ampul Neden Işık Verme",
+            "emo": "✨"
+          }
+        ]
       },
       {
         "title": "Yenilenebilir ve Yenilenemeyen Enerji",
         "badge": "4. Adım: Enerji Kaynakları",
         "slide": "assets/images/devre_semasi.svg",
         "narration": "Elektriği nasıl ürettiğimiz Dünya'mız için çok önemlidir. Güneş, rüzgâr, su ve jeotermal gibi doğada tükenmeyen ve havayı kirletmeyen kaynaklara Yenilenebilir Enerji denir. Kömür, petrol ve doğal gaz gibi kullandıkça tükenen ve çevreye duman salan kaynaklara ise Yenilenemeyen Enerji denir. Geleceğimiz temiz enerjidedir!",
-        "audio": "assets/audio/courses/fen-u6_s4.mp3"
+        "audio": "assets/audio/courses/fen-u6_s4.mp3",
+        "slideTitle": "Yenilenebilir ve Yenilenemeyen Enerji",
+        "emo": "🧪",
+        "then": [
+          {
+            "text": "Elektriği nasıl ürettiğimiz Dünya'mız için çok önemlidir.",
+            "lang": "tr-TR",
+            "cap": "🧪 Enerji Kaynakları",
+            "emo": "🧪"
+          },
+          {
+            "text": "Kömür, petrol ve doğal gaz gibi kullandıkça tükenen ve çevreye duman salan kaynaklara ise Yenilenemeyen Enerji denir.",
+            "lang": "tr-TR",
+            "cap": "✨ Bilimsel İlke: Yenilenebilir ve Yenil",
+            "emo": "✨"
+          },
+          {
+            "text": "Geleceğimiz temiz enerjidedir!",
+            "lang": "tr-TR",
+            "cap": "🎯 Altın Kural",
+            "emo": "🎯"
+          }
+        ]
       }
     ],
     "questions": [
@@ -5245,28 +6919,116 @@ const COURSE_LESSONS = {
         "badge": "1. Adım: Işık & Görme",
         "slide": "assets/images/isigin_pesinde.svg",
         "narration": "Merhaba ışık kâşifim! Gözlerimiz mucizevi organlardır ama zifiri karanlık bir odada hiçbir şey göremeyiz! Çünkü bir nesneyi görebilmemiz için o nesneden gözümüze ışık gelmesi şarttır. Işık doğrusal ışınlar halinde her yöne yayılır. Cisme çarpar, yansır ve gözümüze ulaşarak görmeyi sağlar.",
-        "audio": "assets/audio/courses/fen-u7_s1.mp3"
+        "audio": "assets/audio/courses/fen-u7_s1.mp3",
+        "slideTitle": "Işık ve Görmedeki Rolü",
+        "emo": "🧪",
+        "then": [
+          {
+            "text": "Merhaba ışık kâşifim!",
+            "lang": "tr-TR",
+            "cap": "🧪 Işık ve Görmedeki Rolü",
+            "emo": "🧪"
+          },
+          {
+            "text": "Çünkü bir nesneyi görebilmemiz için o nesneden gözümüze ışık gelmesi şarttır.",
+            "lang": "tr-TR",
+            "cap": "✨ Bilimsel İlke: Işık ve Görmedeki Rolü",
+            "emo": "✨"
+          },
+          {
+            "text": "Cisme çarpar, yansır ve gözümüze ulaşarak görmeyi sağlar.",
+            "lang": "tr-TR",
+            "cap": "🎯 Altın Kural",
+            "emo": "🎯"
+          }
+        ]
       },
       {
         "title": "Doğal ve Yapay Işık Kaynakları",
         "badge": "2. Adım: Işık Kaynakları",
         "slide": "assets/images/isigin_pesinde.svg",
         "narration": "Kendiliğinden ışık yayan varlıklara Doğal Işık Kaynağı denir: Güneş, yıldızlar, şimşek ve ateş böceği gibi. İnsanlar tarafından üretilen ışık araçlarına ise Yapay Işık Kaynağı deriz: Ampul, mum, el feneri, meşale gibi. Dikkat: Ay bir ışık kaynağı DEĞİLDİR! Ay yalnızca Güneş'ten aldığı ışığı bir ayna gibi yansıtır.",
-        "audio": "assets/audio/courses/fen-u7_s2.mp3"
+        "audio": "assets/audio/courses/fen-u7_s2.mp3",
+        "slideTitle": "Doğal ve Yapay Işık Kaynakları",
+        "emo": "🧪",
+        "then": [
+          {
+            "text": "Kendiliğinden ışık yayan varlıklara Doğal Işık Kaynağı denir: Güneş, yıldızlar, şimşek ve ateş böceği gibi.",
+            "lang": "tr-TR",
+            "cap": "🧪 Doğal ve Yapay Işık Kaynakları",
+            "emo": "🧪"
+          },
+          {
+            "text": "Dikkat: Ay bir ışık kaynağı DEĞİLDİR!",
+            "lang": "tr-TR",
+            "cap": "✨ Bilimsel İlke: Doğal ve Yapay Işık Ka",
+            "emo": "✨"
+          },
+          {
+            "text": "Ay yalnızca Güneş'ten aldığı ışığı bir ayna gibi yansıtır.",
+            "lang": "tr-TR",
+            "cap": "🎯 Altın Kural",
+            "emo": "🎯"
+          }
+        ]
       },
       {
         "title": "Işık Kirliliği ve Canlılara Zararları",
         "badge": "3. Adım: Işık Kirliliği",
         "slide": "assets/images/isigin_pesinde.svg",
         "narration": "Işığın yanlış yerde, yanlış zamanda ve aşırı miktarda kullanılmasına Işık Kirliliği denir. Gökyüzüne yönlendirilen dev projektörler göçmen kuşların yönlerini şaşırmasına neden olur. Yumurtadan çıkan yavru Caretta Caretta kaplumbağaları denizin parıltısı yerine şehir ışıklarına gidip hayatlarını kaybederler. Ayrıca rasathanelerin gökyüzünü incelemesini engeller.",
-        "audio": "assets/audio/courses/fen-u7_s3.mp3"
+        "audio": "assets/audio/courses/fen-u7_s3.mp3",
+        "slideTitle": "Işık Kirliliği ve Canlılara Zararları",
+        "emo": "🧪",
+        "then": [
+          {
+            "text": "Işığın yanlış yerde, yanlış zamanda ve aşırı miktarda kullanılmasına Işık Kirliliği denir.",
+            "lang": "tr-TR",
+            "cap": "🧪 Işık Kirliliği",
+            "emo": "🧪"
+          },
+          {
+            "text": "Yumurtadan çıkan yavru Caretta Caretta kaplumbağaları denizin parıltısı yerine şehir ışıklarına gidip hayatlarını kaybederler.",
+            "lang": "tr-TR",
+            "cap": "✨ Bilimsel İlke: Işık Kirliliği ve Canl",
+            "emo": "✨"
+          },
+          {
+            "text": "Ayrıca rasathanelerin gökyüzünü incelemesini engeller.",
+            "lang": "tr-TR",
+            "cap": "🎯 Altın Kural",
+            "emo": "🎯"
+          }
+        ]
       },
       {
         "title": "Uygun Aydınlatma ve Göz Sağlığı",
         "badge": "4. Adım: Uygun Aydınlatma",
         "slide": "assets/images/isigin_pesinde.svg",
         "narration": "Ders çalışırken ışık doğrudan gözümüze değil, masaya gelmelidir. Sağ elini kullananların ışığı sol arkadan alması gölgeyi önler. Işık ne çok loş ne de gözü kamaştıracak kadar aşırı parlak olmalıdır. Doğrudan güneşe bakmak gözlerimize kalıcı hasar verir. Enerji tasarruflu LED ampuller kullanarak doğayı koruyabiliriz.",
-        "audio": "assets/audio/courses/fen-u7_s4.mp3"
+        "audio": "assets/audio/courses/fen-u7_s4.mp3",
+        "slideTitle": "Uygun Aydınlatma ve Göz Sağlığı",
+        "emo": "🧪",
+        "then": [
+          {
+            "text": "Ders çalışırken ışık doğrudan gözümüze değil, masaya gelmelidir.",
+            "lang": "tr-TR",
+            "cap": "🧪 Uygun Aydınlatma ve Göz Sağlığı",
+            "emo": "🧪"
+          },
+          {
+            "text": "Işık ne çok loş ne de gözü kamaştıracak kadar aşırı parlak olmalıdır.",
+            "lang": "tr-TR",
+            "cap": "✨ Bilimsel İlke: Uygun Aydınlatma ve Gö",
+            "emo": "✨"
+          },
+          {
+            "text": "Enerji tasarruflu LED ampuller kullanarak doğayı koruyabiliriz.",
+            "lang": "tr-TR",
+            "cap": "🎯 Altın Kural",
+            "emo": "🎯"
+          }
+        ]
       }
     ],
     "questions": [
@@ -5506,28 +7268,110 @@ const COURSE_LESSONS = {
         "badge": "1. Adım: Sürdürülebilirlik",
         "slide": "assets/images/surdurulebilir_yasam.svg",
         "narration": "Merhaba doğa dostu kâşif! Sürdürülebilirlik, bugünün doğal kaynaklarını tüketmeden, kirletmeden ve israf etmeden gelecek nesillere aktarmak demektir. Temiz hava, temiz su ve verimli topraklar bize atalarımızdan miras değil, çocuklarımızdan emanettir! Şehirlerimizi doğayla uyumlu hale getirmek hepimizin görevidir.",
-        "audio": "assets/audio/courses/fen-u8_s1.mp3"
+        "audio": "assets/audio/courses/fen-u8_s1.mp3",
+        "slideTitle": "Sürdürülebilir Yaşam Nedir?",
+        "emo": "🧪",
+        "then": [
+          {
+            "text": "Merhaba doğa dostu kâşif!",
+            "lang": "tr-TR",
+            "cap": "🧪 Sürdürülebilir Yaşam Nedir?",
+            "emo": "🧪"
+          },
+          {
+            "text": "Temiz hava, temiz su ve verimli topraklar bize atalarımızdan miras değil, çocuklarımızdan emanettir!",
+            "lang": "tr-TR",
+            "cap": "✨ Bilimsel İlke: Sürdürülebilir Yaşam N",
+            "emo": "✨"
+          },
+          {
+            "text": "Şehirlerimizi doğayla uyumlu hale getirmek hepimizin görevidir.",
+            "lang": "tr-TR",
+            "cap": "🎯 Altın Kural",
+            "emo": "🎯"
+          }
+        ]
       },
       {
         "title": "Geri Dönüşüm ve Sıfır Atık Hareketi",
         "badge": "2. Adım: Sıfır Atık",
         "slide": "assets/images/surdurulebilir_yasam.svg",
         "narration": "Çöp sandığımız birçok şey aslında değerli bir hammaddedir! Kâğıt, cam, plastik, metal ve pil atıkları geri dönüştürülebilir. 1 ton kâğıdın geri dönüştürülmesi tam 17 yetişkin ağacın kesilmesini önler! Piller ise asla çöpe veya toprağa atılmamalı, atık pil kutusuna bırakılmalıdır; çünkü içindeki zehirli metaller yeraltı sularını zehirler.",
-        "audio": "assets/audio/courses/fen-u8_s2.mp3"
+        "audio": "assets/audio/courses/fen-u8_s2.mp3",
+        "slideTitle": "Geri Dönüşüm ve Sıfır Atık Hareketi",
+        "emo": "🧪",
+        "then": [
+          {
+            "text": "Çöp sandığımız birçok şey aslında değerli bir hammaddedir!",
+            "lang": "tr-TR",
+            "cap": "🧪 Sıfır Atık",
+            "emo": "🧪"
+          },
+          {
+            "text": "1 ton kâğıdın geri dönüştürülmesi tam 17 yetişkin ağacın kesilmesini önler!",
+            "lang": "tr-TR",
+            "cap": "✨ Bilimsel İlke: Geri Dönüşüm ve Sıfır ",
+            "emo": "✨"
+          },
+          {
+            "text": "Piller ise asla çöpe veya toprağa atılmamalı, atık pil kutusuna bırakılmalıdır; çünkü içindeki zehirli metaller yeraltı sularını zehirler.",
+            "lang": "tr-TR",
+            "cap": "🎯 Altın Kural",
+            "emo": "🎯"
+          }
+        ]
       },
       {
         "title": "Kompost Gübre: Mutfaktan Toprağa",
         "badge": "3. Adım: Doğal Gübre",
         "slide": "assets/images/surdurulebilir_yasam.svg",
         "narration": "Evlerimizdeki elma kabukları, çay posaları, sebze artıkları çöp değildir! Bu organik atıklar biriktirilip doğal yöntemlerle çürütüldüğünde besin değeri çok yüksek organik bir gübreye dönüşür; buna Kompost denir. Kompost toprağı zenginleştirir, kimyasal gübre ihtiyacını ortadan kaldırır.",
-        "audio": "assets/audio/courses/fen-u8_s3.mp3"
+        "audio": "assets/audio/courses/fen-u8_s3.mp3",
+        "slideTitle": "Kompost Gübre: Mutfaktan Toprağa",
+        "emo": "🧪",
+        "then": [
+          {
+            "text": "Evlerimizdeki elma kabukları, çay posaları, sebze artıkları çöp değildir!",
+            "lang": "tr-TR",
+            "cap": "🧪 Doğal Gübre",
+            "emo": "🧪"
+          },
+          {
+            "text": "Bu organik atıklar biriktirilip doğal yöntemlerle çürütüldüğünde besin değeri çok yüksek organik bir gübreye dönüşür; buna Kompost denir.",
+            "lang": "tr-TR",
+            "cap": "✨ Bilimsel İlke: Kompost Gübre: Mutfakt",
+            "emo": "✨"
+          }
+        ]
       },
       {
         "title": "Su ve Enerji Tasarrufu ile Geleceği Koru",
         "badge": "4. Adım: Tasarruf Bilinci",
         "slide": "assets/images/surdurulebilir_yasam.svg",
         "narration": "Dünyamızın suları sonsuz değildir; içilebilir tatlı su kaynakları çok kısıtlıdır. Dişlerimizi fırçalarken musluğu kapatmak yılda tonlarca su kurtarır. Kullanılmayan odaların ışıklarını söndürmek, kısa mesafelerde araba yerine bisiklete binmek veya yürümek karbon ayak izimizi küçültür. Küçük adımlar büyük bir dünya kurtarır!",
-        "audio": "assets/audio/courses/fen-u8_s4.mp3"
+        "audio": "assets/audio/courses/fen-u8_s4.mp3",
+        "slideTitle": "Su ve Enerji Tasarrufu ile Geleceği Koru",
+        "emo": "🧪",
+        "then": [
+          {
+            "text": "Dünyamızın suları sonsuz değildir; içilebilir tatlı su kaynakları çok kısıtlıdır.",
+            "lang": "tr-TR",
+            "cap": "🧪 Tasarruf Bilinci",
+            "emo": "🧪"
+          },
+          {
+            "text": "Kullanılmayan odaların ışıklarını söndürmek, kısa mesafelerde araba yerine bisiklete binmek veya yürümek karbon ayak izimizi küçültür.",
+            "lang": "tr-TR",
+            "cap": "✨ Bilimsel İlke: Su ve Enerji Tasarrufu",
+            "emo": "✨"
+          },
+          {
+            "text": "Küçük adımlar büyük bir dünya kurtarır!",
+            "lang": "tr-TR",
+            "cap": "🎯 Altın Kural",
+            "emo": "🎯"
+          }
+        ]
       }
     ],
     "questions": [
@@ -5767,28 +7611,110 @@ const COURSE_LESSONS = {
         "badge": "1. Adım: Sosyal Bilgiler",
         "slide": "assets/images/birlikte_yasamak.svg",
         "narration": "Merhaba sevgili genç vatandaş! Sosyal Bilgiler dersi bize haklarımızı, sorumluluklarımızı, tarihimizi ve çevremizi öğretir. Haklarını bilen, kanunlara uyan, vergisini veren ve sorunlar karşısında çözüm üreten kişiye \"Etkin Vatandaş\" denir. Haklarımız eğitim, sağlık, barınma ve oyun oynama gibi vazgeçilmez ayrıcalıklarımızdır.",
-        "audio": "assets/audio/courses/sos-u1_s1.mp3"
+        "audio": "assets/audio/courses/sos-u1_s1.mp3",
+        "slideTitle": "Sosyal Bilgiler Dersi ve Etkin Vatandaşlık",
+        "emo": "🏛️",
+        "then": [
+          {
+            "text": "Merhaba sevgili genç vatandaş!",
+            "lang": "tr-TR",
+            "cap": "🏛️ Sosyal Bilgiler",
+            "emo": "🏛️"
+          },
+          {
+            "text": "Haklarını bilen, kanunlara uyan, vergisini veren ve sorunlar karşısında çözüm üreten kişiye \"Etkin Vatandaş\" denir.",
+            "lang": "tr-TR",
+            "cap": "✨ Sosyal Bilgi: Sosyal Bilgiler Dersi ",
+            "emo": "✨"
+          },
+          {
+            "text": "Haklarımız eğitim, sağlık, barınma ve oyun oynama gibi vazgeçilmez ayrıcalıklarımızdır.",
+            "lang": "tr-TR",
+            "cap": "🎯 Altın Kural",
+            "emo": "🎯"
+          }
+        ]
       },
       {
         "title": "Türkiye Cumhuriyeti Kimlik Kartımız",
         "badge": "2. Adım: Kimlik Kartı",
         "slide": "assets/images/birlikte_yasamak.svg",
         "narration": "Her Türk vatandaşının kendine ait resmi bir kimlik belgesi vardır. Kimlik kartımızın üzerindeki 11 haneli T.C. Kimlik Numarası tamamen bize özeldir ve dünyada başka hiçbir kimsede yoktur! Kartımızın içindeki çip (yonga), bilgilerimizi ve parmak izimizi dijital ortamda güvenle saklar. Parmak izimiz de tıpkı kimlik numaramız gibi benzersizdir.",
-        "audio": "assets/audio/courses/sos-u1_s2.mp3"
+        "audio": "assets/audio/courses/sos-u1_s2.mp3",
+        "slideTitle": "Türkiye Cumhuriyeti Kimlik Kartımız",
+        "emo": "🏛️",
+        "then": [
+          {
+            "text": "Her Türk vatandaşının kendine ait resmi bir kimlik belgesi vardır.",
+            "lang": "tr-TR",
+            "cap": "🏛️ Kimlik Kartı",
+            "emo": "🏛️"
+          },
+          {
+            "text": "Kimlik Numarası tamamen bize özeldir ve dünyada başka hiçbir kimsede yoktur!",
+            "lang": "tr-TR",
+            "cap": "✨ Sosyal Bilgi: Türkiye Cumhuriyeti Ki",
+            "emo": "✨"
+          },
+          {
+            "text": "Parmak izimiz de tıpkı kimlik numaramız gibi benzersizdir.",
+            "lang": "tr-TR",
+            "cap": "🎯 Altın Kural",
+            "emo": "🎯"
+          }
+        ]
       },
       {
         "title": "Bireysel Farklılıklara Saygı ve Empati",
         "badge": "3. Adım: Empati",
         "slide": "assets/images/birlikte_yasamak.svg",
         "narration": "Hepimizin göz rengi, boyu, yetenekleri, ilgi alanları ve düşünceleri farklıdır. Bu farklılıklar bir toplumun en büyük zenginliğidir! Kendimizi bir başkasının yerine koyarak onun duygularını ve düşüncelerini anlama becerisine Empati denir. Özel gereksinimli (engelli) bireylerin hayatını kolaylaştırmak ve herkesi olduğu gibi sevmek medeni olmanın gereğidir.",
-        "audio": "assets/audio/courses/sos-u1_s3.mp3"
+        "audio": "assets/audio/courses/sos-u1_s3.mp3",
+        "slideTitle": "Bireysel Farklılıklara Saygı ve Empati",
+        "emo": "🏛️",
+        "then": [
+          {
+            "text": "Hepimizin göz rengi, boyu, yetenekleri, ilgi alanları ve düşünceleri farklıdır.",
+            "lang": "tr-TR",
+            "cap": "🏛️ Empati",
+            "emo": "🏛️"
+          },
+          {
+            "text": "Kendimizi bir başkasının yerine koyarak onun duygularını ve düşüncelerini anlama becerisine Empati denir.",
+            "lang": "tr-TR",
+            "cap": "✨ Sosyal Bilgi: Bireysel Farklılıklara",
+            "emo": "✨"
+          },
+          {
+            "text": "Özel gereksinimli (engelli) bireylerin hayatını kolaylaştırmak ve herkesi olduğu gibi sevmek medeni olmanın gereğidir.",
+            "lang": "tr-TR",
+            "cap": "🎯 Altın Kural",
+            "emo": "🎯"
+          }
+        ]
       },
       {
         "title": "Toplumsal Birlik ve Dayanışma",
         "badge": "4. Adım: Dayanışma",
         "slide": "assets/images/birlikte_yasamak.svg",
         "narration": "Milli bayramlarımızda, düğünlerde ve doğal afet gibi zor günlerde el ele vermek Türk milletinin en köklü erdemidir. İmece kültürüyle işlerimizi paylaşır, Kızılay gibi yardım kuruluşlarımızla darda kalanların yaralarını sararız. Birlikte yaşamak, birbirimize destek olmakla güzelleşir!",
-        "audio": "assets/audio/courses/sos-u1_s4.mp3"
+        "audio": "assets/audio/courses/sos-u1_s4.mp3",
+        "slideTitle": "Toplumsal Birlik ve Dayanışma",
+        "emo": "🏛️",
+        "then": [
+          {
+            "text": "Milli bayramlarımızda, düğünlerde ve doğal afet gibi zor günlerde el ele vermek Türk milletinin en köklü erdemidir.",
+            "lang": "tr-TR",
+            "cap": "🏛️ Toplumsal Birlik ve Dayanışma",
+            "emo": "🏛️"
+          },
+          {
+            "text": "İmece kültürüyle işlerimizi paylaşır, Kızılay gibi yardım kuruluşlarımızla darda kalanların yaralarını sararız.",
+            "lang": "tr-TR",
+            "cap": "✨ Sosyal Bilgi: Toplumsal Birlik ve Da",
+            "emo": "✨"
+          }
+        ]
       }
     ],
     "questions": [
@@ -6028,28 +7954,110 @@ const COURSE_LESSONS = {
         "badge": "1. Adım: Yönler",
         "slide": "assets/images/evimiz_dunya.svg",
         "narration": "Merhaba kâşif! Dört ana yön vardır: Kuzey, Güney, Doğu ve Batı. Sağ kolumuzu Güneş'in doğduğu yöne uzatırsak sağımız Doğu, solumuz Batı, önümüz Kuzey, arkamız Güney olur. Doğada kaybolursak Kutup Yıldızı daima KUZEYİ gösterir! Karınca yuvalarının ağzı güneye bakar, toprak yığılı tarafı kuzeydedir. Ağaç ve taşların yosunlu yüzeyi de kuzeyi gösterir!",
-        "audio": "assets/audio/courses/sos-u2_s1.mp3"
+        "audio": "assets/audio/courses/sos-u2_s1.mp3",
+        "slideTitle": "Yönler ve Doğadaki Yön Bulma Yöntemleri",
+        "emo": "🏛️",
+        "then": [
+          {
+            "text": "Dört ana yön vardır: Kuzey, Güney, Doğu ve Batı.",
+            "lang": "tr-TR",
+            "cap": "🏛️ Yönler",
+            "emo": "🏛️"
+          },
+          {
+            "text": "Doğada kaybolursak Kutup Yıldızı daima KUZEYİ gösterir!",
+            "lang": "tr-TR",
+            "cap": "✨ Sosyal Bilgi: Yönler ve Doğadaki Yön",
+            "emo": "✨"
+          },
+          {
+            "text": "Ağaç ve taşların yosunlu yüzeyi de kuzeyi gösterir!",
+            "lang": "tr-TR",
+            "cap": "🎯 Altın Kural",
+            "emo": "🎯"
+          }
+        ]
       },
       {
         "title": "Kroki ve Harita Çeşitleri",
         "badge": "2. Adım: Harita & Kroki",
         "slide": "assets/images/evimiz_dunya.svg",
         "narration": "Bir yerin kuş bakışı, yani tepeden görünüşünün ölçüsüz ve kabataslak çizimine Kroki denir. Belli bir küçültme oranı (ölçek) kullanılarak çizilenlere ise Harita denir. Fiziki haritalar dağları, ovaları, denizleri gösterirken; Siyasi haritalar ülke ve il sınırlarını gösterir.",
-        "audio": "assets/audio/courses/sos-u2_s2.mp3"
+        "audio": "assets/audio/courses/sos-u2_s2.mp3",
+        "slideTitle": "Kroki ve Harita Çeşitleri",
+        "emo": "🏛️",
+        "then": [
+          {
+            "text": "Bir yerin kuş bakışı, yani tepeden görünüşünün ölçüsüz ve kabataslak çizimine Kroki denir.",
+            "lang": "tr-TR",
+            "cap": "🏛️ Kroki ve Harita Çeşitleri",
+            "emo": "🏛️"
+          },
+          {
+            "text": "Belli bir küçültme oranı (ölçek) kullanılarak çizilenlere ise Harita denir.",
+            "lang": "tr-TR",
+            "cap": "✨ Sosyal Bilgi: Kroki ve Harita Çeşitl",
+            "emo": "✨"
+          }
+        ]
       },
       {
         "title": "Fiziki Haritadaki Renklerin Gizemi",
         "badge": "3. Adım: Harita Renkleri",
         "slide": "assets/images/evimiz_dunya.svg",
         "narration": "En sık yapılan hataya dikkat: Fiziki haritalardaki yeşil renk ormanları GÖSTERMEZ! Yeşil renk, deniz seviyesine yakın alçak yerleri ve ovaları (0-500 metre) gösterir. Sarı renk orta yükseklikteki düzlükleri ve platoları (500-1000 metre), Kahverengi ise yüksek dağları ve tepeleri (1000+ metre) gösterir. Denizlerde ise derinlik arttıkça mavi koyulaşır!",
-        "audio": "assets/audio/courses/sos-u2_s3.mp3"
+        "audio": "assets/audio/courses/sos-u2_s3.mp3",
+        "slideTitle": "Fiziki Haritadaki Renklerin Gizemi",
+        "emo": "🏛️",
+        "then": [
+          {
+            "text": "En sık yapılan hataya dikkat: Fiziki haritalardaki yeşil renk ormanları GÖSTERMEZ!",
+            "lang": "tr-TR",
+            "cap": "🏛️ Harita Renkleri",
+            "emo": "🏛️"
+          },
+          {
+            "text": "Sarı renk orta yükseklikteki düzlükleri ve platoları (500-1000 metre), Kahverengi ise yüksek dağları ve tepeleri (1000+ metre) gösterir.",
+            "lang": "tr-TR",
+            "cap": "✨ Sosyal Bilgi: Fiziki Haritadaki Renk",
+            "emo": "✨"
+          },
+          {
+            "text": "Denizlerde ise derinlik arttıkça mavi koyulaşır!",
+            "lang": "tr-TR",
+            "cap": "🎯 Altın Kural",
+            "emo": "🎯"
+          }
+        ]
       },
       {
         "title": "Doğal Afetler ve Deprem Bilinci",
         "badge": "4. Adım: Doğal Afetler",
         "slide": "assets/images/evimiz_dunya.svg",
         "narration": "Deprem, sel, heyelan ve çığ doğanın ani hareketleridir. Ülkemiz bir deprem kuşağındadır. Deprem sırasında panik yapmadan \"Çök - Kapan - Tutun\" pozisyonunu almalıyız. Evlerimizde mutlaka içinde su, düdük, fener ve ilk yardım seti bulunan bir Deprem Çantası hazır bekletmeliyiz. Dik yamaçları ağaçlandırmak ise heyelanı ve erozyonu önler.",
-        "audio": "assets/audio/courses/sos-u2_s4.mp3"
+        "audio": "assets/audio/courses/sos-u2_s4.mp3",
+        "slideTitle": "Doğal Afetler ve Deprem Bilinci",
+        "emo": "🏛️",
+        "then": [
+          {
+            "text": "Deprem, sel, heyelan ve çığ doğanın ani hareketleridir.",
+            "lang": "tr-TR",
+            "cap": "🏛️ Doğal Afetler ve Deprem Bilinci",
+            "emo": "🏛️"
+          },
+          {
+            "text": "Deprem sırasında panik yapmadan \"Çök - Kapan - Tutun\" pozisyonunu almalıyız.",
+            "lang": "tr-TR",
+            "cap": "✨ Sosyal Bilgi: Doğal Afetler ve Depre",
+            "emo": "✨"
+          },
+          {
+            "text": "Dik yamaçları ağaçlandırmak ise heyelanı ve erozyonu önler.",
+            "lang": "tr-TR",
+            "cap": "🎯 Altın Kural",
+            "emo": "🎯"
+          }
+        ]
       }
     ],
     "questions": [
@@ -6289,28 +8297,98 @@ const COURSE_LESSONS = {
         "badge": "1. Adım: Aile Tarihi",
         "slide": "assets/images/ortak_mirasimiz.svg",
         "narration": "Merhaba tarih kâşifim! Ailemizin geçmişini araştırmak müthiş bir serüvendir. Geçmişi yaşayan aile büyüklerimizle röportaj yaparak bilgi toplamaya Sözlü Tarih yöntemi denir. İlk adım görüşülecek kişiyi seçmek ve soruları hazırlamaktır. Görüşme sırasında ses veya video kaydı alınır ve toplanan bilgiler yazılı bir rapora dönüştürülür.",
-        "audio": "assets/audio/courses/sos-u3_s1.mp3"
+        "audio": "assets/audio/courses/sos-u3_s1.mp3",
+        "slideTitle": "Aile Tarihi ve Sözlü Tarih Yöntemi",
+        "emo": "🏛️",
+        "then": [
+          {
+            "text": "Merhaba tarih kâşifim!",
+            "lang": "tr-TR",
+            "cap": "🏛️ Aile Tarihi",
+            "emo": "🏛️"
+          },
+          {
+            "text": "Geçmişi yaşayan aile büyüklerimizle röportaj yaparak bilgi toplamaya Sözlü Tarih yöntemi denir.",
+            "lang": "tr-TR",
+            "cap": "✨ Sosyal Bilgi: Aile Tarihi ve Sözlü T",
+            "emo": "✨"
+          },
+          {
+            "text": "Görüşme sırasında ses veya video kaydı alınır ve toplanan bilgiler yazılı bir rapora dönüştürülür.",
+            "lang": "tr-TR",
+            "cap": "🎯 Altın Kural",
+            "emo": "🎯"
+          }
+        ]
       },
       {
         "title": "Geçmişten Bugüne Oyun ve Oyuncaklar",
         "badge": "2. Adım: Geleneksel Oyunlar",
         "slide": "assets/images/ortak_mirasimiz.svg",
         "narration": "Dedelerimiz ve ninelerimiz çocukken sokaklarda tahta topaç çevirir, misket oynar, çelik çomak, seksek, körebe ve mendil kapmaca ile neşeyle koşarlardı! Bez bebekler ve tahta arabalar el emeğiyle yapılırdı. Bugün bilgisayar oyunları yaygınlaşsa da geleneksel sokak oyunlarımız arkadaşlığı ve fiziksel sağlığı pekiştirir.",
-        "audio": "assets/audio/courses/sos-u3_s2.mp3"
+        "audio": "assets/audio/courses/sos-u3_s2.mp3",
+        "slideTitle": "Geçmişten Bugüne Oyun ve Oyuncaklar",
+        "emo": "🏛️",
+        "then": [
+          {
+            "text": "Dedelerimiz ve ninelerimiz çocukken sokaklarda tahta topaç çevirir, misket oynar, çelik çomak, seksek, körebe ve mendil kapmaca ile neşeyle koşarlardı!",
+            "lang": "tr-TR",
+            "cap": "🏛️ Geleneksel Oyunlar",
+            "emo": "🏛️"
+          },
+          {
+            "text": "Bez bebekler ve tahta arabalar el emeğiyle yapılırdı.",
+            "lang": "tr-TR",
+            "cap": "✨ Sosyal Bilgi: Geçmişten Bugüne Oyun ",
+            "emo": "✨"
+          }
+        ]
       },
       {
         "title": "Milli Kültür ve Geleneklerimiz",
         "badge": "3. Adım: Milli Kültür",
         "slide": "assets/images/ortak_mirasimiz.svg",
         "narration": "Bizi biz yapan ortak değerlerimize Milli Kültür denir. Düğünlerimiz, kına gecelerimiz, bayramlaşmalarımız, misafire ikram ettiğimiz Türk kahvesi ve lokum kültürümüzün incileridir. Zeybek, horon, halay gibi halk oyunlarımız milli birliğimizin danslarıdır.",
-        "audio": "assets/audio/courses/sos-u3_s3.mp3"
+        "audio": "assets/audio/courses/sos-u3_s3.mp3",
+        "slideTitle": "Milli Kültür ve Geleneklerimiz",
+        "emo": "🏛️",
+        "then": [
+          {
+            "text": "Bizi biz yapan ortak değerlerimize Milli Kültür denir.",
+            "lang": "tr-TR",
+            "cap": "🏛️ Milli Kültür ve Geleneklerimiz",
+            "emo": "🏛️"
+          },
+          {
+            "text": "Düğünlerimiz, kına gecelerimiz, bayramlaşmalarımız, misafire ikram ettiğimiz Türk kahvesi ve lokum kültürümüzün incileridir.",
+            "lang": "tr-TR",
+            "cap": "✨ Sosyal Bilgi: Milli Kültür ve Gelene",
+            "emo": "✨"
+          }
+        ]
       },
       {
         "title": "Tarihi Mekânlar ve Kültürel Miras",
         "badge": "4. Adım: Kültürel Miras",
         "slide": "assets/images/ortak_mirasimiz.svg",
         "narration": "Ülkemiz adeta bir açık hava müzesidir! Topkapı Sarayı, Ayasofya, Selimiye Camii, Efes Antik Kenti ve Çanakkale Şehitliği gibi ortak miras ögeleri geçmişimizin bize bıraktığı kutsal emanetlerdir. Bu tarihi eserleri korumak ve gelecek nesillere taşımak her vatandaşın milli görevidir.",
-        "audio": "assets/audio/courses/sos-u3_s4.mp3"
+        "audio": "assets/audio/courses/sos-u3_s4.mp3",
+        "slideTitle": "Tarihi Mekânlar ve Kültürel Miras",
+        "emo": "🏛️",
+        "then": [
+          {
+            "text": "Ülkemiz adeta bir açık hava müzesidir!",
+            "lang": "tr-TR",
+            "cap": "🏛️ Kültürel Miras",
+            "emo": "🏛️"
+          },
+          {
+            "text": "Topkapı Sarayı, Ayasofya, Selimiye Camii, Efes Antik Kenti ve Çanakkale Şehitliği gibi ortak miras ögeleri geçmişimizin bize bıraktığı kutsal emanetlerdir.",
+            "lang": "tr-TR",
+            "cap": "✨ Sosyal Bilgi: Tarihi Mekânlar ve Kül",
+            "emo": "✨"
+          }
+        ]
       }
     ],
     "questions": [
@@ -6550,28 +8628,98 @@ const COURSE_LESSONS = {
         "badge": "1. Adım: Milli Mücadele",
         "slide": "assets/images/yasayan_demokrasimiz.svg",
         "narration": "Merhaba genç cumhuriyetçi! Yurdumuz Birinci Dünya Savaşı'ndan sonra düşmanlarca işgal edilmişti. Mustafa Kemal Paşa 19 Mayıs 1919'da Samsun'a çıkarak Kurtuluş Savaşı'nı başlattı! Amasya, Erzurum ve Sivas kongreleriyle millet kenetlendi. Hasan Tahsin, Şerife Bacı, Sütçü İmam gibi binlerce kahramanımız canlarını feda ederek vatanı kurtardı.",
-        "audio": "assets/audio/courses/sos-u4_s1.mp3"
+        "audio": "assets/audio/courses/sos-u4_s1.mp3",
+        "slideTitle": "Milli Mücadele ve Mustafa Kemal Atatürk",
+        "emo": "🏛️",
+        "then": [
+          {
+            "text": "Merhaba genç cumhuriyetçi!",
+            "lang": "tr-TR",
+            "cap": "🏛️ Milli Mücadele",
+            "emo": "🏛️"
+          },
+          {
+            "text": "Mustafa Kemal Paşa 19 Mayıs 1919'da Samsun'a çıkarak Kurtuluş Savaşı'nı başlattı!",
+            "lang": "tr-TR",
+            "cap": "✨ Sosyal Bilgi: Milli Mücadele ve Must",
+            "emo": "✨"
+          },
+          {
+            "text": "Hasan Tahsin, Şerife Bacı, Sütçü İmam gibi binlerce kahramanımız canlarını feda ederek vatanı kurtardı.",
+            "lang": "tr-TR",
+            "cap": "🎯 Altın Kural",
+            "emo": "🎯"
+          }
+        ]
       },
       {
         "title": "23 Nisan 1920: TBMM ve Milli Egemenlik",
         "badge": "2. Adım: TBMM'nin Açılışı",
         "slide": "assets/images/yasayan_demokrasimiz.svg",
         "narration": "23 Nisan 1920'de Ankara'da Türkiye Büyük Millet Meclisi açıldı! Meclis duvarına altın harflerle şu ilke yazıldı: \"Egemenlik kayıtsız şartsız milletindir!\" Atatürk bu büyük günü tüm dünya çocuklarına bayram olarak armağan etti. Artık sarayın değil, halkın seçtiği temsilcilerin sözü geçiyordu.",
-        "audio": "assets/audio/courses/sos-u4_s2.mp3"
+        "audio": "assets/audio/courses/sos-u4_s2.mp3",
+        "slideTitle": "23 Nisan 1920: TBMM ve Milli Egemenlik",
+        "emo": "🏛️",
+        "then": [
+          {
+            "text": "23 Nisan 1920'de Ankara'da Türkiye Büyük Millet Meclisi açıldı!",
+            "lang": "tr-TR",
+            "cap": "🏛️ TBMM'nin Açılışı",
+            "emo": "🏛️"
+          },
+          {
+            "text": "Meclis duvarına altın harflerle şu ilke yazıldı: \"Egemenlik kayıtsız şartsız milletindir!\" Atatürk bu büyük günü tüm dünya çocuklarına bayram olarak armağan etti.",
+            "lang": "tr-TR",
+            "cap": "✨ Sosyal Bilgi: 23 Nisan 1920: TBMM ve",
+            "emo": "✨"
+          }
+        ]
       },
       {
         "title": "29 Ekim 1923: Cumhuriyetin İlanı ve Kazanımlar",
         "badge": "3. Adım: Cumhuriyet",
         "slide": "assets/images/yasayan_demokrasimiz.svg",
         "narration": "29 Ekim 1923'te Cumhuriyet ilan edildi ve devletin ilk Cumhurbaşkanı Mustafa Kemal Atatürk oldu. Cumhuriyet, halkın kendi yöneticilerini seçimle belirlediği en çağdaş yönetim biçimidir. Kadınlara seçme ve seçilme hakkı verildi, Harf Devrimi ile okullar açıldı ve hukuk önünde herkes eşit kılındı.",
-        "audio": "assets/audio/courses/sos-u4_s3.mp3"
+        "audio": "assets/audio/courses/sos-u4_s3.mp3",
+        "slideTitle": "29 Ekim 1923: Cumhuriyetin İlanı ve Kazanımlar",
+        "emo": "🏛️",
+        "then": [
+          {
+            "text": "29 Ekim 1923'te Cumhuriyet ilan edildi ve devletin ilk Cumhurbaşkanı Mustafa Kemal Atatürk oldu.",
+            "lang": "tr-TR",
+            "cap": "🏛️ Cumhuriyet",
+            "emo": "🏛️"
+          },
+          {
+            "text": "Cumhuriyet, halkın kendi yöneticilerini seçimle belirlediği en çağdaş yönetim biçimidir.",
+            "lang": "tr-TR",
+            "cap": "✨ Sosyal Bilgi: 29 Ekim 1923: Cumhuriy",
+            "emo": "✨"
+          }
+        ]
       },
       {
         "title": "Okulda Demokratik Katılım ve Seçimler",
         "badge": "4. Adım: Okulda Demokrasi",
         "slide": "assets/images/yasayan_demokrasimiz.svg",
         "narration": "Demokrasiyi sadece kitaplardan öğrenmeyiz, yaşarız! Sınıf temsilcisi seçimlerinde aday olmak, oy kullanmak, oy sayımına saygı göstermek ve çoğunluğun kararına uymak demokrasinin ilk adımıdır. Okul meclisleri ve eğitsel kulüplerde fikirlerimizi özgürce ifade eder ve iş birliği yaparız.",
-        "audio": "assets/audio/courses/sos-u4_s4.mp3"
+        "audio": "assets/audio/courses/sos-u4_s4.mp3",
+        "slideTitle": "Okulda Demokratik Katılım ve Seçimler",
+        "emo": "🏛️",
+        "then": [
+          {
+            "text": "Demokrasiyi sadece kitaplardan öğrenmeyiz, yaşarız!",
+            "lang": "tr-TR",
+            "cap": "🏛️ Okulda Demokrasi",
+            "emo": "🏛️"
+          },
+          {
+            "text": "Sınıf temsilcisi seçimlerinde aday olmak, oy kullanmak, oy sayımına saygı göstermek ve çoğunluğun kararına uymak demokrasinin ilk adımıdır.",
+            "lang": "tr-TR",
+            "cap": "✨ Sosyal Bilgi: Okulda Demokratik Katı",
+            "emo": "✨"
+          }
+        ]
       }
     ],
     "questions": [
@@ -6811,28 +8959,116 @@ const COURSE_LESSONS = {
         "badge": "1. Adım: İhtiyaç & İstek",
         "slide": "assets/images/hayatimizdaki_ekonomi.svg",
         "narration": "Merhaba genç ekonomist! Hayatımızı sürdürmek için vazgeçilmez olan şeylere İhtiyaç denir: Su, ekmek, barınma ve sıcak tutan kıyafetler temel ihtiyaçtır. Olmasa da yaşayabileceğimiz şeylere ise İstek deriz: Yeni bir oyuncak, marka ayakkabı veya çikolata gibi. Harçlığımızı harcarken daima ÖNCE İhtiyaçlarımızı, artarsa İsteklerimizi karşılamalıyız.",
-        "audio": "assets/audio/courses/sos-u5_s1.mp3"
+        "audio": "assets/audio/courses/sos-u5_s1.mp3",
+        "slideTitle": "İstek ve Temel İhtiyaçlarımız",
+        "emo": "🏛️",
+        "then": [
+          {
+            "text": "Merhaba genç ekonomist!",
+            "lang": "tr-TR",
+            "cap": "🏛️ İstek ve Temel İhtiyaçlarımız",
+            "emo": "🏛️"
+          },
+          {
+            "text": "Olmasa da yaşayabileceğimiz şeylere ise İstek deriz: Yeni bir oyuncak, marka ayakkabı veya çikolata gibi.",
+            "lang": "tr-TR",
+            "cap": "✨ Sosyal Bilgi: İstek ve Temel İhtiyaç",
+            "emo": "✨"
+          },
+          {
+            "text": "Harçlığımızı harcarken daima ÖNCE İhtiyaçlarımızı, artarsa İsteklerimizi karşılamalıyız.",
+            "lang": "tr-TR",
+            "cap": "🎯 Altın Kural",
+            "emo": "🎯"
+          }
+        ]
       },
       {
         "title": "Bilinçli Tüketici ve Aile Bütçesi",
         "badge": "2. Adım: Bilinçli Tüketici",
         "slide": "assets/images/hayatimizdaki_ekonomi.svg",
         "narration": "Bilinçli tüketici alışverişe çıkmadan önce mutlaka Alışveriş Listesi hazırlar! Farklı marketlerde fiyat araştırması yapar. Satın aldığı ürünün son kullanma tarihine ve TSE damgasına bakar. Alışverişin sonunda mutlaka Fiş veya Fatura alır; çünkü fiş almak hem devletimize vergi gitmesini sağlar hem de bozuk malı iade etme hakkı verir.",
-        "audio": "assets/audio/courses/sos-u5_s2.mp3"
+        "audio": "assets/audio/courses/sos-u5_s2.mp3",
+        "slideTitle": "Bilinçli Tüketici ve Aile Bütçesi",
+        "emo": "🏛️",
+        "then": [
+          {
+            "text": "Bilinçli tüketici alışverişe çıkmadan önce mutlaka Alışveriş Listesi hazırlar!",
+            "lang": "tr-TR",
+            "cap": "🏛️ Bilinçli Tüketici",
+            "emo": "🏛️"
+          },
+          {
+            "text": "Satın aldığı ürünün son kullanma tarihine ve TSE damgasına bakar.",
+            "lang": "tr-TR",
+            "cap": "✨ Sosyal Bilgi: Bilinçli Tüketici ve A",
+            "emo": "✨"
+          },
+          {
+            "text": "Alışverişin sonunda mutlaka Fiş veya Fatura alır; çünkü fiş almak hem devletimize vergi gitmesini sağlar hem de bozuk malı iade etme hakkı verir.",
+            "lang": "tr-TR",
+            "cap": "🎯 Altın Kural",
+            "emo": "🎯"
+          }
+        ]
       },
       {
         "title": "Ürünlerin Yolculuğu: Üretim, Dağıtım, Tüketim",
         "badge": "3. Adım: Ürünün Yolculuğu",
         "slide": "assets/images/hayatimizdaki_ekonomi.svg",
         "narration": "Yediğimiz ekmek soframıza nasıl gelir? 1. Üretim: Çiftçi tarlaya buğday eker, değirmende una, fırında ekmeğe dönüştürülür. 2. Dağıtım: Kamyonlarla marketlere ve bakkallara taşınır. 3. Tüketim: Ailemiz ekmeği satın alır ve soframızda tüketiriz. İşte bu ekonomik zincire Üretim - Dağıtım - Tüketim zinciri denir.",
-        "audio": "assets/audio/courses/sos-u5_s3.mp3"
+        "audio": "assets/audio/courses/sos-u5_s3.mp3",
+        "slideTitle": "Ürünlerin Yolculuğu: Üretim, Dağıtım, Tüketim",
+        "emo": "🏛️",
+        "then": [
+          {
+            "text": "Yediğimiz ekmek soframıza nasıl gelir?",
+            "lang": "tr-TR",
+            "cap": "🏛️ Ürünün Yolculuğu",
+            "emo": "🏛️"
+          },
+          {
+            "text": "Dağıtım: Kamyonlarla marketlere ve bakkallara taşınır.",
+            "lang": "tr-TR",
+            "cap": "✨ Sosyal Bilgi: Ürünlerin Yolculuğu: Ü",
+            "emo": "✨"
+          },
+          {
+            "text": "İşte bu ekonomik zincire Üretim - Dağıtım - Tüketim zinciri denir.",
+            "lang": "tr-TR",
+            "cap": "🎯 Altın Kural",
+            "emo": "🎯"
+          }
+        ]
       },
       {
         "title": "Doğal Kaynaklar ve Tasarruf",
         "badge": "4. Adım: Tasarruf",
         "slide": "assets/images/hayatimizdaki_ekonomi.svg",
         "narration": "Ekonomimizin temeli doğadır. Toprak, su, madenler ve ormanlar sınırlıdır. Gereksiz yanan lambayı kapatmak, damlayan musluğu tamir etmek aile bütçemizi koruduğu gibi ülke ekonomisine de büyük katkı sağlar. Kumbaramızda biriktirdiğimiz her kuruş yarınlarımız için güçlü bir adımdır.",
-        "audio": "assets/audio/courses/sos-u5_s4.mp3"
+        "audio": "assets/audio/courses/sos-u5_s4.mp3",
+        "slideTitle": "Doğal Kaynaklar ve Tasarruf",
+        "emo": "🏛️",
+        "then": [
+          {
+            "text": "Ekonomimizin temeli doğadır.",
+            "lang": "tr-TR",
+            "cap": "🏛️ Doğal Kaynaklar ve Tasarruf",
+            "emo": "🏛️"
+          },
+          {
+            "text": "Gereksiz yanan lambayı kapatmak, damlayan musluğu tamir etmek aile bütçemizi koruduğu gibi ülke ekonomisine de büyük katkı sağlar.",
+            "lang": "tr-TR",
+            "cap": "✨ Sosyal Bilgi: Doğal Kaynaklar ve Tas",
+            "emo": "✨"
+          },
+          {
+            "text": "Kumbaramızda biriktirdiğimiz her kuruş yarınlarımız için güçlü bir adımdır.",
+            "lang": "tr-TR",
+            "cap": "🎯 Altın Kural",
+            "emo": "🎯"
+          }
+        ]
       }
     ],
     "questions": [
@@ -7072,28 +9308,110 @@ const COURSE_LESSONS = {
         "badge": "1. Adım: Teknoloji",
         "slide": "assets/images/teknoloji_ve_sosyal.svg",
         "narration": "Merhaba genç kâşif! Teknoloji insan hayatını kolaylaştıran aletlerin bütünüdür. Tekerleğin icadından hızlı trenlere, mektuptan görüntülü konuşmaya kadar muazzam bir yol aldık! Teknoloji bilgiye anında ulaşmamızı ve mesafeleri kısaltmamızı sağlar. Ancak ekran başında saatlerce hareketsiz kalmak sağlığımızı ve yüz yüze dostluklarımızı olumsuz etkileyebilir.",
-        "audio": "assets/audio/courses/sos-u6_s1.mp3"
+        "audio": "assets/audio/courses/sos-u6_s1.mp3",
+        "slideTitle": "Teknolojinin Hayatımıza Etkileri",
+        "emo": "🏛️",
+        "then": [
+          {
+            "text": "Merhaba genç kâşif!",
+            "lang": "tr-TR",
+            "cap": "🏛️ Teknoloji",
+            "emo": "🏛️"
+          },
+          {
+            "text": "Tekerleğin icadından hızlı trenlere, mektuptan görüntülü konuşmaya kadar muazzam bir yol aldık!",
+            "lang": "tr-TR",
+            "cap": "✨ Sosyal Bilgi: Teknolojinin Hayatımız",
+            "emo": "✨"
+          },
+          {
+            "text": "Ancak ekran başında saatlerce hareketsiz kalmak sağlığımızı ve yüz yüze dostluklarımızı olumsuz etkileyebilir.",
+            "lang": "tr-TR",
+            "cap": "🎯 Altın Kural",
+            "emo": "🎯"
+          }
+        ]
       },
       {
         "title": "Güvenli İnternet Kuralları",
         "badge": "2. Adım: Güvenli İnternet",
         "slide": "assets/images/teknoloji_ve_sosyal.svg",
         "narration": "İnternet devasa bir kütüphanedir ama dikkatli olmalıyız! Altın kural: Adını, soyadını, ev adresini, okulunun adını ve şifreni sanal ortamda tanımadığın KİMSEYLE paylaşma! Bilinmeyen linklere asla tıklama. Şifrelerini harf, rakam ve sembollerle güçlü yap ve şüpheli bir durumla karşılaştığında mutlaka ailene haber ver.",
-        "audio": "assets/audio/courses/sos-u6_s2.mp3"
+        "audio": "assets/audio/courses/sos-u6_s2.mp3",
+        "slideTitle": "Güvenli İnternet Kuralları",
+        "emo": "🏛️",
+        "then": [
+          {
+            "text": "İnternet devasa bir kütüphanedir ama dikkatli olmalıyız!",
+            "lang": "tr-TR",
+            "cap": "🏛️ Güvenli İnternet Kuralları",
+            "emo": "🏛️"
+          },
+          {
+            "text": "Bilinmeyen linklere asla tıklama.",
+            "lang": "tr-TR",
+            "cap": "✨ Sosyal Bilgi: Güvenli İnternet Kural",
+            "emo": "✨"
+          },
+          {
+            "text": "Şifrelerini harf, rakam ve sembollerle güçlü yap ve şüpheli bir durumla karşılaştığında mutlaka ailene haber ver.",
+            "lang": "tr-TR",
+            "cap": "🎯 Altın Kural",
+            "emo": "🎯"
+          }
+        ]
       },
       {
         "title": "Siber Zorbalık ve Dijital Ayak İzi",
         "badge": "3. Adım: Siber Zorbalık",
         "slide": "assets/images/teknoloji_ve_sosyal.svg",
         "narration": "İnternette insanları üzen, tehdit eden veya alay eden mesajlar atmak büyük bir suçtur; buna Siber Zorbalık denir. Sanal dünyada da tıpkı gerçek hayattaki gibi kibar ve saygılı olmalıyız. İnternette yaptığımız her arama, yüklediğimiz her fotoğraf arkamızda bir Dijital Ayak İzi bırakır; asla silinmez!",
-        "audio": "assets/audio/courses/sos-u6_s3.mp3"
+        "audio": "assets/audio/courses/sos-u6_s3.mp3",
+        "slideTitle": "Siber Zorbalık ve Dijital Ayak İzi",
+        "emo": "🏛️",
+        "then": [
+          {
+            "text": "İnternette insanları üzen, tehdit eden veya alay eden mesajlar atmak büyük bir suçtur; buna Siber Zorbalık denir.",
+            "lang": "tr-TR",
+            "cap": "🏛️ Siber Zorbalık",
+            "emo": "🏛️"
+          },
+          {
+            "text": "Sanal dünyada da tıpkı gerçek hayattaki gibi kibar ve saygılı olmalıyız.",
+            "lang": "tr-TR",
+            "cap": "✨ Sosyal Bilgi: Siber Zorbalık ve Diji",
+            "emo": "✨"
+          }
+        ]
       },
       {
         "title": "Bilim İnsanlarının Çocukluk Hayatları",
         "badge": "4. Adım: Çocukluk Merakı",
         "slide": "assets/images/teknoloji_ve_sosyal.svg",
         "narration": "Dünyayı değiştiren büyük mucitlerin ortak noktası neydi biliyor musun? Onlar da çocukken senin gibi meraklıydı! Edison saatleri parçalayıp içini incelerdi. Wright Kardeşler gökyüzündeki kuşları hayranlıkla izlerdi. Hatalardan korkma, bol bol kitap oku ve hayal et! Geleceğin teknolojisini sen üreteceksin.",
-        "audio": "assets/audio/courses/sos-u6_s4.mp3"
+        "audio": "assets/audio/courses/sos-u6_s4.mp3",
+        "slideTitle": "Bilim İnsanlarının Çocukluk Hayatları",
+        "emo": "🏛️",
+        "then": [
+          {
+            "text": "Dünyayı değiştiren büyük mucitlerin ortak noktası neydi biliyor musun?",
+            "lang": "tr-TR",
+            "cap": "🏛️ Çocukluk Merakı",
+            "emo": "🏛️"
+          },
+          {
+            "text": "Wright Kardeşler gökyüzündeki kuşları hayranlıkla izlerdi.",
+            "lang": "tr-TR",
+            "cap": "✨ Sosyal Bilgi: Bilim İnsanlarının Çoc",
+            "emo": "✨"
+          },
+          {
+            "text": "Geleceğin teknolojisini sen üreteceksin.",
+            "lang": "tr-TR",
+            "cap": "🎯 Altın Kural",
+            "emo": "🎯"
+          }
+        ]
       }
     ],
     "questions": [
@@ -7333,28 +9651,116 @@ const COURSE_LESSONS = {
         "badge": "1. Adım: Dini İfadeler",
         "slide": "assets/images/gunluk_hayat_ve_din.svg",
         "narration": "Merhaba sevgili kâşif! Dilimizde her gün kullandığımız güzel dinî ifadeler vardır. Her güzel işe başlarken \"Bismillahirrahmanirrahim\" deriz; yani Rahman ve Rahim olan Allah'ın adıyla başlarım. Karşılaştığımızda \"Selamün Aleyküm\" diyerek barış ve esenlik dileriz. Bir nimete kavuştuğumuzda \"Elhamdülillah\" diyerek şükreder, güzel bir şey görünce nazar değmesin diye \"Maşallah\" deriz.",
-        "audio": "assets/audio/courses/din-u1_s1.mp3"
+        "audio": "assets/audio/courses/din-u1_s1.mp3",
+        "slideTitle": "Günlük Hayattaki Dini İfadeler",
+        "emo": "🤲",
+        "then": [
+          {
+            "text": "Merhaba sevgili kâşif!",
+            "lang": "tr-TR",
+            "cap": "🤲 Günlük Hayattaki Dini İfadeler",
+            "emo": "🤲"
+          },
+          {
+            "text": "Her güzel işe başlarken \"Bismillahirrahmanirrahim\" deriz; yani Rahman ve Rahim olan Allah'ın adıyla başlarım.",
+            "lang": "tr-TR",
+            "cap": "✨ Ahlaki Değer: Günlük Hayattaki Dini ",
+            "emo": "✨"
+          },
+          {
+            "text": "Bir nimete kavuştuğumuzda \"Elhamdülillah\" diyerek şükreder, güzel bir şey görünce nazar değmesin diye \"Maşallah\" deriz.",
+            "lang": "tr-TR",
+            "cap": "🎯 Altın Kural",
+            "emo": "🎯"
+          }
+        ]
       },
       {
         "title": "Temizlik İmandandır: Beden ve Çevre Temizliği",
         "badge": "2. Adım: Temizlik",
         "slide": "assets/images/gunluk_hayat_ve_din.svg",
         "narration": "Peygamberimiz \"Temizlik imanın yarısıdır\" buyurmuştur. İslam dini temizliğe büyük önem verir. Günde beş vakit namazdan önce abdest alarak ellerimizi, yüzümüzü, ayaklarımızı yıkarız. Dişlerimizi misvaklamak veya fırçalamak, tırnaklarımızı kesmek ve temiz elbiseler giymek beden temizliğidir. Sokağımızı, okulumuzu ve doğayı temiz tutmak da ibadet sevabındadır.",
-        "audio": "assets/audio/courses/din-u1_s2.mp3"
+        "audio": "assets/audio/courses/din-u1_s2.mp3",
+        "slideTitle": "Temizlik İmandandır: Beden ve Çevre Temizliği",
+        "emo": "🤲",
+        "then": [
+          {
+            "text": "Peygamberimiz \"Temizlik imanın yarısıdır\" buyurmuştur.",
+            "lang": "tr-TR",
+            "cap": "🤲 Temizlik",
+            "emo": "🤲"
+          },
+          {
+            "text": "Günde beş vakit namazdan önce abdest alarak ellerimizi, yüzümüzü, ayaklarımızı yıkarız.",
+            "lang": "tr-TR",
+            "cap": "✨ Ahlaki Değer: Temizlik İmandandır: B",
+            "emo": "✨"
+          },
+          {
+            "text": "Sokağımızı, okulumuzu ve doğayı temiz tutmak da ibadet sevabındadır.",
+            "lang": "tr-TR",
+            "cap": "🎯 Altın Kural",
+            "emo": "🎯"
+          }
+        ]
       },
       {
         "title": "Sağlıklı Beslenme ve İsraftan Kaçınma",
         "badge": "3. Adım: Helal ve Temiz",
         "slide": "assets/images/gunluk_hayat_ve_din.svg",
         "narration": "Yüce Allah bizlere sayısız rızık bahşetmiştir. Dinimiz helal ve temiz gıdalarla beslenmemizi emreder. Yemeğe oturmadan önce ellerimizi yıkar, Besmele ile başlar ve sağ elimizle yeriz. Doyduğumuzda \"Elhamdülillah\" deriz. Kuran-ı Kerim'de \"Yiyiniz, içiniz fakat israf etmeyiniz\" buyrulur. Ekmeği ve suyu boşa harcamaktan kaçınmalıyız.",
-        "audio": "assets/audio/courses/din-u1_s3.mp3"
+        "audio": "assets/audio/courses/din-u1_s3.mp3",
+        "slideTitle": "Sağlıklı Beslenme ve İsraftan Kaçınma",
+        "emo": "🤲",
+        "then": [
+          {
+            "text": "Yüce Allah bizlere sayısız rızık bahşetmiştir.",
+            "lang": "tr-TR",
+            "cap": "🤲 Helal ve Temiz",
+            "emo": "🤲"
+          },
+          {
+            "text": "Doyduğumuzda \"Elhamdülillah\" deriz.",
+            "lang": "tr-TR",
+            "cap": "✨ Ahlaki Değer: Sağlıklı Beslenme ve İ",
+            "emo": "✨"
+          },
+          {
+            "text": "Ekmeği ve suyu boşa harcamaktan kaçınmalıyız.",
+            "lang": "tr-TR",
+            "cap": "🎯 Altın Kural",
+            "emo": "🎯"
+          }
+        ]
       },
       {
         "title": "Bir Dua Öğreniyorum: Sübhaneke Duası",
         "badge": "4. Adım: Sübhaneke",
         "slide": "assets/images/gunluk_hayat_ve_din.svg",
         "narration": "Sübhaneke duası namazlarda tekbirden sonra okunan ilk duadır. Anlamı şöyledir: \"Allah'ım! Sen eksik sıfatlardan uzaksın. Seni daima överim. Senin adın kutludur. Senin şanın yücedir ve Senden başka ilah yoktur.\" Yalnızca cenaze namazlarında \"ve celle senâük\" cümlesi de eklenir. Bu dua Allah'a saygı ve sevginin en güzel ifadesidir.",
-        "audio": "assets/audio/courses/din-u1_s4.mp3"
+        "audio": "assets/audio/courses/din-u1_s4.mp3",
+        "slideTitle": "Bir Dua Öğreniyorum: Sübhaneke Duası",
+        "emo": "🤲",
+        "then": [
+          {
+            "text": "Sübhaneke duası namazlarda tekbirden sonra okunan ilk duadır.",
+            "lang": "tr-TR",
+            "cap": "🤲 Sübhaneke",
+            "emo": "🤲"
+          },
+          {
+            "text": "Senin adın kutludur.",
+            "lang": "tr-TR",
+            "cap": "✨ Ahlaki Değer: Bir Dua Öğreniyorum: S",
+            "emo": "✨"
+          },
+          {
+            "text": "Bu dua Allah'a saygı ve sevginin en güzel ifadesidir.",
+            "lang": "tr-TR",
+            "cap": "🎯 Altın Kural",
+            "emo": "🎯"
+          }
+        ]
       }
     ],
     "questions": [
@@ -7594,28 +10000,104 @@ const COURSE_LESSONS = {
         "badge": "1. Adım: Tevhid İnancı",
         "slide": "assets/images/allah_sevgisi.svg",
         "narration": "Merhaba sevgili kâşif! Gökyüzündeki yıldızlardan denizlerdeki balıklara kadar her şeyi mükemmel bir uyum ve düzenle yaratan Yüce Allah'tır. O birdir, tektir, doğmamış ve doğurmamıştır; eşi ve benzeri yoktur. Bu inanca Tevhid inancı denir. O her şeyi görür, her şeyi işitir ve aklımızdan geçenleri bile eksiksiz bilir.",
-        "audio": "assets/audio/courses/din-u2_s1.mp3"
+        "audio": "assets/audio/courses/din-u2_s1.mp3",
+        "slideTitle": "Allah'ı Tanıyorum: Yüce Yaratıcı",
+        "emo": "🤲",
+        "then": [
+          {
+            "text": "Merhaba sevgili kâşif!",
+            "lang": "tr-TR",
+            "cap": "🤲 Tevhid İnancı",
+            "emo": "🤲"
+          },
+          {
+            "text": "O birdir, tektir, doğmamış ve doğurmamıştır; eşi ve benzeri yoktur.",
+            "lang": "tr-TR",
+            "cap": "✨ Ahlaki Değer: Allah'ı Tanıyorum: Yüc",
+            "emo": "✨"
+          },
+          {
+            "text": "O her şeyi görür, her şeyi işitir ve aklımızdan geçenleri bile eksiksiz bilir.",
+            "lang": "tr-TR",
+            "cap": "🎯 Altın Kural",
+            "emo": "🎯"
+          }
+        ]
       },
       {
         "title": "Allah Bizi Seviyor ve Nimetler Bahşediyor",
         "badge": "2. Adım: Rahmet & Sevgi",
         "slide": "assets/images/allah_sevgisi.svg",
         "narration": "Allah kullarını çok sever ve sonsuz merhamet sahibidir. Bize gören gözler, düşünen bir akıl, sıcacık bir aile, rengârenk meyveler ve masmavi bir gökyüzü vermiştir. O'nun Rahman ismi dünyadaki tüm canlılara merhamet ettiğini gösterir. Biz de O'nu çok sever, emirlerine uyar ve verdiği tüm nimetler için kalpten teşekkür ederiz.",
-        "audio": "assets/audio/courses/din-u2_s2.mp3"
+        "audio": "assets/audio/courses/din-u2_s2.mp3",
+        "slideTitle": "Allah Bizi Seviyor ve Nimetler Bahşediyor",
+        "emo": "🤲",
+        "then": [
+          {
+            "text": "Allah kullarını çok sever ve sonsuz merhamet sahibidir.",
+            "lang": "tr-TR",
+            "cap": "🤲 Rahmet & Sevgi",
+            "emo": "🤲"
+          },
+          {
+            "text": "O'nun Rahman ismi dünyadaki tüm canlılara merhamet ettiğini gösterir.",
+            "lang": "tr-TR",
+            "cap": "✨ Ahlaki Değer: Allah Bizi Seviyor ve ",
+            "emo": "✨"
+          },
+          {
+            "text": "Biz de O'nu çok sever, emirlerine uyar ve verdiği tüm nimetler için kalpten teşekkür ederiz.",
+            "lang": "tr-TR",
+            "cap": "🎯 Altın Kural",
+            "emo": "🎯"
+          }
+        ]
       },
       {
         "title": "Kelime-i Tevhid ve Kelime-i Şehadet",
         "badge": "3. Adım: İman Sözleri",
         "slide": "assets/images/allah_sevgisi.svg",
         "narration": "İslam'ın anahtarı olan iki kutlu cümle vardır. İlki Kelime-i Tevhid: \"Lâ ilâhe illallah, Muhammedün Resûlullah\"tır; yani Allah'tan başka ilah yoktur, Hazreti Muhammed O'nun elçisidir. İkincisi Kelime-i Şehadet: \"Eşhedü en lâ ilâhe illallah ve eşhedü enne Muhammeden abdühû ve resûlüh\"tür; yani Şahitlik ederim ki Allah'tan başka ilah yoktur ve Hazreti Muhammed O'nun kulu ve elçisidir.",
-        "audio": "assets/audio/courses/din-u2_s3.mp3"
+        "audio": "assets/audio/courses/din-u2_s3.mp3",
+        "slideTitle": "Kelime-i Tevhid ve Kelime-i Şehadet",
+        "emo": "🤲",
+        "then": [
+          {
+            "text": "İslam'ın anahtarı olan iki kutlu cümle vardır.",
+            "lang": "tr-TR",
+            "cap": "🤲 İman Sözleri",
+            "emo": "🤲"
+          },
+          {
+            "text": "İlki Kelime-i Tevhid: \"Lâ ilâhe illallah, Muhammedün Resûlullah\"tır; yani Allah'tan başka ilah yoktur, Hazreti Muhammed O'nun elçisidir.",
+            "lang": "tr-TR",
+            "cap": "✨ Ahlaki Değer: Kelime-i Tevhid ve Kel",
+            "emo": "✨"
+          }
+        ]
       },
       {
         "title": "Dua Etmek ve Amentü Duası",
         "badge": "4. Adım: Dua & Amentü",
         "slide": "assets/images/allah_sevgisi.svg",
         "narration": "Dua, kulun içtenlikle ve sevgiyle Allah ile konuşmasıdır. Dua etmek için özel bir zamana veya yere ihtiyaç yoktur; sevinçte de sıkıntıda da her an dua edebiliriz. Amentü duası ise imanın altı temel şartını özetler: Allah'a, meleklerine, kitaplarına, peygamberlerine, ahiret gününe ve kaza-kadere inanmaktır.",
-        "audio": "assets/audio/courses/din-u2_s4.mp3"
+        "audio": "assets/audio/courses/din-u2_s4.mp3",
+        "slideTitle": "Dua Etmek ve Amentü Duası",
+        "emo": "🤲",
+        "then": [
+          {
+            "text": "Dua, kulun içtenlikle ve sevgiyle Allah ile konuşmasıdır.",
+            "lang": "tr-TR",
+            "cap": "🤲 Dua Etmek ve Amentü Duası",
+            "emo": "🤲"
+          },
+          {
+            "text": "Dua etmek için özel bir zamana veya yere ihtiyaç yoktur; sevinçte de sıkıntıda da her an dua edebiliriz.",
+            "lang": "tr-TR",
+            "cap": "✨ Ahlaki Değer: Dua Etmek ve Amentü Du",
+            "emo": "✨"
+          }
+        ]
       }
     ],
     "questions": [
@@ -7851,104 +10333,104 @@ const COURSE_LESSONS = {
     "icon": "🕊️",
     "steps": [
       {
-            "title": "Hazreti Muhammed'in Çocuk Sevgisi",
-            "badge": "1. Adım: Çocuk Sevgisi",
-            "slide": "assets/images/din_u3_cocuk_sevgisi.svg",
-            "slideTitle": "Hazreti Muhammed'in Çocuklara Sevgisi",
-            "narration": "Merhaba sevgili kaşif! Peygamberimiz Hazreti Muhammed (sallallahu aleyhi ve sellem) çocukları çok ama çok severdi. Sokakta yürürken karşılaştığı çocuklara ilk selamı o verirdi; bu onların ne kadar değerli olduğunu hissettirirdi. Torunları Hazreti Hasan ve Hazreti Hüseyin namaz kılarken sırtına çıktığında, onlar inene kadar secdeden kalkmazdı. Kız ve erkek çocuklar arasında hiçbir zaman ayrım yapmaz, hepsini eşit sevgi ve şefkatle kucaklardı.",
-            "audio": "assets/audio/courses/din-u3_s1.mp3",
-            "emo": "🕊️",
-            "then": [
-                  {
-                        "text": "Torunları Hazreti Hasan ve Hazreti Hüseyin namaz sırasında dedelerinin sırtına tırmanırdı. Peygamberimiz onlar inmeden secdeden kalkmazdı; çünkü torunlarının mutluluğu ve ibadeti sevmeleri her şeyden önemliydi.",
-                        "lang": "tr-TR",
-                        "cap": "🤗 Torunlarını Çok Severdi",
-                        "emo": "🤗"
-                  },
-                  {
-                        "text": "Hazreti Muhammed kız ve erkek çocuklar arasında asla ayrım yapmazdı. 'Kız çocukları Allah'ın birer rahmetidir' buyurarak döneminin yanlış anlayışını tamamen yıktı.",
-                        "lang": "tr-TR",
-                        "cap": "⚖️ Kız ve Erkek Çocuk Eşittir",
-                        "emo": "⚖️"
-                  },
-                  {
-                        "text": "Peygamberimiz yolda gördüğü çocuklara büyüklük taslamadan ilk selamı kendisi verir, başlarını şefkatle okşar ve hatırlarını sorardı.",
-                        "lang": "tr-TR",
-                        "cap": "👋 İlk Selamı O Verirdi",
-                        "emo": "👋"
-                  }
-            ]
+        "title": "Hazreti Muhammed'in Çocuk Sevgisi",
+        "badge": "1. Adım: Çocuk Sevgisi",
+        "slide": "assets/images/din_u3_cocuk_sevgisi.svg",
+        "slideTitle": "Hazreti Muhammed'in Çocuklara Sevgisi",
+        "narration": "Merhaba sevgili kaşif! Peygamberimiz Hazreti Muhammed (sallallahu aleyhi ve sellem) çocukları çok ama çok severdi. Sokakta yürürken karşılaştığı çocuklara ilk selamı o verirdi; bu onların ne kadar değerli olduğunu hissettirirdi. Torunları Hazreti Hasan ve Hazreti Hüseyin namaz kılarken sırtına çıktığında, onlar inene kadar secdeden kalkmazdı. Kız ve erkek çocuklar arasında hiçbir zaman ayrım yapmaz, hepsini eşit sevgi ve şefkatle kucaklardı.",
+        "audio": "assets/audio/courses/din-u3_s1.mp3",
+        "emo": "🕊️",
+        "then": [
+          {
+            "text": "Torunları Hazreti Hasan ve Hazreti Hüseyin namaz sırasında dedelerinin sırtına tırmanırdı. Peygamberimiz onlar inmeden secdeden kalkmazdı; çünkü torunlarının mutluluğu ve ibadeti sevmeleri her şeyden önemliydi.",
+            "lang": "tr-TR",
+            "cap": "🤗 Torunlarını Çok Severdi",
+            "emo": "🤗"
+          },
+          {
+            "text": "Hazreti Muhammed kız ve erkek çocuklar arasında asla ayrım yapmazdı. 'Kız çocukları Allah'ın birer rahmetidir' buyurarak döneminin yanlış anlayışını tamamen yıktı.",
+            "lang": "tr-TR",
+            "cap": "⚖️ Kız ve Erkek Çocuk Eşittir",
+            "emo": "⚖️"
+          },
+          {
+            "text": "Peygamberimiz yolda gördüğü çocuklara büyüklük taslamadan ilk selamı kendisi verir, başlarını şefkatle okşar ve hatırlarını sorardı.",
+            "lang": "tr-TR",
+            "cap": "👋 İlk Selamı O Verirdi",
+            "emo": "👋"
+          }
+        ]
       },
       {
-            "title": "Toplum Sevgisi ve İnsanlara Değer Verme",
-            "badge": "2. Adım: Toplum Sevgisi",
-            "slide": "assets/images/din_u3_toplum_sevgisi.svg",
-            "slideTitle": "Toplum Sevgisi: Merhamet ve Eşitlik",
-            "narration": "Peygamberimiz Hazreti Muhammed (sallallahu aleyhi ve sellem) tüm insanlara karşı derin bir sevgi ve merhamet beslerdi. Hastaları bizzat ziyaret eder, yoksulların ve yetimlerin yanında olur, onlara elinden gelen yardımı yapardı. Kendisine kötülük edenlere bile beddua etmez; 'Allah'ım onları bağışla, çünkü bilmiyorlar' diyerek af dilerdi. Onun meclisinde zengin ile fakir, güçlü ile zayıf aynı değeri görürdü; hiç kimse diğerinden üstün tutulmazdı.",
-            "audio": "assets/audio/courses/din-u3_s2.mp3",
-            "emo": "❤️",
-            "then": [
-                  {
-                        "text": "Peygamberimiz hastaları ziyaret etmeyi büyük bir ibadet olarak görürdü. 'Hastayı ziyaret eden kişi, cennet bahçelerinden birinde yürümüş gibidir' buyururdu.",
-                        "lang": "tr-TR",
-                        "cap": "🏥 Hastayı Ziyaret Edin",
-                        "emo": "🏥"
-                  },
-                  {
-                        "text": "Meclisinde hiç kimse ayrıcalıklı değildi. Zengin ile fakir, güçlü ile zayıf yan yana oturur, hepsi eşit muamele görürdü. Bu, gerçek adaletin ve kardeşliğin ta kendisiydi.",
-                        "lang": "tr-TR",
-                        "cap": "⚖️ Mecliste Herkes Eşit",
-                        "emo": "⚖️"
-                  }
-            ]
+        "title": "Toplum Sevgisi ve İnsanlara Değer Verme",
+        "badge": "2. Adım: Toplum Sevgisi",
+        "slide": "assets/images/din_u3_toplum_sevgisi.svg",
+        "slideTitle": "Toplum Sevgisi: Merhamet ve Eşitlik",
+        "narration": "Peygamberimiz Hazreti Muhammed (sallallahu aleyhi ve sellem) tüm insanlara karşı derin bir sevgi ve merhamet beslerdi. Hastaları bizzat ziyaret eder, yoksulların ve yetimlerin yanında olur, onlara elinden gelen yardımı yapardı. Kendisine kötülük edenlere bile beddua etmez; 'Allah'ım onları bağışla, çünkü bilmiyorlar' diyerek af dilerdi. Onun meclisinde zengin ile fakir, güçlü ile zayıf aynı değeri görürdü; hiç kimse diğerinden üstün tutulmazdı.",
+        "audio": "assets/audio/courses/din-u3_s2.mp3",
+        "emo": "❤️",
+        "then": [
+          {
+            "text": "Peygamberimiz hastaları ziyaret etmeyi büyük bir ibadet olarak görürdü. 'Hastayı ziyaret eden kişi, cennet bahçelerinden birinde yürümüş gibidir' buyururdu.",
+            "lang": "tr-TR",
+            "cap": "🏥 Hastayı Ziyaret Edin",
+            "emo": "🏥"
+          },
+          {
+            "text": "Meclisinde hiç kimse ayrıcalıklı değildi. Zengin ile fakir, güçlü ile zayıf yan yana oturur, hepsi eşit muamele görürdü. Bu, gerçek adaletin ve kardeşliğin ta kendisiydi.",
+            "lang": "tr-TR",
+            "cap": "⚖️ Mecliste Herkes Eşit",
+            "emo": "⚖️"
+          }
+        ]
       },
       {
-            "title": "Doğa, Hayvan ve Çalışma Sevgisi",
-            "badge": "3. Adım: Doğa & Alın Teri",
-            "slide": "assets/images/din_u3_doga_sevgisi.svg",
-            "slideTitle": "Doğa, Hayvan ve Alın Teri Sevgisi",
-            "narration": "Peygamberimiz hayvanlara eziyet edenleri sertçe uyarmış, kuş yuvalarının bozulmasını kesinlikle yasaklamıştır. 'Kıyametin kopacağını bilseniz bile elinizdeki fidanı dikiniz' buyurarak doğayı korumayı emretmiştir. Kendisi de gençliğinde çobanlık ve ticaret yaparak alın teriyle geçinmiş; kendi söküğünü bizzat dikmiştir. 'Hiç kimse kendi elinin emeğinden daha hayırlı bir rızık yememiştir' diyerek helal kazancın kutsallığını öğretmiştir.",
-            "audio": "assets/audio/courses/din-u3_s3.mp3",
-            "emo": "🌿",
-            "then": [
-                  {
-                        "text": "Peygamberimiz 'Kıyametin kopacağını bilseniz dahi elinizdeki fidanı dikiniz' buyurmuştur. Bu hadis bize doğayı ve yeşili her koşulda korumamız gerektiğini öğretir.",
-                        "lang": "tr-TR",
-                        "cap": "🌱 Fidan Dik, Doğayı Koru",
-                        "emo": "🌱"
-                  },
-                  {
-                        "text": "Hazreti Muhammed kendi söküğünü bizzat diker, kendi ayakkabısını tamir ederdi. 'Alın teriyle kazanılan rızık en hayırlı rızıktır' diyerek çalışmayı ve üretmeyi övdü.",
-                        "lang": "tr-TR",
-                        "cap": "💪 Alın Teriyle Çalışmak",
-                        "emo": "💪"
-                  }
-            ]
+        "title": "Doğa, Hayvan ve Çalışma Sevgisi",
+        "badge": "3. Adım: Doğa & Alın Teri",
+        "slide": "assets/images/din_u3_doga_sevgisi.svg",
+        "slideTitle": "Doğa, Hayvan ve Alın Teri Sevgisi",
+        "narration": "Peygamberimiz hayvanlara eziyet edenleri sertçe uyarmış, kuş yuvalarının bozulmasını kesinlikle yasaklamıştır. 'Kıyametin kopacağını bilseniz bile elinizdeki fidanı dikiniz' buyurarak doğayı korumayı emretmiştir. Kendisi de gençliğinde çobanlık ve ticaret yaparak alın teriyle geçinmiş; kendi söküğünü bizzat dikmiştir. 'Hiç kimse kendi elinin emeğinden daha hayırlı bir rızık yememiştir' diyerek helal kazancın kutsallığını öğretmiştir.",
+        "audio": "assets/audio/courses/din-u3_s3.mp3",
+        "emo": "🌿",
+        "then": [
+          {
+            "text": "Peygamberimiz 'Kıyametin kopacağını bilseniz dahi elinizdeki fidanı dikiniz' buyurmuştur. Bu hadis bize doğayı ve yeşili her koşulda korumamız gerektiğini öğretir.",
+            "lang": "tr-TR",
+            "cap": "🌱 Fidan Dik, Doğayı Koru",
+            "emo": "🌱"
+          },
+          {
+            "text": "Hazreti Muhammed kendi söküğünü bizzat diker, kendi ayakkabısını tamir ederdi. 'Alın teriyle kazanılan rızık en hayırlı rızıktır' diyerek çalışmayı ve üretmeyi övdü.",
+            "lang": "tr-TR",
+            "cap": "💪 Alın Teriyle Çalışmak",
+            "emo": "💪"
+          }
+        ]
       },
       {
-            "title": "Salli ve Barik Duaları",
-            "badge": "4. Adım: Salavat Duaları",
-            "slide": "assets/images/din_u3_salli_barik.svg",
-            "slideTitle": "Namazın Son Oturuşu: Salli ve Barik Duaları",
-            "narration": "Namazların son oturuşunda Ettehiyyatü'den sonra okunan Allahümme Salli ve Allahümme Barik duaları, Peygamber Efendimize ve onun kutlu ailesine yönelik birer sevgi, saygı ve rahmet duasıdır. Bu dualarda Hazreti İbrahim'e ve ailesine yapılan dua gibi Hazreti Muhammed'e de rahmet, bereket ve şan dilenmektedir. Peygamberimizin adı her anıldığında 'Sallallahu aleyhi ve sellem' demek de ona duyulan sevginin ve vefanın bir göstergesidir.",
-            "audio": "assets/audio/courses/din-u3_s4.mp3",
-            "emo": "🤲",
-            "then": [
-                  {
-                        "text": "Allahümme Salli duasında Allah'tan Hazreti Muhammed'e ve ailesine, Hazreti İbrahim ve ailesine verilen rahmet gibi rahmet vermesi dilenir. 'Salli' kelimesi rahmet ve yücelik anlamına gelir.",
-                        "lang": "tr-TR",
-                        "cap": "🌙 Allahümme Salli — Rahmet Duası",
-                        "emo": "🌙"
-                  },
-                  {
-                        "text": "Allahümme Barik duasında ise bereket ve bolluk dilenir. 'Barik' kelimesi bereket anlamındadır. Her ikisi de namazın son oturuşunda, Ettehiyyatü'den hemen sonra okunur.",
-                        "lang": "tr-TR",
-                        "cap": "✨ Allahümme Barik — Bereket Duası",
-                        "emo": "✨"
-                  }
-            ]
+        "title": "Salli ve Barik Duaları",
+        "badge": "4. Adım: Salavat Duaları",
+        "slide": "assets/images/din_u3_salli_barik.svg",
+        "slideTitle": "Namazın Son Oturuşu: Salli ve Barik Duaları",
+        "narration": "Namazların son oturuşunda Ettehiyyatü'den sonra okunan Allahümme Salli ve Allahümme Barik duaları, Peygamber Efendimize ve onun kutlu ailesine yönelik birer sevgi, saygı ve rahmet duasıdır. Bu dualarda Hazreti İbrahim'e ve ailesine yapılan dua gibi Hazreti Muhammed'e de rahmet, bereket ve şan dilenmektedir. Peygamberimizin adı her anıldığında 'Sallallahu aleyhi ve sellem' demek de ona duyulan sevginin ve vefanın bir göstergesidir.",
+        "audio": "assets/audio/courses/din-u3_s4.mp3",
+        "emo": "🤲",
+        "then": [
+          {
+            "text": "Allahümme Salli duasında Allah'tan Hazreti Muhammed'e ve ailesine, Hazreti İbrahim ve ailesine verilen rahmet gibi rahmet vermesi dilenir. 'Salli' kelimesi rahmet ve yücelik anlamına gelir.",
+            "lang": "tr-TR",
+            "cap": "🌙 Allahümme Salli — Rahmet Duası",
+            "emo": "🌙"
+          },
+          {
+            "text": "Allahümme Barik duasında ise bereket ve bolluk dilenir. 'Barik' kelimesi bereket anlamındadır. Her ikisi de namazın son oturuşunda, Ettehiyyatü'den hemen sonra okunur.",
+            "lang": "tr-TR",
+            "cap": "✨ Allahümme Barik — Bereket Duası",
+            "emo": "✨"
+          }
+        ]
       }
-],
+    ],
     "questions": [
       {
         "q": "Peygamber Efendimiz Hazreti Muhammed'in (sallallahu aleyhi ve sellem) torunlarının isimleri nelerdir?",
@@ -8171,7 +10653,8 @@ const COURSE_LESSONS = {
         ],
         "answer": 3,
         "explanation": "Bu dualar namazın son oturuşunda Ettehiyyatü'den sonra selam vermeden önce okunur."
-      }]
+      }
+    ]
   },
   "din-u4": {
     "id": "din-u4",
@@ -8185,28 +10668,116 @@ const COURSE_LESSONS = {
         "badge": "1. Adım: Adalet",
         "slide": "assets/images/ahlaki_degerlerimiz.svg",
         "narration": "Merhaba güzel ahlak yolcusu! İslam ahlakının temeli Adalettir. Adalet, herkese hakkını vermek ve kimseye haksızlık yapmamaktır. Zengin, fakir, güçlü ya da güçsüz kim olursa olsun kurallar karşısında eşittir. Peygamberimiz daha peygamber olmadan önce bile doğruluğu ve dürüstlüğü sebebiyle Mekke halkı tarafından \"Muhammedü'l-Emin\" yani Güvenilir Muhammed olarak adlandırılmıştı.",
-        "audio": "assets/audio/courses/din-u4_s1.mp3"
+        "audio": "assets/audio/courses/din-u4_s1.mp3",
+        "slideTitle": "Adalet ve Doğruluk: Mülkün Temeli",
+        "emo": "🤲",
+        "then": [
+          {
+            "text": "Merhaba güzel ahlak yolcusu!",
+            "lang": "tr-TR",
+            "cap": "🤲 Adalet",
+            "emo": "🤲"
+          },
+          {
+            "text": "Adalet, herkese hakkını vermek ve kimseye haksızlık yapmamaktır.",
+            "lang": "tr-TR",
+            "cap": "✨ Ahlaki Değer: Adalet ve Doğruluk: Mü",
+            "emo": "✨"
+          },
+          {
+            "text": "Peygamberimiz daha peygamber olmadan önce bile doğruluğu ve dürüstlüğü sebebiyle Mekke halkı tarafından \"Muhammedü'l-Emin\" yani Güvenilir Muhammed olarak adlandırılmıştı.",
+            "lang": "tr-TR",
+            "cap": "🎯 Altın Kural",
+            "emo": "🎯"
+          }
+        ]
       },
       {
         "title": "Sabır: Zorlukları Aşma Gücü",
         "badge": "2. Adım: Sabır",
         "slide": "assets/images/ahlaki_degerlerimiz.svg",
         "narration": "Sabır, başımıza gelen sıkıntılar, hastalıklar veya zorluklar karşısında öfkelenmeden, pes etmeden metanetle mücadele etmektir. Bir hedefe ulaşmak, derslerde başarılı olmak düzenli ve sabırlı bir çalışmayla mümkündür. Kuran-ı Kerim'de \"Şüphesiz Allah sabredenlerle beraberdir\" buyrulur. Sabır başarı kapısının altın anahtarıdır.",
-        "audio": "assets/audio/courses/din-u4_s2.mp3"
+        "audio": "assets/audio/courses/din-u4_s2.mp3",
+        "slideTitle": "Sabır: Zorlukları Aşma Gücü",
+        "emo": "🤲",
+        "then": [
+          {
+            "text": "Sabır, başımıza gelen sıkıntılar, hastalıklar veya zorluklar karşısında öfkelenmeden, pes etmeden metanetle mücadele etmektir.",
+            "lang": "tr-TR",
+            "cap": "🤲 Sabır: Zorlukları Aşma Gücü",
+            "emo": "🤲"
+          },
+          {
+            "text": "Kuran-ı Kerim'de \"Şüphesiz Allah sabredenlerle beraberdir\" buyrulur.",
+            "lang": "tr-TR",
+            "cap": "✨ Ahlaki Değer: Sabır: Zorlukları Aşma",
+            "emo": "✨"
+          },
+          {
+            "text": "Sabır başarı kapısının altın anahtarıdır.",
+            "lang": "tr-TR",
+            "cap": "🎯 Altın Kural",
+            "emo": "🎯"
+          }
+        ]
       },
       {
         "title": "Yardımseverlik, Paylaşma ve Sadaka",
         "badge": "3. Adım: Paylaşma",
         "slide": "assets/images/ahlaki_degerlerimiz.svg",
         "narration": "İslam dini paylaşma ve dayanışma dinidir. Muhtaçlara yardım etmek, yoksullara destek olmak kalbimizi güzelleştirir. Sadaka vermek için sadece zengin olmak gerekmez! Peygamberimiz \"Bir kimseye güler yüzle tebessüm etmek bile bir sadakadır\" buyurmuştur. Yoldaki bir taşı kaldırmak, bir kediye su vermek bile büyük bir sevaptır.",
-        "audio": "assets/audio/courses/din-u4_s3.mp3"
+        "audio": "assets/audio/courses/din-u4_s3.mp3",
+        "slideTitle": "Yardımseverlik, Paylaşma ve Sadaka",
+        "emo": "🤲",
+        "then": [
+          {
+            "text": "İslam dini paylaşma ve dayanışma dinidir.",
+            "lang": "tr-TR",
+            "cap": "🤲 Paylaşma",
+            "emo": "🤲"
+          },
+          {
+            "text": "Sadaka vermek için sadece zengin olmak gerekmez!",
+            "lang": "tr-TR",
+            "cap": "✨ Ahlaki Değer: Yardımseverlik, Paylaş",
+            "emo": "✨"
+          },
+          {
+            "text": "Yoldaki bir taşı kaldırmak, bir kediye su vermek bile büyük bir sevaptır.",
+            "lang": "tr-TR",
+            "cap": "🎯 Altın Kural",
+            "emo": "🎯"
+          }
+        ]
       },
       {
         "title": "Bir Sure Öğreniyorum: Fatiha Suresi",
         "badge": "4. Adım: Fatiha Suresi",
         "slide": "assets/images/ahlaki_degerlerimiz.svg",
         "narration": "Fatiha Suresi Kuran-ı Kerim'in ilk suresidir ve \"Açılış\" anlamına gelir. 7 ayetten oluşur ve namazlarımızın her rekâtında mutlaka okunur! Anlamında: Âlemlerin Rabbi olan Allah'a hamdeder, O'nun Rahman ve Rahim olduğunu bildirir ve şöyle dua ederiz: \"Yalnız Sana kulluk eder, yalnız Senden yardım dileriz. Bizi dosdoğru yola ilet!\"",
-        "audio": "assets/audio/courses/din-u4_s4.mp3"
+        "audio": "assets/audio/courses/din-u4_s4.mp3",
+        "slideTitle": "Bir Sure Öğreniyorum: Fatiha Suresi",
+        "emo": "🤲",
+        "then": [
+          {
+            "text": "Fatiha Suresi Kuran-ı Kerim'in ilk suresidir ve \"Açılış\" anlamına gelir.",
+            "lang": "tr-TR",
+            "cap": "🤲 Fatiha Suresi",
+            "emo": "🤲"
+          },
+          {
+            "text": "Anlamında: Âlemlerin Rabbi olan Allah'a hamdeder, O'nun Rahman ve Rahim olduğunu bildirir ve şöyle dua ederiz: \"Yalnız Sana kulluk eder, yalnız Senden yardım dileriz.",
+            "lang": "tr-TR",
+            "cap": "✨ Ahlaki Değer: Bir Sure Öğreniyorum: ",
+            "emo": "✨"
+          },
+          {
+            "text": "Bizi dosdoğru yola ilet!\"",
+            "lang": "tr-TR",
+            "cap": "🎯 Altın Kural",
+            "emo": "🎯"
+          }
+        ]
       }
     ],
     "questions": [
@@ -8446,28 +11017,104 @@ const COURSE_LESSONS = {
         "badge": "1. Adım: Mahremiyet",
         "slide": "assets/images/haklar_ve_sorumluluklar.svg",
         "narration": "Merhaba bilinçli kâşif! Her insanın dokunulmaz temel hakları vardır: Yaşama hakkı, inanç hakkı ve özel hayatın gizliliği. Başkalarının odasına, eşyasına, telefonuna veya defterine izinsiz bakmak günahtır ve kul hakkıdır! Bir odaya girmeden önce kapıyı üç kez çalmalı ve izin istemeliyiz. Kendi bedenimizin sınırlarını korumak da mahremiyetin gereğidir.",
-        "audio": "assets/audio/courses/din-u5_s1.mp3"
+        "audio": "assets/audio/courses/din-u5_s1.mp3",
+        "slideTitle": "Kişisel Haklar ve Mahremiyet Bilinci",
+        "emo": "🤲",
+        "then": [
+          {
+            "text": "Merhaba bilinçli kâşif!",
+            "lang": "tr-TR",
+            "cap": "🤲 Mahremiyet",
+            "emo": "🤲"
+          },
+          {
+            "text": "Başkalarının odasına, eşyasına, telefonuna veya defterine izinsiz bakmak günahtır ve kul hakkıdır!",
+            "lang": "tr-TR",
+            "cap": "✨ Ahlaki Değer: Kişisel Haklar ve Mahr",
+            "emo": "✨"
+          },
+          {
+            "text": "Kendi bedenimizin sınırlarını korumak da mahremiyetin gereğidir.",
+            "lang": "tr-TR",
+            "cap": "🎯 Altın Kural",
+            "emo": "🎯"
+          }
+        ]
       },
       {
         "title": "Allah'a Karşı Sorumluluklarımız",
         "badge": "2. Adım: İbadet & Şükür",
         "slide": "assets/images/haklar_ve_sorumluluklar.svg",
         "narration": "Bizi yaratan ve sonsuz rızık veren Yüce Allah'a karşı görevlerimiz vardır. O'na inanmak, emirlerini yerine getirmek, ibadetlerimizi yapmak, haramlardan kaçınmak ve verdiği her nimet için kalpten şükretmek O'na olan kulluk borcumuzdur.",
-        "audio": "assets/audio/courses/din-u5_s2.mp3"
+        "audio": "assets/audio/courses/din-u5_s2.mp3",
+        "slideTitle": "Allah'a Karşı Sorumluluklarımız",
+        "emo": "🤲",
+        "then": [
+          {
+            "text": "Bizi yaratan ve sonsuz rızık veren Yüce Allah'a karşı görevlerimiz vardır.",
+            "lang": "tr-TR",
+            "cap": "🤲 Allah'a Karşı Sorumluluklarımız",
+            "emo": "🤲"
+          },
+          {
+            "text": "O'na inanmak, emirlerini yerine getirmek, ibadetlerimizi yapmak, haramlardan kaçınmak ve verdiği her nimet için kalpten şükretmek O'na olan kulluk borcumuzdur.",
+            "lang": "tr-TR",
+            "cap": "✨ Ahlaki Değer: Allah'a Karşı Sorumlul",
+            "emo": "✨"
+          }
+        ]
       },
       {
         "title": "İnsanlara ve Çevreye Karşı Sorumluluklarımız",
         "badge": "3. Adım: Kul Hakkı & Çevre",
         "slide": "assets/images/haklar_ve_sorumluluklar.svg",
         "narration": "Anne-babamıza \"öf\" bile dememek, onlara saygı ve şefkat göstermek en büyük görevimizdir. Öğretmenlerimize hürmet etmek, komşularımızı gürültüyle rahatsız etmemek ve hayvanlara merhamet etmek zorundayız. Çevreyi kirletmek tüm insanların hakkına girmektir; çünkü temiz bir dünya herkesin ortak hakkıdır!",
-        "audio": "assets/audio/courses/din-u5_s3.mp3"
+        "audio": "assets/audio/courses/din-u5_s3.mp3",
+        "slideTitle": "İnsanlara ve Çevreye Karşı Sorumluluklarımız",
+        "emo": "🤲",
+        "then": [
+          {
+            "text": "Anne-babamıza \"öf\" bile dememek, onlara saygı ve şefkat göstermek en büyük görevimizdir.",
+            "lang": "tr-TR",
+            "cap": "🤲 Kul Hakkı & Çevre",
+            "emo": "🤲"
+          },
+          {
+            "text": "Öğretmenlerimize hürmet etmek, komşularımızı gürültüyle rahatsız etmemek ve hayvanlara merhamet etmek zorundayız.",
+            "lang": "tr-TR",
+            "cap": "✨ Ahlaki Değer: İnsanlara ve Çevreye K",
+            "emo": "✨"
+          }
+        ]
       },
       {
         "title": "Bir Dua Öğreniyorum: Rabbena Duaları",
         "badge": "4. Adım: Rabbena Duaları",
         "slide": "assets/images/haklar_ve_sorumluluklar.svg",
         "narration": "Rabbena duaları hem bu dünyamız hem de ahiretimiz için kurtuluş isteyen en kapsamlı dualardır. Rabbena Âtina: \"Rabbimiz! Bize dünyada da iyilik ver, ahirette de iyilik ver ve bizi cehennem azabından koru!\" Rabbenağfirlî: \"Rabbimiz! Hesap gününde beni, anamı, babamı ve bütün müminleri bağışla!\" Namazın son oturuşunda bu dualarla yakarırız.",
-        "audio": "assets/audio/courses/din-u5_s4.mp3"
+        "audio": "assets/audio/courses/din-u5_s4.mp3",
+        "slideTitle": "Bir Dua Öğreniyorum: Rabbena Duaları",
+        "emo": "🤲",
+        "then": [
+          {
+            "text": "Rabbena duaları hem bu dünyamız hem de ahiretimiz için kurtuluş isteyen en kapsamlı dualardır.",
+            "lang": "tr-TR",
+            "cap": "🤲 Rabbena Duaları",
+            "emo": "🤲"
+          },
+          {
+            "text": "Bize dünyada da iyilik ver, ahirette de iyilik ver ve bizi cehennem azabından koru!\" Rabbenağfirlî: \"Rabbimiz!",
+            "lang": "tr-TR",
+            "cap": "✨ Ahlaki Değer: Bir Dua Öğreniyorum: R",
+            "emo": "✨"
+          },
+          {
+            "text": "Hesap gününde beni, anamı, babamı ve bütün müminleri bağışla!\" Namazın son oturuşunda bu dualarla yakarırız.",
+            "lang": "tr-TR",
+            "cap": "🎯 Altın Kural",
+            "emo": "🎯"
+          }
+        ]
       }
     ],
     "questions": [
@@ -8707,28 +11354,116 @@ const COURSE_LESSONS = {
         "badge": "Step 1: Instructions",
         "slide": "assets/images/classroom_rules.svg",
         "narration": "Hello young learner! Welcome to our 4th grade English journey. In our classroom, we have simple and fun rules to learn together. When teacher says \"Stand up!\", we stand on our feet. \"Sit down!\" means take your seat. \"Open your book\" means start reading, and \"Close your book\" means finish reading. Remember: \"Raise your hand\" before speaking!",
-        "audio": "assets/audio/courses/eng-u1_s1.mp3"
+        "audio": "assets/audio/courses/eng-u1_s1.mp3",
+        "slideTitle": "Common Classroom Instructions",
+        "emo": "🗣️",
+        "then": [
+          {
+            "text": "Hello young learner!",
+            "lang": "en-US",
+            "cap": "🗣️ Common Classroom Instructions",
+            "emo": "🗣️"
+          },
+          {
+            "text": "When teacher says \"Stand up!\", we stand on our feet.",
+            "lang": "en-US",
+            "cap": "✨ Daily English: Common Classroom Instr",
+            "emo": "✨"
+          },
+          {
+            "text": "Remember: \"Raise your hand\" before speaking!",
+            "lang": "en-US",
+            "cap": "🎯 Altın Kural",
+            "emo": "🎯"
+          }
+        ]
       },
       {
         "title": "Polite Requests: \"May I...?\"",
         "badge": "Step 2: Polite Requests",
         "slide": "assets/images/classroom_rules.svg",
         "narration": "When we want permission politely, we use the magic words \"May I...?\" For example: \"May I come in?\" means can I enter the room? \"May I drink water?\" means can I have a drink? \"May I go to the toilet?\" means can I visit the restroom? If someone says something you don't understand, say: \"Can you repeat, please?\"",
-        "audio": "assets/audio/courses/eng-u1_s2.mp3"
+        "audio": "assets/audio/courses/eng-u1_s2.mp3",
+        "slideTitle": "Polite Requests: \"May I...?\"",
+        "emo": "🗣️",
+        "then": [
+          {
+            "text": "When we want permission politely, we use the magic words \"May I...?\" For example: \"May I come in?\" means can I enter the room?",
+            "lang": "en-US",
+            "cap": "🗣️ Polite Requests: \"May I...?\"",
+            "emo": "🗣️"
+          },
+          {
+            "text": "\"May I go to the toilet?\" means can I visit the restroom?",
+            "lang": "en-US",
+            "cap": "✨ Daily English: Polite Requests: \"May ",
+            "emo": "✨"
+          },
+          {
+            "text": "If someone says something you don't understand, say: \"Can you repeat, please?\"",
+            "lang": "en-US",
+            "cap": "🎯 Altın Kural",
+            "emo": "🎯"
+          }
+        ]
       },
       {
         "title": "Classroom Objects and Lending",
         "badge": "Step 3: School Objects",
         "slide": "assets/images/classroom_rules.svg",
         "narration": "Look around your desk! You have a pencil, an eraser, a ruler, and a sharpener in your pencil case. When you need something from a friend, say politely: \"Give me the eraser, please.\" and always say \"Thank you!\" when they share. Good manners make the best friends!",
-        "audio": "assets/audio/courses/eng-u1_s3.mp3"
+        "audio": "assets/audio/courses/eng-u1_s3.mp3",
+        "slideTitle": "Classroom Objects and Lending",
+        "emo": "🗣️",
+        "then": [
+          {
+            "text": "Look around your desk!",
+            "lang": "en-US",
+            "cap": "🗣️ Classroom Objects and Lending",
+            "emo": "🗣️"
+          },
+          {
+            "text": "When you need something from a friend, say politely: \"Give me the eraser, please.\" and always say \"Thank you!\" when they share.",
+            "lang": "en-US",
+            "cap": "✨ Daily English: Classroom Objects and ",
+            "emo": "✨"
+          },
+          {
+            "text": "Good manners make the best friends!",
+            "lang": "en-US",
+            "cap": "🎯 Altın Kural",
+            "emo": "🎯"
+          }
+        ]
       },
       {
         "title": "Numbers and Counting (1 to 50)",
         "badge": "Step 4: Numbers",
         "slide": "assets/images/classroom_rules.svg",
         "narration": "Let's count together! Ten, twenty, thirty, forty, fifty! When teacher asks \"How many pencils are there?\", we count them one by one. Practice saying \"There are fifteen desks in the classroom.\" You are ready to shine in English class!",
-        "audio": "assets/audio/courses/eng-u1_s4.mp3"
+        "audio": "assets/audio/courses/eng-u1_s4.mp3",
+        "slideTitle": "Numbers and Counting (1 to 50)",
+        "emo": "🗣️",
+        "then": [
+          {
+            "text": "Let's count together!",
+            "lang": "en-US",
+            "cap": "🗣️ Numbers and Counting (1 to 50)",
+            "emo": "🗣️"
+          },
+          {
+            "text": "When teacher asks \"How many pencils are there?\", we count them one by one.",
+            "lang": "en-US",
+            "cap": "✨ Daily English: Numbers and Counting (",
+            "emo": "✨"
+          },
+          {
+            "text": "Practice saying \"There are fifteen desks in the classroom.\" You are ready to shine in English class!",
+            "lang": "en-US",
+            "cap": "🎯 Altın Kural",
+            "emo": "🎯"
+          }
+        ]
       }
     ],
     "questions": [
@@ -8968,28 +11703,98 @@ const COURSE_LESSONS = {
         "badge": "Step 1: Countries",
         "slide": "assets/images/nationality_countries.svg",
         "narration": "Hello world traveler! Let's meet children from all around the globe. There is an important difference between Country and Nationality. Country is where you live, and Nationality is who you are! For example: Türkiye is the country, Turkish is the nationality. Germany is the country, German is the nationality. France is the country, French is the nationality!",
-        "audio": "assets/audio/courses/eng-u2_s1.mp3"
+        "audio": "assets/audio/courses/eng-u2_s1.mp3",
+        "slideTitle": "Countries and Nationalities (Ülkeler ve Milletler)",
+        "emo": "🗣️",
+        "then": [
+          {
+            "text": "Hello world traveler!",
+            "lang": "en-US",
+            "cap": "🗣️ Countries",
+            "emo": "🗣️"
+          },
+          {
+            "text": "Country is where you live, and Nationality is who you are!",
+            "lang": "en-US",
+            "cap": "✨ Daily English: Countries and National",
+            "emo": "✨"
+          },
+          {
+            "text": "France is the country, French is the nationality!",
+            "lang": "en-US",
+            "cap": "🎯 Altın Kural",
+            "emo": "🎯"
+          }
+        ]
       },
       {
         "title": "Asking \"Where are you from?\"",
         "badge": "Step 2: Where from?",
         "slide": "assets/images/nationality_countries.svg",
         "narration": "When you meet a new friend, you ask: \"Where are you from?\" and you answer: \"I am from Türkiye.\" When you ask about their nationality, you say: \"What nationality are you?\" and answer: \"I am Turkish.\" If you talk about a boy, say: \"He is from Spain, he is Spanish.\" For a girl: \"She is from Italy, she is Italian.\"",
-        "audio": "assets/audio/courses/eng-u2_s2.mp3"
+        "audio": "assets/audio/courses/eng-u2_s2.mp3",
+        "slideTitle": "Asking \"Where are you from?\"",
+        "emo": "🗣️",
+        "then": [
+          {
+            "text": "When you meet a new friend, you ask: \"Where are you from?\" and you answer: \"I am from Türkiye.\" When you ask about their nationality, you say: \"What nationality are you?\" and answer: \"I am Turkish.\" If you talk about a boy, say: \"He is from Spain, he is Spanish.\" For a girl: \"She is from Italy, she is Italian.\"",
+            "lang": "en-US",
+            "cap": "🗣️ Asking \"Where are you from?\"",
+            "emo": "🗣️"
+          }
+        ]
       },
       {
         "title": "More Countries Around the World",
         "badge": "Step 3: Global Map",
         "slide": "assets/images/nationality_countries.svg",
         "narration": "Let's visit more places! Japan - Japanese. Britain / England - British / English. The USA - American. Russia - Russian. China - Chinese. When we say \"I live in Istanbul\", we show our city! The world is full of wonderful cultures.",
-        "audio": "assets/audio/courses/eng-u2_s3.mp3"
+        "audio": "assets/audio/courses/eng-u2_s3.mp3",
+        "slideTitle": "More Countries Around the World",
+        "emo": "🗣️",
+        "then": [
+          {
+            "text": "Let's visit more places!",
+            "lang": "en-US",
+            "cap": "🗣️ More Countries Around the World",
+            "emo": "🗣️"
+          },
+          {
+            "text": "The USA - American.",
+            "lang": "en-US",
+            "cap": "✨ Daily English: More Countries Around ",
+            "emo": "✨"
+          },
+          {
+            "text": "The world is full of wonderful cultures.",
+            "lang": "en-US",
+            "cap": "🎯 Altın Kural",
+            "emo": "🎯"
+          }
+        ]
       },
       {
         "title": "Compass Points (Yönler)",
         "badge": "Step 4: Compass Points",
         "slide": "assets/images/nationality_countries.svg",
         "narration": "Let's find directions on the map: North is up, South is down, East is right, and West is left. We can say: \"Sinop is in the North of Türkiye\" or \"Antalya is in the South of Türkiye.\" Knowing directions makes you a real global explorer!",
-        "audio": "assets/audio/courses/eng-u2_s4.mp3"
+        "audio": "assets/audio/courses/eng-u2_s4.mp3",
+        "slideTitle": "Compass Points (Yönler)",
+        "emo": "🗣️",
+        "then": [
+          {
+            "text": "Let's find directions on the map: North is up, South is down, East is right, and West is left.",
+            "lang": "en-US",
+            "cap": "🗣️ Compass Points (Yönler)",
+            "emo": "🗣️"
+          },
+          {
+            "text": "We can say: \"Sinop is in the North of Türkiye\" or \"Antalya is in the South of Türkiye.\" Knowing directions makes you a real global explorer!",
+            "lang": "en-US",
+            "cap": "✨ Daily English: Compass Points (Yönler",
+            "emo": "✨"
+          }
+        ]
       }
     ],
     "questions": [
@@ -9229,28 +12034,104 @@ const COURSE_LESSONS = {
         "badge": "Step 1: Can & Can't",
         "slide": "assets/images/cartoon_characters.svg",
         "narration": "Welcome to the superhero world! Today we learn about our abilities. When we are able to do something, we use CAN! \"He can fly like Superman.\" \"She can run fast like Wonder Woman.\" When we cannot do something, we use CAN'T! \"He can't swim underwater.\" Can and Can't describe what you are capable of!",
-        "audio": "assets/audio/courses/eng-u3_s1.mp3"
+        "audio": "assets/audio/courses/eng-u3_s1.mp3",
+        "slideTitle": "Superhero Abilities: CAN and CAN'T",
+        "emo": "🗣️",
+        "then": [
+          {
+            "text": "Welcome to the superhero world!",
+            "lang": "en-US",
+            "cap": "🗣️ Can & Can't",
+            "emo": "🗣️"
+          },
+          {
+            "text": "When we are able to do something, we use CAN!",
+            "lang": "en-US",
+            "cap": "✨ Daily English: Superhero Abilities: C",
+            "emo": "✨"
+          },
+          {
+            "text": "\"He can't swim underwater.\" Can and Can't describe what you are capable of!",
+            "lang": "en-US",
+            "cap": "🎯 Altın Kural",
+            "emo": "🎯"
+          }
+        ]
       },
       {
         "title": "Action Verbs (Hareket Eylemleri)",
         "badge": "Step 2: Action Verbs",
         "slide": "assets/images/cartoon_characters.svg",
         "narration": "Let's learn active superhero verbs! Fly (uçmak), climb (tırmanmak), jump high (yükseğe zıplamak), dive (dalmak), lift weights (ağırlık kaldırmak), ride a horse (ata binmek) and do magic (sihir yapmak). Spiderman can climb walls, and Batman can drive the Batmobile fast!",
-        "audio": "assets/audio/courses/eng-u3_s2.mp3"
+        "audio": "assets/audio/courses/eng-u3_s2.mp3",
+        "slideTitle": "Action Verbs (Hareket Eylemleri)",
+        "emo": "🗣️",
+        "then": [
+          {
+            "text": "Let's learn active superhero verbs!",
+            "lang": "en-US",
+            "cap": "🗣️ Action Verbs",
+            "emo": "🗣️"
+          },
+          {
+            "text": "Fly (uçmak), climb (tırmanmak), jump high (yükseğe zıplamak), dive (dalmak), lift weights (ağırlık kaldırmak), ride a horse (ata binmek) and do magic (sihir yapmak).",
+            "lang": "en-US",
+            "cap": "✨ Daily English: Action Verbs (Hareket ",
+            "emo": "✨"
+          }
+        ]
       },
       {
         "title": "Asking \"Can you...?\" Questions",
         "badge": "Step 3: Can Questions",
         "slide": "assets/images/cartoon_characters.svg",
         "narration": "Want to ask about someone's skills? Say: \"Can you ride a bike?\" If yes, answer: \"Yes, I can!\" If no, answer: \"No, I can't.\" For a friend: \"Can she play the guitar?\" - \"Yes, she can!\" or \"No, she can't.\" Notice how easy and quick it is!",
-        "audio": "assets/audio/courses/eng-u3_s3.mp3"
+        "audio": "assets/audio/courses/eng-u3_s3.mp3",
+        "slideTitle": "Asking \"Can you...?\" Questions",
+        "emo": "🗣️",
+        "then": [
+          {
+            "text": "Want to ask about someone's skills?",
+            "lang": "en-US",
+            "cap": "🗣️ Asking \"Can you...?\" Questions",
+            "emo": "🗣️"
+          },
+          {
+            "text": "Say: \"Can you ride a bike?\" If yes, answer: \"Yes, I can!\" If no, answer: \"No, I can't.\" For a friend: \"Can she play the guitar?\" - \"Yes, she can!\" or \"No, she can't.\" Notice how easy and quick it is!",
+            "lang": "en-US",
+            "cap": "✨ Daily English: Asking \"Can you...?\" Q",
+            "emo": "✨"
+          }
+        ]
       },
       {
         "title": "Describing Your Favorite Hero",
         "badge": "Step 4: Hero Description",
         "slide": "assets/images/cartoon_characters.svg",
         "narration": "You can talk about your favorite cartoon hero now! Say: \"My favorite hero is Spiderman. He is brave and strong. He can climb high buildings, but he can't fly.\" Practice telling your friends about your hero!",
-        "audio": "assets/audio/courses/eng-u3_s4.mp3"
+        "audio": "assets/audio/courses/eng-u3_s4.mp3",
+        "slideTitle": "Describing Your Favorite Hero",
+        "emo": "🗣️",
+        "then": [
+          {
+            "text": "You can talk about your favorite cartoon hero now!",
+            "lang": "en-US",
+            "cap": "🗣️ Describing Your Favorite Hero",
+            "emo": "🗣️"
+          },
+          {
+            "text": "He is brave and strong.",
+            "lang": "en-US",
+            "cap": "✨ Daily English: Describing Your Favori",
+            "emo": "✨"
+          },
+          {
+            "text": "He can climb high buildings, but he can't fly.\" Practice telling your friends about your hero!",
+            "lang": "en-US",
+            "cap": "🎯 Altın Kural",
+            "emo": "🎯"
+          }
+        ]
       }
     ],
     "questions": [
@@ -9490,28 +12371,86 @@ const COURSE_LESSONS = {
         "badge": "Step 1: Hobbies",
         "slide": "assets/images/free_time_activities.svg",
         "narration": "What do you love doing after school? Free time is time for fun! We can play football, ride a bike, read comics, fly a kite, listen to music, color pictures, and play computer games. Doing what you love keeps your energy high!",
-        "audio": "assets/audio/courses/eng-u4_s1.mp3"
+        "audio": "assets/audio/courses/eng-u4_s1.mp3",
+        "slideTitle": "Free Time Activities and Hobbies",
+        "emo": "🗣️",
+        "then": [
+          {
+            "text": "What do you love doing after school?",
+            "lang": "en-US",
+            "cap": "🗣️ Hobbies",
+            "emo": "🗣️"
+          },
+          {
+            "text": "We can play football, ride a bike, read comics, fly a kite, listen to music, color pictures, and play computer games.",
+            "lang": "en-US",
+            "cap": "✨ Daily English: Free Time Activities a",
+            "emo": "✨"
+          },
+          {
+            "text": "Doing what you love keeps your energy high!",
+            "lang": "en-US",
+            "cap": "🎯 Altın Kural",
+            "emo": "🎯"
+          }
+        ]
       },
       {
         "title": "Expressing Likes and Dislikes",
         "badge": "Step 2: Likes & Dislikes",
         "slide": "assets/images/free_time_activities.svg",
         "narration": "When we enjoy something, we say: \"I like reading comics.\" or \"I love swimming.\" When we do not enjoy it, we say: \"I don't like playing chess.\" or \"I dislike table tennis.\" Notice that the verb after \"like\" often takes an -ing ending: like read-ing, like play-ing!",
-        "audio": "assets/audio/courses/eng-u4_s2.mp3"
+        "audio": "assets/audio/courses/eng-u4_s2.mp3",
+        "slideTitle": "Expressing Likes and Dislikes",
+        "emo": "🗣️",
+        "then": [
+          {
+            "text": "When we enjoy something, we say: \"I like reading comics.\" or \"I love swimming.\" When we do not enjoy it, we say: \"I don't like playing chess.\" or \"I dislike table tennis.\" Notice that the verb after \"like\" often takes an -ing ending: like read-ing, like play-ing!",
+            "lang": "en-US",
+            "cap": "🗣️ Expressing Likes and Dislikes",
+            "emo": "🗣️"
+          }
+        ]
       },
       {
         "title": "Asking \"Do you like...?\"",
         "badge": "Step 3: Do you like?",
         "slide": "assets/images/free_time_activities.svg",
         "narration": "To learn what your friends like, ask: \"Do you like drawing?\" If they do, they say: \"Yes, I do.\" If they don't, they say: \"No, I don't.\" For a boy: \"Does he like rollerblading?\" - \"Yes, he does.\" or \"No, he doesn't.\"",
-        "audio": "assets/audio/courses/eng-u4_s3.mp3"
+        "audio": "assets/audio/courses/eng-u4_s3.mp3",
+        "slideTitle": "Asking \"Do you like...?\"",
+        "emo": "🗣️",
+        "then": [
+          {
+            "text": "To learn what your friends like, ask: \"Do you like drawing?\" If they do, they say: \"Yes, I do.\" If they don't, they say: \"No, I don't.\" For a boy: \"Does he like rollerblading?\" - \"Yes, he does.\" or \"No, he doesn't.\"",
+            "lang": "en-US",
+            "cap": "🗣️ Asking \"Do you like...?\"",
+            "emo": "🗣️"
+          }
+        ]
       },
       {
         "title": "Board Games and Outdoor Games",
         "badge": "Step 4: Games",
         "slide": "assets/images/free_time_activities.svg",
         "narration": "On rainy days, we play indoor games: chess, puzzles, or board games. On sunny days, we go outside to play hide and seek, hopscotch, and rollerblade in the park. Balancing screen time with active games is the best way to enjoy free time!",
-        "audio": "assets/audio/courses/eng-u4_s4.mp3"
+        "audio": "assets/audio/courses/eng-u4_s4.mp3",
+        "slideTitle": "Board Games and Outdoor Games",
+        "emo": "🗣️",
+        "then": [
+          {
+            "text": "On rainy days, we play indoor games: chess, puzzles, or board games.",
+            "lang": "en-US",
+            "cap": "🗣️ Board Games and Outdoor Games",
+            "emo": "🗣️"
+          },
+          {
+            "text": "On sunny days, we go outside to play hide and seek, hopscotch, and rollerblade in the park.",
+            "lang": "en-US",
+            "cap": "✨ Daily English: Board Games and Outdoo",
+            "emo": "✨"
+          }
+        ]
       }
     ],
     "questions": [
@@ -9751,28 +12690,110 @@ const COURSE_LESSONS = {
         "badge": "Step 1: Morning",
         "slide": "assets/images/my_day_routines.svg",
         "narration": "Good morning! A great day starts with healthy routines. First, I wake up at 7 o'clock. I wash my hands and face, and brush my teeth. Then, I have breakfast with my family: eggs, cheese, and milk! After that, I get dressed in my school uniform and go to school by bus.",
-        "audio": "assets/audio/courses/eng-u5_s1.mp3"
+        "audio": "assets/audio/courses/eng-u5_s1.mp3",
+        "slideTitle": "Morning Routines (Sabah Alışkanlıkları)",
+        "emo": "🗣️",
+        "then": [
+          {
+            "text": "A great day starts with healthy routines.",
+            "lang": "en-US",
+            "cap": "🗣️ Morning",
+            "emo": "🗣️"
+          },
+          {
+            "text": "I wash my hands and face, and brush my teeth.",
+            "lang": "en-US",
+            "cap": "✨ Daily English: Morning Routines (Saba",
+            "emo": "✨"
+          },
+          {
+            "text": "After that, I get dressed in my school uniform and go to school by bus.",
+            "lang": "en-US",
+            "cap": "🎯 Altın Kural",
+            "emo": "🎯"
+          }
+        ]
       },
       {
         "title": "Afternoon and Evening Routines",
         "badge": "Step 2: Afternoon & Night",
         "slide": "assets/images/my_day_routines.svg",
         "narration": "At school, I have lunch with my classmates at 12 o'clock. In the afternoon, I come back home at 3 o'clock. First, I do my homework and study. In the evening, we have dinner together. At night, I read a book and go to bed at 9 o'clock to sleep well.",
-        "audio": "assets/audio/courses/eng-u5_s2.mp3"
+        "audio": "assets/audio/courses/eng-u5_s2.mp3",
+        "slideTitle": "Afternoon and Evening Routines",
+        "emo": "🗣️",
+        "then": [
+          {
+            "text": "At school, I have lunch with my classmates at 12 o'clock.",
+            "lang": "en-US",
+            "cap": "🗣️ Afternoon and Evening Routines",
+            "emo": "🗣️"
+          },
+          {
+            "text": "First, I do my homework and study.",
+            "lang": "en-US",
+            "cap": "✨ Daily English: Afternoon and Evening ",
+            "emo": "✨"
+          },
+          {
+            "text": "At night, I read a book and go to bed at 9 o'clock to sleep well.",
+            "lang": "en-US",
+            "cap": "🎯 Altın Kural",
+            "emo": "🎯"
+          }
+        ]
       },
       {
         "title": "Telling the Time: \"What time is it?\"",
         "badge": "Step 3: What time is it?",
         "slide": "assets/images/my_day_routines.svg",
         "narration": "Look at the clock! To ask the time, we say: \"What time is it?\" If the long hand is on 12, it is a sharp hour: \"It is eight o'clock.\" (08.00). If the long hand is on 6, it is half past: \"It is half past eight.\" (08.30). Remember: before times, we always use the preposition \"at\": \"I wake up at seven o'clock.\"",
-        "audio": "assets/audio/courses/eng-u5_s3.mp3"
+        "audio": "assets/audio/courses/eng-u5_s3.mp3",
+        "slideTitle": "Telling the Time: \"What time is it?\"",
+        "emo": "🗣️",
+        "then": [
+          {
+            "text": "To ask the time, we say: \"What time is it?\" If the long hand is on 12, it is a sharp hour: \"It is eight o'clock.\" (08.00).",
+            "lang": "en-US",
+            "cap": "🗣️ What time is it?",
+            "emo": "🗣️"
+          },
+          {
+            "text": "If the long hand is on 6, it is half past: \"It is half past eight.\" (08.30).",
+            "lang": "en-US",
+            "cap": "✨ Daily English: Telling the Time: \"Wha",
+            "emo": "✨"
+          }
+        ]
       },
       {
         "title": "Quarter Past and Quarter To",
         "badge": "Step 4: Quarter times",
         "slide": "assets/images/my_day_routines.svg",
         "narration": "Let's learn quarters! Quarter means 15 minutes. \"Quarter past four\" means 04.15 (15 minutes past 4). \"Quarter to five\" means 04.45 (15 minutes before 5). Now you can read any clock like a master!",
-        "audio": "assets/audio/courses/eng-u5_s4.mp3"
+        "audio": "assets/audio/courses/eng-u5_s4.mp3",
+        "slideTitle": "Quarter Past and Quarter To",
+        "emo": "🗣️",
+        "then": [
+          {
+            "text": "Let's learn quarters!",
+            "lang": "en-US",
+            "cap": "🗣️ Quarter Past and Quarter To",
+            "emo": "🗣️"
+          },
+          {
+            "text": "\"Quarter past four\" means 04.15 (15 minutes past 4).",
+            "lang": "en-US",
+            "cap": "✨ Daily English: Quarter Past and Quart",
+            "emo": "✨"
+          },
+          {
+            "text": "Now you can read any clock like a master!",
+            "lang": "en-US",
+            "cap": "🎯 Altın Kural",
+            "emo": "🎯"
+          }
+        ]
       }
     ],
     "questions": [
@@ -10012,28 +13033,116 @@ const COURSE_LESSONS = {
         "badge": "Step 1: Lab Tools",
         "slide": "assets/images/fun_with_science.svg",
         "narration": "Put on your lab coat! Welcome to science lab. In our experiments, we use a test tube, a glass bottle, a cup, a brush, scissors, and paper towels. Always wear protective goggles to protect your eyes. Science is where curiosity turns into discovery!",
-        "audio": "assets/audio/courses/eng-u6_s1.mp3"
+        "audio": "assets/audio/courses/eng-u6_s1.mp3",
+        "slideTitle": "Science Lab Equipment",
+        "emo": "🗣️",
+        "then": [
+          {
+            "text": "Put on your lab coat!",
+            "lang": "en-US",
+            "cap": "🗣️ Science Lab Equipment",
+            "emo": "🗣️"
+          },
+          {
+            "text": "In our experiments, we use a test tube, a glass bottle, a cup, a brush, scissors, and paper towels.",
+            "lang": "en-US",
+            "cap": "✨ Daily English: Science Lab Equipment",
+            "emo": "✨"
+          },
+          {
+            "text": "Science is where curiosity turns into discovery!",
+            "lang": "en-US",
+            "cap": "🎯 Altın Kural",
+            "emo": "🎯"
+          }
+        ]
       },
       {
         "title": "Experiment Action Verbs",
         "badge": "Step 2: Action Verbs",
         "slide": "assets/images/fun_with_science.svg",
         "narration": "Let's follow the experiment steps: \"Mix\" means blend things together. \"Pour\" means add liquid into the glass. \"Shake\" means move the bottle quickly. \"Fold\" means bend the paper. \"Cut\" means divide with scissors. Follow these instructions step by step!",
-        "audio": "assets/audio/courses/eng-u6_s2.mp3"
+        "audio": "assets/audio/courses/eng-u6_s2.mp3",
+        "slideTitle": "Experiment Action Verbs",
+        "emo": "🗣️",
+        "then": [
+          {
+            "text": "Let's follow the experiment steps: \"Mix\" means blend things together.",
+            "lang": "en-US",
+            "cap": "🗣️ Experiment Action Verbs",
+            "emo": "🗣️"
+          },
+          {
+            "text": "\"Fold\" means bend the paper.",
+            "lang": "en-US",
+            "cap": "✨ Daily English: Experiment Action Verb",
+            "emo": "✨"
+          },
+          {
+            "text": "Follow these instructions step by step!",
+            "lang": "en-US",
+            "cap": "🎯 Altın Kural",
+            "emo": "🎯"
+          }
+        ]
       },
       {
         "title": "Color Mixing Magic",
         "badge": "Step 3: Color Mixing",
         "slide": "assets/images/fun_with_science.svg",
         "narration": "Colors do magic when mixed! If you mix Yellow and Blue, what do you get? You get Green! If you mix Red and Yellow, you get Orange! If you mix Red and Blue, you get Purple! Try this fun water color experiment in your class.",
-        "audio": "assets/audio/courses/eng-u6_s3.mp3"
+        "audio": "assets/audio/courses/eng-u6_s3.mp3",
+        "slideTitle": "Color Mixing Magic",
+        "emo": "🗣️",
+        "then": [
+          {
+            "text": "Colors do magic when mixed!",
+            "lang": "en-US",
+            "cap": "🗣️ Color Mixing Magic",
+            "emo": "🗣️"
+          },
+          {
+            "text": "If you mix Red and Yellow, you get Orange!",
+            "lang": "en-US",
+            "cap": "✨ Daily English: Color Mixing Magic",
+            "emo": "✨"
+          },
+          {
+            "text": "Try this fun water color experiment in your class.",
+            "lang": "en-US",
+            "cap": "🎯 Altın Kural",
+            "emo": "🎯"
+          }
+        ]
       },
       {
         "title": "Freezing and Melting",
         "badge": "Step 4: States of Water",
         "slide": "assets/images/fun_with_science.svg",
         "narration": "Water has three magical forms! Put water in the freezer, it freezes into ice. Take ice out into the warm sun, it melts back into liquid water. Boil water in a kettle, and it turns into steam. Science is fun when you observe it closely!",
-        "audio": "assets/audio/courses/eng-u6_s4.mp3"
+        "audio": "assets/audio/courses/eng-u6_s4.mp3",
+        "slideTitle": "Freezing and Melting",
+        "emo": "🗣️",
+        "then": [
+          {
+            "text": "Water has three magical forms!",
+            "lang": "en-US",
+            "cap": "🗣️ Freezing and Melting",
+            "emo": "🗣️"
+          },
+          {
+            "text": "Take ice out into the warm sun, it melts back into liquid water.",
+            "lang": "en-US",
+            "cap": "✨ Daily English: Freezing and Melting",
+            "emo": "✨"
+          },
+          {
+            "text": "Science is fun when you observe it closely!",
+            "lang": "en-US",
+            "cap": "🎯 Altın Kural",
+            "emo": "🎯"
+          }
+        ]
       }
     ],
     "questions": [
@@ -10273,28 +13382,110 @@ const COURSE_LESSONS = {
         "badge": "Step 1: Jobs",
         "slide": "assets/images/jobs_professions.svg",
         "narration": "What do you want to be when you grow up? People have important jobs to help each other. A Teacher teaches students at school. A Doctor examines patients and helps them get well. A Nurse assists the doctor. A Vet cures sick animals. A Firefighter puts out fires. A Police Officer keeps our streets safe!",
-        "audio": "assets/audio/courses/eng-u7_s1.mp3"
+        "audio": "assets/audio/courses/eng-u7_s1.mp3",
+        "slideTitle": "Popular Jobs and Professions",
+        "emo": "🗣️",
+        "then": [
+          {
+            "text": "What do you want to be when you grow up?",
+            "lang": "en-US",
+            "cap": "🗣️ Popular Jobs and Professions",
+            "emo": "🗣️"
+          },
+          {
+            "text": "A Nurse assists the doctor.",
+            "lang": "en-US",
+            "cap": "✨ Daily English: Popular Jobs and Profe",
+            "emo": "✨"
+          },
+          {
+            "text": "A Police Officer keeps our streets safe!",
+            "lang": "en-US",
+            "cap": "🎯 Altın Kural",
+            "emo": "🎯"
+          }
+        ]
       },
       {
         "title": "More Exciting Occupations",
         "badge": "Step 2: Occupations",
         "slide": "assets/images/jobs_professions.svg",
         "narration": "There are so many wonderful jobs! A Pilot flies airplanes across the world. A Chef or Cook makes delicious meals in a restaurant. A Farmer grows fresh vegetables and fruits on a farm. A Dentist checks and cleans your teeth. An Artist paints beautiful pictures!",
-        "audio": "assets/audio/courses/eng-u7_s2.mp3"
+        "audio": "assets/audio/courses/eng-u7_s2.mp3",
+        "slideTitle": "More Exciting Occupations",
+        "emo": "🗣️",
+        "then": [
+          {
+            "text": "There are so many wonderful jobs!",
+            "lang": "en-US",
+            "cap": "🗣️ More Exciting Occupations",
+            "emo": "🗣️"
+          },
+          {
+            "text": "A Farmer grows fresh vegetables and fruits on a farm.",
+            "lang": "en-US",
+            "cap": "✨ Daily English: More Exciting Occupati",
+            "emo": "✨"
+          },
+          {
+            "text": "An Artist paints beautiful pictures!",
+            "lang": "en-US",
+            "cap": "🎯 Altın Kural",
+            "emo": "🎯"
+          }
+        ]
       },
       {
         "title": "Asking \"What do you do?\" and Workplaces",
         "badge": "Step 3: Workplaces",
         "slide": "assets/images/jobs_professions.svg",
         "narration": "To ask someone's job, say: \"What do you do?\" or \"What is your job?\" Answer: \"I am a doctor.\" To ask where they work, say: \"Where do you work?\" A teacher works at a school. A doctor works at a hospital. A firefighter works at a fire station. A farmer works on a farm!",
-        "audio": "assets/audio/courses/eng-u7_s3.mp3"
+        "audio": "assets/audio/courses/eng-u7_s3.mp3",
+        "slideTitle": "Asking \"What do you do?\" and Workplaces",
+        "emo": "🗣️",
+        "then": [
+          {
+            "text": "To ask someone's job, say: \"What do you do?\" or \"What is your job?\" Answer: \"I am a doctor.\" To ask where they work, say: \"Where do you work?\" A teacher works at a school.",
+            "lang": "en-US",
+            "cap": "🗣️ Workplaces",
+            "emo": "🗣️"
+          },
+          {
+            "text": "A firefighter works at a fire station.",
+            "lang": "en-US",
+            "cap": "✨ Daily English: Asking \"What do you do",
+            "emo": "✨"
+          },
+          {
+            "text": "A farmer works on a farm!",
+            "lang": "en-US",
+            "cap": "🎯 Altın Kural",
+            "emo": "🎯"
+          }
+        ]
       },
       {
         "title": "Talking About Future Dreams",
         "badge": "Step 4: Future Dreams",
         "slide": "assets/images/jobs_professions.svg",
         "narration": "What is your dream job? You can say: \"I like helping animals, so I want to be a vet.\" or \"I like airplanes, so I want to be a pilot.\" Work hard and your dream will come true!",
-        "audio": "assets/audio/courses/eng-u7_s4.mp3"
+        "audio": "assets/audio/courses/eng-u7_s4.mp3",
+        "slideTitle": "Talking About Future Dreams",
+        "emo": "🗣️",
+        "then": [
+          {
+            "text": "What is your dream job?",
+            "lang": "en-US",
+            "cap": "🗣️ Talking About Future Dreams",
+            "emo": "🗣️"
+          },
+          {
+            "text": "You can say: \"I like helping animals, so I want to be a vet.\" or \"I like airplanes, so I want to be a pilot.\" Work hard and your dream will come true!",
+            "lang": "en-US",
+            "cap": "✨ Daily English: Talking About Future D",
+            "emo": "✨"
+          }
+        ]
       }
     ],
     "questions": [
@@ -10534,28 +13725,98 @@ const COURSE_LESSONS = {
         "badge": "Step 1: Weather",
         "slide": "assets/images/clothes_and_seasons.svg",
         "narration": "There are four beautiful seasons! In Spring, flowers bloom and it is warm. In Summer, it is hot and sunny. In Autumn, leaves fall and it is windy. In Winter, it is cold and snowy. We ask: \"What is the weather like?\" and answer: \"It is rainy today!\"",
-        "audio": "assets/audio/courses/eng-u8_s1.mp3"
+        "audio": "assets/audio/courses/eng-u8_s1.mp3",
+        "slideTitle": "Seasons and the Weather",
+        "emo": "🗣️",
+        "then": [
+          {
+            "text": "There are four beautiful seasons!",
+            "lang": "en-US",
+            "cap": "🗣️ Seasons and the Weather",
+            "emo": "🗣️"
+          },
+          {
+            "text": "In Autumn, leaves fall and it is windy.",
+            "lang": "en-US",
+            "cap": "✨ Daily English: Seasons and the Weathe",
+            "emo": "✨"
+          },
+          {
+            "text": "We ask: \"What is the weather like?\" and answer: \"It is rainy today!\"",
+            "lang": "en-US",
+            "cap": "🎯 Altın Kural",
+            "emo": "🎯"
+          }
+        ]
       },
       {
         "title": "Winter Clothes (Kışlık Giysiler)",
         "badge": "Step 2: Winter Clothes",
         "slide": "assets/images/clothes_and_seasons.svg",
         "narration": "When it is cold and freezing outside, we dress warm! We wear a heavy coat or jacket, warm boots, a knitted scarf around our neck, and gloves on our hands. If it rains, don't forget to take an umbrella!",
-        "audio": "assets/audio/courses/eng-u8_s2.mp3"
+        "audio": "assets/audio/courses/eng-u8_s2.mp3",
+        "slideTitle": "Winter Clothes (Kışlık Giysiler)",
+        "emo": "🗣️",
+        "then": [
+          {
+            "text": "When it is cold and freezing outside, we dress warm!",
+            "lang": "en-US",
+            "cap": "🗣️ Winter Clothes",
+            "emo": "🗣️"
+          },
+          {
+            "text": "We wear a heavy coat or jacket, warm boots, a knitted scarf around our neck, and gloves on our hands.",
+            "lang": "en-US",
+            "cap": "✨ Daily English: Winter Clothes (Kışlık",
+            "emo": "✨"
+          }
+        ]
       },
       {
         "title": "Summer Clothes (Yazlık Giysiler)",
         "badge": "Step 3: Summer Clothes",
         "slide": "assets/images/clothes_and_seasons.svg",
         "narration": "When the sun is shining hot, we wear light clothes: a cool T-shirt, shorts, sandals, a pretty dress or skirt. On sunny days, wear a sun hat and sunglasses to protect yourself from bright sunshine!",
-        "audio": "assets/audio/courses/eng-u8_s3.mp3"
+        "audio": "assets/audio/courses/eng-u8_s3.mp3",
+        "slideTitle": "Summer Clothes (Yazlık Giysiler)",
+        "emo": "🗣️",
+        "then": [
+          {
+            "text": "When the sun is shining hot, we wear light clothes: a cool T-shirt, shorts, sandals, a pretty dress or skirt.",
+            "lang": "en-US",
+            "cap": "🗣️ Summer Clothes",
+            "emo": "🗣️"
+          },
+          {
+            "text": "On sunny days, wear a sun hat and sunglasses to protect yourself from bright sunshine!",
+            "lang": "en-US",
+            "cap": "✨ Daily English: Summer Clothes (Yazlık",
+            "emo": "✨"
+          }
+        ]
       },
       {
         "title": "Action Verbs: PUT ON and TAKE OFF",
         "badge": "Step 4: Put on & Take off",
         "slide": "assets/images/clothes_and_seasons.svg",
         "narration": "Listen to these two essential verbs! \"Put on\" means wear your clothes: \"It is cold outside, put on your coat!\" \"Take off\" means remove your clothes: \"It is warm inside, take off your jacket!\" You are now dressed for any weather!",
-        "audio": "assets/audio/courses/eng-u8_s4.mp3"
+        "audio": "assets/audio/courses/eng-u8_s4.mp3",
+        "slideTitle": "Action Verbs: PUT ON and TAKE OFF",
+        "emo": "🗣️",
+        "then": [
+          {
+            "text": "Listen to these two essential verbs!",
+            "lang": "en-US",
+            "cap": "🗣️ Put on & Take off",
+            "emo": "🗣️"
+          },
+          {
+            "text": "\"Put on\" means wear your clothes: \"It is cold outside, put on your coat!\" \"Take off\" means remove your clothes: \"It is warm inside, take off your jacket!\" You are now dressed for any weather!",
+            "lang": "en-US",
+            "cap": "✨ Daily English: Action Verbs: PUT ON a",
+            "emo": "✨"
+          }
+        ]
       }
     ],
     "questions": [
@@ -10795,28 +14056,104 @@ const COURSE_LESSONS = {
         "badge": "Step 1: Appearance",
         "slide": "assets/images/my_friends_adjectives.svg",
         "narration": "Friends make life wonderful! Let's describe our friends. For height: Tall (uzun boylu) or Short (kısa boylu). For weight: Slim (zayıf, narin) or Plump (balık etli, tombiş). For age: Young (genç) or Old (yaşlı). For strength: Strong (güçlü) or Weak (güçsüz). We can say: \"My friend Ali is tall and strong!\"",
-        "audio": "assets/audio/courses/eng-u9_s1.mp3"
+        "audio": "assets/audio/courses/eng-u9_s1.mp3",
+        "slideTitle": "Physical Appearance: Body and Height",
+        "emo": "🗣️",
+        "then": [
+          {
+            "text": "Friends make life wonderful!",
+            "lang": "en-US",
+            "cap": "🗣️ Appearance",
+            "emo": "🗣️"
+          },
+          {
+            "text": "For weight: Slim (zayıf, narin) or Plump (balık etli, tombiş).",
+            "lang": "en-US",
+            "cap": "✨ Daily English: Physical Appearance: B",
+            "emo": "✨"
+          },
+          {
+            "text": "We can say: \"My friend Ali is tall and strong!\"",
+            "lang": "en-US",
+            "cap": "🎯 Altın Kural",
+            "emo": "🎯"
+          }
+        ]
       },
       {
         "title": "Hair and Eye Descriptions",
         "badge": "Step 2: Hair & Eyes",
         "slide": "assets/images/my_friends_adjectives.svg",
         "narration": "Look at hair and eye colors! Hair can be straight (düz), wavy (dalgalı), or curly (kıvırcık). Colors can be blonde (sarı), brown (kahverengi), or dark (koyu). Eyes can be brown, blue, or green. We use \"has got\": \"Ayşe has got long curly hair and blue eyes.\"",
-        "audio": "assets/audio/courses/eng-u9_s2.mp3"
+        "audio": "assets/audio/courses/eng-u9_s2.mp3",
+        "slideTitle": "Hair and Eye Descriptions",
+        "emo": "🗣️",
+        "then": [
+          {
+            "text": "Look at hair and eye colors!",
+            "lang": "en-US",
+            "cap": "🗣️ Hair and Eye Descriptions",
+            "emo": "🗣️"
+          },
+          {
+            "text": "Colors can be blonde (sarı), brown (kahverengi), or dark (koyu).",
+            "lang": "en-US",
+            "cap": "✨ Daily English: Hair and Eye Descripti",
+            "emo": "✨"
+          },
+          {
+            "text": "We use \"has got\": \"Ayşe has got long curly hair and blue eyes.\"",
+            "lang": "en-US",
+            "cap": "🎯 Altın Kural",
+            "emo": "🎯"
+          }
+        ]
       },
       {
         "title": "Personality: What is he like?",
         "badge": "Step 3: Personality",
         "slide": "assets/images/my_friends_adjectives.svg",
         "narration": "Outer look is nice, but personality is golden! Friendly (arkadaş canlısı), Kind (kibar, nazik), Helpful (yardımsever), Cheerful (neşeli), and Hardworking (çalışkan). When we ask about personality, we say: \"What is he like?\" - \"He is very kind and helpful.\"",
-        "audio": "assets/audio/courses/eng-u9_s3.mp3"
+        "audio": "assets/audio/courses/eng-u9_s3.mp3",
+        "slideTitle": "Personality: What is he like?",
+        "emo": "🗣️",
+        "then": [
+          {
+            "text": "Outer look is nice, but personality is golden!",
+            "lang": "en-US",
+            "cap": "🗣️ Personality: What is he like?",
+            "emo": "🗣️"
+          },
+          {
+            "text": "Friendly (arkadaş canlısı), Kind (kibar, nazik), Helpful (yardımsever), Cheerful (neşeli), and Hardworking (çalışkan).",
+            "lang": "en-US",
+            "cap": "✨ Daily English: Personality: What is h",
+            "emo": "✨"
+          }
+        ]
       },
       {
         "title": "\"What does he look like?\" vs \"What is he like?\"",
         "badge": "Step 4: Two Key Questions",
         "slide": "assets/images/my_friends_adjectives.svg",
         "narration": "Don't confuse these two questions! \"What does he LOOK like?\" asks about outside appearance: \"He is tall with brown eyes.\" \"What IS he like?\" asks about inside personality: \"He is friendly and funny.\" You are now a master of descriptions!",
-        "audio": "assets/audio/courses/eng-u9_s4.mp3"
+        "audio": "assets/audio/courses/eng-u9_s4.mp3",
+        "slideTitle": "\"What does he look like?\" vs \"What is he like?\"",
+        "emo": "🗣️",
+        "then": [
+          {
+            "text": "Don't confuse these two questions!",
+            "lang": "en-US",
+            "cap": "🗣️ Two Key Questions",
+            "emo": "🗣️"
+          },
+          {
+            "text": "\"What does he LOOK like?\" asks about outside appearance: \"He is tall with brown eyes.\" \"What IS he like?\" asks about inside personality: \"He is friendly and funny.\" You are now a master of descriptions!",
+            "lang": "en-US",
+            "cap": "✨ Daily English: \"What does he look lik",
+            "emo": "✨"
+          }
+        ]
       }
     ],
     "questions": [
@@ -11056,28 +14393,98 @@ const COURSE_LESSONS = {
         "badge": "Step 1: Breakfast",
         "slide": "assets/images/food_and_drinks.svg",
         "narration": "Yummy! Welcome to our food table. Breakfast is the most important meal of the day. In the morning, we eat bread, cheese, butter, boiled eggs, olives, and honey. We drink healthy fresh milk or warm tea. Good food gives us great energy for the school day!",
-        "audio": "assets/audio/courses/eng-u10_s1.mp3"
+        "audio": "assets/audio/courses/eng-u10_s1.mp3",
+        "slideTitle": "Breakfast Foods (Kahvaltı Yiyecekleri)",
+        "emo": "🗣️",
+        "then": [
+          {
+            "text": "Welcome to our food table.",
+            "lang": "en-US",
+            "cap": "🗣️ Breakfast",
+            "emo": "🗣️"
+          },
+          {
+            "text": "In the morning, we eat bread, cheese, butter, boiled eggs, olives, and honey.",
+            "lang": "en-US",
+            "cap": "✨ Daily English: Breakfast Foods (Kahva",
+            "emo": "✨"
+          },
+          {
+            "text": "Good food gives us great energy for the school day!",
+            "lang": "en-US",
+            "cap": "🎯 Altın Kural",
+            "emo": "🎯"
+          }
+        ]
       },
       {
         "title": "Lunch and Dinner Foods",
         "badge": "Step 2: Meals",
         "slide": "assets/images/food_and_drinks.svg",
         "narration": "For lunch and dinner, we have delicious hot soup, rice, pasta, chicken, meatballs, and fresh salad. For dessert, we enjoy sweet fruits: apples, bananas, oranges, and strawberries. Healthy meals make strong bodies!",
-        "audio": "assets/audio/courses/eng-u10_s2.mp3"
+        "audio": "assets/audio/courses/eng-u10_s2.mp3",
+        "slideTitle": "Lunch and Dinner Foods",
+        "emo": "🗣️",
+        "then": [
+          {
+            "text": "For lunch and dinner, we have delicious hot soup, rice, pasta, chicken, meatballs, and fresh salad.",
+            "lang": "en-US",
+            "cap": "🗣️ Lunch and Dinner Foods",
+            "emo": "🗣️"
+          },
+          {
+            "text": "For dessert, we enjoy sweet fruits: apples, bananas, oranges, and strawberries.",
+            "lang": "en-US",
+            "cap": "✨ Daily English: Lunch and Dinner Foods",
+            "emo": "✨"
+          }
+        ]
       },
       {
         "title": "Hungry and Thirsty: Ordering Food",
         "badge": "Step 3: Ordering",
         "slide": "assets/images/food_and_drinks.svg",
         "narration": "When your stomach rumbles, say: \"I am hungry! Can I have a sandwich, please?\" When your throat is dry, say: \"I am thirsty! Can I have some water?\" If someone offers food: \"Do you want some cake?\" You can answer: \"Yes, please!\" or politely decline: \"No, thank you, I am full.\"",
-        "audio": "assets/audio/courses/eng-u10_s3.mp3"
+        "audio": "assets/audio/courses/eng-u10_s3.mp3",
+        "slideTitle": "Hungry and Thirsty: Ordering Food",
+        "emo": "🗣️",
+        "then": [
+          {
+            "text": "When your stomach rumbles, say: \"I am hungry!",
+            "lang": "en-US",
+            "cap": "🗣️ Ordering",
+            "emo": "🗣️"
+          },
+          {
+            "text": "Can I have a sandwich, please?\" When your throat is dry, say: \"I am thirsty!",
+            "lang": "en-US",
+            "cap": "✨ Daily English: Hungry and Thirsty: Or",
+            "emo": "✨"
+          }
+        ]
       },
       {
         "title": "Polite Table Manners",
         "badge": "Step 4: Table Manners",
         "slide": "assets/images/food_and_drinks.svg",
         "narration": "Always use polite words at the table: \"Please\" and \"Thank you\". If someone passes the bread, say: \"Thank you very much.\" Enjoy your meals with your family and eat healthy!",
-        "audio": "assets/audio/courses/eng-u10_s4.mp3"
+        "audio": "assets/audio/courses/eng-u10_s4.mp3",
+        "slideTitle": "Polite Table Manners",
+        "emo": "🗣️",
+        "then": [
+          {
+            "text": "Always use polite words at the table: \"Please\" and \"Thank you\".",
+            "lang": "en-US",
+            "cap": "🗣️ Polite Table Manners",
+            "emo": "🗣️"
+          },
+          {
+            "text": "If someone passes the bread, say: \"Thank you very much.\" Enjoy your meals with your family and eat healthy!",
+            "lang": "en-US",
+            "cap": "✨ Daily English: Polite Table Manners",
+            "emo": "✨"
+          }
+        ]
       }
     ],
     "questions": [
@@ -11307,7 +14714,8 @@ const COURSE_LESSONS = {
   }
 };
 
-/* ================= COURSE PLAYER OYNATICI MOTORU ================= */
+if (typeof window !== 'undefined') window.COURSE_LESSONS = COURSE_LESSONS;
+
 const CoursePlayer = (() => {
   const CP = {
     unitId: null,
@@ -11358,6 +14766,44 @@ const CoursePlayer = (() => {
       .replace(/\börn\./gi, 'örneğin');
   }
 
+    function updateCaption(badge, text) {
+    const box = document.getElementById('cpCaptionBox');
+    if (!box) return;
+    if (!text) {
+      box.style.display = 'none';
+      return;
+    }
+    box.style.display = 'flex';
+    box.innerHTML = `<span class="cp-caption-badge">${esc(badge || 'Önemli')}</span><span class="cp-caption-text">${esc(text)}</span>`;
+  }
+
+  function playSubSteps(stepObj, alive, onEnd) {
+    if (!stepObj || !stepObj.then || !stepObj.then.length) {
+      CP.audioPlaying = false;
+      updateSpeakerUI(false);
+      if (onEnd) onEnd();
+      return;
+    }
+
+    let subIdx = 0;
+    function nextSub() {
+      if (!alive()) return;
+      if (subIdx >= stepObj.then.length) {
+        CP.audioPlaying = false;
+        updateSpeakerUI(false);
+        if (onEnd) onEnd();
+        return;
+      }
+      const item = stepObj.then[subIdx++];
+      updateCaption(item.cap || 'Önemli Bilgi', item.text);
+      fallbackAudio(item.text, alive, () => {
+        setTimeout(nextSub, 400);
+      });
+    }
+
+    setTimeout(nextSub, 300);
+  }
+
   function playStepAudio(stepOrText, onEnd) {
     stopAudio();
     const myTok = ++CP.tok;
@@ -11378,9 +14824,7 @@ const CoursePlayer = (() => {
       CP.audio.playbackRate = CP.speed;
       CP.audio.onended = () => {
         if (!alive()) return;
-        CP.audioPlaying = false;
-        updateSpeakerUI(false);
-        if (onEnd) onEnd();
+        playSubSteps(stepObj, alive, onEnd);
       };
       CP.audio.onerror = () => {
         if (!alive()) return;
@@ -11623,6 +15067,10 @@ const CoursePlayer = (() => {
           <div class="cp-speaker-badge" id="cpSpeakerPill">
             <span class="owl-icon">🦉</span>
             <span>Bilge Baykuş Anlatıyor</span>
+          </div>
+          <div id="cpCaptionBox" class="cp-caption-overlay">
+            <span class="cp-caption-badge">${esc(s.badge || 'Bilgi')}</span>
+            <span class="cp-caption-text">${esc(s.title)}</span>
           </div>
         </div>
 
