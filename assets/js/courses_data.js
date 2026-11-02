@@ -2098,6 +2098,7 @@ const COURSE_LESSONS = {
     "subject": "Türkçe",
     "unitNo": "7. Ünite",
     "title": "Metin Türleri, Görsel Okuma ve Söz Sanatları",
+    "cover": "assets/images/tr_u7_pixar.jpg",
     "icon": "🇹🇷",
     "steps": [
       {
