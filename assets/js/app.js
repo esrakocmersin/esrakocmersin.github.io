@@ -2188,30 +2188,67 @@ A.saveEditUser=id=>{
 A.quickAddModal=defaultCls=>{
   const u=cur();
   const cls=defaultCls||(u&&u.classId?u.classId:'4A');
-  modal(`<div style="min-width:340px"><h3>⚡ Hızlı Toplu Öğrenci Ekle</h3><p class="muted">Her satıra bir öğrenci adı yazın. Öğrenci ve veli hesapları otomatik oluşturulur.</p>
-  <label>Hedef Sınıf<input id="qaClass" value="${esc(cls)}" style="margin-bottom:8px"></label>
-  <label>Öğrenci Listesi<textarea id="qaNames" rows="6" placeholder="Ahmet Yılmaz&#10;Zeynep Kaya&#10;Can Demir"></textarea></label>
-  <div class="row" style="margin-top:14px;justify-content:flex-end"><button class="btn ghost" onclick="closeModal()">İptal</button><button class="btn" onclick="A.execQuickAdd()">⚡ Hesapları Oluştur</button></div></div>`);
+  modal(`<div style="min-width:350px;max-width:520px">
+    <h3>⚡ Hızlı Toplu Öğrenci & Veli Ekle</h3>
+    <p class="muted" style="line-height:1.5">
+      Her satıra bir öğrenci yazın. Veli adını eklemek için araya <b>- (tire)</b> koyarak veli adını yazabilirsiniz:<br>
+      <code>Öğrenci Adı Soyadı - Veli Adı Soyadı</code>
+    </p>
+    <label>Hedef Sınıf<input id="qaClass" value="${esc(cls)}" style="margin-bottom:8px"></label>
+    <label>Öğrenci & Veli Listesi
+      <textarea id="qaNames" rows="7" style="font-family:monospace;font-size:13px" placeholder="Ahmet Yılmaz - Mehmet Yılmaz&#10;Zeynep Kaya - Fatma Kaya&#10;Can Demir - Ali Demir&#10;Elif Yıldız"></textarea>
+    </label>
+    <div style="font-size:12px;color:var(--m);margin-top:6px;line-height:1.4">
+      💡 <b>Format:</b> <code>Öğrenci Adı - Veli Adı</code><br>
+      Veli adı yazılmazsa <i>(örn: Elif Yıldız)</i>, veli hesabı otomatik olarak <i>"Elif Velisi"</i> adıyla açılır. Tüm yeni hesapların ilk şifresi varsayılan olarak <b>1234</b> atanır.
+    </div>
+    <div class="row" style="margin-top:16px;justify-content:flex-end;gap:8px">
+      <button class="btn ghost" onclick="closeModal()">İptal</button>
+      <button class="btn ok" onclick="A.execQuickAdd()">⚡ Hesapları Oluştur</button>
+    </div>
+  </div>`);
 };
 
 A.execQuickAdd=()=>{
   const cls=($('#qaClass').value.trim()||'4A').toUpperCase(),txt=$('#qaNames').value.trim();
   if(!txt){toast('Lütfen en az bir öğrenci ismi girin.');return;}
-  const names=txt.split('\n').map(n=>n.trim()).filter(Boolean);
+  const lines=txt.split('\n').map(n=>n.trim()).filter(Boolean);
   let count=0;
-  names.forEach(name=>{
-    const first=name.split(' ')[0];
-    let baseUn=slug(first)+cls.toLowerCase(),un=baseUn,idx=1;
+  lines.forEach(line=>{
+    let sName='', pName='';
+    if(line.includes(' - ')){
+      const parts=line.split(' - ');
+      sName=parts[0].trim();
+      pName=parts.slice(1).join(' - ').trim();
+    }else if(line.includes('-')){
+      const parts=line.split('-');
+      sName=parts[0].trim();
+      pName=parts.slice(1).join('-').trim();
+    }else{
+      sName=line.trim();
+      pName='';
+    }
+    if(!sName)return;
+    const sFirst=sName.split(/\s+/)[0];
+    
+    // Öğrenci hesabı
+    let baseUn=slug(sFirst)+cls.toLowerCase(),un=baseUn,idx=1;
     while(byName(un)){un=baseUn+(++idx);}
-    const s=mkUser({username:un,password:'1234',role:'student',name,classId:cls,xp:0,gold:0});
+    const s=mkUser({username:un,password:'1234',role:'student',name:sName,classId:cls,xp:0,gold:0});
     db.users.push(s);
-    let pBase='veli_'+un,pUn=pBase,pIdx=1;
+
+    // Veli hesabı
+    const parentDisplayName=pName||(sFirst+' Velisi');
+    const pFirst=pName?pName.split(/\s+/)[0]:sFirst;
+    let pBase='veli_'+slug(pFirst),pUn=pBase,pIdx=1;
+    if(pUn===un||byName(pUn)){pBase='veli_'+un;pUn=pBase;}
     while(byName(pUn)){pUn=pBase+(++pIdx);}
-    const p=mkUser({username:pUn,password:'1234',role:'parent',name:first+' Velisi',classId:cls,childId:s.id});
+    
+    const p=mkUser({username:pUn,password:'1234',role:'parent',name:parentDisplayName,classId:cls,childId:s.id});
     db.users.push(p);
     count++;
   });
-  save();closeModal();render();toast(`✅ ${count} öğrenci ve velisi eklendi (İlk şifreler: 1234)`);
+  save();closeModal();render();toast(`✅ ${count} öğrenci ve veli hesabı başarıyla açıldı! (Varsayılan şifre: 1234)`);
 };
 
 A.delUser=id=>{
