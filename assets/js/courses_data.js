@@ -743,7 +743,7 @@ const COURSE_LESSONS = {
       {
         "title": "Hikâye ve Hikâye Unsurları",
         "badge": "1. Adım: Hikâye Unsurları",
-        "slide": "assets/images/metin_turleri_deyimler.svg",
+        "slide": "assets/images/tr_u3_pixar.jpg",
         "narration": "Merhaba sevgili kâşif! Bir hikâyeyi okurken içindeki gizli şifreleri çözmeye ne dersin? Her hikâyenin dört temel unsuru vardır: Yaşanan olay, olayın geçtiği yer, olayın yaşandığı zaman ve olayda yer alan kişiler ya da kahramanlar. Bu dört unsuru bulduğunda hikâyeyi tam anlamıyla kavramış olursun!",
         "audio": "assets/audio/courses/tr-u3_s1.mp3",
         "slideTitle": "Hikâye ve Hikâye Unsurları",
