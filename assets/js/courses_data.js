@@ -394,7 +394,7 @@ const COURSE_LESSONS = {
       {
         "title": "Kök ve Ek Nedir? Basit Kelimeler",
         "badge": "1. Adım: Kelime Kökü",
-        "slide": "assets/images/kelime_yapisi.svg",
+        "slide": "assets/images/tr_u2_pixar.jpg",
         "narration": "Merhaba sevgili dördüncü sınıf kâşifim! Bu dersimizde kelimelerin sihirli dünyasına yolculuk yapıyoruz. Bir sözcüğün anlamlı en küçük parçasına kök denir. Örneğin \"göz\", \"ev\", \"balık\" birer köktür. Yapım eki almamış, kök durumundaki sözcüklere ise basit sözcükler diyoruz. \"Kitaplar\" veya \"evimiz\" kelimeleri çekim eki alsa bile anlamları değişmediği için yine basittir.",
         "audio": "assets/audio/courses/tr-u2_s1.mp3",
         "slideTitle": "Kök ve Ek Nedir? Basit Kelimeler",
