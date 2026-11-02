@@ -594,7 +594,10 @@ function render(){
   app.innerHTML=header(u)+views[u.role](u);
   updSync();
   if(u.role==='parent')drawChart(u);
-  if(u.role==='student'&&exam.active&&ui.tab.student===1)tickExam();
+  if(u.role==='student'){
+    if(ui.tab.student===1)mountLab();
+    if(exam.active&&ui.tab.student===2)tickExam();
+  }
 }
 function header(u){
   return `<div class="topbar"><div class="logo">🌌 Bilgi Evreni <b>4D</b> Ultimate</div><div class="who"><small id="syncBadge"></small>${roleAvatar(u)}<div><b>${esc(u.name)}</b><small>${ROLE[u.role]}${u.role==='student'?' • Seviye '+level(u.xp):''}${u.classId?' • '+esc(u.classId):''}</small></div><button class="btn ghost sm" onclick="A.logout()">🚪 Çıkış</button></div></div>`;
@@ -648,8 +651,8 @@ function bumpStat(u,subject,ok){const s=u.stats[subject]||(u.stats[subject]={c:0
 /* ================= ÖĞRENCİ PANELİ ================= */
 function statsBar(u){return `<div class="statbar" id="statbar"><div class="chip">⭐ XP <b>${u.xp}</b></div><div class="chip">🎖️ Seviye <b>${level(u.xp)}</b></div><div class="chip">🪙 Altın <b>${u.gold}</b></div>${u.title?`<div class="chip">🏷️ ${esc(u.title)}</div>`:''}<div class="xpbar" title="Sonraki seviyeye: ${100-u.xp%100} XP"><i style="width:${u.xp%100}%"></i></div></div>`;}
 function studentView(u){
-  const T=['📚 Dersler','⏱️ Deneme Sınavı','📢 Ödevler & Duyurular','🏆 Liderlik & Market'];
-  return statsBar(u)+tabs('student',T)+`<div class="panel">${([coursesTab,examTab,asgTab,marketTab][ui.tab.student]||coursesTab)(u)}</div>`;
+  const T=['📚 MEB Dersleri','🧪 3D Laboratuvar','⏱️ Deneme Sınavı','📢 Ödevler & Duyurular','🏆 Liderlik & Market'];
+  return statsBar(u)+tabs('student',T)+`<div class="panel">${([coursesTab,labTab,examTab,asgTab,marketTab][ui.tab.student]||coursesTab)(u)}</div>`;
 }
 
 /* --- Sekme 1: 3D Laboratuvar --- */
@@ -1302,11 +1305,12 @@ A.examFinish=auto=>{
   if(!auto&&!confirm(blank?`${blank} soruyu boş bıraktın. Sınavı bitirmek istiyor musun?`:'Sınavı bitirmek istiyor musun?'))return;
   clearInterval(exam.timer);exam.active=false;
   const u=cur();let c=0,w=0,b=0;const by={};
-  exam.qs.forEach((q,i)=>{const a=exam.ans[i];const s=by[q.subject]||(by[q.subject]={c:0,w:0,t:0});s.t++;if(a===null)b++;else if(a===q.answer){c++;s.c++;}else{w++;s.w++;}bumpStat(u,q.subject,a===q.answer);});
-  const net=c-w/3,score=Math.max(0,net/exam.qs.length*100),xp=c*5,gold=c*2;
+  exam.qs.forEach((q,i)=>{const a=exam.ans[i];const s=by[q.subject]||(by[q.subject]={c:0,w:0,t:0});s.t++;if(a===null)b++;else if(a===q.answer){c++;s.c++;}else{w++;s.w++;}if(a!==null)bumpStat(u,q.subject,a===q.answer);});
+  const net=Math.max(0,c-w/3),score=Math.max(0,net/exam.qs.length*100),xp=Math.max(10,c*5),gold=Math.max(5,c*2);
   const r={id:uid('r'),studentId:u.id,classId:u.classId,date:Date.now(),total:exam.qs.length,c,w,b,net,score,bySubject:by,xp,gold};
   db.results.push(r);if(xp||gold)gain(u,xp,gold);save();
   exam.result={r,review:exam.qs.map((q,i)=>({q,a:exam.ans[i]}))};
+  appConfetti(80);appSfx('win');
   render();
 };
 function examResultView(u){
@@ -13662,6 +13666,7 @@ function coursesTab(u){
   const sub = COURSES_DATA.find(x => x.id === activeSubId) || COURSES_DATA[0];
   const activeTerm = ui.courseTerm || 'all';
   const q = (ui.courseSearch || '').toLowerCase().trim();
+  const isTeacher = u && (u.role === 'teacher' || u.role === 'admin');
 
   // 1. 6 Ders Butonu
   const subButtonsHtml = COURSES_DATA.map(c => {
@@ -13716,7 +13721,10 @@ function coursesTab(u){
             </div>
             <div class="video-card-footer">
               <span>${isDone ? `⭐ Başarı: <b>${prog.score}/10</b> Puan` : (COURSE_LESSONS[unit.id] ? '✅ Sesli Anlatım + 10 Soru' : '⏳ Hazırlanıyor')}</span>
-              <span class="video-card-btn-action" style="${isDone ? 'color:#facc15' : 'color:#10b981'}" onclick="event.stopPropagation();CoursePlayer.open('${unit.id}')">${isDone ? 'Tekrar İzle / Çöz 🔄' : 'Dersi Başlat ▶'}</span>
+              <div class="row" style="margin:0;gap:4px">
+                ${isTeacher ? `<button class="btn sm ghost" style="padding:4px 8px;font-size:11px" title="Bu üniteyi sınıfına ödev ata" onclick="event.stopPropagation();A.quickAssignCourse('${unit.id}')">📤 Ödev Ver</button>` : ''}
+                <span class="video-card-btn-action" style="${isDone ? 'color:#facc15' : 'color:#10b981'}" onclick="event.stopPropagation();CoursePlayer.open('${unit.id}')">${isDone ? 'Tekrar İzle / Çöz 🔄' : 'Dersi Başlat ▶'}</span>
+              </div>
             </div>
           </div>
         </div>
@@ -13878,12 +13886,66 @@ A.openVideoModal = (courseId, unitId) => {
   modal(modalHtml);
 };
 
+A.quickAssignCourse = unitId => {
+  const cl = (typeof COURSE_LESSONS !== 'undefined' && COURSE_LESSONS[unitId]) || null;
+  const m = modById(unitId);
+  const u = cur();
+  const title = cl ? cl.unitTitle : (m ? m.name : unitId);
+  modal(`
+    <div style="min-width:320px">
+      <h3>📤 Sınıfa Ödev Ata</h3>
+      <p><b>${esc(title)}</b> konusunu <b>${esc(u.classId || 'sınıfınıza')}</b> ödev olarak atamak üzeresiniz.</p>
+      <label>Ödev Başlığı<input id="qaTitle" value="${esc(title)} Konu Anlatımı ve Pekiştirme"></label>
+      <div class="grid3" style="margin-top:8px">
+        <label>Ödül ⭐ XP<input id="qaXp" type="number" value="30" min="0" max="500"></label>
+        <label>Ödül 🪙 Altın<input id="qaGold" type="number" value="15" min="0" max="500"></label>
+      </div>
+      <label style="margin-top:8px">Açıklama (İsteğe bağlı)<textarea id="qaDesc" placeholder="Videoyu izleyin, 3D etkileşimleri deneyin ve test sorularını çözün..."></textarea></label>
+      <div class="row" style="margin-top:14px;justify-content:flex-end">
+        <button class="btn ghost" onclick="closeModal()">İptal</button>
+        <button class="btn ok" onclick="A.execQuickAssignCourse('${unitId}')">📤 Sınıfa Ata</button>
+      </div>
+    </div>
+  `);
+};
+A.execQuickAssignCourse = unitId => {
+  const u = cur();
+  const title = $('#qaTitle').value.trim();
+  if (!title) { toast('Ödev başlığı gereklidir.'); return; }
+  const xp = Math.max(0, parseInt($('#qaXp').value) || 0);
+  const gold = Math.max(0, parseInt($('#qaGold').value) || 0);
+  const desc = $('#qaDesc').value.trim();
+  db.assignments.push({
+    id: uid('a'),
+    classId: u.classId || '4A',
+    title,
+    moduleId: unitId,
+    xp,
+    gold,
+    desc,
+    date: Date.now(),
+    doneBy: []
+  });
+  save();
+  closeModal();
+  render();
+  toast('📤 Ödev başarıyla sınıfa atandı!');
+};
+
 /* --- Sekme 3: Ödevler & Duyurular --- */
 function asgTab(u){
   const anns=db.announcements.filter(a=>!a.classId||a.classId===u.classId).slice().reverse();
   const asg=db.assignments.filter(a=>a.classId===u.classId).slice().reverse();
   return `<div class="card"><h3>📢 Sınıf Duyuruları</h3>${anns.length?anns.map(a=>`<div class="item" style="display:block">${esc(a.text)}<br><small>${esc(a.author||'')} • ${fmtDate(a.date)}</small></div>`).join(''):'<p class="muted">Duyuru yok.</p>'}</div>
-  <div class="card"><h3>📚 Sınıf Ödevlerim</h3>${asg.length?asg.map(a=>{const m=modById(a.moduleId),done=a.doneBy.includes(u.id);return `<div class="item"><div><b>${esc(a.title)}</b> ${done?'✅':''}<br><small>${m?m.icon+' '+esc(m.name):''} • Ödül: ⭐${a.xp||0} XP 🪙${a.gold||0}${a.desc?' • '+esc(a.desc):''}</small></div>${done?'<span class="badge">Tamamlandı</span>':`<button class="btn sm" onclick="A.openAsg('${a.id}')">📖 Ödevi İncele & Çöz</button>`}</div>`;}).join(''):'<p class="muted">Ödev yok.</p>'}</div>`;
+  <div class="card"><h3>📚 Sınıf Ödevlerim</h3>${asg.length?asg.map(a=>{
+    const m=modById(a.moduleId);
+    const cl=typeof COURSE_LESSONS!=='undefined'?COURSE_LESSONS[a.moduleId]:null;
+    const done=a.doneBy.includes(u.id);
+    let subInfo = '';
+    if (m) subInfo = `🧪 ${m.icon} ${esc(m.name)} (3D Deney)`;
+    else if (cl) subInfo = `🎬 ${esc(cl.unitTitle)} (Ders Videosu & Test)`;
+    return `<div class="item"><div><b>${esc(a.title)}</b> ${done?'✅':''}<br><small>${subInfo} • Ödül: ⭐${a.xp||0} XP 🪙${a.gold||0}${a.desc?' • '+esc(a.desc):''}</small></div>${done?'<span class="badge" style="background:rgba(16,185,129,0.2);color:#10b981">Tamamlandı ✔</span>':`<button class="btn sm" onclick="A.openAsg('${a.id}')">📖 Ödevi İncele & Çöz</button>`}</div>`;
+  }).join(''):'<p class="muted">Henüz sana atanmış ödev yok.</p>'}</div>`;
 }
 A.openAsg=aid=>{
   const u=cur();
@@ -13891,16 +13953,20 @@ A.openAsg=aid=>{
   if(!a)return;
   const m=modById(a.moduleId);
   const isCourse=typeof COURSE_LESSONS!=='undefined'&&!!COURSE_LESSONS[a.moduleId];
+  const cl=isCourse?COURSE_LESSONS[a.moduleId]:null;
+  const isDone=a.doneBy.includes(u.id);
   modal(`
     <div style="display:flex;flex-direction:column;gap:12px;max-width:500px">
       <h3>📚 ${esc(a.title)}</h3>
-      <p>${a.desc?esc(a.desc):'Bu ödevi tamamlayarak ödülleri kazan!'}</p>
+      <p>${a.desc?esc(a.desc):'Bu ödevi inceleyip tamamlayarak ödülleri kazanabilirsin!'}</p>
       <div class="row"><span class="badge">⭐ ${a.xp||0} XP</span><span class="badge">🪙 ${a.gold||0} Altın</span></div>
-      ${m?`<div style="background:rgba(255,255,255,0.05);padding:10px;border-radius:8px"><b>${m.icon} ${esc(m.name)}:</b><p style="margin:6px 0 0 0;font-size:13px">${esc(m.topic)}</p></div>`:''}
-      <div class="row end" style="margin-top:10px">
+      ${m?`<div style="background:rgba(255,255,255,0.05);padding:10px;border-radius:8px"><b>${m.icon} 3D Laboratuvar: ${esc(m.name)}</b><p style="margin:6px 0 0 0;font-size:13px">${esc(m.topic)}</p></div>`:''}
+      ${cl?`<div style="background:rgba(255,255,255,0.05);padding:10px;border-radius:8px"><b>🎬 MEB Dersi: ${esc(cl.unitTitle)}</b><p style="margin:6px 0 0 0;font-size:13px">Sesli konu anlatımı ve 10 soruluk pekiştirme testi.</p></div>`:''}
+      <div class="row end" style="margin-top:10px;flex-wrap:wrap;gap:8px">
         <button class="btn ghost" onclick="closeModal()">Kapat</button>
+        ${m ? `<button class="btn warn" onclick="closeModal();A.tab('student',1);A.selMod('${a.moduleId}')">🧪 3D Deneyi Başlat</button>` : ''}
         ${isCourse ? `<button class="btn" onclick="closeModal();CoursePlayer.open('${a.moduleId}')">🎬 Ders Videosu & Testini Aç</button>` : ''}
-        ${!a.doneBy.includes(u.id)?`<button class="btn ok" onclick="A.finishAsg('${a.id}')">✔ Ödevi Tamamla</button>`:'<span class="badge">Zaten Tamamlandı</span>'}
+        ${!isDone ? `<button class="btn ok" onclick="A.finishAsg('${a.id}')">✔ Ödevi Tamamla</button>` : '<span class="badge" style="background:rgba(16,185,129,0.2);color:#10b981">Tamamlandı ✔</span>'}
       </div>
     </div>
   `);
@@ -13912,9 +13978,11 @@ A.finishAsg=aid=>{
   a.doneBy.push(u.id);
   u.asgDone=(u.asgDone||0)+1;
   gain(u,a.xp||15,a.gold||10);
+  appSfx('win');
   save();
   closeModal();
   render();
+  toast('🎉 Tebrikler! ' + esc(a.title) + ' ödevini tamamladın.');
 };
 
 
@@ -13923,13 +13991,23 @@ function marketTab(u){
   const list=classStudents(u.classId).slice().sort((a,b)=>b.xp-a.xp);
   const res=db.results.filter(r=>r.studentId===u.id);
   const medal=['🥇','🥈','🥉'];
-  const own=id=>u.owned.includes(id);
+  const own=id=>(u.owned||[]).includes(id);
   const itemRow=i=>`<div class="item"><div>${i.type==='frame'?'🖼️':'🏷️'} <b>${esc(i.name)}</b> <small>🪙 ${i.price}</small></div>${own(i.id)?`<button class="btn sm ${(i.type==='title'?u.title===i.name:u.frame===i.id)?'ok':'ghost'}" onclick="A.equip('${i.id}')">${(i.type==='title'?u.title===i.name:u.frame===i.id)?'✔ Takılı':'Tak'}</button>`:`<button class="btn sm warn" ${u.gold<i.price?'disabled':''} onclick="A.buy('${i.id}')">Satın Al</button>`}</div>`;
   return `<div class="two" style="margin-top:0"><div class="card"><h3>🏆 Sınıf Liderlik Tablosu (${esc(u.classId)})</h3>${list.map((s,i)=>`<div class="item"><div style="display:flex;gap:10px;align-items:center"><span class="rank">${medal[i]||i+1}</span>${roleAvatar(s,36)}<div><b>${esc(s.name)}</b>${s.id===u.id?' <small>(sen)</small>':''}<br><small>${s.title?esc(s.title)+' • ':''}Seviye ${level(s.xp)}</small></div></div><b style="color:var(--a)">${s.xp} XP</b></div>`).join('')}</div>
   <div class="card"><h3>🎖️ Rozetlerim</h3>${BADGES.map(b=>`<span class="badge ${b.t(u,res)?'':'off'}" title="${esc(b.desc)}">${b.icon} ${b.name}</span>`).join('')}<p class="muted">Rozetlerin üzerine gelince nasıl kazanılacağını görürsün.</p></div></div>
   <div class="card"><h3>🛒 Altın Marketi <small>(Bakiyen: 🪙 ${u.gold})</small></h3><div class="two" style="margin-top:0"><div>${ITEMS.filter(i=>i.type==='title').map(itemRow).join('')}<div class="row"><button class="btn ghost sm" onclick="A.unequip('title')">Unvanı Kaldır</button></div></div><div>${ITEMS.filter(i=>i.type==='frame').map(itemRow).join('')}<div class="row"><button class="btn ghost sm" onclick="A.unequip('frame')">Çerçeveyi Kaldır</button></div></div></div></div>`;
 }
-A.buy=id=>{const u=cur(),it=ITEMS.find(i=>i.id===id);if(!it||u.owned.includes(id))return;if(u.gold<it.price){toast('Yeterli altının yok 🪙');return;}u.gold-=it.price;u.owned.push(id);A.equip(id,true);toast('🛍️ Satın alındı: '+esc(it.name));};
+A.buy=id=>{
+  const u=cur(),it=ITEMS.find(i=>i.id===id);
+  if(!it)return;
+  if(!Array.isArray(u.owned))u.owned=[];
+  if(u.owned.includes(id))return;
+  if(u.gold<it.price){toast('Yeterli altının yok 🪙');return;}
+  u.gold-=it.price;u.owned.push(id);
+  A.equip(id,true);
+  appSfx('win');
+  toast('🛍️ Satın alındı: '+esc(it.name));
+};
 A.equip=(id,silent)=>{const u=cur(),it=ITEMS.find(i=>i.id===id);if(!it||!u.owned.includes(id))return;if(it.type==='title')u.title=it.name;else u.frame=it.id;save();render();};
 A.unequip=t=>{const u=cur();if(t==='title')u.title='';else u.frame='';save();render();};
 /* ================= ÖĞRETMEN PANELİ ================= */
@@ -13942,18 +14020,24 @@ const parentOf = sid => db.users.find(x=>x.role==='parent'&&x.childId===sid);
 /* --- 1) Hesaplar --- */
 function tchAccounts(u){
   const st=classStudents(u.classId);
-  return `<div class="card"><h3>➕ Yeni Öğrenci + Veli Hesabı</h3><div class="grid3">
+  return `<div class="card"><div class="row between" style="margin-top:0;flex-wrap:wrap;gap:8px"><h3>➕ Yeni Öğrenci + Veli Hesabı (${esc(u.classId||'4A')})</h3><button class="btn sm" onclick="A.quickAddModal('${esc(u.classId||'4A')}')">⚡ Sınıfıma Toplu Öğrenci Ekle</button></div><div class="grid3" style="margin-top:10px">
    <label>Öğrenci Adı Soyadı<input id="nsName" oninput="A.suggest()" placeholder="Örn: Elif Aydın"></label>
    <label>Öğrenci Kullanıcı Adı<input id="nsUser"></label><label>Öğrenci Şifresi<input id="nsPass" value="${rndPass()}"></label>
    <label>Veli Kullanıcı Adı<input id="nsPUser"></label><label>Veli Şifresi<input id="nsPPass" value="${rndPass()}"></label>
    <div class="end"><button class="btn" style="width:100%" onclick="A.addStudent()">✨ Tek Tıkla İki Hesap Aç</button></div></div>
    <p class="muted">Adı yazınca kullanıcı adları otomatik önerilir; istersen değiştirebilirsin.</p></div>
-  <div class="card"><div class="row between" style="margin-top:0"><h3>🔑 Sınıf Hesapları (${st.length})</h3><button class="btn" onclick="A.printList()">🖨️ Sınıf Şifre Listesini Yazdır</button></div>
-  <div class="tablewrap"><table><tr><th>Öğrenci</th><th>Kullanıcı</th><th>Şifre ✏️</th><th>Veli kullanıcı</th><th>Veli şifre ✏️</th><th>İşlemler</th></tr>
-  ${st.map(s=>{const p=parentOf(s.id);return `<tr><td><b>${esc(s.name)}</b></td><td>${esc(s.username)}</td><td class="pw" title="Değiştirmek için tıkla" onclick="A.editPass('${s.id}')">${esc(s.password)}</td>
-  <td>${p?esc(p.username):'<small>—</small>'}</td>${p?`<td class="pw" onclick="A.editPass('${p.id}')">${esc(p.password)}</td>`:`<td><button class="btn sm ghost" onclick="A.addParent('${s.id}')">➕ Veli aç</button></td>`}
-  <td><div class="row" style="margin:0"><button class="btn sm" onclick="A.imp('${s.id}')">Hesaba Geç</button>${p?`<button class="btn sm ghost" onclick="A.imp('${p.id}')">Veliye Geç</button>`:''}<button class="btn sm ok" onclick="A.waCard('${s.id}')">📱 WhatsApp Kartı</button><button class="btn sm danger" onclick="A.delStudent('${s.id}')">🗑️</button></div></td></tr>`;}).join('')||'<tr><td colspan="6" class="muted">Henüz öğrenci yok.</td></tr>'}
-  </table></div></div>`;
+  <div class="card"><div class="row between" style="margin-top:0;flex-wrap:wrap;gap:8px"><h3>🔑 Sınıf Hesapları (${st.length})</h3><button class="btn sm" onclick="A.printList()">🖨️ Sınıf Şifre Listesini Yazdır</button></div>
+  <div class="tablewrap"><table><thead><tr><th>Öğrenci</th><th>Kullanıcı</th><th>Şifre ✏️</th><th>Veli Kullanıcı</th><th>Veli Şifre ✏️</th><th>İlerleme & Durum</th><th>İşlemler</th></tr></thead><tbody>
+  ${st.map(s=>{
+    const p=parentOf(s.id);
+    const cCount=Object.keys(s.courseProgress||{}).length;
+    const lCount=(s.labDone||[]).length;
+    return `<tr><td><b>${esc(s.name)}</b></td><td><code>${esc(s.username)}</code></td><td class="pw" title="Değiştirmek için tıkla" onclick="A.editPass('${s.id}')"><code>${esc(s.password)}</code> ✏️</td>
+    <td>${p?`<code>${esc(p.username)}</code>`:'<small class="muted">—</small>'}</td>${p?`<td class="pw" onclick="A.editPass('${p.id}')"><code>${esc(p.password)}</code> ✏️</td>`:`<td><button class="btn sm ghost" onclick="A.addParent('${s.id}')">➕ Veli aç</button></td>`}
+    <td><small>⭐ ${s.xp} XP • Lvl ${level(s.xp)}<br>🎬 ${cCount}/43 Ünite • 🧪 ${lCount} Deney</small></td>
+    <td><div class="row" style="margin:0;gap:4px"><button class="btn sm" onclick="A.imp('${s.id}')">Hesaba Geç</button><button class="btn sm ghost" onclick="A.editUser('${s.id}')">✏️ Düzenle</button>${p?`<button class="btn sm ghost" onclick="A.imp('${p.id}')">Veliye Geç</button>`:''}<button class="btn sm ok" onclick="A.waCard('${s.id}')">📱 Giriş Kartı</button><button class="btn sm danger" onclick="A.delStudent('${s.id}')">🗑️</button></div></td></tr>`;
+  }).join('')||'<tr><td colspan="7" class="muted center">Henüz sınıfınızda kayıtlı öğrenci yok.</td></tr>'}
+  </tbody></table></div></div>`;
 }
 A.suggest=()=>{
   const name=$('#nsName').value.trim(),first=slug(name.split(/\s+/)[0]),cls=slug(cur().classId||'');
@@ -13984,10 +14068,14 @@ A.editPass=id=>{
   x.password=p.trim();save();render();toast('🔑 Şifre güncellendi');
 };
 A.delStudent=sid=>{
-  const s=byId(sid);if(!s||!confirm(s.name+' ve velisinin hesapları silinsin mi?'))return;
+  const s=byId(sid);if(!s)return;
+  const p=parentOf(sid);
+  if(!confirm(s.name+' ve velisinin hesapları silinsin mi?\n(Öğrencinin tüm sınav sonuçları, ödev ve mesaj kayıtları da temizlenir.)'))return;
   db.users=db.users.filter(x=>x.id!==sid&&x.childId!==sid);
-  db.results=db.results.filter(r=>r.studentId!==sid);db.assignments.forEach(a=>{a.doneBy=a.doneBy.filter(i=>i!==sid);});
-  save();render();
+  db.results=db.results.filter(r=>r.studentId!==sid);
+  db.assignments.forEach(a=>{a.doneBy=a.doneBy.filter(i=>i!==sid);});
+  db.messages=db.messages.filter(m=>m.from!==sid&&m.to!==sid&&(!p||(m.from!==p.id&&m.to!==p.id)));
+  save();render();toast('🗑️ Öğrenci ve veli kaydı silindi');
 };
 function baseUrl(){return location.protocol==='file:'?'(sunucu adresi)':location.origin;}
 A.waCard=sid=>{
@@ -14007,19 +14095,43 @@ function tchAssign(u){
   const asg=db.assignments.filter(a=>a.classId===u.classId).slice().reverse();
   const anns=db.announcements.filter(a=>a.classId===u.classId).slice().reverse();
   const st=classStudents(u.classId);
-  return `<div class="two" style="margin-top:0"><div class="card"><h3>🧪 3D Ödev Ata</h3>
-   <label>Ödev Başlığı<input id="aTitle" placeholder="Örn: Mevsimleri keşfet"></label>
-   <label style="margin-top:8px">Ödev İçeriği (3D Deney veya MEB Dersi)<select id="aMod">
-     <optgroup label="3D Laboratuvar Modülleri">${MODULES.map(m=>`<option value="${m.id}">${m.icon} ${m.name}</option>`).join('')}</optgroup>
-     <optgroup label="MEB Ders Üniteleri">${COURSES_DATA.map(c=>c.terms.map(t=>t.units.map(un=>`<option value="${un.id}">${c.icon} ${esc(c.name)}: ${esc(un.unitTitle)}</option>`).join('')).join('')).join('')}</optgroup>
-   </select></label>
-   <div class="grid3" style="margin-top:8px"><label>Ödül XP<input id="aXp" type="number" value="30" min="0" max="500"></label><label>Ödül Altın<input id="aGold" type="number" value="15" min="0" max="500"></label></div>
-   <label style="margin-top:8px">Açıklama<textarea id="aDesc" placeholder="İsteğe bağlı"></textarea></label>
+  return `<div class="two" style="margin-top:0"><div class="card"><h3>🧪 Yeni Ödev Ata (${esc(u.classId||'4A')})</h3>
+   <label>Ödev İçeriği (3D Deney veya MEB Dersi)
+     <select id="aMod" onchange="A.tchSelectMod(this)">
+       <optgroup label="3D Laboratuvar Modülleri">${MODULES.map(m=>`<option value="${m.id}">${m.icon} ${m.name}</option>`).join('')}</optgroup>
+       <optgroup label="MEB Ders Üniteleri">${COURSES_DATA.map(c=>c.terms.map(t=>t.units.map(un=>`<option value="${un.id}">${c.icon} ${esc(c.name)}: ${esc(un.unitTitle)}</option>`).join('')).join('')).join('')}</optgroup>
+     </select>
+   </label>
+   <label style="margin-top:8px">Ödev Başlığı<input id="aTitle" value="Dünya - Güneş - Ay Deneyi"></label>
+   <div class="grid3" style="margin-top:8px"><label>Ödül ⭐ XP<input id="aXp" type="number" value="30" min="0" max="500"></label><label>Ödül 🪙 Altın<input id="aGold" type="number" value="15" min="0" max="500"></label></div>
+   <label style="margin-top:8px">Açıklama<textarea id="aDesc" placeholder="Öğrencilere ödev talimatları..."></textarea></label>
    <div class="row"><button class="btn" onclick="A.addAsg()">📤 Sınıfa Gönder</button></div></div>
-  <div class="card"><h3>📢 Sınıf Duyurusu</h3><label>Duyuru metni<textarea id="annText" placeholder="Öğrencilere duyuru..."></textarea></label><div class="row"><button class="btn" onclick="A.addAnn()">📣 Duyur</button></div>
-   ${anns.map(a=>`<div class="item"><div>${esc(a.text)}<br><small>${fmtDate(a.date)}</small></div><button class="btn sm danger" onclick="A.delAnn('${a.id}')">🗑️</button></div>`).join('')}</div></div>
-  <div class="card"><h3>📋 Verilen Ödevler ve Tamamlayanlar</h3>${asg.length?asg.map(a=>{const m=modById(a.moduleId),done=st.filter(s=>a.doneBy.includes(s.id));return `<div class="item" style="display:block"><div class="row between" style="margin:0"><b>${esc(a.title)} <small>${m?m.icon+' '+esc(m.name):''} • ⭐${a.xp} 🪙${a.gold}</small></b><button class="btn sm danger" onclick="A.delAsg('${a.id}')">🗑️ Sil</button></div><div class="bar" style="margin:6px 0"><i style="width:${st.length?done.length/st.length*100:0}%"></i></div><small>Tamamlayan: ${done.length}/${st.length}${done.length?' • '+done.map(s=>esc(s.name)).join(', '):''}</small></div>`;}).join(''):'<p class="muted">Henüz ödev atanmadı.</p>'}</div>`;
+  <div class="card"><h3>📢 Sınıf Duyurusu</h3><label>Duyuru Metni<textarea id="annText" placeholder="Sınıfınıza duyuru paylaşın..."></textarea></label><div class="row"><button class="btn" onclick="A.addAnn()">📣 Duyur</button></div>
+   <div style="max-height:240px;overflow-y:auto;margin-top:10px">${anns.map(a=>`<div class="item"><div>${esc(a.text)}<br><small class="muted">${fmtDate(a.date)}</small></div><button class="btn sm danger" onclick="A.delAnn('${a.id}')">🗑️</button></div>`).join('')||'<p class="muted">Duyuru yok.</p>'}</div></div></div>
+  <div class="card"><h3>📋 Verilen Ödevler ve Öğrenci Takibi</h3>${asg.length?asg.map(a=>{
+    const m=modById(a.moduleId);
+    const cl=typeof COURSE_LESSONS!=='undefined'?COURSE_LESSONS[a.moduleId]:null;
+    const subTitle=m?m.icon+' '+esc(m.name):(cl?'🎬 '+esc(cl.unitTitle):'');
+    const done=st.filter(s=>a.doneBy.includes(s.id));
+    const notDone=st.filter(s=>!a.doneBy.includes(s.id));
+    const pct=st.length?Math.round(done.length/st.length*100):0;
+    return `<div class="item" style="display:block;margin-bottom:10px">
+      <div class="row between" style="margin:0">
+        <b>${esc(a.title)} <small class="muted">${subTitle} • ⭐${a.xp} XP • 🪙${a.gold} Altın</small></b>
+        <button class="btn sm danger" onclick="A.delAsg('${a.id}')">🗑️ Sil</button>
+      </div>
+      <div class="bar" style="margin:6px 0"><i style="width:${pct}%"></i></div>
+      <div class="row between" style="margin:0"><small><b>Tamamlayanlar (${done.length}/${st.length} - %${pct}):</b> ${done.length?done.map(s=>esc(s.name)).join(', '):'<span class=\"muted\">Henüz tamamlayan yok</span>'}</small></div>
+      ${notDone.length&&notDone.length<st.length?`<small style="color:var(--danger)"><b>Bekleyenler (${notDone.length}):</b> ${notDone.map(s=>esc(s.name)).join(', ')}</small>`:''}
+    </div>`;
+  }).join(''):'<p class="muted">Henüz ödev atanmadı.</p>'}</div>`;
 }
+
+A.tchSelectMod=sel=>{
+  const opt=sel.options[sel.selectedIndex];
+  if(opt&&$('#aTitle'))$('#aTitle').value=opt.text.replace(/^[^\s]+\s+/, '')+' Çalışması';
+};
+
 A.addAsg=()=>{
   const u=cur(),title=$('#aTitle').value.trim();if(!title){toast('Ödev başlığı yazın.');return;}
   db.assignments.push({id:uid('a'),classId:u.classId,title,moduleId:$('#aMod').value,xp:Math.max(0,parseInt($('#aXp').value)||0),gold:Math.max(0,parseInt($('#aGold').value)||0),desc:$('#aDesc').value.trim(),date:Date.now(),doneBy:[]});
@@ -14034,19 +14146,28 @@ function poolName(p){if(p==='exam')return '⏱️ Deneme Sınavı';const m=modBy
 function tchBank(u){
   const pools=['exam'].concat(MODULES.map(m=>m.id));
   const filter=ui.bank||'all';
-  const list=db.questions.filter(q=>filter==='all'||q.pool===filter);
+  const subFilter=ui.tchBankSub||'all';
+  const qTxt=(ui.tchBankQ||'').toLowerCase().trim();
+  const list=db.questions.filter(q=>{
+    if(filter!=='all'&&q.pool!==filter)return false;
+    if(subFilter!=='all'&&q.subject!==subFilter)return false;
+    if(qTxt&&!q.text.toLowerCase().includes(qTxt))return false;
+    return true;
+  });
   return `<div class="card"><h3>🧙 Soru Ekleme Sihirbazı</h3><div class="grid3">
    <label>Nereye eklensin?<select id="bPool" onchange="A.bankPool()">${pools.map(p=>`<option value="${p}">${poolName(p)}</option>`).join('')}</select></label>
    <label id="bSubWrap">Ders<select id="bSub">${SUBJECTS.map(s=>`<option>${s}</option>`).join('')}</select></label>
    <label>Doğru Seçenek<select id="bAns"><option value="0">A</option><option value="1">B</option><option value="2">C</option><option value="3">D</option></select></label></div>
-   <label style="margin-top:8px">Soru metni<textarea id="bText" placeholder="4. sınıf düzeyinde sorunuzu yazın"></textarea></label>
+   <label style="margin-top:8px">Soru metni<textarea id="bText" placeholder="4. sınıf düzeyinde sorunuzu yazın..."></textarea></label>
    <div class="grid3" style="margin-top:8px">${'ABCD'.split('').map((l,i)=>`<label>Seçenek ${l}<input id="bO${i}"></label>`).join('')}</div>
    <div class="row"><button class="btn" onclick="A.addQ()">➕ Soruyu Ekle</button></div></div>
-  <div class="card"><div class="row between" style="margin-top:0"><h3>📚 Soru Havuzu (${list.length})</h3><select style="width:auto" onchange="A.bankFilter(this.value)"><option value="all">Tümü</option>${pools.map(p=>`<option value="${p}" ${filter===p?'selected':''}>${poolName(p)}</option>`).join('')}</select></div>
-  ${list.map(q=>`<div class="item"><div><b>${esc(q.text)}</b><br><small>${poolName(q.pool)} • ${esc(q.subject)} • Doğru: ${'ABCD'[q.answer]}) ${esc(q.options[q.answer])} • ${esc(q.by||'')}</small></div><button class="btn sm danger" onclick="A.delQ('${q.id}')">🗑️</button></div>`).join('')||'<p class="muted">Soru yok.</p>'}</div>${(setTimeout(A.bankPool,0),'')}`;
+  <div class="card"><div class="row between" style="margin-top:0;flex-wrap:wrap;gap:8px"><h3>📚 Soru Havuzu (${list.length} / ${db.questions.length})</h3><div class="row" style="margin:0;gap:8px;flex-wrap:wrap"><input style="width:160px" placeholder="Soru ara..." value="${esc(ui.tchBankQ||'')}" oninput="A.tchBankSearch(this.value)"><select style="width:auto" onchange="A.bankFilter(this.value)"><option value="all">Tüm Havuzlar</option>${pools.map(p=>`<option value="${p}" ${filter===p?'selected':''}>${poolName(p)}</option>`).join('')}</select><select style="width:auto" onchange="A.tchBankSub(this.value)"><option value="all">Tüm Dersler</option>${SUBJECTS.map(s=>`<option value="${s}" ${subFilter===s?'selected':''}>${s}</option>`).join('')}</select></div></div>
+  <div style="max-height:400px;overflow-y:auto;margin-top:10px">${list.map(q=>`<div class="item"><div><b>${esc(q.text)}</b><br><small class="muted">${poolName(q.pool)} • <b>${esc(q.subject)}</b> • Doğru: ${'ABCD'[q.answer]}) ${esc(q.options[q.answer])} • ${esc(q.by||'')}</small></div><button class="btn sm danger" onclick="A.delQ('${q.id}')">🗑️</button></div>`).join('')||'<p class="muted center">Soru bulunamadı.</p>'}</div></div>${(setTimeout(A.bankPool,0),'')}`;
 }
 A.bankPool=()=>{const p=$('#bPool');if(!p)return;const w=$('#bSubWrap');if(p.value==='exam')w.classList.remove('hidden');else w.classList.add('hidden');};
 A.bankFilter=v=>{ui.bank=v;render();};
+A.tchBankSearch=v=>{ui.tchBankQ=v;render();};
+A.tchBankSub=v=>{ui.tchBankSub=v;render();};
 A.addQ=()=>{
   const u=cur(),pool=$('#bPool').value,text=$('#bText').value.trim();
   const opts=[0,1,2,3].map(i=>$('#bO'+i).value.trim());
@@ -14061,12 +14182,15 @@ A.delQ=id=>{if(!confirm('Soru silinsin mi?'))return;db.questions=db.questions.fi
 function thread(a,b){return db.messages.filter(m=>(m.from===a&&m.to===b)||(m.from===b&&m.to===a));}
 function threadHTML(me,other){
   const th=thread(me,other);
-  return `<div class="thread" id="thread">${th.length?th.map(m=>`<div class="msg ${m.from===me?'me':''}">${esc(m.text)}<small>${fmtDate(m.date)}</small></div>`).join(''):'<small class="muted">Henüz mesaj yok.</small>'}</div>`;
+  return `<div class="thread" id="thread">${th.length?th.map(m=>`<div class="msg ${m.from===me?'me':''}"><small><b>${esc(byId(m.from)?byId(m.from).name:'')}</b></small>${esc(m.text)}<small class="muted">${fmtDate(m.date)}</small></div>`).join(''):'<small class="muted">Henüz mesaj yok.</small>'}</div>`;
 }
 A.sendMsg=to=>{
   const me=cur(),box=$('#msgText'),t=box.value.trim();if(!t||!to)return;
-  db.messages.push({id:uid('m'),from:me.id,to,text:t,date:Date.now()});save();render();
+  db.messages.push({id:uid('m'),from:me.id,to,text:t,date:Date.now()});
+  box.value='';
+  save();render();
   const th=$('#thread');if(th)th.scrollTop=th.scrollHeight;
+  toast('📨 Mesaj gönderildi');
 };
 A.chat=id=>{ui.chat=id;render();};
 function tchComm(u){
@@ -14074,11 +14198,16 @@ function tchComm(u){
   if(!ui.chat||!parents.find(p=>p.id===ui.chat))ui.chat=parents[0]?parents[0].id:null;
   const sel=(ui.chat?byId(ui.chat):null)||(parents[0]||null);
   const st=classStudents(u.classId);
-  const rows=st.map(s=>{const rs=db.results.filter(r=>r.studentId===s.id);const last=rs[rs.length-1];const avg=rs.length?rs.reduce((a,r)=>a+r.score,0)/rs.length:null;return `<tr><td>${esc(s.name)}</td><td>${rs.length}</td><td>${last?last.net.toFixed(2):'-'}</td><td>${last?last.score.toFixed(0):'-'}</td><td>${avg!==null?avg.toFixed(0):'-'}</td></tr>`;}).join('');
-  const all=db.results.filter(r=>r.classId===u.classId).slice().reverse().slice(0,15);
-  return `<div class="two" style="margin-top:0"><div class="card"><h3>💬 Veli ile Mesajlaşma</h3>${parents.length&&sel?`<label>Veli seç<select onchange="A.chat(this.value)">${parents.map(p=>`<option value="${p.id}" ${p.id===sel.id?'selected':''}>${esc(p.name)} (${esc(byId(p.childId)?byId(p.childId).name:'')})</option>`).join('')}</select></label><div style="margin-top:8px">${threadHTML(u.id,sel.id)}</div><textarea id="msgText" placeholder="Mesajınız..."></textarea><div class="row"><button class="btn" onclick="A.sendMsg('${sel.id}')">📨 Gönder</button><button class="btn ghost" onclick="A.imp('${sel.id}')">Veliye Geç</button></div>`:'<p class="muted">Veli hesabı yok.</p>'}</div>
-  <div class="card"><h3>📊 Deneme Sınavı Netleri</h3><div class="tablewrap"><table><tr><th>Öğrenci</th><th>Sınav</th><th>Son Net</th><th>Son Puan</th><th>Ort.</th></tr>${rows||'<tr><td colspan="5" class="muted">Öğrenci yok</td></tr>'}</table></div></div></div>
-  <div class="card"><h3>🕒 Son Sınav Sonuçları</h3>${all.length?`<div class="tablewrap"><table><tr><th>Tarih</th><th>Öğrenci</th><th>D</th><th>Y</th><th>B</th><th>Net</th><th>Puan</th></tr>${all.map(r=>{const s=byId(r.studentId);return `<tr><td>${fmtDate(r.date)}</td><td>${esc(s?s.name:'?')}</td><td>${r.c}</td><td>${r.w}</td><td>${r.b}</td><td>${r.net.toFixed(2)}</td><td><b>${r.score.toFixed(0)}</b></td></tr>`;}).join('')}</table></div>`:'<p class="muted">Henüz sınav çözülmedi.</p>'}</div>`;
+  const rows=st.map(s=>{
+    const rs=db.results.filter(r=>r.studentId===s.id);
+    const last=rs[rs.length-1];
+    const avg=rs.length?rs.reduce((a,r)=>a+r.score,0)/rs.length:null;
+    return `<tr><td><b>${esc(s.name)}</b></td><td>${rs.length} sınav</td><td>${last?last.net.toFixed(2):'-'}</td><td>${last?`<b>${last.score.toFixed(0)}</b>`:'-'}</td><td><b style="color:var(--ok)">${avg!==null?avg.toFixed(0):'-'}</b></td><td><button class="btn sm ghost" onclick="A.imp('${s.id}')">Karnesini Gör</button></td></tr>`;
+  }).join('');
+  const all=db.results.filter(r=>r.classId===u.classId).slice().reverse().slice(0,20);
+  return `<div class="two" style="margin-top:0"><div class="card"><h3>💬 Veli ile Mesajlaşma</h3>${parents.length&&sel?`<label>Veli Seçin<select onchange="A.chat(this.value)">${parents.map(p=>`<option value="${p.id}" ${p.id===sel.id?'selected':''}>${esc(p.name)} (${esc(byId(p.childId)?byId(p.childId).name+' Velisi':'')})</option>`).join('')}</select></label><div style="margin-top:8px">${threadHTML(u.id,sel.id)}</div><textarea id="msgText" placeholder="Velimize mesaj yazın..."></textarea><div class="row"><button class="btn" onclick="A.sendMsg('${sel.id}')">📨 Gönder</button><button class="btn ghost" onclick="A.imp('${sel.id}')">Veliye Geç</button></div>`:'<p class="muted">Sınıfınızda henüz veli hesabı açılmamış.</p>'}</div>
+  <div class="card"><h3>📊 Deneme Sınavı Netleri (${esc(u.classId||'4A')})</h3><div class="tablewrap"><table><thead><tr><th>Öğrenci</th><th>Sınav</th><th>Son Net</th><th>Son Puan</th><th>Ortalama</th><th>İncele</th></tr></thead><tbody>${rows||'<tr><td colspan="6" class="muted center">Öğrenci yok</td></tr>'}</tbody></table></div></div></div>
+  <div class="card"><h3>🕒 Sınıfımın Son Sınav Sonuçları</h3>${all.length?`<div class="tablewrap"><table><thead><tr><th>Tarih</th><th>Öğrenci</th><th>Doğru</th><th>Yanlış</th><th>Boş</th><th>Net</th><th>Puan</th></tr></thead><tbody>${all.map(r=>{const s=byId(r.studentId);return `<tr><td>${fmtDate(r.date)}</td><td><b>${esc(s?s.name:'?')}</b></td><td style="color:var(--ok)">${r.c}</td><td style="color:var(--danger)">${r.w}</td><td class="muted">${r.b}</td><td><b>${r.net.toFixed(2)}</b></td><td><b style="color:var(--a2)">${r.score.toFixed(0)}</b></td></tr>`;}).join('')}</tbody></table></div>`:'<p class="muted center">Sınıfınızda henüz deneme sınavı çözülmedi.</p>'}</div>`;
 }
 /* ================= VELİ PANELİ ================= */
 function parentView(u){
@@ -14207,9 +14336,11 @@ A.saveEditUser=id=>{
   save();closeModal();render();toast('✅ Kullanıcı bilgileri güncellendi');
 };
 
-A.quickAddModal=()=>{
+A.quickAddModal=defaultCls=>{
+  const u=cur();
+  const cls=defaultCls||(u&&u.classId?u.classId:'4A');
   modal(`<div style="min-width:340px"><h3>⚡ Hızlı Toplu Öğrenci Ekle</h3><p class="muted">Her satıra bir öğrenci adı yazın. Öğrenci ve veli hesapları otomatik oluşturulur.</p>
-  <label>Hedef Sınıf<input id="qaClass" value="4A" style="margin-bottom:8px"></label>
+  <label>Hedef Sınıf<input id="qaClass" value="${esc(cls)}" style="margin-bottom:8px"></label>
   <label>Öğrenci Listesi<textarea id="qaNames" rows="6" placeholder="Ahmet Yılmaz&#10;Zeynep Kaya&#10;Can Demir"></textarea></label>
   <div class="row" style="margin-top:14px;justify-content:flex-end"><button class="btn ghost" onclick="closeModal()">İptal</button><button class="btn" onclick="A.execQuickAdd()">⚡ Hesapları Oluştur</button></div></div>`);
 };
