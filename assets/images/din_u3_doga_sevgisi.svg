@@ -1,0 +1,107 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="800" height="500">
+  <defs>
+    <linearGradient id="bgGrad3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f172a;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#052e16;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="greenHdr" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#16a34a;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#22c55e;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="earthGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#78350f;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#92400e;stop-opacity:1" />
+    </linearGradient>
+    <filter id="shadow3" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.5"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="500" fill="url(#bgGrad3)" rx="16"/>
+
+  <!-- Subtle nature pattern -->
+  <circle cx="70" cy="480" r="50" fill="#22c55e" opacity="0.04"/>
+  <circle cx="730" cy="30" r="40" fill="#22c55e" opacity="0.04"/>
+
+  <!-- Title -->
+  <rect x="130" y="18" width="540" height="44" rx="22" fill="url(#greenHdr)" filter="url(#shadow3)"/>
+  <text x="400" y="46" text-anchor="middle" font-family="Arial, sans-serif" font-size="19" font-weight="bold" fill="#ffffff">🌿 Doğa, Hayvan ve Çalışma Sevgisi</text>
+
+  <!-- THREE PANEL LAYOUT -->
+
+  <!-- LEFT PANEL: Fidan Dik -->
+  <rect x="30" y="85" width="225" height="305" rx="16" fill="#14532d" stroke="#22c55e" stroke-width="2.5" filter="url(#shadow3)"/>
+  <rect x="30" y="85" width="225" height="56" rx="16" fill="#16a34a"/>
+  <rect x="30" y="113" width="225" height="28" fill="#16a34a"/>
+  <text x="142" y="108" text-anchor="middle" font-size="26">🌱</text>
+  <text x="142" y="128" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#ffffff">Fidan Dik</text>
+
+  <text x="142" y="165" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#bbf7d0" font-weight="bold">Hadis-i Şerif:</text>
+  <text x="142" y="185" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#86efac">"Kıyametin kopacağını bilseniz</text>
+  <text x="142" y="200" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#86efac">dahi elinizdeki fidanı dikiniz."</text>
+
+  <line x1="65" y1="215" x2="220" y2="215" stroke="#22c55e" stroke-width="1" opacity="0.4"/>
+
+  <text x="142" y="238" text-anchor="middle" font-size="22">🌳</text>
+  <text x="142" y="262" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#d1fae5">Doğayı korumak</text>
+  <text x="142" y="278" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#d1fae5">ibadet gibidir.</text>
+  <text x="142" y="300" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#86efac">Ağaç dikmek &amp; sulamak</text>
+  <text x="142" y="316" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#86efac">sevap kazandırır.</text>
+  <text x="142" y="340" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#86efac">Çevre kirliliği haramdır.</text>
+  <text x="142" y="360" text-anchor="middle" font-size="16">♻️ 🌍</text>
+  <text x="142" y="380" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#4ade80">Yeryüzü emanettir!</text>
+
+  <!-- MIDDLE PANEL: Hayvan Koruma -->
+  <rect x="288" y="85" width="224" height="305" rx="16" fill="#0c4a6e" stroke="#38bdf8" stroke-width="2.5" filter="url(#shadow3)"/>
+  <rect x="288" y="85" width="224" height="56" rx="16" fill="#0369a1"/>
+  <rect x="288" y="113" width="224" height="28" fill="#0369a1"/>
+  <text x="400" y="108" text-anchor="middle" font-size="26">🐦</text>
+  <text x="400" y="128" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#ffffff">Hayvanları Koru</text>
+
+  <text x="400" y="165" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#bae6fd" font-weight="bold">Buyrukları:</text>
+  <text x="400" y="185" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#7dd3fc">Hayvanlara eziyet etmek</text>
+  <text x="400" y="200" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#7dd3fc">günahtır.</text>
+
+  <line x1="320" y1="215" x2="480" y2="215" stroke="#38bdf8" stroke-width="1" opacity="0.4"/>
+
+  <text x="400" y="238" text-anchor="middle" font-size="22">🐱 🐕</text>
+  <text x="400" y="262" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#e0f2fe">Kuş yuvalarını bozmak</text>
+  <text x="400" y="278" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#e0f2fe">yasaktır.</text>
+  <text x="400" y="300" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#7dd3fc">Bir köpeğe su veren kişi</text>
+  <text x="400" y="316" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#7dd3fc">affedilmiştir. (Hadis)</text>
+  <text x="400" y="340" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#7dd3fc">Aç hayvan bırakmak</text>
+  <text x="400" y="356" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#7dd3fc">büyük günahtır.</text>
+  <text x="400" y="378" text-anchor="middle" font-size="14">🦋 🐝 🐾</text>
+
+  <!-- RIGHT PANEL: Alın Teri -->
+  <rect x="545" y="85" width="225" height="305" rx="16" fill="url(#earthGrad)" stroke="#fbbf24" stroke-width="2.5" filter="url(#shadow3)"/>
+  <rect x="545" y="85" width="225" height="56" rx="16" fill="#d97706"/>
+  <rect x="545" y="113" width="225" height="28" fill="#d97706"/>
+  <text x="657" y="108" text-anchor="middle" font-size="26">💪</text>
+  <text x="657" y="128" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#ffffff">Alın Teri</text>
+
+  <text x="657" y="165" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#fde68a" font-weight="bold">Hadis-i Şerif:</text>
+  <text x="657" y="185" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#fcd34d">"Hiç kimse kendi elinin</text>
+  <text x="657" y="200" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#fcd34d">emeğinden daha hayırlı</text>
+  <text x="657" y="215" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#fcd34d">bir rızık yememiştir."</text>
+
+  <line x1="580" y1="228" x2="735" y2="228" stroke="#fbbf24" stroke-width="1" opacity="0.4"/>
+
+  <text x="657" y="250" text-anchor="middle" font-size="20">🐑 🤝</text>
+  <text x="657" y="275" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#fef3c7">Çobanlık ve ticaret</text>
+  <text x="657" y="291" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#fef3c7">yaparak yaşadı.</text>
+  <text x="657" y="315" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#fcd34d">Kendi söküğünü</text>
+  <text x="657" y="331" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#fcd34d">kendi dikerdi.</text>
+  <text x="657" y="355" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#fcd34d">Çalışan kişi Allah'ın</text>
+  <text x="657" y="371" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#fcd34d">dostudur.</text>
+  <text x="657" y="381" text-anchor="middle" font-size="14">🧵 ✂️</text>
+
+  <!-- Bottom summary bar -->
+  <rect x="30" y="408" width="740" height="60" rx="14" fill="#1e293b" stroke="#22c55e" stroke-width="1.5" filter="url(#shadow3)"/>
+  <text x="400" y="430" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#22c55e">✅ Hz. Muhammed'in Güzel Alışkanlıkları</text>
+  <text x="400" y="453" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#94a3b8">Çobanlık ✓  |  Ticaret ✓  |  Kendi söküğünü dik ✓  |  Doğayı koru ✓  |  Hayvanlara acı verme ✓</text>
+
+  <!-- Footer -->
+  <text x="400" y="492" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#475569">Din Kültürü 4. Sınıf · 3. Ünite: Peygamberlerin Sevgisi</text>
+</svg>

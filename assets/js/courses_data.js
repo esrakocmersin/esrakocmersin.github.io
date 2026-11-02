@@ -7851,34 +7851,104 @@ const COURSE_LESSONS = {
     "icon": "🕊️",
     "steps": [
       {
-        "title": "Hz. Muhammed'in Çocuk Sevgisi",
-        "badge": "1. Adım: Çocuk Sevgisi",
-        "slide": "assets/images/peygamberlerin_sevgisi.svg",
-        "narration": "Merhaba sevgili kâşif! Peygamberimiz Hz. Muhammed (s.a.v.) çocukları çok ama çok severdi. Sokakta yürürken çocuklara ilk selamı o verir, başlarını şefkatle okşar ve onlarla neşeyle sohbet ederdi. Torunları Hz. Hasan ve Hz. Hüseyin namaz kılarken sırtına çıktığında onlar inene kadar secdeden kalkmazdı! Kız ve erkek çocukları arasında asla ayrım yapmazdı.",
-        "audio": "assets/audio/courses/din-u3_s1.mp3"
+            "title": "Hz. Muhammed'in Çocuk Sevgisi",
+            "badge": "1. Adım: Çocuk Sevgisi",
+            "slide": "assets/images/din_u3_cocuk_sevgisi.svg",
+            "slideTitle": "Hz. Muhammed'in Çocuklara Sevgisi",
+            "narration": "Merhaba sevgili kaşif! Peygamberimiz Hz. Muhammed (s.a.v.) çocukları çok ama çok severdi. Sokakta yürürken karşılaştığı çocuklara ilk selamı o verirdi; bu onların ne kadar değerli olduğunu hissettirirdi. Torunları Hz. Hasan ve Hz. Hüseyin namaz kılarken sırtına çıktığında, onlar inene kadar secdeden kalkmazdı. Kız ve erkek çocuklar arasında hiçbir zaman ayrım yapmaz, hepsini eşit sevgi ve şefkatle kucaklardı.",
+            "audio": "assets/audio/courses/din-u3_s1.mp3",
+            "emo": "🕊️",
+            "then": [
+                  {
+                        "text": "Torunları Hz. Hasan ve Hz. Hüseyin namaz sırasında dedelerinin sırtına tırmanırdı. Peygamberimiz onlar inmeden secdeden kalkmazdı; çünkü torunlarının mutluluğu ve ibadeti sevmeleri her şeyden önemliydi.",
+                        "lang": "tr-TR",
+                        "cap": "🤗 Torunlarını Çok Severdi",
+                        "emo": "🤗"
+                  },
+                  {
+                        "text": "Hz. Muhammed kız ve erkek çocuklar arasında asla ayrım yapmazdı. 'Kız çocukları Allah'ın birer rahmetidir' buyurarak döneminin yanlış anlayışını tamamen yıktı.",
+                        "lang": "tr-TR",
+                        "cap": "⚖️ Kız ve Erkek Çocuk Eşittir",
+                        "emo": "⚖️"
+                  },
+                  {
+                        "text": "Peygamberimiz yolda gördüğü çocuklara büyüklük taslamadan ilk selamı kendisi verir, başlarını şefkatle okşar ve hatırlarını sorardı.",
+                        "lang": "tr-TR",
+                        "cap": "👋 İlk Selamı O Verirdi",
+                        "emo": "👋"
+                  }
+            ]
       },
       {
-        "title": "Toplum Sevgisi ve İnsanlara Değer Verme",
-        "badge": "2. Adım: Toplum Sevgisi",
-        "slide": "assets/images/peygamberlerin_sevgisi.svg",
-        "narration": "Peygamberimiz insanları çok severdi. Kimseyi kırmaz, hastaları ziyaret eder, yoksulların ve yetimlerin elinden tutardı. Kendisine kötülük yapanlara bile beddua etmez, \"Allah'ım onları bağışla, çünkü bilmiyorlar\" diyerek af dilerdi. O'nun meclisinde zengin ile fakir, güçlü ile zayıf eşit muamele görürdü.",
-        "audio": "assets/audio/courses/din-u3_s2.mp3"
+            "title": "Toplum Sevgisi ve İnsanlara Değer Verme",
+            "badge": "2. Adım: Toplum Sevgisi",
+            "slide": "assets/images/din_u3_toplum_sevgisi.svg",
+            "slideTitle": "Toplum Sevgisi: Merhamet ve Eşitlik",
+            "narration": "Peygamberimiz Hz. Muhammed (s.a.v.) tüm insanlara karşı derin bir sevgi ve merhamet beslerdi. Hastaları bizzat ziyaret eder, yoksulların ve yetimlerin yanında olur, onlara elinden gelen yardımı yapardı. Kendisine kötülük edenlere bile beddua etmez; 'Allah'ım onları bağışla, çünkü bilmiyorlar' diyerek af dilerdi. Onun meclisinde zengin ile fakir, güçlü ile zayıf aynı değeri görürdü; hiç kimse diğerinden üstün tutulmazdı.",
+            "audio": "assets/audio/courses/din-u3_s2.mp3",
+            "emo": "❤️",
+            "then": [
+                  {
+                        "text": "Peygamberimiz hastaları ziyaret etmeyi büyük bir ibadet olarak görürdü. 'Hastayı ziyaret eden kişi, cennet bahçelerinden birinde yürümüş gibidir' buyururdu.",
+                        "lang": "tr-TR",
+                        "cap": "🏥 Hastayı Ziyaret Edin",
+                        "emo": "🏥"
+                  },
+                  {
+                        "text": "Meclisinde hiç kimse ayrıcalıklı değildi. Zengin ile fakir, güçlü ile zayıf yan yana oturur, hepsi eşit muamele görürdü. Bu, gerçek adaletin ve kardeşliğin ta kendisiydi.",
+                        "lang": "tr-TR",
+                        "cap": "⚖️ Mecliste Herkes Eşit",
+                        "emo": "⚖️"
+                  }
+            ]
       },
       {
-        "title": "Doğa, Hayvan ve Çalışma Sevgisi",
-        "badge": "3. Adım: Doğa & Alın Teri",
-        "slide": "assets/images/peygamberlerin_sevgisi.svg",
-        "narration": "Peygamberimiz hayvanlara eziyet edenleri sertçe uyarmış, kuşların yuvalarının bozulmasını yasaklamıştır! \"Kıyametin kopacağını bilseniz bile elinizdeki fidanı dikiniz\" buyurarak doğayı korumayı emretmiştir. Kendisi de gençliğinde çobanlık ve ticaret yapmış, kendi söküğünü dikmiş ve \"Hiç kimse elinin emeğinden daha hayırlı bir rızık yememiştir\" demiştir.",
-        "audio": "assets/audio/courses/din-u3_s3.mp3"
+            "title": "Doğa, Hayvan ve Çalışma Sevgisi",
+            "badge": "3. Adım: Doğa & Alın Teri",
+            "slide": "assets/images/din_u3_doga_sevgisi.svg",
+            "slideTitle": "Doğa, Hayvan ve Alın Teri Sevgisi",
+            "narration": "Peygamberimiz hayvanlara eziyet edenleri sertçe uyarmış, kuş yuvalarının bozulmasını kesinlikle yasaklamıştır. 'Kıyametin kopacağını bilseniz bile elinizdeki fidanı dikiniz' buyurarak doğayı korumayı emretmiştir. Kendisi de gençliğinde çobanlık ve ticaret yaparak alın teriyle geçinmiş; kendi söküğünü bizzat dikmiştir. 'Hiç kimse kendi elinin emeğinden daha hayırlı bir rızık yememiştir' diyerek helal kazancın kutsallığını öğretmiştir.",
+            "audio": "assets/audio/courses/din-u3_s3.mp3",
+            "emo": "🌿",
+            "then": [
+                  {
+                        "text": "Peygamberimiz 'Kıyametin kopacağını bilseniz dahi elinizdeki fidanı dikiniz' buyurmuştur. Bu hadis bize doğayı ve yeşili her koşulda korumamız gerektiğini öğretir.",
+                        "lang": "tr-TR",
+                        "cap": "🌱 Fidan Dik, Doğayı Koru",
+                        "emo": "🌱"
+                  },
+                  {
+                        "text": "Hz. Muhammed kendi söküğünü bizzat diker, kendi ayakkabısını tamir ederdi. 'Alın teriyle kazanılan rızık en hayırlı rızıktır' diyerek çalışmayı ve üretmeyi övdü.",
+                        "lang": "tr-TR",
+                        "cap": "💪 Alın Teriyle Çalışmak",
+                        "emo": "💪"
+                  }
+            ]
       },
       {
-        "title": "Salli ve Barik Duaları",
-        "badge": "4. Adım: Salavat Duaları",
-        "slide": "assets/images/peygamberlerin_sevgisi.svg",
-        "narration": "Namazların son oturuşunda Ettehiyyatü'den sonra okunan Salli ve Barik duaları Peygamber Efendimize ve ailesine birer sevgi, saygı ve rahmet duasıdır. Bu dualarda Hz. İbrahim peygamber ve ailesi gibi Hz. Muhammed'e de bereket, şan ve rahmet dilenir. Peygamberimizin adı anıldığında \"Sallallahu aleyhi ve sellem\" demek de bir vefa borcudur.",
-        "audio": "assets/audio/courses/din-u3_s4.mp3"
+            "title": "Salli ve Barik Duaları",
+            "badge": "4. Adım: Salavat Duaları",
+            "slide": "assets/images/din_u3_salli_barik.svg",
+            "slideTitle": "Namazın Son Oturuşu: Salli ve Barik Duaları",
+            "narration": "Namazların son oturuşunda Ettehiyyatü'den sonra okunan Allahümme Salli ve Allahümme Barik duaları, Peygamber Efendimize ve onun kutlu ailesine yönelik birer sevgi, saygı ve rahmet duasıdır. Bu dualarda Hz. İbrahim'e ve ailesine yapılan dua gibi Hz. Muhammed'e de rahmet, bereket ve şan dilenmektedir. Peygamberimizin adı her anıldığında 'Sallallahu aleyhi ve sellem' demek de ona duyulan sevginin ve vefanın bir göstergesidir.",
+            "audio": "assets/audio/courses/din-u3_s4.mp3",
+            "emo": "🤲",
+            "then": [
+                  {
+                        "text": "Allahümme Salli duasında Allah'tan Hz. Muhammed'e ve ailesine, Hz. İbrahim ve ailesine verilen rahmet gibi rahmet vermesi dilenir. 'Salli' kelimesi rahmet ve yücelik anlamına gelir.",
+                        "lang": "tr-TR",
+                        "cap": "🌙 Allahümme Salli — Rahmet Duası",
+                        "emo": "🌙"
+                  },
+                  {
+                        "text": "Allahümme Barik duasında ise bereket ve bolluk dilenir. 'Barik' kelimesi bereket anlamındadır. Her ikisi de namazın son oturuşunda, Ettehiyyatü'den hemen sonra okunur.",
+                        "lang": "tr-TR",
+                        "cap": "✨ Allahümme Barik — Bereket Duası",
+                        "emo": "✨"
+                  }
+            ]
       }
-    ],
+],
     "questions": [
       {
         "q": "Peygamber Efendimiz Hz. Muhammed'in (s.a.v.) torunlarının isimleri nelerdir?",
@@ -8101,8 +8171,7 @@ const COURSE_LESSONS = {
         ],
         "answer": 3,
         "explanation": "Bu dualar namazın son oturuşunda Ettehiyyatü'den sonra selam vermeden önce okunur."
-      }
-    ]
+      }]
   },
   "din-u4": {
     "id": "din-u4",
