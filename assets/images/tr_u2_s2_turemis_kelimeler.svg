@@ -1,151 +1,113 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 480" width="100%" height="100%">
   <defs>
     <style>
-      @keyframes pulseCyan {
-        0%, 100% { transform: scale(1); filter: drop-shadow(0 0 6px rgba(56, 189, 248, 0.4)); }
-        50% { transform: scale(1.03); filter: drop-shadow(0 0 18px rgba(56, 189, 248, 0.95)); }
+      @keyframes pulseCy {
+        0%, 100% { filter: drop-shadow(0 0 6px rgba(56, 189, 248, 0.4)); }
+        50% { filter: drop-shadow(0 0 16px rgba(56, 189, 248, 0.95)); }
       }
-      @keyframes floatCardU2S2 {
-        0%, 100% { transform: translateY(0px); }
-        50% { transform: translateY(-4px); }
-      }
-      .cyan-pulse { animation: pulseCyan 3s ease-in-out infinite; transform-origin: center; transform-box: fill-box; }
-      .card-float-s2-1 { animation: floatCardU2S2 3.8s ease-in-out infinite; }
-      .card-float-s2-2 { animation: floatCardU2S2 3.8s ease-in-out 0.6s infinite; }
-      .card-float-s2-3 { animation: floatCardU2S2 3.8s ease-in-out 1.2s infinite; }
+      .pulse-cy { animation: pulseCy 3s ease-in-out infinite; }
     </style>
 
-    <linearGradient id="bgGradU2S2" x1="0%" y1="0%" x2="100%" y2="100%">
+    <linearGradient id="bgU2S2" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#082f49"/>
       <stop offset="50%" stop-color="#0c4a6e"/>
       <stop offset="100%" stop-color="#021f36"/>
     </linearGradient>
-    <linearGradient id="cardGradU2S2" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stop-color="#0369a1"/>
-      <stop offset="100%" stop-color="#082f49"/>
-    </linearGradient>
-    <linearGradient id="btnGradCyan" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#38bdf8"/>
-      <stop offset="100%" stop-color="#0284c7"/>
-    </linearGradient>
-    <filter id="shadowU2S2" x="-10%" y="-10%" width="120%" height="120%">
-      <feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#000" flood-opacity="0.6"/>
+    <filter id="shU2S2" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="6" stdDeviation="8" flood-color="#000" flood-opacity="0.5"/>
     </filter>
   </defs>
 
   <!-- Arka Plan -->
-  <rect width="800" height="480" rx="20" fill="url(#bgGradU2S2)" stroke="#38bdf8" stroke-width="2.5"/>
+  <rect width="800" height="480" rx="20" fill="url(#bgU2S2)" stroke="#38bdf8" stroke-width="2.5"/>
 
   <!-- Üst Başlık -->
-  <g transform="translate(40, 22)">
-    <rect width="720" height="56" rx="16" fill="#0369a1" stroke="#38bdf8" stroke-width="2" filter="url(#shadowU2S2)"/>
-    <text x="24" y="36" font-family="'Segoe UI', Roboto, sans-serif" font-size="20" font-weight="900" fill="#ffffff">
-      ✨ 2. ADIM: TÜREMİŞ KELİMELER VE YAPIM EKLERİ
+  <g transform="translate(30, 18)">
+    <rect width="740" height="54" rx="14" fill="#0369a1" stroke="#38bdf8" stroke-width="1.8" filter="url(#shU2S2)"/>
+    <text x="24" y="35" font-family="'Segoe UI', Roboto, sans-serif" font-size="22" font-weight="900" fill="#ffffff">
+      ✨ TÜREMİŞ KELİMELER VE YAPIM EKLERİ
     </text>
-    <rect x="520" y="11" width="180" height="34" rx="10" fill="url(#btnGradCyan)" filter="url(#shadowU2S2)"/>
-    <text x="610" y="33" font-family="'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="900" fill="#ffffff" text-anchor="middle">
-      ⚡ YENİ KELİME FABRİKASI
-    </text>
-  </g>
-
-  <!-- Ana Tanım Banner'ı -->
-  <g transform="translate(40, 92)" class="cyan-pulse">
-    <rect width="720" height="68" rx="14" fill="#082f49" stroke="#38bdf8" stroke-width="2" filter="url(#shadowU2S2)"/>
-    <text x="360" y="28" font-family="'Segoe UI', Roboto, sans-serif" font-size="16" font-weight="900" fill="#38bdf8" text-anchor="middle">
-      🛠️ Köklerin sonuna gelerek YENİ BİR KELİME türeten eklere YAPIM EKİ denir!
-    </text>
-    <text x="360" y="52" font-family="'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="700" fill="#e0f2fe" text-anchor="middle">
-      Yapım eki almış tüm sözcüklere TÜREMİŞ KELİME denir. Örnek ekler: -lik, -ci, -li, -siz, -gi
+    <rect x="520" y="10" width="196" height="34" rx="10" fill="#38bdf8"/>
+    <text x="618" y="32" font-family="'Segoe UI', Roboto, sans-serif" font-size="13.5" font-weight="900" fill="#0c4a6e" text-anchor="middle">
+      ⚡ YENİ SÖZCÜK ÜRETİR
     </text>
   </g>
 
-  <!-- 3 BÜYÜK DÖNÜŞÜM KARTI -->
+  <!-- Ana Tanım Kutusu -->
+  <g transform="translate(30, 84)" class="pulse-cy">
+    <rect width="740" height="66" rx="14" fill="#082f49" stroke="#38bdf8" stroke-width="2" filter="url(#shU2S2)"/>
+    <text x="370" y="28" font-family="'Segoe UI', Roboto, sans-serif" font-size="17" font-weight="900" fill="#38bdf8" text-anchor="middle">
+      🛠️ Kökün anlamını değiştirip YENİ BİR KELİME yapan eklere YAPIM EKİ denir!
+    </text>
+    <text x="370" y="52" font-family="'Segoe UI', Roboto, sans-serif" font-size="14.5" font-weight="700" fill="#e0f2fe" text-anchor="middle">
+      Yapım eki almış tüm sözcüklere TÜREMİŞ KELİME adı verilir.
+    </text>
+  </g>
+
+  <!-- 2 BÜYÜK VE FERAH ÖRNEK KARTI (355px Genişlik) -->
   <!-- KART 1: Gözlük -->
-  <g transform="translate(40, 175)" class="card-float-s2-1">
-    <rect width="224" height="215" rx="18" fill="url(#cardGradU2S2)" stroke="#38bdf8" stroke-width="2" filter="url(#shadowU2S2)"/>
-    <rect x="14" y="14" width="196" height="42" rx="10" fill="#082f49" stroke="#38bdf8" stroke-width="1.5"/>
-    <text x="112" y="40" font-family="'Segoe UI', Roboto, sans-serif" font-size="15" font-weight="900" fill="#bae6fd" text-anchor="middle">
+  <g transform="translate(30, 164)">
+    <rect width="355" height="236" rx="18" fill="#0c4a6e" stroke="#38bdf8" stroke-width="2" filter="url(#shU2S2)"/>
+    
+    <rect x="16" y="14" width="323" height="46" rx="10" fill="#082f49" stroke="#38bdf8" stroke-width="1.5"/>
+    <text x="177" y="44" font-family="'Segoe UI', Roboto, sans-serif" font-size="20" font-weight="900" fill="#fef08a" text-anchor="middle">
       👓 "göz" ➔ "gözlük"
     </text>
-    
-    <g transform="translate(14, 68)">
-      <rect width="196" height="70" rx="10" fill="#082f49"/>
-      <text x="98" y="26" font-family="'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="900" fill="#facc15" text-anchor="middle">
-        göz + lük ➔ Gözlük
+
+    <!-- İçerik -->
+    <g transform="translate(16, 72)">
+      <rect width="323" height="88" rx="10" fill="#042033"/>
+      <text x="161" y="32" font-family="'Segoe UI', Roboto, sans-serif" font-size="18" font-weight="900" fill="#38bdf8" text-anchor="middle">
+        göz + lük ➔ GÖZLÜK
       </text>
-      <text x="98" y="48" font-family="'Segoe UI', Roboto, sans-serif" font-size="11" fill="#e0f2fe" text-anchor="middle">
-        Görme organı iken, göze takılan bir eşyaya dönüştü!
+      <text x="161" y="58" font-family="'Segoe UI', Roboto, sans-serif" font-size="14.5" fill="#e0f2fe" text-anchor="middle">
+        Görme organı iken, göze takılan
+      </text>
+      <text x="161" y="78" font-family="'Segoe UI', Roboto, sans-serif" font-size="13.5" fill="#bae6fd" text-anchor="middle">
+        yeni bir eşyaya dönüştü!
       </text>
     </g>
 
-    <rect x="14" y="152" width="196" height="46" rx="10" fill="#0284c7"/>
-    <text x="112" y="174" font-family="'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="900" fill="#ffffff" text-anchor="middle">
-      ✨ TÜREMİŞ KELİME
-    </text>
-    <text x="112" y="190" font-family="'Segoe UI', Roboto, sans-serif" font-size="10.5" font-weight="700" fill="#e0f2fe" text-anchor="middle">
-      "-lük" yapım eki anlamı değiştirdi
+    <rect x="16" y="174" width="323" height="46" rx="10" fill="#0284c7"/>
+    <text x="177" y="202" font-family="'Segoe UI', Roboto, sans-serif" font-size="16" font-weight="900" fill="#ffffff" text-anchor="middle">
+      ✨ TÜREMİŞ KELİMEDİR
     </text>
   </g>
 
   <!-- KART 2: Balıkçı -->
-  <g transform="translate(288, 175)" class="card-float-s2-2">
-    <rect width="224" height="215" rx="18" fill="url(#cardGradU2S2)" stroke="#38bdf8" stroke-width="2" filter="url(#shadowU2S2)"/>
-    <rect x="14" y="14" width="196" height="42" rx="10" fill="#082f49" stroke="#38bdf8" stroke-width="1.5"/>
-    <text x="112" y="40" font-family="'Segoe UI', Roboto, sans-serif" font-size="15" font-weight="900" fill="#bae6fd" text-anchor="middle">
+  <g transform="translate(415, 164)">
+    <rect width="355" height="236" rx="18" fill="#0c4a6e" stroke="#38bdf8" stroke-width="2" filter="url(#shU2S2)"/>
+    
+    <rect x="16" y="14" width="323" height="46" rx="10" fill="#082f49" stroke="#38bdf8" stroke-width="1.5"/>
+    <text x="177" y="44" font-family="'Segoe UI', Roboto, sans-serif" font-size="20" font-weight="900" fill="#fef08a" text-anchor="middle">
       🎣 "balık" ➔ "balıkçı"
     </text>
-    
-    <g transform="translate(14, 68)">
-      <rect width="196" height="70" rx="10" fill="#082f49"/>
-      <text x="98" y="26" font-family="'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="900" fill="#facc15" text-anchor="middle">
-        balık + çı ➔ Balıkçı
+
+    <!-- İçerik -->
+    <g transform="translate(16, 72)">
+      <rect width="323" height="88" rx="10" fill="#042033"/>
+      <text x="161" y="32" font-family="'Segoe UI', Roboto, sans-serif" font-size="18" font-weight="900" fill="#38bdf8" text-anchor="middle">
+        balık + çı ➔ BALIKÇI
       </text>
-      <text x="98" y="48" font-family="'Segoe UI', Roboto, sans-serif" font-size="11" fill="#e0f2fe" text-anchor="middle">
-        Deniz hayvanı iken, balık tutan bir insana (mesleğe) dönüştü!
+      <text x="161" y="58" font-family="'Segoe UI', Roboto, sans-serif" font-size="14.5" fill="#e0f2fe" text-anchor="middle">
+        Deniz canlısı iken, balık tutan/satan
+      </text>
+      <text x="161" y="78" font-family="'Segoe UI', Roboto, sans-serif" font-size="13.5" fill="#bae6fd" text-anchor="middle">
+        yeni bir mesleğe dönüştü!
       </text>
     </g>
 
-    <rect x="14" y="152" width="196" height="46" rx="10" fill="#0284c7"/>
-    <text x="112" y="174" font-family="'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="900" fill="#ffffff" text-anchor="middle">
-      ✨ TÜREMİŞ KELİME
-    </text>
-    <text x="112" y="190" font-family="'Segoe UI', Roboto, sans-serif" font-size="10.5" font-weight="700" fill="#e0f2fe" text-anchor="middle">
-      "-çı" yapım eki meslek yaptı
-    </text>
-  </g>
-
-  <!-- KART 3: Silgi -->
-  <g transform="translate(536, 175)" class="card-float-s2-3">
-    <rect width="224" height="215" rx="18" fill="url(#cardGradU2S2)" stroke="#38bdf8" stroke-width="2" filter="url(#shadowU2S2)"/>
-    <rect x="14" y="14" width="196" height="42" rx="10" fill="#082f49" stroke="#38bdf8" stroke-width="1.5"/>
-    <text x="112" y="40" font-family="'Segoe UI', Roboto, sans-serif" font-size="15" font-weight="900" fill="#bae6fd" text-anchor="middle">
-      ✏️ "sil" ➔ "silgi"
-    </text>
-    
-    <g transform="translate(14, 68)">
-      <rect width="196" height="70" rx="10" fill="#082f49"/>
-      <text x="98" y="26" font-family="'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="900" fill="#facc15" text-anchor="middle">
-        sil- (fiil) + gi ➔ Silgi
-      </text>
-      <text x="98" y="48" font-family="'Segoe UI', Roboto, sans-serif" font-size="11" fill="#e0f2fe" text-anchor="middle">
-        Silme eylemi iken, kırtasiye eşyasına dönüştü!
-      </text>
-    </g>
-
-    <rect x="14" y="152" width="196" height="46" rx="10" fill="#0284c7"/>
-    <text x="112" y="174" font-family="'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="900" fill="#ffffff" text-anchor="middle">
-      ✨ TÜREMİŞ KELİME
-    </text>
-    <text x="112" y="190" font-family="'Segoe UI', Roboto, sans-serif" font-size="10.5" font-weight="700" fill="#e0f2fe" text-anchor="middle">
-      "-gi" yapım eki nesne üretti
+    <rect x="16" y="174" width="323" height="46" rx="10" fill="#0284c7"/>
+    <text x="177" y="202" font-family="'Segoe UI', Roboto, sans-serif" font-size="16" font-weight="900" fill="#ffffff" text-anchor="middle">
+      ✨ TÜREMİŞ KELİMEDİR
     </text>
   </g>
 
   <!-- Alt İpucu Şeridi -->
-  <g transform="translate(40, 404)">
-    <rect width="720" height="52" rx="14" fill="#075985" stroke="#38bdf8" stroke-width="1.5"/>
-    <text x="360" y="32" font-family="'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="800" fill="#fef08a" text-anchor="middle">
-      💡 ALTIN KURAL: Eki çıkardığında kalan kök ile yeni sözcük arasında BAĞ varsa o ek YAPIM EKİDİR!
+  <g transform="translate(30, 416)">
+    <rect width="740" height="48" rx="12" fill="#075985" stroke="#38bdf8" stroke-width="1.8"/>
+    <text x="370" y="30" font-family="'Segoe UI', Roboto, sans-serif" font-size="13.5" font-weight="900" fill="#fef08a" text-anchor="middle">
+      💡 ALTIN KURAL: Dilimizde en çok kullanılan yapım ekleri: -lik, -ci, -li, -siz, -gi ekleridir!
     </text>
   </g>
 </svg>

@@ -1,156 +1,115 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 480" width="100%" height="100%">
   <defs>
     <style>
-      @keyframes pulseEmerald {
-        0%, 100% { transform: scale(1); filter: drop-shadow(0 0 8px rgba(16, 185, 129, 0.4)); }
-        50% { transform: scale(1.02); filter: drop-shadow(0 0 20px rgba(16, 185, 129, 0.9)); }
+      @keyframes pulseG {
+        0%, 100% { filter: drop-shadow(0 0 6px rgba(16, 185, 129, 0.4)); }
+        50% { filter: drop-shadow(0 0 16px rgba(16, 185, 129, 0.95)); }
       }
-      @keyframes floatCard {
-        0%, 100% { transform: translateY(0px); }
-        50% { transform: translateY(-5px); }
-      }
-      @keyframes sweepGlow {
-        0% { opacity: 0.3; transform: translateX(-100%); }
-        50% { opacity: 0.8; transform: translateX(100%); }
-        100% { opacity: 0.3; transform: translateX(100%); }
-      }
-      .card-anim-1 { animation: floatCard 3.6s ease-in-out infinite; }
-      .card-anim-2 { animation: floatCard 3.6s ease-in-out 0.6s infinite; }
-      .card-anim-3 { animation: floatCard 3.6s ease-in-out 1.2s infinite; }
-      .rule-pulse { animation: pulseEmerald 3s ease-in-out infinite; transform-origin: center; transform-box: fill-box; }
+      .pulse-g { animation: pulseG 3s ease-in-out infinite; }
     </style>
 
-    <linearGradient id="bgGradG" x1="0%" y1="0%" x2="100%" y2="100%">
+    <linearGradient id="bgG2" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#022c22"/>
-      <stop offset="40%" stop-color="#064e3b"/>
+      <stop offset="50%" stop-color="#064e3b"/>
       <stop offset="100%" stop-color="#0f172a"/>
     </linearGradient>
-    <linearGradient id="cardGradG" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stop-color="#065f46"/>
-      <stop offset="100%" stop-color="#022c22"/>
-    </linearGradient>
-    <linearGradient id="headerGradG" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#10b981"/>
-      <stop offset="100%" stop-color="#34d399"/>
-    </linearGradient>
-    <filter id="shadowG" x="-10%" y="-10%" width="120%" height="120%">
-      <feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#000" flood-opacity="0.6"/>
+    <filter id="shG2" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="6" stdDeviation="8" flood-color="#000" flood-opacity="0.5"/>
     </filter>
   </defs>
 
   <!-- Arka Plan -->
-  <rect width="800" height="480" rx="20" fill="url(#bgGradG)" stroke="#10b981" stroke-width="2.5"/>
+  <rect width="800" height="480" rx="20" fill="url(#bgG2)" stroke="#10b981" stroke-width="2.5"/>
 
-  <!-- Üst Başlık Şeridi -->
-  <g transform="translate(40, 22)">
-    <rect width="720" height="56" rx="16" fill="#064e3b" stroke="#34d399" stroke-width="2" filter="url(#shadowG)"/>
-    <text x="24" y="36" font-family="'Segoe UI', Roboto, sans-serif" font-size="20" font-weight="900" fill="#ffffff">
-      🌱 3. ADIM: SÖZCÜKTE GERÇEK (TEMEL) ANLAM
+  <!-- Üst Başlık -->
+  <g transform="translate(30, 18)">
+    <rect width="740" height="54" rx="14" fill="#064e3b" stroke="#34d399" stroke-width="1.8" filter="url(#shG2)"/>
+    <text x="24" y="35" font-family="'Segoe UI', Roboto, sans-serif" font-size="22" font-weight="900" fill="#ffffff">
+      🌱 SÖZCÜKTE GERÇEK (TEMEL) ANLAM
     </text>
-    <rect x="520" y="11" width="180" height="34" rx="10" fill="url(#headerGradG)" filter="url(#shadowG)"/>
-    <text x="610" y="33" font-family="'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="900" fill="#022c22" text-anchor="middle">
+    <rect x="520" y="10" width="196" height="34" rx="10" fill="#10b981"/>
+    <text x="618" y="32" font-family="'Segoe UI', Roboto, sans-serif" font-size="13.5" font-weight="900" fill="#022c22" text-anchor="middle">
       ✨ AKLA İLK GELEN ANLAM
     </text>
   </g>
 
-  <!-- Ana Tanım Banner'ı -->
-  <g transform="translate(40, 92)" class="rule-pulse">
-    <rect width="720" height="68" rx="14" fill="#042f2e" stroke="#10b981" stroke-width="2" filter="url(#shadowG)"/>
-    <text x="360" y="28" font-family="'Segoe UI', Roboto, sans-serif" font-size="16" font-weight="900" fill="#6ee7b7" text-anchor="middle">
-      📖 Sözlükteki İLK, TEMEL ve ASIL anlamdır.
+  <!-- Ana Tanım Kutusu -->
+  <g transform="translate(30, 84)" class="pulse-g">
+    <rect width="740" height="66" rx="14" fill="#042f2e" stroke="#10b981" stroke-width="2" filter="url(#shG2)"/>
+    <text x="370" y="28" font-family="'Segoe UI', Roboto, sans-serif" font-size="17" font-weight="900" fill="#6ee7b7" text-anchor="middle">
+      📖 Sözlükteki İLK, TEMEL ve ASIL anlamdır!
     </text>
-    <text x="360" y="52" font-family="'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="700" fill="#a7f3d0" text-anchor="middle">
-      Herkes için aynı somut durumu ifade eder. Akla gelen ilk fiziksel gerçektir!
+    <text x="370" y="52" font-family="'Segoe UI', Roboto, sans-serif" font-size="14.5" font-weight="700" fill="#a7f3d0" text-anchor="middle">
+      Herkes için aynı somut durumu ifade eder. Akla ilk gelen fiziksel gerçektir.
     </text>
   </g>
 
-  <!-- 3 BÜYÜK VE ODAKLI ÖRNEK KARTI -->
+  <!-- 2 BÜYÜK VE FERAH ÖRNEK KARTI (355px Genişlik) -->
   <!-- KART 1: Dondurma -->
-  <g transform="translate(40, 175)" class="card-anim-1">
-    <rect width="224" height="215" rx="18" fill="url(#cardGradG)" stroke="#34d399" stroke-width="2" filter="url(#shadowG)"/>
-    <rect x="14" y="14" width="196" height="42" rx="10" fill="#064e3b" stroke="#10b981" stroke-width="1.5"/>
-    <text x="112" y="40" font-family="'Segoe UI', Roboto, sans-serif" font-size="15" font-weight="900" fill="#6ee7b7" text-anchor="middle">
+  <g transform="translate(30, 164)">
+    <rect width="355" height="236" rx="18" fill="#064e3b" stroke="#34d399" stroke-width="2" filter="url(#shG2)"/>
+    
+    <rect x="16" y="14" width="323" height="46" rx="10" fill="#042f2e" stroke="#10b981" stroke-width="1.5"/>
+    <text x="177" y="44" font-family="'Segoe UI', Roboto, sans-serif" font-size="20" font-weight="900" fill="#f0fdf4" text-anchor="middle">
       🍦 "Dondurma eridi."
     </text>
-    
-    <g transform="translate(14, 68)">
-      <rect width="196" height="70" rx="10" fill="#022c22"/>
-      <text x="98" y="26" font-family="'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="800" fill="#f0fdf4" text-anchor="middle">
-        Sıcakta sıvılaştı
+
+    <!-- Açıklama Alanı -->
+    <g transform="translate(16, 72)">
+      <rect width="323" height="88" rx="10" fill="#022c22"/>
+      <text x="20" y="32" font-family="'Segoe UI', Roboto, sans-serif" font-size="16" font-weight="900" fill="#fef08a">
+        ➜ Ne oldu?
       </text>
-      <text x="98" y="48" font-family="'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#a7f3d0" text-anchor="middle">
-        (Fiziksel erime olayı)
+      <text x="20" y="56" font-family="'Segoe UI', Roboto, sans-serif" font-size="14.5" fill="#a7f3d0">
+        Sıcaklık etkisiyle katı halden sıvıya geçti.
+      </text>
+      <text x="20" y="76" font-family="'Segoe UI', Roboto, sans-serif" font-size="13" fill="#6ee7b7">
+        (Gözle görülebilen fiziksel erime)
       </text>
     </g>
 
-    <rect x="14" y="152" width="196" height="46" rx="10" fill="#059669"/>
-    <text x="112" y="174" font-family="'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="900" fill="#ffffff" text-anchor="middle">
-      ✅ GERÇEK ANLAM
-    </text>
-    <text x="112" y="190" font-family="'Segoe UI', Roboto, sans-serif" font-size="10.5" font-weight="700" fill="#d1fae5" text-anchor="middle">
-      Gözle görülür somut durum
+    <!-- Rozet -->
+    <rect x="16" y="174" width="323" height="46" rx="10" fill="#059669"/>
+    <text x="177" y="202" font-family="'Segoe UI', Roboto, sans-serif" font-size="16" font-weight="900" fill="#ffffff" text-anchor="middle">
+      ✅ GERÇEK ANLAMDIR
     </text>
   </g>
 
   <!-- KART 2: Taş Çok Ağırdı -->
-  <g transform="translate(288, 175)" class="card-anim-2">
-    <rect width="224" height="215" rx="18" fill="url(#cardGradG)" stroke="#34d399" stroke-width="2" filter="url(#shadowG)"/>
-    <rect x="14" y="14" width="196" height="42" rx="10" fill="#064e3b" stroke="#10b981" stroke-width="1.5"/>
-    <text x="112" y="40" font-family="'Segoe UI', Roboto, sans-serif" font-size="15" font-weight="900" fill="#6ee7b7" text-anchor="middle">
+  <g transform="translate(415, 164)">
+    <rect width="355" height="236" rx="18" fill="#064e3b" stroke="#34d399" stroke-width="2" filter="url(#shG2)"/>
+    
+    <rect x="16" y="14" width="323" height="46" rx="10" fill="#042f2e" stroke="#10b981" stroke-width="1.5"/>
+    <text x="177" y="44" font-family="'Segoe UI', Roboto, sans-serif" font-size="20" font-weight="900" fill="#f0fdf4" text-anchor="middle">
       📦 "Taş çok ağırdı."
     </text>
-    
-    <g transform="translate(14, 68)">
-      <rect width="196" height="70" rx="10" fill="#022c22"/>
-      <text x="98" y="26" font-family="'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="800" fill="#f0fdf4" text-anchor="middle">
-        Kilosu, kütlesi fazla
-      </text>
-      <text x="98" y="48" font-family="'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#a7f3d0" text-anchor="middle">
-        (Tartıda ölçülebilir)
-      </text>
-    </g>
 
-    <rect x="14" y="152" width="196" height="46" rx="10" fill="#059669"/>
-    <text x="112" y="174" font-family="'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="900" fill="#ffffff" text-anchor="middle">
-      ✅ GERÇEK ANLAM
-    </text>
-    <text x="112" y="190" font-family="'Segoe UI', Roboto, sans-serif" font-size="10.5" font-weight="700" fill="#d1fae5" text-anchor="middle">
-      Kaldırırken zorlanılan ağırlık
-    </text>
-  </g>
-
-  <!-- KART 3: Hava Çok Soğuk -->
-  <g transform="translate(536, 175)" class="card-anim-3">
-    <rect width="224" height="215" rx="18" fill="url(#cardGradG)" stroke="#34d399" stroke-width="2" filter="url(#shadowG)"/>
-    <rect x="14" y="14" width="196" height="42" rx="10" fill="#064e3b" stroke="#10b981" stroke-width="1.5"/>
-    <text x="112" y="40" font-family="'Segoe UI', Roboto, sans-serif" font-size="15" font-weight="900" fill="#6ee7b7" text-anchor="middle">
-      ❄️ "Hava çok soğuk."
-    </text>
-    
-    <g transform="translate(14, 68)">
-      <rect width="196" height="70" rx="10" fill="#022c22"/>
-      <text x="98" y="26" font-family="'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="800" fill="#f0fdf4" text-anchor="middle">
-        Düşük hava sıcaklığı
+    <!-- Açıklama Alanı -->
+    <g transform="translate(16, 72)">
+      <rect width="323" height="88" rx="10" fill="#022c22"/>
+      <text x="20" y="32" font-family="'Segoe UI', Roboto, sans-serif" font-size="16" font-weight="900" fill="#fef08a">
+        ➜ Ne oldu?
       </text>
-      <text x="98" y="48" font-family="'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#a7f3d0" text-anchor="middle">
-        (Termometre derecesi)
+      <text x="20" y="56" font-family="'Segoe UI', Roboto, sans-serif" font-size="14.5" fill="#a7f3d0">
+        Kütlesi ve kilosu fazla, tartılabilen ağırlık.
+      </text>
+      <text x="20" y="76" font-family="'Segoe UI', Roboto, sans-serif" font-size="13" fill="#6ee7b7">
+        (Kaldırırken kasları zorlayan somut yük)
       </text>
     </g>
 
-    <rect x="14" y="152" width="196" height="46" rx="10" fill="#059669"/>
-    <text x="112" y="174" font-family="'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="900" fill="#ffffff" text-anchor="middle">
-      ✅ GERÇEK ANLAM
-    </text>
-    <text x="112" y="190" font-family="'Segoe UI', Roboto, sans-serif" font-size="10.5" font-weight="700" fill="#d1fae5" text-anchor="middle">
-      Teni üşüten gerçek ısı
+    <!-- Rozet -->
+    <rect x="16" y="174" width="323" height="46" rx="10" fill="#059669"/>
+    <text x="177" y="202" font-family="'Segoe UI', Roboto, sans-serif" font-size="16" font-weight="900" fill="#ffffff" text-anchor="middle">
+      ✅ GERÇEK ANLAMDIR
     </text>
   </g>
 
-  <!-- Alt Altın İpucu Bandı -->
-  <g transform="translate(40, 404)">
-    <rect width="720" height="52" rx="14" fill="#064e3b" stroke="#10b981" stroke-width="1.5"/>
-    <text x="360" y="32" font-family="'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="800" fill="#fef08a" text-anchor="middle">
-      💡 ALTIN KURAL: Kelimeyi duyduğunda aklına gelen İLK FİZİKSEL RESİM gerçek anlamdır!
+  <!-- Alt İpucu Şeridi -->
+  <g transform="translate(30, 416)">
+    <rect width="740" height="48" rx="12" fill="#042f2e" stroke="#10b981" stroke-width="1.8"/>
+    <text x="370" y="30" font-family="'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="900" fill="#fef08a" text-anchor="middle">
+      💡 ALTIN FORMÜL: Sözcüğü duyduğunda aklına gelen İLK FİZİKSEL RESİM gerçek anlamdır!
     </text>
   </g>
 </svg>

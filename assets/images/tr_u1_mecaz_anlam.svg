@@ -1,151 +1,115 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 480" width="100%" height="100%">
   <defs>
     <style>
-      @keyframes pulseCoral {
-        0%, 100% { transform: scale(1); filter: drop-shadow(0 0 8px rgba(249, 115, 22, 0.4)); }
-        50% { transform: scale(1.02); filter: drop-shadow(0 0 20px rgba(249, 115, 22, 0.95)); }
+      @keyframes pulseM {
+        0%, 100% { filter: drop-shadow(0 0 6px rgba(249, 115, 22, 0.4)); }
+        50% { filter: drop-shadow(0 0 16px rgba(249, 115, 22, 0.95)); }
       }
-      @keyframes floatCardM {
-        0%, 100% { transform: translateY(0px); }
-        50% { transform: translateY(-5px); }
-      }
-      .card-anim-m1 { animation: floatCardM 3.6s ease-in-out infinite; }
-      .card-anim-m2 { animation: floatCardM 3.6s ease-in-out 0.6s infinite; }
-      .card-anim-m3 { animation: floatCardM 3.6s ease-in-out 1.2s infinite; }
-      .rule-pulse-m { animation: pulseCoral 3s ease-in-out infinite; transform-origin: center; transform-box: fill-box; }
+      .pulse-m { animation: pulseM 3s ease-in-out infinite; }
     </style>
 
-    <linearGradient id="bgGradM" x1="0%" y1="0%" x2="100%" y2="100%">
+    <linearGradient id="bgM2" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#431407"/>
-      <stop offset="40%" stop-color="#2a0c04"/>
+      <stop offset="50%" stop-color="#2a0c04"/>
       <stop offset="100%" stop-color="#0f172a"/>
     </linearGradient>
-    <linearGradient id="cardGradM" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stop-color="#7c2d12"/>
-      <stop offset="100%" stop-color="#431407"/>
-    </linearGradient>
-    <linearGradient id="headerGradM" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#f97316"/>
-      <stop offset="100%" stop-color="#fb923c"/>
-    </linearGradient>
-    <filter id="shadowM" x="-10%" y="-10%" width="120%" height="120%">
-      <feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#000" flood-opacity="0.6"/>
+    <filter id="shM2" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="6" stdDeviation="8" flood-color="#000" flood-opacity="0.5"/>
     </filter>
   </defs>
 
   <!-- Arka Plan -->
-  <rect width="800" height="480" rx="20" fill="url(#bgGradM)" stroke="#f97316" stroke-width="2.5"/>
+  <rect width="800" height="480" rx="20" fill="url(#bgM2)" stroke="#f97316" stroke-width="2.5"/>
 
-  <!-- Üst Başlık Şeridi -->
-  <g transform="translate(40, 22)">
-    <rect width="720" height="56" rx="16" fill="#7c2d12" stroke="#ea580c" stroke-width="2" filter="url(#shadowM)"/>
-    <text x="24" y="36" font-family="'Segoe UI', Roboto, sans-serif" font-size="20" font-weight="900" fill="#ffffff">
-      🎭 4. ADIM: MECAZ ANLAM (HAYAL GÜCÜNÜN KANATLARI)
+  <!-- Üst Başlık -->
+  <g transform="translate(30, 18)">
+    <rect width="740" height="54" rx="14" fill="#7c2d12" stroke="#ea580c" stroke-width="1.8" filter="url(#shM2)"/>
+    <text x="24" y="35" font-family="'Segoe UI', Roboto, sans-serif" font-size="22" font-weight="900" fill="#ffffff">
+      🎭 MECAZ ANLAM (HAYAL GÜCÜNÜN KANATLARI)
     </text>
-    <rect x="520" y="11" width="180" height="34" rx="10" fill="url(#headerGradM)" filter="url(#shadowM)"/>
-    <text x="610" y="33" font-family="'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="900" fill="#ffffff" text-anchor="middle">
-      ✨ YEPYENİ SOYUT ANLAM
+    <rect x="520" y="10" width="196" height="34" rx="10" fill="#f97316"/>
+    <text x="618" y="32" font-family="'Segoe UI', Roboto, sans-serif" font-size="13.5" font-weight="900" fill="#ffffff" text-anchor="middle">
+      ✨ YENİ VE SOYUT ANLAM
     </text>
   </g>
 
-  <!-- Ana Tanım Banner'ı -->
-  <g transform="translate(40, 92)" class="rule-pulse-m">
-    <rect width="720" height="68" rx="14" fill="#311309" stroke="#f97316" stroke-width="2" filter="url(#shadowM)"/>
-    <text x="360" y="28" font-family="'Segoe UI', Roboto, sans-serif" font-size="16" font-weight="900" fill="#fdba74" text-anchor="middle">
-      📖 Sözcüğün gerçek anlamından TAMAMEN UZAKLAŞARAK kazandığı yeni anlamdır!
+  <!-- Ana Tanım Kutusu -->
+  <g transform="translate(30, 84)" class="pulse-m">
+    <rect width="740" height="66" rx="14" fill="#311309" stroke="#f97316" stroke-width="2" filter="url(#shM2)"/>
+    <text x="370" y="28" font-family="'Segoe UI', Roboto, sans-serif" font-size="16.5" font-weight="900" fill="#fdba74" text-anchor="middle">
+      📖 Sözcüğün gerçek anlamından TAMAMEN UZAKLAŞARAK kazandığı anlamdır!
     </text>
-    <text x="360" y="52" font-family="'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="700" fill="#fed7aa" text-anchor="middle">
-      Burada benzetme, duygu ve hayal gücü vardır; fiziksel olarak gerçekleşmez!
+    <text x="370" y="52" font-family="'Segoe UI', Roboto, sans-serif" font-size="14.5" font-weight="700" fill="#fed7aa" text-anchor="middle">
+      Burada benzetme ve duygu vardır; olay fiziksel olarak asla gerçekleşmez!
     </text>
   </g>
 
-  <!-- 3 BÜYÜK VE ODAKLI ÖRNEK KARTI -->
-  <!-- KART 1: Utancından eridi -->
-  <g transform="translate(40, 175)" class="card-anim-m1">
-    <rect width="224" height="215" rx="18" fill="url(#cardGradM)" stroke="#ea580c" stroke-width="2" filter="url(#shadowM)"/>
-    <rect x="14" y="14" width="196" height="42" rx="10" fill="#431407" stroke="#f97316" stroke-width="1.5"/>
-    <text x="112" y="40" font-family="'Segoe UI', Roboto, sans-serif" font-size="14.5" font-weight="900" fill="#fed7aa" text-anchor="middle">
-      😳 "Utancından eridi."
-    </text>
+  <!-- 2 BÜYÜK VE FERAH ÖRNEK KARTI (355px Genişlik) -->
+  <!-- KART 1: Ağır Sözler -->
+  <g transform="translate(30, 164)">
+    <rect width="355" height="236" rx="18" fill="#431407" stroke="#ea580c" stroke-width="2" filter="url(#shM2)"/>
     
-    <g transform="translate(14, 68)">
-      <rect width="196" height="70" rx="10" fill="#2a0c04"/>
-      <text x="98" y="26" font-family="'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="800" fill="#ffffff" text-anchor="middle">
-        Çok utandı, mahcup oldu
-      </text>
-      <text x="98" y="48" font-family="'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#fdba74" text-anchor="middle">
-        (Vücudu sıvılaşmadı!)
-      </text>
-    </g>
-
-    <rect x="14" y="152" width="196" height="46" rx="10" fill="#ea580c"/>
-    <text x="112" y="174" font-family="'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="900" fill="#ffffff" text-anchor="middle">
-      🔥 MECAZ ANLAM
-    </text>
-    <text x="112" y="190" font-family="'Segoe UI', Roboto, sans-serif" font-size="10.5" font-weight="700" fill="#ffedd5" text-anchor="middle">
-      Duyguyu anlatmak için mecaz oldu
-    </text>
-  </g>
-
-  <!-- KART 2: Ağır sözler söyledi -->
-  <g transform="translate(288, 175)" class="card-anim-m2">
-    <rect width="224" height="215" rx="18" fill="url(#cardGradM)" stroke="#ea580c" stroke-width="2" filter="url(#shadowM)"/>
-    <rect x="14" y="14" width="196" height="42" rx="10" fill="#431407" stroke="#f97316" stroke-width="1.5"/>
-    <text x="112" y="40" font-family="'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="900" fill="#fed7aa" text-anchor="middle">
+    <rect x="16" y="14" width="323" height="46" rx="10" fill="#2a0c04" stroke="#f97316" stroke-width="1.5"/>
+    <text x="177" y="44" font-family="'Segoe UI', Roboto, sans-serif" font-size="20" font-weight="900" fill="#fed7aa" text-anchor="middle">
       💔 "Ağır sözler söyledi."
     </text>
-    
-    <g transform="translate(14, 68)">
-      <rect width="196" height="70" rx="10" fill="#2a0c04"/>
-      <text x="98" y="26" font-family="'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="800" fill="#ffffff" text-anchor="middle">
-        Kalp kırıcı, incitici sözler
+
+    <!-- Açıklama Alanı -->
+    <g transform="translate(16, 72)">
+      <rect width="323" height="88" rx="10" fill="#1c0702"/>
+      <text x="20" y="32" font-family="'Segoe UI', Roboto, sans-serif" font-size="16" font-weight="900" fill="#fef08a">
+        ➜ Ne kastedildi?
       </text>
-      <text x="98" y="48" font-family="'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#fdba74" text-anchor="middle">
-        (Sözün tartıda kilosu yok!)
+      <text x="20" y="56" font-family="'Segoe UI', Roboto, sans-serif" font-size="14.5" fill="#fed7aa">
+        Sözün tartıda bir kilosu yoktur!
+      </text>
+      <text x="20" y="76" font-family="'Segoe UI', Roboto, sans-serif" font-size="13" fill="#fdba74">
+        (Kalp kırıcı, incitici ve üzücü sözler)
       </text>
     </g>
 
-    <rect x="14" y="152" width="196" height="46" rx="10" fill="#ea580c"/>
-    <text x="112" y="174" font-family="'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="900" fill="#ffffff" text-anchor="middle">
-      🔥 MECAZ ANLAM
-    </text>
-    <text x="112" y="190" font-family="'Segoe UI', Roboto, sans-serif" font-size="10.5" font-weight="700" fill="#ffedd5" text-anchor="middle">
-      Kırıcı anlamda mecazlaştı
+    <!-- Rozet -->
+    <rect x="16" y="174" width="323" height="46" rx="10" fill="#ea580c"/>
+    <text x="177" y="202" font-family="'Segoe UI', Roboto, sans-serif" font-size="16" font-weight="900" fill="#ffffff" text-anchor="middle">
+      🔥 MECAZ ANLAMDIR
     </text>
   </g>
 
-  <!-- KART 3: Soğuk davrandı -->
-  <g transform="translate(536, 175)" class="card-anim-m3">
-    <rect width="224" height="215" rx="18" fill="url(#cardGradM)" stroke="#ea580c" stroke-width="2" filter="url(#shadowM)"/>
-    <rect x="14" y="14" width="196" height="42" rx="10" fill="#431407" stroke="#f97316" stroke-width="1.5"/>
-    <text x="112" y="40" font-family="'Segoe UI', Roboto, sans-serif" font-size="14.5" font-weight="900" fill="#fed7aa" text-anchor="middle">
-      🧊 "Soğuk davrandı."
-    </text>
+  <!-- KART 2: Utancından Eridi -->
+  <g transform="translate(415, 164)">
+    <rect width="355" height="236" rx="18" fill="#431407" stroke="#ea580c" stroke-width="2" filter="url(#shM2)"/>
     
-    <g transform="translate(14, 68)">
-      <rect width="196" height="70" rx="10" fill="#2a0c04"/>
-      <text x="98" y="26" font-family="'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="800" fill="#ffffff" text-anchor="middle">
-        İlgisiz, sevgisiz tavır
+    <rect x="16" y="14" width="323" height="46" rx="10" fill="#2a0c04" stroke="#f97316" stroke-width="1.5"/>
+    <text x="177" y="44" font-family="'Segoe UI', Roboto, sans-serif" font-size="20" font-weight="900" fill="#fed7aa" text-anchor="middle">
+      😳 "Utancından eridi."
+    </text>
+
+    <!-- Açıklama Alanı -->
+    <g transform="translate(16, 72)">
+      <rect width="323" height="88" rx="10" fill="#1c0702"/>
+      <text x="20" y="32" font-family="'Segoe UI', Roboto, sans-serif" font-size="16" font-weight="900" fill="#fef08a">
+        ➜ Ne kastedildi?
       </text>
-      <text x="98" y="48" font-family="'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#fdba74" text-anchor="middle">
-        (Isı ya da buzla ilgisi yok!)
+      <text x="20" y="56" font-family="'Segoe UI', Roboto, sans-serif" font-size="14.5" fill="#fed7aa">
+        İnsan vücudu sıcakta sıvılaşmaz!
+      </text>
+      <text x="20" y="76" font-family="'Segoe UI', Roboto, sans-serif" font-size="13" fill="#fdba74">
+        (Çok utandı, aşırı derecede mahcup oldu)
       </text>
     </g>
 
-    <rect x="14" y="152" width="196" height="46" rx="10" fill="#ea580c"/>
-    <text x="112" y="174" font-family="'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="900" fill="#ffffff" text-anchor="middle">
-      🔥 MECAZ ANLAM
-    </text>
-    <text x="112" y="190" font-family="'Segoe UI', Roboto, sans-serif" font-size="10.5" font-weight="700" fill="#ffedd5" text-anchor="middle">
-      Duygusal mesafe mecazdır
+    <!-- Rozet -->
+    <rect x="16" y="174" width="323" height="46" rx="10" fill="#ea580c"/>
+    <text x="177" y="202" font-family="'Segoe UI', Roboto, sans-serif" font-size="16" font-weight="900" fill="#ffffff" text-anchor="middle">
+      🔥 MECAZ ANLAMDIR
     </text>
   </g>
 
   <!-- Alt İpucu Şeridi -->
-  <g transform="translate(40, 404)">
-    <rect width="720" height="52" rx="14" fill="#7c2d12" stroke="#f97316" stroke-width="1.5"/>
-    <text x="360" y="32" font-family="'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="800" fill="#fef08a" text-anchor="middle">
-      💡 FORMÜL: "Bu olay gerçekten fiziksel olarak olabilir mi?" ➜ "HAYIR" ise kesinlikle MECAZDIR!
+  <g transform="translate(30, 416)">
+    <rect width="740" height="48" rx="12" fill="#7c2d12" stroke="#ea580c" stroke-width="1.8"/>
+    <text x="370" y="30" font-family="'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="900" fill="#fef08a" text-anchor="middle">
+      💡 ALTIN FORMÜL: "Bu olay dünyada gerçekten olabilir mi?" ➔ "HAYIR" ise MECAZDIR!
     </text>
   </g>
 </svg>

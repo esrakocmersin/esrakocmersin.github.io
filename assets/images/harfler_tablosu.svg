@@ -1,227 +1,174 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 480" width="100%" height="100%">
   <defs>
     <style>
-      @keyframes kalinPulse {
+      @keyframes pulseGold {
         0%, 100% { transform: scale(1); filter: drop-shadow(0 0 6px rgba(245, 158, 11, 0.4)); }
-        50% { transform: scale(1.08); filter: drop-shadow(0 0 16px rgba(245, 158, 11, 0.95)); }
+        50% { transform: scale(1.06); filter: drop-shadow(0 0 16px rgba(245, 158, 11, 0.95)); }
       }
-      @keyframes incePulse {
+      @keyframes pulseCyan {
         0%, 100% { transform: scale(1); filter: drop-shadow(0 0 6px rgba(56, 189, 248, 0.4)); }
-        50% { transform: scale(1.08); filter: drop-shadow(0 0 16px rgba(56, 189, 248, 0.95)); }
+        50% { transform: scale(1.06); filter: drop-shadow(0 0 16px rgba(56, 189, 248, 0.95)); }
       }
-      @keyframes glowBanner {
-        0%, 100% { opacity: 0.85; }
-        50% { opacity: 1; filter: drop-shadow(0 0 14px rgba(239, 68, 68, 0.7)); }
-      }
-      @keyframes floatSoft {
-        0%, 100% { transform: translateY(0px); }
-        50% { transform: translateY(-3px); }
-      }
-      .kalin-orb { animation: kalinPulse 2.8s ease-in-out infinite; transform-origin: center; transform-box: fill-box; }
-      .kalin-orb-2 { animation: kalinPulse 2.8s ease-in-out 0.35s infinite; transform-origin: center; transform-box: fill-box; }
-      .kalin-orb-3 { animation: kalinPulse 2.8s ease-in-out 0.7s infinite; transform-origin: center; transform-box: fill-box; }
-      .kalin-orb-4 { animation: kalinPulse 2.8s ease-in-out 1.05s infinite; transform-origin: center; transform-box: fill-box; }
-
-      .ince-orb { animation: incePulse 2.8s ease-in-out infinite; transform-origin: center; transform-box: fill-box; }
-      .ince-orb-2 { animation: incePulse 2.8s ease-in-out 0.35s infinite; transform-origin: center; transform-box: fill-box; }
-      .ince-orb-3 { animation: incePulse 2.8s ease-in-out 0.7s infinite; transform-origin: center; transform-box: fill-box; }
-      .ince-orb-4 { animation: incePulse 2.8s ease-in-out 1.05s infinite; transform-origin: center; transform-box: fill-box; }
-
-      .banner-badge { animation: glowBanner 2.2s ease-in-out infinite; }
-      .float-box { animation: floatSoft 4s ease-in-out infinite; }
+      .orb-kalin { animation: pulseGold 2.8s ease-in-out infinite; transform-origin: center; transform-box: fill-box; }
+      .orb-ince { animation: pulseCyan 2.8s ease-in-out infinite; transform-origin: center; transform-box: fill-box; }
     </style>
 
-    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#0b0f19"/>
+    <linearGradient id="bgH" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a0f1d"/>
       <stop offset="50%" stop-color="#0f172a"/>
       <stop offset="100%" stop-color="#1e1b4b"/>
     </linearGradient>
-    <linearGradient id="cardBg" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stop-color="#1e293b"/>
-      <stop offset="100%" stop-color="#0f172a"/>
-    </linearGradient>
-    <radialGradient id="kalinSphere" cx="35%" cy="30%" r="65%">
+    <radialGradient id="gradKalin" cx="35%" cy="30%" r="65%">
       <stop offset="0%" stop-color="#fef08a"/>
-      <stop offset="35%" stop-color="#f59e0b"/>
-      <stop offset="85%" stop-color="#b45309"/>
-      <stop offset="100%" stop-color="#78350f"/>
+      <stop offset="40%" stop-color="#f59e0b"/>
+      <stop offset="90%" stop-color="#b45309"/>
     </radialGradient>
-    <radialGradient id="inceSphere" cx="35%" cy="30%" r="65%">
+    <radialGradient id="gradInce" cx="35%" cy="30%" r="65%">
       <stop offset="0%" stop-color="#e0f2fe"/>
-      <stop offset="35%" stop-color="#38bdf8"/>
-      <stop offset="85%" stop-color="#0284c7"/>
-      <stop offset="100%" stop-color="#075985"/>
+      <stop offset="40%" stop-color="#38bdf8"/>
+      <stop offset="90%" stop-color="#0284c7"/>
     </radialGradient>
-    <linearGradient id="headerGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#ef4444"/>
-      <stop offset="100%" stop-color="#f59e0b"/>
-    </linearGradient>
-    <linearGradient id="glassBorder" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="rgba(255,255,255,0.2)"/>
-      <stop offset="100%" stop-color="rgba(255,255,255,0.04)"/>
-    </linearGradient>
-    <filter id="shadowDeep" x="-10%" y="-10%" width="120%" height="120%">
-      <feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#000" flood-opacity="0.6"/>
-    </filter>
-    <filter id="glow3D" x="-20%" y="-20%" width="140%" height="140%">
-      <feGaussianBlur stdDeviation="3" result="blur"/>
-      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    <filter id="shH" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="6" stdDeviation="8" flood-color="#000" flood-opacity="0.5"/>
     </filter>
   </defs>
 
   <!-- Arka Plan -->
-  <rect width="800" height="480" rx="20" fill="url(#bgGrad)" stroke="#334155" stroke-width="2"/>
+  <rect width="800" height="480" rx="20" fill="url(#bgH)" stroke="#334155" stroke-width="2"/>
 
-  <!-- Üst Başlık Şeridi -->
-  <g transform="translate(40, 24)">
-    <rect width="720" height="56" rx="16" fill="url(#cardBg)" stroke="url(#glassBorder)" stroke-width="1.5" filter="url(#shadowDeep)"/>
-    <text x="24" y="36" font-family="'Segoe UI', Roboto, sans-serif" font-size="20" font-weight="900" fill="#f8fafc">
-      🔤 TÜRK ALFABESİ VE 29 HARF DÜNYASI
+  <!-- Üst Başlık -->
+  <g transform="translate(30, 18)">
+    <rect width="740" height="54" rx="14" fill="#1e293b" stroke="#3b82f6" stroke-width="1.8" filter="url(#shH)"/>
+    <text x="24" y="35" font-family="'Segoe UI', Roboto, sans-serif" font-size="22" font-weight="900" fill="#ffffff">
+      🔤 TÜRK ALFABESİ (29 HARF)
     </text>
-    <g class="banner-badge">
-      <rect x="548" y="11" width="152" height="34" rx="10" fill="url(#headerGrad)" filter="url(#shadowDeep)"/>
-      <text x="624" y="33" font-family="'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="900" fill="#ffffff" text-anchor="middle">
-        ✨ 29 HARFİN SIRRI
-      </text>
-    </g>
-  </g>
-
-  <!-- SOL SÜTUN: ÜNLÜ (SESLİ) HARFLER -->
-  <g transform="translate(40, 96)" class="float-box">
-    <rect width="345" height="360" rx="18" fill="url(#cardBg)" stroke="#3b82f6" stroke-width="2" filter="url(#shadowDeep)"/>
-    
-    <!-- Kolon Başlık Rozeti -->
-    <rect x="14" y="12" width="317" height="40" rx="12" fill="#1d4ed8" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
-    <text x="172" y="37" font-family="'Segoe UI', Roboto, sans-serif" font-size="15" font-weight="900" fill="#ffffff" text-anchor="middle">
-      🗣️ ÜNLÜ (SESLİ) HARFLER · 8 Tane
-    </text>
-
-    <!-- 1. Kalın Ünlüler Kutusu (3D Pixar Glow) -->
-    <g transform="translate(14, 62)">
-      <rect width="317" height="114" rx="14" fill="#1c1917" stroke="#f59e0b" stroke-width="2"/>
-      <rect x="10" y="8" width="160" height="22" rx="6" fill="rgba(245, 158, 11, 0.25)"/>
-      <text x="16" y="24" font-family="'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="900" fill="#fbbf24">
-        🟠 KALIN ÜNLÜLER (4)
-      </text>
-      <text x="16" y="44" font-family="'Segoe UI', Roboto, sans-serif" font-size="11" fill="#cbd5e1">
-        Gırtlaktan tok ve dolgun sesle çıkar:
-      </text>
-      
-      <!-- 4 Kalın Ünlü 3D Küre -->
-      <g transform="translate(14, 52)">
-        <g class="kalin-orb">
-          <circle cx="30" cy="28" r="24" fill="url(#kalinSphere)"/>
-          <text x="30" y="37" font-family="'Segoe UI', Roboto, sans-serif" font-size="24" font-weight="900" fill="#ffffff" text-anchor="middle">A</text>
-        </g>
-        <g class="kalin-orb-2">
-          <circle cx="106" cy="28" r="24" fill="url(#kalinSphere)"/>
-          <text x="106" y="37" font-family="'Segoe UI', Roboto, sans-serif" font-size="24" font-weight="900" fill="#ffffff" text-anchor="middle">I</text>
-        </g>
-        <g class="kalin-orb-3">
-          <circle cx="182" cy="28" r="24" fill="url(#kalinSphere)"/>
-          <text x="182" y="37" font-family="'Segoe UI', Roboto, sans-serif" font-size="24" font-weight="900" fill="#ffffff" text-anchor="middle">O</text>
-        </g>
-        <g class="kalin-orb-4">
-          <circle cx="258" cy="28" r="24" fill="url(#kalinSphere)"/>
-          <text x="258" y="37" font-family="'Segoe UI', Roboto, sans-serif" font-size="24" font-weight="900" fill="#ffffff" text-anchor="middle">U</text>
-        </g>
-      </g>
-    </g>
-
-    <!-- 2. İnce Ünlüler Kutusu (3D Pixar Glow) -->
-    <g transform="translate(14, 186)">
-      <rect width="317" height="114" rx="14" fill="#082f49" stroke="#38bdf8" stroke-width="2"/>
-      <rect x="10" y="8" width="160" height="22" rx="6" fill="rgba(56, 189, 248, 0.25)"/>
-      <text x="16" y="24" font-family="'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="900" fill="#38bdf8">
-        🔵 İNCE ÜNLÜLER (4)
-      </text>
-      <text x="16" y="44" font-family="'Segoe UI', Roboto, sans-serif" font-size="11" fill="#bae6fd">
-        Ağzın ön kısmından zarifçe çıkar:
-      </text>
-      
-      <!-- 4 İnce Ünlü 3D Küre -->
-      <g transform="translate(14, 52)">
-        <g class="ince-orb">
-          <circle cx="30" cy="28" r="24" fill="url(#inceSphere)"/>
-          <text x="30" y="37" font-family="'Segoe UI', Roboto, sans-serif" font-size="24" font-weight="900" fill="#ffffff" text-anchor="middle">E</text>
-        </g>
-        <g class="ince-orb-2">
-          <circle cx="106" cy="28" r="24" fill="url(#inceSphere)"/>
-          <text x="106" y="37" font-family="'Segoe UI', Roboto, sans-serif" font-size="24" font-weight="900" fill="#ffffff" text-anchor="middle">İ</text>
-        </g>
-        <g class="ince-orb-3">
-          <circle cx="182" cy="28" r="24" fill="url(#inceSphere)"/>
-          <text x="182" y="37" font-family="'Segoe UI', Roboto, sans-serif" font-size="24" font-weight="900" fill="#ffffff" text-anchor="middle">Ö</text>
-        </g>
-        <g class="ince-orb-4">
-          <circle cx="258" cy="28" r="24" fill="url(#inceSphere)"/>
-          <text x="258" y="37" font-family="'Segoe UI', Roboto, sans-serif" font-size="24" font-weight="900" fill="#ffffff" text-anchor="middle">Ü</text>
-        </g>
-      </g>
-    </g>
-
-    <!-- Kural Rozeti -->
-    <rect x="14" y="308" width="317" height="42" rx="10" fill="#064e3b" stroke="#10b981" stroke-width="1.5"/>
-    <text x="172" y="334" font-family="'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="800" fill="#a7f3d0" text-anchor="middle">
-      ⭐ Her hecede mutlaka 1 ünlü harf bulunur!
+    <rect x="550" y="10" width="166" height="34" rx="10" fill="#ef4444"/>
+    <text x="633" y="32" font-family="'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="900" fill="#ffffff" text-anchor="middle">
+      8 ÜNLÜ + 21 ÜNSÜZ
     </text>
   </g>
 
-  <!-- SAĞ SÜTUN: ÜNSÜZ (SESSİZ) HARFLER -->
-  <g transform="translate(415, 96)">
-    <rect width="345" height="360" rx="18" fill="url(#cardBg)" stroke="#8b5cf6" stroke-width="2" filter="url(#shadowDeep)"/>
+  <!-- ORTA BÖLÜM: 2 BÜYÜK ÜNLÜ KUTUSU (YAN YANA 355px GENİŞLİK) -->
+  <!-- KUTU 1: Kalın Ünlüler -->
+  <g transform="translate(30, 84)">
+    <rect width="355" height="160" rx="16" fill="#1c1917" stroke="#f59e0b" stroke-width="2" filter="url(#shH)"/>
     
-    <!-- Kolon Başlık Rozeti -->
-    <rect x="14" y="12" width="317" height="40" rx="12" fill="#6d28d9" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
-    <text x="172" y="37" font-family="'Segoe UI', Roboto, sans-serif" font-size="15" font-weight="900" fill="#ffffff" text-anchor="middle">
-      🤫 ÜNSÜZ (SESSİZ) HARFLER · 21 Tane
+    <rect x="14" y="12" width="327" height="36" rx="8" fill="#78350f"/>
+    <text x="177" y="36" font-family="'Segoe UI', Roboto, sans-serif" font-size="16" font-weight="900" fill="#fef08a" text-anchor="middle">
+      🟠 KALIN ÜNLÜLER (4 Tane)
     </text>
 
-    <!-- Ünsüzler Izgarası -->
-    <g transform="translate(14, 62)">
-      <rect width="317" height="236" rx="14" fill="#18181b" stroke="#3f3f46" stroke-width="1.5"/>
-      
-      <!-- 21 Ünsüz Harf 3D Tuşları -->
-      <g transform="translate(14, 16)">
-        <!-- Satır 1 -->
-        <rect x="0" y="0" width="40" height="36" rx="8" fill="#27272a" stroke="#52525b"/><text x="20" y="24" font-family="'Segoe UI', Roboto, sans-serif" font-size="16" font-weight="900" fill="#f4f4f5" text-anchor="middle">B</text>
-        <rect x="49" y="0" width="40" height="36" rx="8" fill="#27272a" stroke="#52525b"/><text x="69" y="24" font-family="'Segoe UI', Roboto, sans-serif" font-size="16" font-weight="900" fill="#f4f4f5" text-anchor="middle">C</text>
-        <rect x="98" y="0" width="40" height="36" rx="8" fill="#27272a" stroke="#52525b"/><text x="118" y="24" font-family="'Segoe UI', Roboto, sans-serif" font-size="16" font-weight="900" fill="#f4f4f5" text-anchor="middle">Ç</text>
-        <rect x="147" y="0" width="40" height="36" rx="8" fill="#27272a" stroke="#52525b"/><text x="167" y="24" font-family="'Segoe UI', Roboto, sans-serif" font-size="16" font-weight="900" fill="#f4f4f5" text-anchor="middle">D</text>
-        <rect x="196" y="0" width="40" height="36" rx="8" fill="#27272a" stroke="#52525b"/><text x="216" y="24" font-family="'Segoe UI', Roboto, sans-serif" font-size="16" font-weight="900" fill="#f4f4f5" text-anchor="middle">F</text>
-        <rect x="245" y="0" width="40" height="36" rx="8" fill="#27272a" stroke="#52525b"/><text x="265" y="24" font-family="'Segoe UI', Roboto, sans-serif" font-size="16" font-weight="900" fill="#f4f4f5" text-anchor="middle">G</text>
-
-        <!-- Satır 2 -->
-        <rect x="0" y="44" width="40" height="36" rx="8" fill="#27272a" stroke="#52525b"/><text x="20" y="68" font-family="'Segoe UI', Roboto, sans-serif" font-size="16" font-weight="900" fill="#f4f4f5" text-anchor="middle">Ğ</text>
-        <rect x="49" y="44" width="40" height="36" rx="8" fill="#27272a" stroke="#52525b"/><text x="69" y="68" font-family="'Segoe UI', Roboto, sans-serif" font-size="16" font-weight="900" fill="#f4f4f5" text-anchor="middle">H</text>
-        <rect x="98" y="44" width="40" height="36" rx="8" fill="#27272a" stroke="#52525b"/><text x="118" y="68" font-family="'Segoe UI', Roboto, sans-serif" font-size="16" font-weight="900" fill="#f4f4f5" text-anchor="middle">J</text>
-        <rect x="147" y="44" width="40" height="36" rx="8" fill="#27272a" stroke="#52525b"/><text x="167" y="68" font-family="'Segoe UI', Roboto, sans-serif" font-size="16" font-weight="900" fill="#f4f4f5" text-anchor="middle">K</text>
-        <rect x="196" y="44" width="40" height="36" rx="8" fill="#27272a" stroke="#52525b"/><text x="216" y="68" font-family="'Segoe UI', Roboto, sans-serif" font-size="16" font-weight="900" fill="#f4f4f5" text-anchor="middle">L</text>
-        <rect x="245" y="44" width="40" height="36" rx="8" fill="#27272a" stroke="#52525b"/><text x="265" y="68" font-family="'Segoe UI', Roboto, sans-serif" font-size="16" font-weight="900" fill="#f4f4f5" text-anchor="middle">M</text>
-
-        <!-- Satır 3 -->
-        <rect x="0" y="88" width="40" height="36" rx="8" fill="#27272a" stroke="#52525b"/><text x="20" y="112" font-family="'Segoe UI', Roboto, sans-serif" font-size="16" font-weight="900" fill="#f4f4f5" text-anchor="middle">N</text>
-        <rect x="49" y="88" width="40" height="36" rx="8" fill="#27272a" stroke="#52525b"/><text x="69" y="112" font-family="'Segoe UI', Roboto, sans-serif" font-size="16" font-weight="900" fill="#f4f4f5" text-anchor="middle">P</text>
-        <rect x="98" y="88" width="40" height="36" rx="8" fill="#27272a" stroke="#52525b"/><text x="118" y="112" font-family="'Segoe UI', Roboto, sans-serif" font-size="16" font-weight="900" fill="#f4f4f5" text-anchor="middle">R</text>
-        <rect x="147" y="88" width="40" height="36" rx="8" fill="#27272a" stroke="#52525b"/><text x="167" y="112" font-family="'Segoe UI', Roboto, sans-serif" font-size="16" font-weight="900" fill="#f4f4f5" text-anchor="middle">S</text>
-        <rect x="196" y="88" width="40" height="36" rx="8" fill="#27272a" stroke="#52525b"/><text x="216" y="112" font-family="'Segoe UI', Roboto, sans-serif" font-size="16" font-weight="900" fill="#f4f4f5" text-anchor="middle">Ş</text>
-        <rect x="245" y="88" width="40" height="36" rx="8" fill="#27272a" stroke="#52525b"/><text x="265" y="112" font-family="'Segoe UI', Roboto, sans-serif" font-size="16" font-weight="900" fill="#f4f4f5" text-anchor="middle">T</text>
-
-        <!-- Satır 4 -->
-        <rect x="49" y="132" width="48" height="36" rx="8" fill="#27272a" stroke="#52525b"/><text x="73" y="156" font-family="'Segoe UI', Roboto, sans-serif" font-size="16" font-weight="900" fill="#f4f4f5" text-anchor="middle">V</text>
-        <rect x="120" y="132" width="48" height="36" rx="8" fill="#27272a" stroke="#52525b"/><text x="144" y="156" font-family="'Segoe UI', Roboto, sans-serif" font-size="16" font-weight="900" fill="#f4f4f5" text-anchor="middle">Y</text>
-        <rect x="191" y="132" width="48" height="36" rx="8" fill="#27272a" stroke="#52525b"/><text x="215" y="156" font-family="'Segoe UI', Roboto, sans-serif" font-size="16" font-weight="900" fill="#f4f4f5" text-anchor="middle">Z</text>
+    <!-- 4 Kalın Harf Küresi -->
+    <g transform="translate(24, 62)">
+      <!-- A -->
+      <g class="orb-kalin">
+        <circle cx="34" cy="38" r="30" fill="url(#gradKalin)"/>
+        <text x="34" y="49" font-family="'Segoe UI', Roboto, sans-serif" font-size="32" font-weight="900" fill="#ffffff" text-anchor="middle">A</text>
       </g>
-      
-      <text x="158" y="214" font-family="'Segoe UI', Roboto, sans-serif" font-size="11" fill="#a1a1aa" text-anchor="middle">
-        Tek başlarına söylenemez, yanına ünlü alırlar (be, ce, de...)
-      </text>
+      <!-- I -->
+      <g class="orb-kalin">
+        <circle cx="118" cy="38" r="30" fill="url(#gradKalin)"/>
+        <text x="118" y="49" font-family="'Segoe UI', Roboto, sans-serif" font-size="32" font-weight="900" fill="#ffffff" text-anchor="middle">I</text>
+      </g>
+      <!-- O -->
+      <g class="orb-kalin">
+        <circle cx="202" cy="38" r="30" fill="url(#gradKalin)"/>
+        <text x="202" y="49" font-family="'Segoe UI', Roboto, sans-serif" font-size="32" font-weight="900" fill="#ffffff" text-anchor="middle">O</text>
+      </g>
+      <!-- U -->
+      <g class="orb-kalin">
+        <circle cx="286" cy="38" r="30" fill="url(#gradKalin)"/>
+        <text x="286" y="49" font-family="'Segoe UI', Roboto, sans-serif" font-size="32" font-weight="900" fill="#ffffff" text-anchor="middle">U</text>
+      </g>
     </g>
 
-    <!-- Bilgi Notu -->
-    <rect x="14" y="308" width="317" height="42" rx="10" fill="#3b0764" stroke="#c084fc" stroke-width="1.5"/>
-    <text x="172" y="334" font-family="'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="800" fill="#e9d5ff" text-anchor="middle">
-      ✅ 8 Ünlü + 21 Ünsüz = Tam 29 Harf!
+    <text x="177" y="148" font-family="'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="700" fill="#fed7aa" text-anchor="middle">
+      Gırtlaktan tok ve kalın sesle söylenir
+    </text>
+  </g>
+
+  <!-- KUTU 2: İnce Ünlüler -->
+  <g transform="translate(415, 84)">
+    <rect width="355" height="160" rx="16" fill="#082f49" stroke="#38bdf8" stroke-width="2" filter="url(#shH)"/>
+    
+    <rect x="14" y="12" width="327" height="36" rx="8" fill="#0369a1"/>
+    <text x="177" y="36" font-family="'Segoe UI', Roboto, sans-serif" font-size="16" font-weight="900" fill="#e0f2fe" text-anchor="middle">
+      🔵 İNCE ÜNLÜLER (4 Tane)
+    </text>
+
+    <!-- 4 İnce Harf Küresi -->
+    <g transform="translate(24, 62)">
+      <!-- E -->
+      <g class="orb-ince">
+        <circle cx="34" cy="38" r="30" fill="url(#gradInce)"/>
+        <text x="34" y="49" font-family="'Segoe UI', Roboto, sans-serif" font-size="32" font-weight="900" fill="#ffffff" text-anchor="middle">E</text>
+      </g>
+      <!-- İ -->
+      <g class="orb-ince">
+        <circle cx="118" cy="38" r="30" fill="url(#gradInce)"/>
+        <text x="118" y="49" font-family="'Segoe UI', Roboto, sans-serif" font-size="32" font-weight="900" fill="#ffffff" text-anchor="middle">İ</text>
+      </g>
+      <!-- Ö -->
+      <g class="orb-ince">
+        <circle cx="202" cy="38" r="30" fill="url(#gradInce)"/>
+        <text x="202" y="49" font-family="'Segoe UI', Roboto, sans-serif" font-size="32" font-weight="900" fill="#ffffff" text-anchor="middle">Ö</text>
+      </g>
+      <!-- Ü -->
+      <g class="orb-ince">
+        <circle cx="286" cy="38" r="30" fill="url(#gradInce)"/>
+        <text x="286" y="49" font-family="'Segoe UI', Roboto, sans-serif" font-size="32" font-weight="900" fill="#ffffff" text-anchor="middle">Ü</text>
+      </g>
+    </g>
+
+    <text x="177" y="148" font-family="'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="700" fill="#bae6fd" text-anchor="middle">
+      Ağzın önünden ince ve zarifçe söylenir
+    </text>
+  </g>
+
+  <!-- ALT BÖLÜM: 21 ÜNSÜZ HARF DÜNYASI -->
+  <g transform="translate(30, 256)">
+    <rect width="740" height="152" rx="16" fill="#18181b" stroke="#8b5cf6" stroke-width="2" filter="url(#shH)"/>
+    
+    <text x="370" y="28" font-family="'Segoe UI', Roboto, sans-serif" font-size="15" font-weight="900" fill="#c084fc" text-anchor="middle">
+      🤫 21 ÜNSÜZ (SESSİZ) HARF · Yanına ünlü almadan söylenemez (be, ce, de...)
+    </text>
+
+    <!-- 21 Harf: 2 Satır Halinde Ferah ve Büyük -->
+    <!-- Satır 1 (11 Harf) -->
+    <g transform="translate(25, 42)">
+      <rect x="0" y="0" width="56" height="42" rx="8" fill="#27272a" stroke="#52525b"/><text x="28" y="28" font-family="'Segoe UI', Roboto, sans-serif" font-size="20" font-weight="900" fill="#f4f4f5" text-anchor="middle">B</text>
+      <rect x="63" y="0" width="56" height="42" rx="8" fill="#27272a" stroke="#52525b"/><text x="91" y="28" font-family="'Segoe UI', Roboto, sans-serif" font-size="20" font-weight="900" fill="#f4f4f5" text-anchor="middle">C</text>
+      <rect x="126" y="0" width="56" height="42" rx="8" fill="#27272a" stroke="#52525b"/><text x="154" y="28" font-family="'Segoe UI', Roboto, sans-serif" font-size="20" font-weight="900" fill="#f4f4f5" text-anchor="middle">Ç</text>
+      <rect x="189" y="0" width="56" height="42" rx="8" fill="#27272a" stroke="#52525b"/><text x="217" y="28" font-family="'Segoe UI', Roboto, sans-serif" font-size="20" font-weight="900" fill="#f4f4f5" text-anchor="middle">D</text>
+      <rect x="252" y="0" width="56" height="42" rx="8" fill="#27272a" stroke="#52525b"/><text x="280" y="28" font-family="'Segoe UI', Roboto, sans-serif" font-size="20" font-weight="900" fill="#f4f4f5" text-anchor="middle">F</text>
+      <rect x="315" y="0" width="56" height="42" rx="8" fill="#27272a" stroke="#52525b"/><text x="343" y="28" font-family="'Segoe UI', Roboto, sans-serif" font-size="20" font-weight="900" fill="#f4f4f5" text-anchor="middle">G</text>
+      <rect x="378" y="0" width="56" height="42" rx="8" fill="#27272a" stroke="#52525b"/><text x="406" y="28" font-family="'Segoe UI', Roboto, sans-serif" font-size="20" font-weight="900" fill="#f4f4f5" text-anchor="middle">Ğ</text>
+      <rect x="441" y="0" width="56" height="42" rx="8" fill="#27272a" stroke="#52525b"/><text x="469" y="28" font-family="'Segoe UI', Roboto, sans-serif" font-size="20" font-weight="900" fill="#f4f4f5" text-anchor="middle">H</text>
+      <rect x="504" y="0" width="56" height="42" rx="8" fill="#27272a" stroke="#52525b"/><text x="532" y="28" font-family="'Segoe UI', Roboto, sans-serif" font-size="20" font-weight="900" fill="#f4f4f5" text-anchor="middle">J</text>
+      <rect x="567" y="0" width="56" height="42" rx="8" fill="#27272a" stroke="#52525b"/><text x="595" y="28" font-family="'Segoe UI', Roboto, sans-serif" font-size="20" font-weight="900" fill="#f4f4f5" text-anchor="middle">K</text>
+      <rect x="630" y="0" width="56" height="42" rx="8" fill="#27272a" stroke="#52525b"/><text x="658" y="28" font-family="'Segoe UI', Roboto, sans-serif" font-size="20" font-weight="900" fill="#f4f4f5" text-anchor="middle">L</text>
+    </g>
+
+    <!-- Satır 2 (10 Harf) -->
+    <g transform="translate(56, 94)">
+      <rect x="0" y="0" width="56" height="42" rx="8" fill="#27272a" stroke="#52525b"/><text x="28" y="28" font-family="'Segoe UI', Roboto, sans-serif" font-size="20" font-weight="900" fill="#f4f4f5" text-anchor="middle">M</text>
+      <rect x="63" y="0" width="56" height="42" rx="8" fill="#27272a" stroke="#52525b"/><text x="91" y="28" font-family="'Segoe UI', Roboto, sans-serif" font-size="20" font-weight="900" fill="#f4f4f5" text-anchor="middle">N</text>
+      <rect x="126" y="0" width="56" height="42" rx="8" fill="#27272a" stroke="#52525b"/><text x="154" y="28" font-family="'Segoe UI', Roboto, sans-serif" font-size="20" font-weight="900" fill="#f4f4f5" text-anchor="middle">P</text>
+      <rect x="189" y="0" width="56" height="42" rx="8" fill="#27272a" stroke="#52525b"/><text x="217" y="28" font-family="'Segoe UI', Roboto, sans-serif" font-size="20" font-weight="900" fill="#f4f4f5" text-anchor="middle">R</text>
+      <rect x="252" y="0" width="56" height="42" rx="8" fill="#27272a" stroke="#52525b"/><text x="280" y="28" font-family="'Segoe UI', Roboto, sans-serif" font-size="20" font-weight="900" fill="#f4f4f5" text-anchor="middle">S</text>
+      <rect x="315" y="0" width="56" height="42" rx="8" fill="#27272a" stroke="#52525b"/><text x="343" y="28" font-family="'Segoe UI', Roboto, sans-serif" font-size="20" font-weight="900" fill="#f4f4f5" text-anchor="middle">Ş</text>
+      <rect x="378" y="0" width="56" height="42" rx="8" fill="#27272a" stroke="#52525b"/><text x="406" y="28" font-family="'Segoe UI', Roboto, sans-serif" font-size="20" font-weight="900" fill="#f4f4f5" text-anchor="middle">T</text>
+      <rect x="441" y="0" width="56" height="42" rx="8" fill="#27272a" stroke="#52525b"/><text x="469" y="28" font-family="'Segoe UI', Roboto, sans-serif" font-size="20" font-weight="900" fill="#f4f4f5" text-anchor="middle">V</text>
+      <rect x="504" y="0" width="56" height="42" rx="8" fill="#27272a" stroke="#52525b"/><text x="532" y="28" font-family="'Segoe UI', Roboto, sans-serif" font-size="20" font-weight="900" fill="#f4f4f5" text-anchor="middle">Y</text>
+      <rect x="567" y="0" width="56" height="42" rx="8" fill="#27272a" stroke="#52525b"/><text x="595" y="28" font-family="'Segoe UI', Roboto, sans-serif" font-size="20" font-weight="900" fill="#f4f4f5" text-anchor="middle">Z</text>
+    </g>
+  </g>
+
+  <!-- EN ALT ALTIN KURAL ŞERİDİ -->
+  <g transform="translate(30, 418)">
+    <rect width="740" height="46" rx="12" fill="#064e3b" stroke="#10b981" stroke-width="1.8"/>
+    <text x="370" y="28" font-family="'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="900" fill="#86efac" text-anchor="middle">
+      ⭐ ALTIN KURAL: Türkçede her hecede mutlaka 1 tane ünlü (sesli) harf bulunur!
     </text>
   </g>
 </svg>

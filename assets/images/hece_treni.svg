@@ -1,237 +1,191 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 480" width="100%" height="100%">
   <defs>
     <style>
-      @keyframes steamRise {
-        0% { transform: translateY(0px) scale(0.7); opacity: 0.8; }
-        50% { transform: translateY(-16px) scale(1.1); opacity: 0.5; }
-        100% { transform: translateY(-32px) scale(1.5); opacity: 0; }
+      @keyframes steamPuff {
+        0% { transform: translateY(0px) scale(0.6); opacity: 0.8; }
+        50% { transform: translateY(-16px) scale(1.1); opacity: 0.4; }
+        100% { transform: translateY(-30px) scale(1.4); opacity: 0; }
       }
-      @keyframes wagonPulse1 {
-        0%, 100% { transform: translateY(0px); filter: drop-shadow(0 4px 6px rgba(0,0,0,0.5)); }
-        25% { transform: translateY(-4px); filter: drop-shadow(0 0 14px #38bdf8); }
+      @keyframes wagonGlow {
+        0%, 100% { filter: drop-shadow(0 0 4px rgba(56, 189, 248, 0.4)); }
+        50% { filter: drop-shadow(0 0 16px rgba(56, 189, 248, 0.95)); }
       }
-      @keyframes wagonPulse2 {
-        0%, 100% { transform: translateY(0px); filter: drop-shadow(0 4px 6px rgba(0,0,0,0.5)); }
-        50% { transform: translateY(-4px); filter: drop-shadow(0 0 14px #34d399); }
-      }
-      @keyframes wagonPulse3 {
-        0%, 100% { transform: translateY(0px); filter: drop-shadow(0 4px 6px rgba(0,0,0,0.5)); }
-        75% { transform: translateY(-4px); filter: drop-shadow(0 0 14px #fbbf24); }
-      }
-      @keyframes wagonPulse4 {
-        0%, 100% { transform: translateY(0px); filter: drop-shadow(0 4px 6px rgba(0,0,0,0.5)); }
-        100% { transform: translateY(-4px); filter: drop-shadow(0 0 14px #c084fc); }
-      }
-      @keyframes correctGlow {
-        0%, 100% { stroke: #22c55e; filter: drop-shadow(0 0 4px rgba(34, 197, 94, 0.4)); }
-        50% { stroke: #4ade80; filter: drop-shadow(0 0 16px rgba(34, 197, 94, 0.9)); }
-      }
-      @keyframes wrongGlow {
-        0%, 100% { stroke: #ef4444; filter: drop-shadow(0 0 4px rgba(239, 68, 68, 0.4)); }
-        50% { stroke: #f87171; filter: drop-shadow(0 0 14px rgba(239, 68, 68, 0.85)); }
-      }
-
-      .steam-1 { animation: steamRise 2.4s ease-out infinite; transform-origin: center; transform-box: fill-box; }
-      .steam-2 { animation: steamRise 2.4s ease-out 0.8s infinite; transform-origin: center; transform-box: fill-box; }
-      .steam-3 { animation: steamRise 2.4s ease-out 1.6s infinite; transform-origin: center; transform-box: fill-box; }
-
-      .wagon-1 { animation: wagonPulse1 3.2s ease-in-out infinite; transform-origin: center; transform-box: fill-box; }
-      .wagon-2 { animation: wagonPulse2 3.2s ease-in-out infinite; transform-origin: center; transform-box: fill-box; }
-      .wagon-3 { animation: wagonPulse3 3.2s ease-in-out infinite; transform-origin: center; transform-box: fill-box; }
-      .wagon-4 { animation: wagonPulse4 3.2s ease-in-out infinite; transform-origin: center; transform-box: fill-box; }
-
-      .card-correct { animation: correctGlow 2.5s ease-in-out infinite; }
-      .card-wrong { animation: wrongGlow 2.5s ease-in-out infinite; }
+      .steam-puff { animation: steamPuff 2.5s ease-out infinite; transform-origin: center; transform-box: fill-box; }
+      .wagon-glow { animation: wagonGlow 3s ease-in-out infinite; }
     </style>
 
-    <linearGradient id="bgGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#0b0f19"/>
+    <linearGradient id="bgT" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a0f1d"/>
       <stop offset="50%" stop-color="#0f172a"/>
       <stop offset="100%" stop-color="#1e1b4b"/>
     </linearGradient>
-    <linearGradient id="locomotiveGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+    <linearGradient id="locoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#ef4444"/>
-      <stop offset="100%" stop-color="#991b1b"/>
+      <stop offset="100%" stop-color="#b91c1c"/>
     </linearGradient>
-    <linearGradient id="wagonBlue" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#38bdf8"/>
-      <stop offset="100%" stop-color="#0284c7"/>
-    </linearGradient>
-    <linearGradient id="wagonGreen" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#34d399"/>
-      <stop offset="100%" stop-color="#059669"/>
-    </linearGradient>
-    <linearGradient id="wagonGold" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#fbbf24"/>
-      <stop offset="100%" stop-color="#d97706"/>
-    </linearGradient>
-    <linearGradient id="wagonPurple" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#c084fc"/>
-      <stop offset="100%" stop-color="#7c3aed"/>
-    </linearGradient>
-    <filter id="shadowHeavy" x="-10%" y="-10%" width="120%" height="120%">
-      <feDropShadow dx="0" dy="8" stdDeviation="8" flood-color="#000" flood-opacity="0.6"/>
+    <filter id="shT" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="6" stdDeviation="8" flood-color="#000" flood-opacity="0.5"/>
     </filter>
   </defs>
 
   <!-- Arka Plan -->
-  <rect width="800" height="480" rx="20" fill="url(#bgGrad2)" stroke="#334155" stroke-width="2"/>
+  <rect width="800" height="480" rx="20" fill="url(#bgT)" stroke="#334155" stroke-width="2"/>
 
   <!-- Üst Başlık -->
-  <g transform="translate(40, 20)">
-    <rect width="720" height="52" rx="14" fill="#1e293b" stroke="#475569" stroke-width="1.5" filter="url(#shadowHeavy)"/>
-    <text x="24" y="33" font-family="'Segoe UI', Roboto, sans-serif" font-size="19" font-weight="900" fill="#f8fafc">
-      🚂 HECE BİLGİSİ VE SATIR SONU BÖLÜNME KURALLARI
+  <g transform="translate(30, 18)">
+    <rect width="740" height="54" rx="14" fill="#1e293b" stroke="#3b82f6" stroke-width="1.8" filter="url(#shT)"/>
+    <text x="24" y="35" font-family="'Segoe UI', Roboto, sans-serif" font-size="22" font-weight="900" fill="#ffffff">
+      🚂 HECE TRENİ VE SATIR SONU KURALLARI
     </text>
-    <rect x="535" y="11" width="170" height="30" rx="8" fill="#10b981"/>
-    <text x="620" y="31" font-family="'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="900" fill="#ffffff" text-anchor="middle">
-      ⭐ 1 ÜNLÜ = 1 HECE
+    <rect x="540" y="10" width="176" height="34" rx="10" fill="#10b981"/>
+    <text x="628" y="32" font-family="'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="900" fill="#ffffff" text-anchor="middle">
+      1 ÜNLÜ = 1 HECE
     </text>
   </g>
 
-  <!-- 1. BÖLÜM: HECE TRENİ (Cum - hu - ri - yet) -->
-  <g transform="translate(40, 86)">
-    <rect width="720" height="184" rx="16" fill="#111827" stroke="#3b82f6" stroke-width="1.8" filter="url(#shadowHeavy)"/>
+  <!-- 1. BÖLÜM: HECE TRENİ (CUM-HU-Rİ-YET) -->
+  <g transform="translate(30, 84)">
+    <rect width="740" height="155" rx="16" fill="#111827" stroke="#38bdf8" stroke-width="2" filter="url(#shT)"/>
     
-    <text x="24" y="28" font-family="'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="900" fill="#60a5fa">
-      1. KURAL: BİR SÖZCÜKTEKİ ÜNLÜ HARF SAYISI = HECE SAYISIDIR
+    <text x="24" y="26" font-family="'Segoe UI', Roboto, sans-serif" font-size="14.5" font-weight="900" fill="#38bdf8">
+      1. KURAL: SÖZCÜKTEKİ ÜNLÜ HARF SAYISI = HECE SAYISIDIR
     </text>
     
-    <!-- Tren Rayı -->
-    <line x1="24" y1="140" x2="696" y2="140" stroke="#64748b" stroke-width="4"/>
-    <line x1="24" y1="146" x2="696" y2="146" stroke="#334155" stroke-width="3"/>
-    <!-- Traversler -->
-    <line x1="50" y1="138" x2="50" y2="148" stroke="#475569" stroke-width="3"/>
-    <line x1="120" y1="138" x2="120" y2="148" stroke="#475569" stroke-width="3"/>
-    <line x1="190" y1="138" x2="190" y2="148" stroke="#475569" stroke-width="3"/>
-    <line x1="260" y1="138" x2="260" y2="148" stroke="#475569" stroke-width="3"/>
-    <line x1="330" y1="138" x2="330" y2="148" stroke="#475569" stroke-width="3"/>
-    <line x1="400" y1="138" x2="400" y2="148" stroke="#475569" stroke-width="3"/>
-    <line x1="470" y1="138" x2="470" y2="148" stroke="#475569" stroke-width="3"/>
-    <line x1="540" y1="138" x2="540" y2="148" stroke="#475569" stroke-width="3"/>
-    <line x1="610" y1="138" x2="610" y2="148" stroke="#475569" stroke-width="3"/>
-    <line x1="680" y1="138" x2="680" y2="148" stroke="#475569" stroke-width="3"/>
-
-    <!-- Buhar Bulutları -->
-    <circle cx="68" cy="40" r="8" fill="#e2e8f0" opacity="0.8" class="steam-1"/>
-    <circle cx="60" cy="32" r="11" fill="#cbd5e1" opacity="0.6" class="steam-2"/>
-    <circle cx="50" cy="22" r="14" fill="#94a3b8" opacity="0.4" class="steam-3"/>
+    <!-- Ray -->
+    <line x1="20" y1="118" x2="720" y2="118" stroke="#64748b" stroke-width="4"/>
+    <line x1="20" y1="124" x2="720" y2="124" stroke="#334155" stroke-width="3"/>
 
     <!-- Lokomotif -->
-    <g transform="translate(30, 52)">
-      <path d="M 10 70 L 10 32 Q 10 22 20 22 L 68 22 L 68 46 L 98 46 Q 106 46 106 56 L 106 70 Z" fill="url(#locomotiveGrad)"/>
-      <!-- Baca -->
-      <rect x="36" y="8" width="16" height="16" rx="3" fill="#7f1d1d"/>
-      <rect x="32" y="6" width="24" height="6" rx="2" fill="#facc15"/>
-      <!-- Pencere -->
-      <rect x="20" y="28" width="30" height="24" rx="5" fill="#fef08a" stroke="#ca8a04" stroke-width="1.5"/>
-      <!-- Tekerlekler -->
-      <circle cx="34" cy="74" r="13" fill="#18181b" stroke="#facc15" stroke-width="2.5"/>
-      <circle cx="86" cy="74" r="13" fill="#18181b" stroke="#facc15" stroke-width="2.5"/>
-      <text x="50" y="64" font-family="'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="900" fill="#ffffff" text-anchor="middle">TÜRKÇE</text>
+    <g transform="translate(24, 40)">
+      <circle cx="48" cy="12" r="10" fill="#cbd5e1" class="steam-puff"/>
+      <path d="M 10 68 L 10 26 Q 10 16 20 16 L 68 16 L 68 38 L 98 38 Q 106 38 106 48 L 106 68 Z" fill="url(#locoGrad)"/>
+      <rect x="36" y="6" width="16" height="12" rx="2" fill="#7f1d1d"/>
+      <rect x="20" y="22" width="28" height="20" rx="4" fill="#fef08a"/>
+      <circle cx="34" cy="70" r="11" fill="#18181b" stroke="#facc15" stroke-width="2.5"/>
+      <circle cx="86" cy="70" r="11" fill="#18181b" stroke="#facc15" stroke-width="2.5"/>
+      <text x="50" y="58" font-family="'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="900" fill="#ffffff" text-anchor="middle">TÜRKÇE</text>
     </g>
 
-    <!-- Bağlantı -->
-    <line x1="140" y1="112" x2="160" y2="112" stroke="#94a3b8" stroke-width="5"/>
+    <line x1="135" y1="92" x2="155" y2="92" stroke="#94a3b8" stroke-width="4"/>
 
     <!-- Vagon 1: CUM -->
-    <g transform="translate(160, 62)" class="wagon-1">
-      <rect width="118" height="54" rx="10" fill="url(#wagonBlue)"/>
-      <text x="59" y="32" font-family="'Segoe UI', Roboto, sans-serif" font-size="20" font-weight="900" fill="#ffffff" text-anchor="middle">CUM</text>
-      <text x="59" y="48" font-family="'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="800" fill="#e0f2fe" text-anchor="middle">1. Hece · (u)</text>
-      <circle cx="28" cy="62" r="10" fill="#18181b" stroke="#38bdf8" stroke-width="2"/>
-      <circle cx="90" cy="62" r="10" fill="#18181b" stroke="#38bdf8" stroke-width="2"/>
+    <g transform="translate(155, 46)" class="wagon-glow">
+      <rect width="128" height="50" rx="10" fill="#0284c7" stroke="#38bdf8" stroke-width="1.5"/>
+      <text x="64" y="32" font-family="'Segoe UI', Roboto, sans-serif" font-size="22" font-weight="900" fill="#ffffff" text-anchor="middle">CUM</text>
+      <text x="64" y="45" font-family="'Segoe UI', Roboto, sans-serif" font-size="10.5" font-weight="800" fill="#e0f2fe" text-anchor="middle">1. Hece (u)</text>
+      <circle cx="32" cy="56" r="9" fill="#18181b" stroke="#38bdf8" stroke-width="2"/>
+      <circle cx="96" cy="56" r="9" fill="#18181b" stroke="#38bdf8" stroke-width="2"/>
     </g>
 
-    <!-- Bağlantı -->
-    <line x1="282" y1="112" x2="302" y2="112" stroke="#94a3b8" stroke-width="5"/>
+    <line x1="287" y1="92" x2="307" y2="92" stroke="#94a3b8" stroke-width="4"/>
 
     <!-- Vagon 2: HU -->
-    <g transform="translate(302, 62)" class="wagon-2">
-      <rect width="118" height="54" rx="10" fill="url(#wagonGreen)"/>
-      <text x="59" y="32" font-family="'Segoe UI', Roboto, sans-serif" font-size="20" font-weight="900" fill="#ffffff" text-anchor="middle">HU</text>
-      <text x="59" y="48" font-family="'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="800" fill="#d1fae5" text-anchor="middle">2. Hece · (u)</text>
-      <circle cx="28" cy="62" r="10" fill="#18181b" stroke="#34d399" stroke-width="2"/>
-      <circle cx="90" cy="62" r="10" fill="#18181b" stroke="#34d399" stroke-width="2"/>
+    <g transform="translate(307, 46)" class="wagon-glow">
+      <rect width="128" height="50" rx="10" fill="#059669" stroke="#34d399" stroke-width="1.5"/>
+      <text x="64" y="32" font-family="'Segoe UI', Roboto, sans-serif" font-size="22" font-weight="900" fill="#ffffff" text-anchor="middle">HU</text>
+      <text x="64" y="45" font-family="'Segoe UI', Roboto, sans-serif" font-size="10.5" font-weight="800" fill="#d1fae5" text-anchor="middle">2. Hece (u)</text>
+      <circle cx="32" cy="56" r="9" fill="#18181b" stroke="#34d399" stroke-width="2"/>
+      <circle cx="96" cy="56" r="9" fill="#18181b" stroke="#34d399" stroke-width="2"/>
     </g>
 
-    <!-- Bağlantı -->
-    <line x1="424" y1="112" x2="444" y2="112" stroke="#94a3b8" stroke-width="5"/>
+    <line x1="439" y1="92" x2="459" y2="92" stroke="#94a3b8" stroke-width="4"/>
 
     <!-- Vagon 3: Rİ -->
-    <g transform="translate(444, 62)" class="wagon-3">
-      <rect width="118" height="54" rx="10" fill="url(#wagonGold)"/>
-      <text x="59" y="32" font-family="'Segoe UI', Roboto, sans-serif" font-size="20" font-weight="900" fill="#ffffff" text-anchor="middle">Rİ</text>
-      <text x="59" y="48" font-family="'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="800" fill="#fef3c7" text-anchor="middle">3. Hece · (i)</text>
-      <circle cx="28" cy="62" r="10" fill="#18181b" stroke="#fbbf24" stroke-width="2"/>
-      <circle cx="90" cy="62" r="10" fill="#18181b" stroke="#fbbf24" stroke-width="2"/>
+    <g transform="translate(459, 46)" class="wagon-glow">
+      <rect width="128" height="50" rx="10" fill="#d97706" stroke="#fbbf24" stroke-width="1.5"/>
+      <text x="64" y="32" font-family="'Segoe UI', Roboto, sans-serif" font-size="22" font-weight="900" fill="#ffffff" text-anchor="middle">Rİ</text>
+      <text x="64" y="45" font-family="'Segoe UI', Roboto, sans-serif" font-size="10.5" font-weight="800" fill="#fef3c7" text-anchor="middle">3. Hece (i)</text>
+      <circle cx="32" cy="56" r="9" fill="#18181b" stroke="#fbbf24" stroke-width="2"/>
+      <circle cx="96" cy="56" r="9" fill="#18181b" stroke="#fbbf24" stroke-width="2"/>
     </g>
 
-    <!-- Bağlantı -->
-    <line x1="566" y1="112" x2="586" y2="112" stroke="#94a3b8" stroke-width="5"/>
+    <line x1="591" y1="92" x2="611" y2="92" stroke="#94a3b8" stroke-width="4"/>
 
     <!-- Vagon 4: YET -->
-    <g transform="translate(586, 62)" class="wagon-4">
-      <rect width="118" height="54" rx="10" fill="url(#wagonPurple)"/>
-      <text x="59" y="32" font-family="'Segoe UI', Roboto, sans-serif" font-size="20" font-weight="900" fill="#ffffff" text-anchor="middle">YET</text>
-      <text x="59" y="48" font-family="'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="800" fill="#f3e8ff" text-anchor="middle">4. Hece · (e)</text>
-      <circle cx="28" cy="62" r="10" fill="#18181b" stroke="#c084fc" stroke-width="2"/>
-      <circle cx="90" cy="62" r="10" fill="#18181b" stroke="#c084fc" stroke-width="2"/>
+    <g transform="translate(611, 46)" class="wagon-glow">
+      <rect width="112" height="50" rx="10" fill="#7c3aed" stroke="#c084fc" stroke-width="1.5"/>
+      <text x="56" y="32" font-family="'Segoe UI', Roboto, sans-serif" font-size="22" font-weight="900" fill="#ffffff" text-anchor="middle">YET</text>
+      <text x="56" y="45" font-family="'Segoe UI', Roboto, sans-serif" font-size="10.5" font-weight="800" fill="#f3e8ff" text-anchor="middle">4. Hece (e)</text>
+      <circle cx="28" cy="56" r="9" fill="#18181b" stroke="#c084fc" stroke-width="2"/>
+      <circle cx="84" cy="56" r="9" fill="#18181b" stroke="#c084fc" stroke-width="2"/>
     </g>
 
-    <!-- Alt Kural Bandı -->
-    <rect x="20" y="152" width="680" height="24" rx="6" fill="#030712"/>
-    <text x="360" y="168" font-family="'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="800" fill="#facc15" text-anchor="middle">
-      🎯 "Cum-hu-ri-yet" sözcüğünde 4 ünlü (u, u, i, e) olduğu için tam 4 hecelidir!
+    <!-- Bilgi -->
+    <text x="370" y="142" font-family="'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="800" fill="#facc15" text-anchor="middle">
+      "Cumhuriyet" kelimesinde 4 ünlü harf (u, u, i, e) olduğu için tam 4 hecelidir!
     </text>
   </g>
 
-  <!-- 2. BÖLÜM: SATIR SONU KURALLARI (Animasyonlu Kartlar) -->
-  <g transform="translate(40, 280)">
-    <rect width="720" height="182" rx="16" fill="#111827" stroke="#a855f7" stroke-width="1.8" filter="url(#shadowHeavy)"/>
+  <!-- 2. BÖLÜM: SATIR SONU BÖLÜNMESİ (2 BÜYÜK KART: YAN YANA 355px) -->
+  <!-- KART 1: YANLIŞ BÖLÜNMELER -->
+  <g transform="translate(30, 252)">
+    <rect width="355" height="160" rx="16" fill="#450a0a" stroke="#ef4444" stroke-width="2" filter="url(#shT)"/>
     
-    <text x="24" y="26" font-family="'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="900" fill="#c084fc">
-      2. KURAL: SATIR SONUNA SIĞMAYAN KELİMELERİN BÖLÜNMESİ
+    <rect x="14" y="12" width="327" height="34" rx="8" fill="#ef4444"/>
+    <text x="177" y="34" font-family="'Segoe UI', Roboto, sans-serif" font-size="15" font-weight="900" fill="#ffffff" text-anchor="middle">
+      ❌ YANLIŞ BÖLÜNMELER
     </text>
 
-    <!-- Kart 1: Yanlış (Üstte tek harf) -->
-    <g transform="translate(24, 40)">
-      <rect width="156" height="124" rx="12" fill="#450a0a" stroke="#ef4444" stroke-width="2" class="card-wrong"/>
-      <rect x="10" y="8" width="60" height="22" rx="6" fill="#ef4444"/>
-      <text x="40" y="23" font-family="'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="900" fill="#ffffff" text-anchor="middle">❌ YANLIŞ</text>
-      <text x="78" y="62" font-family="monospace" font-size="20" font-weight="900" fill="#fca5a5" text-anchor="middle">...... a-</text>
-      <text x="78" y="86" font-family="monospace" font-size="20" font-weight="900" fill="#fca5a5" text-anchor="middle">raba</text>
-      <text x="78" y="112" font-family="'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="700" fill="#fecaca" text-anchor="middle">Üstte tek harf kalamaz!</text>
+    <!-- Örnek 1 -->
+    <g transform="translate(20, 56)">
+      <rect width="315" height="42" rx="8" fill="#1f0707"/>
+      <text x="14" y="26" font-family="'Segoe UI', Roboto, sans-serif" font-size="15" font-weight="900" fill="#fca5a5">
+        ......... a- / raba ➔ YANLIŞ!
+      </text>
+      <text x="210" y="26" font-family="'Segoe UI', Roboto, sans-serif" font-size="12" fill="#fecaca">
+        (Üstte tek harf kalamaz)
+      </text>
     </g>
 
-    <!-- Kart 2: Doğru Bölünüş -->
-    <g transform="translate(196, 40)">
-      <rect width="156" height="124" rx="12" fill="#052e16" stroke="#22c55e" stroke-width="2" class="card-correct"/>
-      <rect x="10" y="8" width="62" height="22" rx="6" fill="#22c55e"/>
-      <text x="41" y="23" font-family="'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="900" fill="#ffffff" text-anchor="middle">✅ DOĞRU</text>
-      <text x="78" y="62" font-family="monospace" font-size="20" font-weight="900" fill="#86efac" text-anchor="middle">..... ara-</text>
-      <text x="78" y="86" font-family="monospace" font-size="20" font-weight="900" fill="#86efac" text-anchor="middle">ba</text>
-      <text x="78" y="112" font-family="'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="700" fill="#bbf7d0" text-anchor="middle">Hece bütünlüğü korunur!</text>
+    <!-- Örnek 2 -->
+    <g transform="translate(20, 106)">
+      <rect width="315" height="42" rx="8" fill="#1f0707"/>
+      <text x="14" y="26" font-family="'Segoe UI', Roboto, sans-serif" font-size="15" font-weight="900" fill="#fca5a5">
+        ... öğretm- / en ➔ YANLIŞ!
+      </text>
+      <text x="210" y="26" font-family="'Segoe UI', Roboto, sans-serif" font-size="12" fill="#fecaca">
+        (Altta tek harf bırakılmaz)
+      </text>
+    </g>
+  </g>
+
+  <!-- KART 2: DOĞRU BÖLÜNMELER -->
+  <g transform="translate(415, 252)">
+    <rect width="355" height="160" rx="16" fill="#052e16" stroke="#22c55e" stroke-width="2" filter="url(#shT)"/>
+    
+    <rect x="14" y="12" width="327" height="34" rx="8" fill="#22c55e"/>
+    <text x="177" y="34" font-family="'Segoe UI', Roboto, sans-serif" font-size="15" font-weight="900" fill="#ffffff" text-anchor="middle">
+      ✅ DOĞRU BÖLÜNMELER
+    </text>
+
+    <!-- Doğru 1 -->
+    <g transform="translate(20, 56)">
+      <rect width="315" height="42" rx="8" fill="#022110"/>
+      <text x="14" y="26" font-family="'Segoe UI', Roboto, sans-serif" font-size="15" font-weight="900" fill="#86efac">
+        ......... ara- / ba ➔ DOĞRU!
+      </text>
+      <text x="206" y="26" font-family="'Segoe UI', Roboto, sans-serif" font-size="12" fill="#bbf7d0">
+        (Hece bütünlüğü tam)
+      </text>
     </g>
 
-    <!-- Kart 3: Yanlış (Altta tek harf) -->
-    <g transform="translate(368, 40)">
-      <rect width="156" height="124" rx="12" fill="#450a0a" stroke="#ef4444" stroke-width="2" class="card-wrong"/>
-      <rect x="10" y="8" width="60" height="22" rx="6" fill="#ef4444"/>
-      <text x="40" y="23" font-family="'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="900" fill="#ffffff" text-anchor="middle">❌ YANLIŞ</text>
-      <text x="78" y="62" font-family="monospace" font-size="18" font-weight="900" fill="#fca5a5" text-anchor="middle">... öğretm-</text>
-      <text x="78" y="86" font-family="monospace" font-size="18" font-weight="900" fill="#fca5a5" text-anchor="middle">en</text>
-      <text x="78" y="112" font-family="'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="700" fill="#fecaca" text-anchor="middle">Altta tek harf bırakılmaz!</text>
+    <!-- Doğru 2: Özel İsim Kesme -->
+    <g transform="translate(20, 106)">
+      <rect width="315" height="42" rx="8" fill="#022110"/>
+      <text x="14" y="26" font-family="'Segoe UI', Roboto, sans-serif" font-size="14.5" font-weight="900" fill="#86efac">
+        ... Ankara' / dan ➔ DOĞRU!
+      </text>
+      <text x="200" y="26" font-family="'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#bbf7d0">
+        (Kesme varsa çizgi konmaz)
+      </text>
     </g>
+  </g>
 
-    <!-- Kart 4: Kesme İşareti Kuralı -->
-    <g transform="translate(540, 40)">
-      <rect width="156" height="124" rx="12" fill="#082f49" stroke="#38bdf8" stroke-width="2"/>
-      <rect x="10" y="8" width="70" height="22" rx="6" fill="#0284c7"/>
-      <text x="45" y="23" font-family="'Segoe UI', Roboto, sans-serif" font-size="10.5" font-weight="900" fill="#ffffff" text-anchor="middle">📌 ÖZEL KURAL</text>
-      <text x="78" y="62" font-family="monospace" font-size="18" font-weight="900" fill="#7dd3fc" text-anchor="middle">... Ankara'</text>
-      <text x="78" y="86" font-family="monospace" font-size="18" font-weight="900" fill="#7dd3fc" text-anchor="middle">dan</text>
-      <text x="78" y="112" font-family="'Segoe UI', Roboto, sans-serif" font-size="9.5" font-weight="700" fill="#bae6fd" text-anchor="middle">Kesme varsa çizgi konmaz</text>
-    </g>
+  <!-- EN ALT ALTIN KURAL ŞERİDİ -->
+  <g transform="translate(30, 422)">
+    <rect width="740" height="44" rx="12" fill="#3b0764" stroke="#c084fc" stroke-width="1.8"/>
+    <text x="370" y="27" font-family="'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="900" fill="#fef08a" text-anchor="middle">
+      ⭐ KURAL: Satır sonunda veya başında tek bir harf bırakılamaz!
+    </text>
   </g>
 </svg>

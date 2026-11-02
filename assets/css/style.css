@@ -429,69 +429,118 @@ html { scroll-behavior: smooth; }
 /* Telefon ve Küçük Ekran Uyumu */
 @media (max-width: 640px) {
   .modal {
-    padding: 4px !important;
+    padding: 2px !important;
   }
   .modal-box.theater {
-    padding: 8px !important;
-    max-height: 98vh !important;
-    border-radius: 12px !important;
+    padding: 10px !important;
+    max-height: 96vh !important;
+    border-radius: 14px !important;
     width: 98vw !important;
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch;
+  }
+  .cp-wrap {
+    gap: 8px !important;
   }
   .cp-header {
     padding-bottom: 6px !important;
     gap: 6px !important;
+    flex-wrap: nowrap !important;
+  }
+  .cp-header-title {
+    min-width: 0 !important;
+    flex: 1 !important;
   }
   .cp-header-title h3 {
     font-size: 14px !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
   }
   .cp-header-title small {
-    font-size: 10.5px !important;
+    font-size: 11px !important;
+  }
+  /* Mobilde masaüstü A4 çıktı ve otomatik butonlarını gizle */
+  #cpAutoBtn, .cp-header button[onclick*="printWorksheet"] {
+    display: none !important;
   }
   .cp-stage {
     aspect-ratio: 16/9 !important;
+    width: 100% !important;
+    max-height: 52vh !important;
+    min-height: unset !important;
     border-radius: 10px !important;
-    min-height: 220px;
   }
   .cp-slide-img {
     object-fit: contain !important;
+    max-height: 52vh !important;
   }
-  /* Video üstü başlık ve ses barı telefonda ferah */
+  /* Adım hapları (Chapter pills) dokunmatik kaydırma */
+  .cp-steps-bar {
+    padding: 3px 0 !important;
+    gap: 6px !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch;
+    flex-wrap: nowrap !important;
+  }
+  .cp-step-pill {
+    padding: 5px 10px !important;
+    font-size: 11px !important;
+    flex-shrink: 0 !important;
+  }
+  /* Video üstü başlık ve ses barı */
   .cp-topic-bar {
     padding: 6px 8px !important;
     gap: 6px !important;
   }
   .cp-topic-badge {
-    font-size: 10px !important;
+    font-size: 10.5px !important;
     padding: 2px 6px !important;
   }
   .cp-topic-title {
-    font-size: 12px !important;
+    font-size: 12.5px !important;
   }
   .cp-speaker-badge {
-    font-size: 10px !important;
+    font-size: 10.5px !important;
     padding: 2px 6px !important;
   }
-  /* Altyazı vurgu kutusu telefonda temiz */
+  /* Altyazı kutusu telefonda ferah */
   .cp-caption-overlay {
     padding: 6px 10px !important;
     gap: 6px !important;
     border-radius: 8px !important;
   }
   .cp-caption-badge {
-    font-size: 9.5px !important;
+    font-size: 10px !important;
     padding: 2px 6px !important;
   }
   .cp-caption-text {
-    font-size: 11.5px !important;
-    line-height: 1.3 !important;
+    font-size: 12px !important;
+    line-height: 1.35 !important;
   }
+  /* Kontroller telefonda düzenli ve ferah */
   .cp-controls {
-    padding: 6px 8px !important;
-    gap: 4px !important;
+    padding: 8px !important;
+  }
+  .cp-ctrl-btns {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 6px !important;
+    width: 100% !important;
   }
   .cp-ctrl-btns button {
-    padding: 6px 10px !important;
-    font-size: 11.5px !important;
+    padding: 8px 10px !important;
+    font-size: 12px !important;
+    font-weight: 700 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+  #cpPauseBtn {
+    grid-column: span 2 !important;
+    padding: 10px !important;
+    font-size: 14px !important;
+    font-weight: 900 !important;
   }
 }
 
