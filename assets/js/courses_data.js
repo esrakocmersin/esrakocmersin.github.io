@@ -15054,6 +15054,7 @@ const CoursePlayer = (() => {
           <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap">
             <button class="btn sm ghost" onclick="CoursePlayer.toggleAutoAdvance()" id="cpAutoBtn" title="Anlatım bitince sonraki adıma otomatik geç" style="font-size:11px;color:${CP.autoAdvance ? '#86efac' : 'inherit'}">${CP.autoAdvance ? '⏩ Otomatik: Açık' : '⏸ Otomatik: Kapalı'}</button>
             <button class="btn sm ghost" onclick="CoursePlayer.toggleSpeed()" title="Oynatma Hızı" id="cpSpeedBtn">⚡ ${CP.speed}x</button>
+            <button class="btn sm ghost" onclick="CoursePlayer.toggleStageFullscreen()" id="cpFsBtn" title="Videoyu Tam Ekran Yap">⛶ Tam Ekran</button>
             <button class="btn sm ghost" onclick="CoursePlayer.printWorksheet('${lesson.id}')" title="Bu ünitenin 10 soruluk testini A4 çalışma kağıdı olarak yazdır">🖨️ Test Çıktısı</button>
             <button class="btn sm warn" onclick="CoursePlayer.startQuiz('${lesson.id}')" title="Testi Başlat">📝 10 Soruluk Test</button>
             <button class="btn sm ghost" onclick="closeModal()" title="Kapat">✕</button>
@@ -15061,12 +15062,15 @@ const CoursePlayer = (() => {
         </div>
 
         <!-- Sinematik 16:9 Video Sahnesi -->
-        <div class="cp-stage">
+        <div class="cp-stage" id="cpStage">
           <img class="cp-slide-img" src="${s.slide}" alt="${esc(s.title)}"/>
-          <span class="cp-step-badge">📌 ${esc(s.badge)}: ${esc(s.title)}</span>
+          <!-- Küçük ve sadece adım numarasını belirten sade rozet: resmin üstünü kapatmaz -->
+          <span class="cp-step-badge">📌 ${esc(s.badge ? s.badge.replace(/:.*$/, '') : ('Adım ' + (CP.step + 1)))}</span>
+          <!-- Video içi tek tıkla tam ekran yapma butonu -->
+          <button class="btn xs ghost" onclick="CoursePlayer.toggleStageFullscreen()" style="position:absolute;bottom:10px;right:10px;z-index:20;background:rgba(0,0,0,0.72);backdrop-filter:blur(4px);border:1px solid rgba(255,255,255,0.3);color:#fff;border-radius:6px;padding:3px 8px;font-size:11px" title="Tam Ekran">⛶ Tam Ekran</button>
           <div class="cp-speaker-badge" id="cpSpeakerPill">
             <span class="owl-icon">🦉</span>
-            <span>Bilge Baykuş Anlatıyor</span>
+            <span>Bilge Baykuş</span>
           </div>
           <div id="cpCaptionBox" class="cp-caption-overlay">
             <span class="cp-caption-badge">${esc(s.badge || 'Bilgi')}</span>
@@ -15389,7 +15393,44 @@ const CoursePlayer = (() => {
     `;
   }
 
+  function toggleStageFullscreen() {
+    const stage = document.getElementById('cpStage');
+    if (!stage) return;
+    
+    // Check if browser native fullscreen is available on the element
+    if (!document.fullscreenElement) {
+      if (stage.requestFullscreen) {
+        stage.requestFullscreen().catch(() => stage.classList.toggle('cp-stage-fullscreen'));
+      } else if (stage.webkitRequestFullscreen) {
+        stage.webkitRequestFullscreen();
+      } else {
+        stage.classList.toggle('cp-stage-fullscreen');
+      }
+    } else {
+      if (document.exitFullscreen) {
+        document.exitFullscreen().catch(() => {});
+      }
+      stage.classList.remove('cp-stage-fullscreen');
+    }
+  }
+
+  // Handle escape or fullscreenchange
+  if (typeof document !== 'undefined') {
+    document.addEventListener('fullscreenchange', () => {
+      const stage = document.getElementById('cpStage');
+      if (stage && !document.fullscreenElement) {
+        stage.classList.remove('cp-stage-fullscreen');
+        const fsBtn = document.getElementById('cpFsBtn');
+        if (fsBtn) fsBtn.innerHTML = '⛶ Tam Ekran';
+      } else if (stage && document.fullscreenElement) {
+        const fsBtn = document.getElementById('cpFsBtn');
+        if (fsBtn) fsBtn.innerHTML = '✕ Küçült';
+      }
+    });
+  }
+
   return {
+    toggleStageFullscreen,
     open,
     renderStep,
     nextStep,
