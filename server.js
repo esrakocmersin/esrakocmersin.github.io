@@ -149,7 +149,9 @@ const server = http.createServer((req, res) => {
         '.webp': 'image/webp',
         '.svg': 'image/svg+xml',
         '.mp3': 'audio/mpeg',
-        '.json': 'application/json; charset=utf-8'
+        '.json': 'application/json; charset=utf-8',
+        '.css': 'text/css; charset=utf-8',
+        '.js': 'application/javascript; charset=utf-8'
       };
       res.writeHead(200, {
         'Content-Type': mimes[ext] || 'application/octet-stream',
