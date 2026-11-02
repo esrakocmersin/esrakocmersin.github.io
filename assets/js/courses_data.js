@@ -11870,6 +11870,7 @@ const CoursePlayer = (() => {
     toggleAutoAdvance,
     printWorksheet,
     isActive: () => !!CP.unitId && $('#modal') && !$('#modal').classList.contains('hidden'),
+    isQuizActive: () => !!CP.quizActive,
     getAudio: () => CP.audio
   };
 })();

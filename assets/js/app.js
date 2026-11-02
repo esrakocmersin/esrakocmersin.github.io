@@ -479,7 +479,10 @@ function bumpStat(u,subject,ok){const s=u.stats[subject]||(u.stats[subject]={c:0
 /* ================= ÖĞRENCİ PANELİ ================= */
 function statsBar(u){return `<div class="statbar" id="statbar"><div class="chip">⭐ XP <b>${u.xp}</b></div><div class="chip">🎖️ Seviye <b>${level(u.xp)}</b></div><div class="chip">🪙 Altın <b>${u.gold}</b></div>${u.title?`<div class="chip">🏷️ ${esc(u.title)}</div>`:''}<div class="xpbar" title="Sonraki seviyeye: ${100-u.xp%100} XP"><i style="width:${u.xp%100}%"></i></div></div>`;}
 function studentView(u){
-  const T=['📚 MEB Dersleri','🧪 3D Laboratuvar','⏱️ Deneme Sınavı','📢 Ödevler & Duyurular','🏆 Liderlik & Market'];
+  const myClassAsgs = u && u.classId ? db.assignments.filter(a => a.classId === u.classId) : [];
+  const pendingCount = myClassAsgs.filter(a => !a.doneBy.includes(u.id)).length;
+  const asgTitle = pendingCount > 0 ? `📢 Ödevler (${pendingCount})` : '📢 Ödevler & Duyurular';
+  const T = ['📚 MEB Dersleri', '🧪 3D Laboratuvar', '⏱️ Deneme Sınavı', asgTitle, '🏆 Liderlik & Market'];
   return statsBar(u)+tabs('student',T)+`<div class="panel">${([coursesTab,labTab,examTab,asgTab,marketTab][ui.tab.student]||coursesTab)(u)}</div>`;
 }
 
@@ -2179,15 +2182,17 @@ function admReports(u){
 /* --- 3) Soru & Sınav Merkezi --- */
 function admQuestions(u){
   const filter=ui.admBankPool||'all',subFilter=ui.admBankSub||'all';
+  const qTxt=(ui.admBankQ||'').toLowerCase().trim();
   const pools=['exam'].concat(MODULES.map(m=>m.id));
   const qList=db.questions.filter(q=>{
     if(filter!=='all'&&q.pool!==filter)return false;
     if(subFilter!=='all'&&q.subject!==subFilter)return false;
+    if(qTxt&&!q.text.toLowerCase().includes(qTxt))return false;
     return true;
   });
   const recentResults=db.results.slice().reverse().slice(0,25);
 
-  return `<div class="card"><div class="row between" style="margin-top:0;flex-wrap:wrap;gap:8px"><h3>🧠 Soru Bankası Yönetimi (${qList.length} / ${db.questions.length})</h3><div class="row" style="margin:0;gap:8px;flex-wrap:wrap"><button class="btn sm" onclick="A.admAddQModal()">➕ Yeni Soru Ekle</button><select style="width:auto" onchange="A.admBankFilter(this.value)"><option value="all">Tüm Havuzlar</option>${pools.map(p=>`<option value="${p}" ${filter===p?'selected':''}>${poolName(p)}</option>`).join('')}</select><select style="width:auto" onchange="A.admSubFilter(this.value)"><option value="all">Tüm Dersler</option>${SUBJECTS.map(s=>`<option value="${s}" ${subFilter===s?'selected':''}>${s}</option>`).join('')}</select></div></div>
+  return `<div class="card"><div class="row between" style="margin-top:0;flex-wrap:wrap;gap:8px"><h3>🧠 Soru Bankası Yönetimi (${qList.length} / ${db.questions.length})</h3><div class="row" style="margin:0;gap:8px;flex-wrap:wrap"><input style="width:160px" placeholder="Soru metni ara..." value="${esc(ui.admBankQ||'')}" oninput="A.admBankSearch(this.value)"><button class="btn sm" onclick="A.admAddQModal()">➕ Yeni Soru Ekle</button><select style="width:auto" onchange="A.admBankFilter(this.value)"><option value="all">Tüm Havuzlar</option>${pools.map(p=>`<option value="${p}" ${filter===p?'selected':''}>${poolName(p)}</option>`).join('')}</select><select style="width:auto" onchange="A.admSubFilter(this.value)"><option value="all">Tüm Dersler</option>${SUBJECTS.map(s=>`<option value="${s}" ${subFilter===s?'selected':''}>${s}</option>`).join('')}</select></div></div>
   <div style="max-height:360px;overflow-y:auto;margin-top:10px">${qList.map(q=>`<div class="item" style="display:flex;justify-content:space-between;align-items:center;padding:10px;margin-bottom:6px"><div style="flex:1"><b>${esc(q.text)}</b><br><small class="muted">${poolName(q.pool)} • <b>${esc(q.subject)}</b> • Doğru: <b>${'ABCD'[q.answer]}) ${esc(q.options[q.answer])}</b> ${q.by?'• Ekleyen: '+esc(q.by):''}</small></div><button class="btn sm danger" title="Soruyu Sil" onclick="A.admDelQ('${q.id}')">🗑️ Sil</button></div>`).join('')||'<p class="muted center">Soru bulunamadı.</p>'}</div></div>
   <div class="card"><div class="row between" style="margin-top:0"><h3>🕒 Okul Genelinde Son Sınav Sonuçları (${db.results.length} toplam sınav)</h3><button class="btn sm ghost" onclick="A.exportResultsCSV()">📥 Sonuçları CSV İndir</button></div><div class="tablewrap" style="max-height:340px;overflow-y:auto"><table><thead><tr><th>Tarih</th><th>Öğrenci</th><th>Sınıf</th><th>Doğru</th><th>Yanlış</th><th>Boş</th><th>Net</th><th>Puan</th></tr></thead><tbody>${recentResults.map(r=>{
     const s=byId(r.studentId);
@@ -2195,6 +2200,7 @@ function admQuestions(u){
   }).join('')||'<tr><td colspan="8" class="muted center">Henüz deneme sınavı çözülmedi.</td></tr>'}</tbody></table></div></div>`;
 }
 
+A.admBankSearch=v=>{ui.admBankQ=v;render();};
 A.admBankFilter=v=>{ui.admBankPool=v;render();};
 A.admSubFilter=v=>{ui.admBankSub=v;render();};
 A.admDelQ=id=>{if(!confirm('Soru silinsin mi?'))return;db.questions=db.questions.filter(q=>q.id!==id);save();render();toast('🗑️ Soru silindi');};
@@ -2318,20 +2324,46 @@ A.calcAds=()=>{
   document.addEventListener('keydown', e => {
     if (e.target && ['INPUT', 'TEXTAREA', 'SELECT'].includes(e.target.tagName)) return;
     if (e.key === 'Escape') { closeModal(); return; }
+
+    // CoursePlayer Video & Test Kontrolleri
     if (window.CoursePlayer && CoursePlayer.isActive && CoursePlayer.isActive()) {
-      if (e.key === ' ' || e.code === 'Space') {
-        e.preventDefault();
-        CoursePlayer.togglePause();
-      } else if (e.key === 'ArrowRight') {
-        e.preventDefault();
-        CoursePlayer.nextStep();
-      } else if (e.key === 'ArrowLeft') {
-        e.preventDefault();
-        CoursePlayer.prevStep();
-      } else if (e.key === 'r' || e.key === 'R') {
-        e.preventDefault();
-        CoursePlayer.replayCurrentStep();
+      if (CoursePlayer.isQuizActive && CoursePlayer.isQuizActive()) {
+        const k = e.key.toLowerCase();
+        if (k === 'a' || k === '1') { CoursePlayer.pickAnswer(0); return; }
+        if (k === 'b' || k === '2') { CoursePlayer.pickAnswer(1); return; }
+        if (k === 'c' || k === '3') { CoursePlayer.pickAnswer(2); return; }
+        if (k === 'd' || k === '4') { CoursePlayer.pickAnswer(3); return; }
+        if (['enter', ' ', 'arrowright'].includes(k)) {
+          e.preventDefault();
+          CoursePlayer.nextQuizQ();
+          return;
+        }
+      } else {
+        if (e.key === ' ' || e.code === 'Space') {
+          e.preventDefault();
+          CoursePlayer.togglePause();
+        } else if (e.key === 'ArrowRight') {
+          e.preventDefault();
+          CoursePlayer.nextStep();
+        } else if (e.key === 'ArrowLeft') {
+          e.preventDefault();
+          CoursePlayer.prevStep();
+        } else if (e.key === 'r' || e.key === 'R') {
+          e.preventDefault();
+          CoursePlayer.replayCurrentStep();
+        }
       }
+    }
+
+    // Deneme Sınavı Klavye Kısayolları (A/B/C/D veya 1/2/3/4)
+    if (typeof exam !== 'undefined' && exam && exam.active) {
+      const k = e.key.toLowerCase();
+      if (k === 'a' || k === '1') { A.examPick(0); return; }
+      if (k === 'b' || k === '2') { A.examPick(1); return; }
+      if (k === 'c' || k === '3') { A.examPick(2); return; }
+      if (k === 'd' || k === '4') { A.examPick(3); return; }
+      if (e.key === 'ArrowRight') { e.preventDefault(); A.examNav(1); return; }
+      if (e.key === 'ArrowLeft') { e.preventDefault(); A.examNav(-1); return; }
     }
   });
   $('#modal').addEventListener('click',e=>{if(e.target.id==='modal')closeModal();});
