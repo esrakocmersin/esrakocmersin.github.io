@@ -1,0 +1,154 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 480" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgG" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#090d16"/>
+      <stop offset="100%" stop-color="#1e1b4b"/>
+    </linearGradient>
+    <filter id="dropSh" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000" flood-opacity="0.45"/>
+    </filter>
+  </defs>
+
+  <rect width="800" height="480" rx="20" fill="url(#bgG)" stroke="#334155" stroke-width="2"/>
+
+  <!-- Başlık -->
+  <g transform="translate(40, 24)">
+    <rect width="720" height="52" rx="14" fill="#1e293b" stroke="#475569" stroke-width="1.5"/>
+    <text x="24" y="33" font-family="'Segoe UI', Roboto, sans-serif" font-size="16" font-weight="800" fill="#f8fafc">
+      🎨 GÖRSEL OKUMA VE SÖZ SANATLARI
+    </text>
+    <rect x="520" y="11" width="180" height="30" rx="8" fill="#ec4899" filter="url(#dropSh)"/>
+    <text x="610" y="31" font-family="'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="800" fill="#ffffff" text-anchor="middle">
+      Anlatım Gücü
+    </text>
+  </g>
+
+  <!-- 3 Sütun Düzeni -->
+  <g transform="translate(40, 95)">
+    <!-- Sütun 1 -->
+    <g transform="translate(0, 0)">
+      <rect width="228" height="325" rx="14" fill="#1e293b" stroke="#3b82f6" stroke-width="1.5" filter="url(#dropSh)"/>
+      <rect x="10" y="10" width="208" height="38" rx="8" fill="#1d4ed8"/>
+      <text x="114" y="34" font-family="'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="800" fill="#ffffff" text-anchor="middle">GÖRSEL VE GRAFİK OKUMA</text>
+      <g transform="translate(14, 60)">
+        
+          <g transform="translate(0, 0)">
+            <rect width="200" height="42" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+            <text x="10" y="18" font-family="'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#93c5fd">Görsel Yorumlama</text>
+            <text x="10" y="32" font-family="'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#cbd5e1">Resim, fotoğraf ve karikatür mesajını anlama.</text>
+          </g>
+        
+          <g transform="translate(0, 50)">
+            <rect width="200" height="42" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+            <text x="10" y="18" font-family="'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#93c5fd">Grafik ve Tablo</text>
+            <text x="10" y="32" font-family="'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#cbd5e1">Verileri karşılaştırarak doğru sonuca ulaşma.</text>
+          </g>
+        
+          <g transform="translate(0, 100)">
+            <rect width="200" height="42" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+            <text x="10" y="18" font-family="'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#93c5fd">Trafik & Güvenlik İşaretleri</text>
+            <text x="10" y="32" font-family="'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#cbd5e1">Sembollerin taşıdığı uyarı ve bilgileri okuma.</text>
+          </g>
+        
+          <g transform="translate(0, 150)">
+            <rect width="200" height="42" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+            <text x="10" y="18" font-family="'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#93c5fd">Kroki ve Planlar</text>
+            <text x="10" y="32" font-family="'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#cbd5e1">Kuş bakışı çizimlerle yön ve yer bulma.</text>
+          </g>
+        
+          <g transform="translate(0, 200)">
+            <rect width="200" height="42" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+            <text x="10" y="18" font-family="'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#93c5fd">Beden Dili</text>
+            <text x="10" y="32" font-family="'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#cbd5e1">Karakterin yüz ifadesinden duygusunu sezme.</text>
+          </g>
+        
+      </g>
+    </g>
+
+    <!-- Sütun 2 -->
+    <g transform="translate(246, 0)">
+      <rect width="228" height="325" rx="14" fill="#1e293b" stroke="#10b981" stroke-width="1.5" filter="url(#dropSh)"/>
+      <rect x="10" y="10" width="208" height="38" rx="8" fill="#047857"/>
+      <text x="114" y="34" font-family="'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="800" fill="#ffffff" text-anchor="middle">BENZETME (TEŞBİH)</text>
+      <g transform="translate(14, 60)">
+        
+          <g transform="translate(0, 0)">
+            <rect width="200" height="42" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+            <text x="10" y="18" font-family="'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#86efac">Nitelikçe Üstün Olana Yakınlık</text>
+            <text x="10" y="32" font-family="'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#cbd5e1">Zayıf olanı güçlü olana benzetme sanatı.</text>
+          </g>
+        
+          <g transform="translate(0, 50)">
+            <rect width="200" height="42" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+            <text x="10" y="18" font-family="'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#86efac">Benzetme Edatı: "Gibi"</text>
+            <text x="10" y="32" font-family="'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#cbd5e1">"Aslan gibi güçlü", "Pamuk gibi yumuşak".</text>
+          </g>
+        
+          <g transform="translate(0, 100)">
+            <rect width="200" height="42" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+            <text x="10" y="18" font-family="'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#86efac">Dört Unsur</text>
+            <text x="10" y="32" font-family="'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#cbd5e1">Benzeyen, benzetilen, benzetme yönü ve edatı.</text>
+          </g>
+        
+          <g transform="translate(0, 150)">
+            <rect width="200" height="42" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+            <text x="10" y="18" font-family="'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#86efac">Anlatımı Güçlendirir</text>
+            <text x="10" y="32" font-family="'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#cbd5e1">Cümleye canlılık ve hayal gücü katar.</text>
+          </g>
+        
+          <g transform="translate(0, 200)">
+            <rect width="200" height="42" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+            <text x="10" y="18" font-family="'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#86efac">Örnek: "İnci gibi dişler"</text>
+            <text x="10" y="32" font-family="'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#cbd5e1">Dişlerin beyazlığı ve parlaklığı vurgulanır.</text>
+          </g>
+        
+      </g>
+    </g>
+
+    <!-- Sütun 3 -->
+    <g transform="translate(492, 0)">
+      <rect width="228" height="325" rx="14" fill="#1e293b" stroke="#f59e0b" stroke-width="1.5" filter="url(#dropSh)"/>
+      <rect x="10" y="10" width="208" height="38" rx="8" fill="#b45309"/>
+      <text x="114" y="34" font-family="'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="800" fill="#ffffff" text-anchor="middle">KİŞİLEŞTİRME VE BETİMLEME</text>
+      <g transform="translate(14, 60)">
+        
+          <g transform="translate(0, 0)">
+            <rect width="200" height="42" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+            <text x="10" y="18" font-family="'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#fde047">Kişileştirme (Teşhis)</text>
+            <text x="10" y="32" font-family="'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#cbd5e1">İnsana ait özellikleri cansız varlıklara verme.</text>
+          </g>
+        
+          <g transform="translate(0, 50)">
+            <rect width="200" height="42" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+            <text x="10" y="18" font-family="'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#fde047">Örnek: "Rüzgâr fısıldadı"</text>
+            <text x="10" y="32" font-family="'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#cbd5e1">Rüzgâr insan gibi konuşur / fısıldar.</text>
+          </g>
+        
+          <g transform="translate(0, 100)">
+            <rect width="200" height="42" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+            <text x="10" y="18" font-family="'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#fde047">Örnek: "Güneş gülümsedi"</text>
+            <text x="10" y="32" font-family="'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#cbd5e1">Güneşe gülme özelliği kazandırıldı.</text>
+          </g>
+        
+          <g transform="translate(0, 150)">
+            <rect width="200" height="42" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+            <text x="10" y="18" font-family="'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#fde047">Betimleme (Tasvir)</text>
+            <text x="10" y="32" font-family="'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#cbd5e1">Kelimelerle resim çizme sanatıdır.</text>
+          </g>
+        
+          <g transform="translate(0, 200)">
+            <rect width="200" height="42" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+            <text x="10" y="18" font-family="'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#fde047">Duyu Organları</text>
+            <text x="10" y="32" font-family="'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#cbd5e1">Renk, biçim, koku ve ses ayrıntılarıyla anlatım.</text>
+          </g>
+        
+      </g>
+    </g>
+
+    <!-- İpucu Çubuğu -->
+    <rect x="0" y="338" width="720" height="26" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+    <text x="360" y="355" font-family="'Segoe UI', Roboto, sans-serif" font-size="11.5" font-weight="700" fill="#facc15" text-anchor="middle">
+      💡 Cansız bir varlık insan gibi konuşuyor, ağlıyor veya gülüyorsa orada Kişileştirme sanatı vardır!
+    </text>
+  </g>
+</svg>

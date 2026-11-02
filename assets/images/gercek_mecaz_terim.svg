@@ -1,0 +1,170 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 480" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b0f19"/>
+      <stop offset="100%" stop-color="#1e1b4b"/>
+    </linearGradient>
+    <linearGradient id="gercekGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#10b981"/>
+      <stop offset="100%" stop-color="#059669"/>
+    </linearGradient>
+    <linearGradient id="mecazGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f97316"/>
+      <stop offset="100%" stop-color="#ea580c"/>
+    </linearGradient>
+    <linearGradient id="terimGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#8b5cf6"/>
+      <stop offset="100%" stop-color="#6d28d9"/>
+    </linearGradient>
+    <filter id="shadow3" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000" flood-opacity="0.45"/>
+    </filter>
+  </defs>
+
+  <!-- Arka Plan -->
+  <rect width="800" height="480" rx="20" fill="url(#bgGrad3)" stroke="#334155" stroke-width="2"/>
+
+  <!-- Üst Başlık -->
+  <g transform="translate(40, 24)">
+    <rect width="720" height="52" rx="14" fill="#1e293b" stroke="#475569" stroke-width="1.5"/>
+    <text x="24" y="33" font-family="'Segoe UI', Roboto, sans-serif" font-size="19" font-weight="800" fill="#f8fafc">
+      🔍 SÖZCÜKTE ANLAM: GERÇEK, MECAZ VE TERİM ANLAM
+    </text>
+    <rect x="560" y="11" width="145" height="30" rx="8" fill="#6366f1" filter="url(#shadow3)"/>
+    <text x="632" y="31" font-family="'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="800" fill="#ffffff" text-anchor="middle">
+      3 Anlam Türü
+    </text>
+  </g>
+
+  <!-- SÜTUN 1: Gerçek Anlam -->
+  <g transform="translate(40, 95)">
+    <rect width="228" height="360" rx="16" fill="#064e3b" stroke="#10b981" stroke-width="2" filter="url(#shadow3)"/>
+    
+    <!-- Başlık -->
+    <rect x="12" y="12" width="204" height="42" rx="10" fill="url(#gercekGrad)"/>
+    <text x="114" y="38" font-family="'Segoe UI', Roboto, sans-serif" font-size="15" font-weight="900" fill="#ffffff" text-anchor="middle">
+      🌱 GERÇEK ANLAM
+    </text>
+
+    <!-- Tanım -->
+    <rect x="12" y="62" width="204" height="64" rx="8" fill="#022c22"/>
+    <text x="114" y="82" font-family="'Segoe UI', Roboto, sans-serif" font-size="11.5" font-weight="700" fill="#a7f3d0" text-anchor="middle">
+      Sözlükteki İLK ve ASIL anlamdır.
+    </text>
+    <text x="114" y="100" font-family="'Segoe UI', Roboto, sans-serif" font-size="10.5" fill="#6ee7b7" text-anchor="middle">
+      Akla ilk gelen somut durumdur.
+    </text>
+    <text x="114" y="116" font-family="'Segoe UI', Roboto, sans-serif" font-size="10" fill="#34d399" text-anchor="middle">
+      (Herkes aynı şeyi anlar)
+    </text>
+
+    <!-- Örnek Kutuları -->
+    <g transform="translate(12, 134)">
+      <!-- Örnek 1 -->
+      <rect x="0" y="0" width="204" height="66" rx="8" fill="#042f2e" stroke="#14b8a6" stroke-width="1"/>
+      <text x="10" y="20" font-family="'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="800" fill="#5eead4">🍦 Dondurma eridi.</text>
+      <text x="10" y="38" font-family="'Segoe UI', Roboto, sans-serif" font-size="10" fill="#99f6e4">Sıcakta sıvı hale geldi</text>
+      <text x="10" y="54" font-family="'Segoe UI', Roboto, sans-serif" font-size="9" fill="#2dd4bf">➜ Fiziksel erime (Gerçek)</text>
+
+      <!-- Örnek 2 -->
+      <rect x="0" y="74" width="204" height="66" rx="8" fill="#042f2e" stroke="#14b8a6" stroke-width="1"/>
+      <text x="10" y="94" font-family="'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="800" fill="#5eead4">📦 Taş çok ağırdı.</text>
+      <text x="10" y="112" font-family="'Segoe UI', Roboto, sans-serif" font-size="10" fill="#99f6e4">Kütlesi ve kilosu fazla</text>
+      <text x="10" y="128" font-family="'Segoe UI', Roboto, sans-serif" font-size="9" fill="#2dd4bf">➜ Tartılabilen ağırlık (Gerçek)</text>
+
+      <!-- Örnek 3 -->
+      <rect x="0" y="148" width="204" height="66" rx="8" fill="#042f2e" stroke="#14b8a6" stroke-width="1"/>
+      <text x="10" y="168" font-family="'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="800" fill="#5eead4">❄️ Hava çok soğuk.</text>
+      <text x="10" y="186" font-family="'Segoe UI', Roboto, sans-serif" font-size="10" fill="#99f6e4">Düşük sıcaklık, üşüten hava</text>
+      <text x="10" y="202" font-family="'Segoe UI', Roboto, sans-serif" font-size="9" fill="#2dd4bf">➜ Termometre değeri (Gerçek)</text>
+    </g>
+  </g>
+
+  <!-- SÜTUN 2: Mecaz Anlam -->
+  <g transform="translate(286, 95)">
+    <rect width="228" height="360" rx="16" fill="#431407" stroke="#f97316" stroke-width="2" filter="url(#shadow3)"/>
+    
+    <!-- Başlık -->
+    <rect x="12" y="12" width="204" height="42" rx="10" fill="url(#mecazGrad)"/>
+    <text x="114" y="38" font-family="'Segoe UI', Roboto, sans-serif" font-size="15" font-weight="900" fill="#ffffff" text-anchor="middle">
+      🎭 MECAZ ANLAM
+    </text>
+
+    <!-- Tanım -->
+    <rect x="12" y="62" width="204" height="64" rx="8" fill="#270e05"/>
+    <text x="114" y="82" font-family="'Segoe UI', Roboto, sans-serif" font-size="11.5" font-weight="700" fill="#fed7aa" text-anchor="middle">
+      Gerçek anlamından UZAKLAŞIR.
+    </text>
+    <text x="114" y="100" font-family="'Segoe UI', Roboto, sans-serif" font-size="10.5" fill="#fdba74" text-anchor="middle">
+      Kazanılan yeni, SOYUT anlamdır.
+    </text>
+    <text x="114" y="116" font-family="'Segoe UI', Roboto, sans-serif" font-size="10" fill="#fb923c" text-anchor="middle">
+      (Hayal gücü ve benzetme vardır)
+    </text>
+
+    <!-- Örnek Kutuları -->
+    <g transform="translate(12, 134)">
+      <!-- Örnek 1 -->
+      <rect x="0" y="0" width="204" height="66" rx="8" fill="#311309" stroke="#ea580c" stroke-width="1"/>
+      <text x="10" y="20" font-family="'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="800" fill="#fed7aa">😳 Utancından eridi.</text>
+      <text x="10" y="38" font-family="'Segoe UI', Roboto, sans-serif" font-size="10" fill="#fdba74">Çok utandı, mahcup oldu</text>
+      <text x="10" y="54" font-family="'Segoe UI', Roboto, sans-serif" font-size="9" fill="#f97316">➜ Sıvılaşmadı (Mecaz)</text>
+
+      <!-- Örnek 2 -->
+      <rect x="0" y="74" width="204" height="66" rx="8" fill="#311309" stroke="#ea580c" stroke-width="1"/>
+      <text x="10" y="94" font-family="'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="800" fill="#fed7aa">💔 Ağır sözler söyledi.</text>
+      <text x="10" y="112" font-family="'Segoe UI', Roboto, sans-serif" font-size="10" fill="#fdba74">Kalp kırıcı, incitici sözler</text>
+      <text x="10" y="128" font-family="'Segoe UI', Roboto, sans-serif" font-size="9" fill="#f97316">➜ Kilosu yok (Mecaz)</text>
+
+      <!-- Örnek 3 -->
+      <rect x="0" y="148" width="204" height="66" rx="8" fill="#311309" stroke="#ea580c" stroke-width="1"/>
+      <text x="10" y="168" font-family="'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="800" fill="#fed7aa">🧊 Soğuk davrandı.</text>
+      <text x="10" y="186" font-family="'Segoe UI', Roboto, sans-serif" font-size="10" fill="#fdba74">İlgisiz, sevgisiz davrandı</text>
+      <text x="10" y="202" font-family="'Segoe UI', Roboto, sans-serif" font-size="9" fill="#f97316">➜ Isıyla ilgisiz (Mecaz)</text>
+    </g>
+  </g>
+
+  <!-- SÜTUN 3: Terim Anlam -->
+  <g transform="translate(532, 95)">
+    <rect width="228" height="360" rx="16" fill="#2e1065" stroke="#8b5cf6" stroke-width="2" filter="url(#shadow3)"/>
+    
+    <!-- Başlık -->
+    <rect x="12" y="12" width="204" height="42" rx="10" fill="url(#terimGrad)"/>
+    <text x="114" y="38" font-family="'Segoe UI', Roboto, sans-serif" font-size="15" font-weight="900" fill="#ffffff" text-anchor="middle">
+      🎯 TERİM ANLAM
+    </text>
+
+    <!-- Tanım -->
+    <rect x="12" y="62" width="204" height="64" rx="8" fill="#1e0a45"/>
+    <text x="114" y="82" font-family="'Segoe UI', Roboto, sans-serif" font-size="11.5" font-weight="700" fill="#ddd6fe" text-anchor="middle">
+      BİLİM, SANAT, SPOR veya
+    </text>
+    <text x="114" y="100" font-family="'Segoe UI', Roboto, sans-serif" font-size="10.5" fill="#c4b5fd" text-anchor="middle">
+      meslek alanına ait özel kavramdır.
+    </text>
+    <text x="114" y="116" font-family="'Segoe UI', Roboto, sans-serif" font-size="10" fill="#a78bfa" text-anchor="middle">
+      (O alanın özel şifresidir)
+    </text>
+
+    <!-- Örnek Kutuları -->
+    <g transform="translate(12, 134)">
+      <!-- Matematik -->
+      <rect x="0" y="0" width="204" height="66" rx="8" fill="#1e1045" stroke="#7c3aed" stroke-width="1"/>
+      <text x="10" y="20" font-family="'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="800" fill="#c4b5fd">📐 Matematik Terimleri</text>
+      <text x="10" y="38" font-family="'Segoe UI', Roboto, sans-serif" font-size="10" fill="#ddd6fe">Üçgen, açı, kesir, doğru</text>
+      <text x="10" y="54" font-family="'Segoe UI', Roboto, sans-serif" font-size="9" fill="#a78bfa">➜ "Üçgenin iç açıları"</text>
+
+      <!-- Spor -->
+      <rect x="0" y="74" width="204" height="66" rx="8" fill="#1e1045" stroke="#7c3aed" stroke-width="1"/>
+      <text x="10" y="94" font-family="'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="800" fill="#c4b5fd">⚽ Spor Terimleri</text>
+      <text x="10" y="112" font-family="'Segoe UI', Roboto, sans-serif" font-size="10" fill="#ddd6fe">Penaltı, ofsayt, korner, smaç</text>
+      <text x="10" y="128" font-family="'Segoe UI', Roboto, sans-serif" font-size="9" fill="#a78bfa">➜ "Hakem penaltı verdi"</text>
+
+      <!-- Tiyatro/Müzik -->
+      <rect x="0" y="148" width="204" height="66" rx="8" fill="#1e1045" stroke="#7c3aed" stroke-width="1"/>
+      <text x="10" y="168" font-family="'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="800" fill="#c4b5fd">🎭 Tiyatro & Müzik</text>
+      <text x="10" y="186" font-family="'Segoe UI', Roboto, sans-serif" font-size="10" fill="#ddd6fe">Perde, sahne, nota, kostüm</text>
+      <text x="10" y="202" font-family="'Segoe UI', Roboto, sans-serif" font-size="9" fill="#a78bfa">➜ "Oyunun ikinci perdesi"</text>
+    </g>
+  </g>
+</svg>

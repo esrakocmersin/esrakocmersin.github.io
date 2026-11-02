@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 460" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgP" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0c1626"/>
+      <stop offset="100%" stop-color="#1e2c42"/>
+    </linearGradient>
+  </defs>
+  <rect width="760" height="460" fill="url(#bgP)" rx="16"/>
+  
+  <text x="380" y="36" fill="#ffd54f" font-family="'Segoe UI', Roboto, sans-serif" font-size="22" font-weight="bold" text-anchor="middle">Pusula Gülü ve Doğada Yön Bulma Yöntemleri</text>
+  <text x="380" y="58" fill="#90caf9" font-family="'Segoe UI', Roboto, sans-serif" font-size="13" text-anchor="middle">Ana Yönler: KUZEY · GÜNEY · DOĞU · BATI | Pusula İğnesi Her Zaman KUZEYİ Gösterir</text>
+
+  <!-- SOL: PUSULA GÜLÜ -->
+  <g transform="translate(210, 250)">
+    <circle cx="0" cy="0" r="140" fill="rgba(15,23,42,0.8)" stroke="#ffd54f" stroke-width="3"/>
+    <circle cx="0" cy="0" r="125" fill="none" stroke="#475569" stroke-width="1.5" stroke-dasharray="2,4"/>
+    
+    <!-- 8 Yön Çizgileri -->
+    <!-- Ara Yönler İğneleri -->
+    <g fill="#64748b" stroke="#334155">
+      <polygon points="0,0 -12,-85 0,-95"/>
+      <polygon points="0,0 12,-85 0,-95" fill="#94a3b8"/>
+      <polygon points="0,0 -85,-12 -95,0"/>
+      <polygon points="0,0 -85,12 -95,0" fill="#94a3b8"/>
+      <polygon points="0,0 85,-12 95,0"/>
+      <polygon points="0,0 85,12 95,0" fill="#94a3b8"/>
+      <polygon points="0,0 -12,85 0,95"/>
+      <polygon points="0,0 12,85 0,95" fill="#94a3b8"/>
+    </g>
+
+    <!-- Ana Yön İğneleri: KUZEY (Kırmızı) -->
+    <polygon points="0,0 -18,-10 0,-128" fill="#dc2626"/>
+    <polygon points="0,0 18,-10 0,-128" fill="#ef4444"/>
+    <!-- GÜNEY (Beyaz) -->
+    <polygon points="0,0 -18,10 0,128" fill="#cbd5e1"/>
+    <polygon points="0,0 18,10 0,128" fill="#f8fafc"/>
+    <!-- DOĞU & BATI -->
+    <polygon points="0,0 -10,-18 128,0" fill="#e2e8f0"/>
+    <polygon points="0,0 -10,18 128,0" fill="#94a3b8"/>
+    <polygon points="0,0 10,-18 -128,0" fill="#94a3b8"/>
+    <polygon points="0,0 10,18 -128,0" fill="#e2e8f0"/>
+
+    <!-- Yön Harfleri -->
+    <text x="0" y="-145" fill="#ef4444" font-size="20" font-weight="bold" text-anchor="middle">K (Kuzey)</text>
+    <text x="0" y="165" fill="#e2e8f0" font-size="18" font-weight="bold" text-anchor="middle">G (Güney)</text>
+    <text x="165" y="7" fill="#e2e8f0" font-size="18" font-weight="bold">D (Doğu)</text>
+    <text x="-165" y="7" fill="#e2e8f0" font-size="18" font-weight="bold" text-anchor="end">B (Batı)</text>
+
+    <!-- Ara Yön Harfleri -->
+    <text x="85" y="-85" fill="#facc15" font-size="13" font-weight="bold">KD</text>
+    <text x="85" y="95" fill="#facc15" font-size="13" font-weight="bold">GD</text>
+    <text x="-85" y="95" fill="#facc15" font-size="13" font-weight="bold" text-anchor="end">GB</text>
+    <text x="-85" y="-85" fill="#facc15" font-size="13" font-weight="bold" text-anchor="end">KB</text>
+
+    <circle cx="0" cy="0" r="14" fill="#ffd54f" stroke="#000" stroke-width="2"/>
+  </g>
+
+  <!-- SAĞ: DOĞAL YÖN BULMA YÖNTEMLERİ KARTI -->
+  <g transform="translate(430, 85)">
+    <rect x="0" y="0" width="300" height="340" rx="12" fill="rgba(15,23,42,0.85)" stroke="#38bdf8" stroke-width="1.5"/>
+    <text x="150" y="30" fill="#38bdf8" font-size="16" font-weight="bold" text-anchor="middle">🌲 Doğada Yön Bulma Yöntemleri</text>
+    
+    <!-- Madde 1: Kutup Yıldızı -->
+    <g transform="translate(20, 55)">
+      <text x="0" y="16" font-size="20">⭐</text>
+      <text x="35" y="14" fill="#ffd54f" font-size="13" font-weight="bold">Kutup Yıldızı (Demirkazık)</text>
+      <text x="35" y="30" fill="#cbd5e1" font-size="11">Daima tam KUZEY yönünü gösterir.</text>
+    </g>
+
+    <!-- Madde 2: Ağaç Yosunları -->
+    <g transform="translate(20, 115)">
+      <text x="0" y="16" font-size="20">🌳</text>
+      <text x="35" y="14" fill="#4ade80" font-size="13" font-weight="bold">Ağaç ve Taş Yosunları</text>
+      <text x="35" y="30" fill="#cbd5e1" font-size="11">Güneş almayan KUZEY yüzlerinde büyür.</text>
+    </g>
+
+    <!-- Madde 3: Karınca Yuvaları -->
+    <g transform="translate(20, 175)">
+      <text x="0" y="16" font-size="20">🐜</text>
+      <text x="35" y="14" fill="#fb923c" font-size="13" font-weight="bold">Karınca Yuvaları</text>
+      <text x="35" y="30" fill="#cbd5e1" font-size="11">Toprak yığını KUZEYİ, ağzı GÜNEYİ gösterir.</text>
+    </g>
+
+    <!-- Madde 4: Güneş Yöntemi -->
+    <g transform="translate(20, 235)">
+      <text x="0" y="16" font-size="20">☀️</text>
+      <text x="35" y="14" fill="#facc15" font-size="13" font-weight="bold">Güneş ve Gölge</text>
+      <text x="35" y="30" fill="#cbd5e1" font-size="11">Doğudan doğar, batıdan batar. Öğle vakti</text>
+      <text x="35" y="45" fill="#cbd5e1" font-size="11">gölgeler en kısadır ve KUZEYİ gösterir.</text>
+    </g>
+  </g>
+</svg>

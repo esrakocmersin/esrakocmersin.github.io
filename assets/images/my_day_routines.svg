@@ -1,0 +1,154 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 480" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgG" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#090d16"/>
+      <stop offset="100%" stop-color="#1e1b4b"/>
+    </linearGradient>
+    <filter id="dropSh" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000" flood-opacity="0.45"/>
+    </filter>
+  </defs>
+
+  <rect width="800" height="480" rx="20" fill="url(#bgG)" stroke="#334155" stroke-width="2"/>
+
+  <!-- Başlık -->
+  <g transform="translate(40, 24)">
+    <rect width="720" height="52" rx="14" fill="#1e293b" stroke="#475569" stroke-width="1.5"/>
+    <text x="24" y="33" font-family="'Segoe UI', Roboto, sans-serif" font-size="16" font-weight="800" fill="#f8fafc">
+      ⏰ MY DAY AND TELLING THE TIME (GÜNÜM VE SAATLER)
+    </text>
+    <rect x="520" y="11" width="180" height="30" rx="8" fill="#06b6d4" filter="url(#dropSh)"/>
+    <text x="610" y="31" font-family="'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="800" fill="#ffffff" text-anchor="middle">
+      Unit 5: My Day
+    </text>
+  </g>
+
+  <!-- 3 Sütun Düzeni -->
+  <g transform="translate(40, 95)">
+    <!-- Sütun 1 -->
+    <g transform="translate(0, 0)">
+      <rect width="228" height="325" rx="14" fill="#1e293b" stroke="#3b82f6" stroke-width="1.5" filter="url(#dropSh)"/>
+      <rect x="10" y="10" width="208" height="38" rx="8" fill="#1d4ed8"/>
+      <text x="114" y="34" font-family="'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="800" fill="#ffffff" text-anchor="middle">DAILY ROUTINES (GÜNLÜK İŞLER)</text>
+      <g transform="translate(14, 60)">
+        
+          <g transform="translate(0, 0)">
+            <rect width="200" height="42" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+            <text x="10" y="18" font-family="'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#93c5fd">Wake up / Get up</text>
+            <text x="10" y="32" font-family="'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#cbd5e1">Uyanmak / Yataktan kalkmak.</text>
+          </g>
+        
+          <g transform="translate(0, 50)">
+            <rect width="200" height="42" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+            <text x="10" y="18" font-family="'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#93c5fd">Wash face and hands</text>
+            <text x="10" y="32" font-family="'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#cbd5e1">Elini ve yüzünü yıkamak.</text>
+          </g>
+        
+          <g transform="translate(0, 100)">
+            <rect width="200" height="42" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+            <text x="10" y="18" font-family="'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#93c5fd">Brush teeth</text>
+            <text x="10" y="32" font-family="'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#cbd5e1">Dişlerini fırçalamak.</text>
+          </g>
+        
+          <g transform="translate(0, 150)">
+            <rect width="200" height="42" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+            <text x="10" y="18" font-family="'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#93c5fd">Have breakfast</text>
+            <text x="10" y="32" font-family="'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#cbd5e1">Kahvaltı yapmak.</text>
+          </g>
+        
+          <g transform="translate(0, 200)">
+            <rect width="200" height="42" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+            <text x="10" y="18" font-family="'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#93c5fd">Get dressed</text>
+            <text x="10" y="32" font-family="'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#cbd5e1">Okul kıyafetlerini giymek.</text>
+          </g>
+        
+      </g>
+    </g>
+
+    <!-- Sütun 2 -->
+    <g transform="translate(246, 0)">
+      <rect width="228" height="325" rx="14" fill="#1e293b" stroke="#10b981" stroke-width="1.5" filter="url(#dropSh)"/>
+      <rect x="10" y="10" width="208" height="38" rx="8" fill="#047857"/>
+      <text x="114" y="34" font-family="'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="800" fill="#ffffff" text-anchor="middle">AFTERNOON & EVENING</text>
+      <g transform="translate(14, 60)">
+        
+          <g transform="translate(0, 0)">
+            <rect width="200" height="42" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+            <text x="10" y="18" font-family="'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#86efac">Go to school</text>
+            <text x="10" y="32" font-family="'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#cbd5e1">Okula gitmek (servisle/yürüyerek).</text>
+          </g>
+        
+          <g transform="translate(0, 50)">
+            <rect width="200" height="42" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+            <text x="10" y="18" font-family="'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#86efac">Have lunch</text>
+            <text x="10" y="32" font-family="'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#cbd5e1">Öğle yemeği yemek.</text>
+          </g>
+        
+          <g transform="translate(0, 100)">
+            <rect width="200" height="42" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+            <text x="10" y="18" font-family="'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#86efac">Come back home</text>
+            <text x="10" y="32" font-family="'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#cbd5e1">Eve geri dönmek.</text>
+          </g>
+        
+          <g transform="translate(0, 150)">
+            <rect width="200" height="42" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+            <text x="10" y="18" font-family="'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#86efac">Do homework</text>
+            <text x="10" y="32" font-family="'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#cbd5e1">Ev ödevlerini yapmak.</text>
+          </g>
+        
+          <g transform="translate(0, 200)">
+            <rect width="200" height="42" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+            <text x="10" y="18" font-family="'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#86efac">Go to bed / Sleep</text>
+            <text x="10" y="32" font-family="'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#cbd5e1">Yatağa gitmek ve uyumak.</text>
+          </g>
+        
+      </g>
+    </g>
+
+    <!-- Sütun 3 -->
+    <g transform="translate(492, 0)">
+      <rect width="228" height="325" rx="14" fill="#1e293b" stroke="#f59e0b" stroke-width="1.5" filter="url(#dropSh)"/>
+      <rect x="10" y="10" width="208" height="38" rx="8" fill="#b45309"/>
+      <text x="114" y="34" font-family="'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="800" fill="#ffffff" text-anchor="middle">TELLING THE TIME (SAATLER)</text>
+      <g transform="translate(14, 60)">
+        
+          <g transform="translate(0, 0)">
+            <rect width="200" height="42" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+            <text x="10" y="18" font-family="'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#fde047">"What time is it?"</text>
+            <text x="10" y="32" font-family="'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#cbd5e1">Saat kaç? ➜ "It is eight o'clock." (08.00)</text>
+          </g>
+        
+          <g transform="translate(0, 50)">
+            <rect width="200" height="42" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+            <text x="10" y="18" font-family="'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#fde047">Half past</text>
+            <text x="10" y="32" font-family="'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#cbd5e1">Buçuk: "It is half past two." (02.30)</text>
+          </g>
+        
+          <g transform="translate(0, 100)">
+            <rect width="200" height="42" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+            <text x="10" y="18" font-family="'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#fde047">Quarter past</text>
+            <text x="10" y="32" font-family="'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#cbd5e1">Çeyrek geçe: "It is quarter past four." (04.15)</text>
+          </g>
+        
+          <g transform="translate(0, 150)">
+            <rect width="200" height="42" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+            <text x="10" y="18" font-family="'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#fde047">Quarter to</text>
+            <text x="10" y="32" font-family="'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#cbd5e1">Çeyrek kala: "It is quarter to five." (04.45)</text>
+          </g>
+        
+          <g transform="translate(0, 200)">
+            <rect width="200" height="42" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+            <text x="10" y="18" font-family="'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#fde047">At 7:00 AM</text>
+            <text x="10" y="32" font-family="'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#cbd5e1">Saatlerden önce daima "at" edatı kullanılır.</text>
+          </g>
+        
+      </g>
+    </g>
+
+    <!-- İpucu Çubuğu -->
+    <rect x="0" y="338" width="720" height="26" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+    <text x="360" y="355" font-family="'Segoe UI', Roboto, sans-serif" font-size="11.5" font-weight="700" fill="#facc15" text-anchor="middle">
+      💡 Saat tam ise "o'clock", buçuk ise "half past", saat bildiren zamanlarda "at" kullanılır: "at 8 o'clock".
+    </text>
+  </g>
+</svg>

@@ -1,0 +1,154 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 480" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgG" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#090d16"/>
+      <stop offset="100%" stop-color="#1e1b4b"/>
+    </linearGradient>
+    <filter id="dropSh" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000" flood-opacity="0.45"/>
+    </filter>
+  </defs>
+
+  <rect width="800" height="480" rx="20" fill="url(#bgG)" stroke="#334155" stroke-width="2"/>
+
+  <!-- Başlık -->
+  <g transform="translate(40, 24)">
+    <rect width="720" height="52" rx="14" fill="#1e293b" stroke="#475569" stroke-width="1.5"/>
+    <text x="24" y="33" font-family="'Segoe UI', Roboto, sans-serif" font-size="18" font-weight="800" fill="#f8fafc">
+      📐 4, 5 VE 6 BASAMAKLI DOĞAL SAYILAR VE İŞLEMLER
+    </text>
+    <rect x="540" y="11" width="160" height="30" rx="8" fill="#3b82f6" filter="url(#dropSh)"/>
+    <text x="620" y="31" font-family="'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="800" fill="#ffffff" text-anchor="middle">
+      Matematik Dünyası
+    </text>
+  </g>
+
+  <!-- 3 Sütun Düzeni -->
+  <g transform="translate(40, 95)">
+    <!-- Sütun 1 -->
+    <g transform="translate(0, 0)">
+      <rect width="228" height="325" rx="14" fill="#1e293b" stroke="#3b82f6" stroke-width="1.5" filter="url(#dropSh)"/>
+      <rect x="10" y="10" width="208" height="38" rx="8" fill="#1d4ed8"/>
+      <text x="114" y="34" font-family="'Segoe UI', Roboto, sans-serif" font-size="13.5" font-weight="800" fill="#ffffff" text-anchor="middle">BASAMAK VE BÖLÜKLER</text>
+      <g transform="translate(14, 60)">
+        
+          <g transform="translate(0, 0)">
+            <rect width="200" height="42" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+            <text x="10" y="18" font-family="'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#93c5fd">Birler Bölüğü</text>
+            <text x="10" y="32" font-family="'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#cbd5e1">Birler, Onlar, Yüzler basamağı.</text>
+          </g>
+        
+          <g transform="translate(0, 50)">
+            <rect width="200" height="42" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+            <text x="10" y="18" font-family="'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#93c5fd">Binler Bölüğü</text>
+            <text x="10" y="32" font-family="'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#cbd5e1">Binler, On Binler, Yüz Binler.</text>
+          </g>
+        
+          <g transform="translate(0, 100)">
+            <rect width="200" height="42" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+            <text x="10" y="18" font-family="'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#93c5fd">Sayı: 425.680</text>
+            <text x="10" y="32" font-family="'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#cbd5e1">"Dört yüz yirmi beş bin altı yüz seksen".</text>
+          </g>
+        
+          <g transform="translate(0, 150)">
+            <rect width="200" height="42" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+            <text x="10" y="18" font-family="'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#93c5fd">Basamak Değeri</text>
+            <text x="10" y="32" font-family="'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#cbd5e1">Sayının basamağına göre aldığı değer.</text>
+          </g>
+        
+          <g transform="translate(0, 200)">
+            <rect width="200" height="42" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+            <text x="10" y="18" font-family="'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#93c5fd">Sayı Değeri</text>
+            <text x="10" y="32" font-family="'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#cbd5e1">Rakamın kendi değeri.</text>
+          </g>
+        
+      </g>
+    </g>
+
+    <!-- Sütun 2 -->
+    <g transform="translate(246, 0)">
+      <rect width="228" height="325" rx="14" fill="#1e293b" stroke="#10b981" stroke-width="1.5" filter="url(#dropSh)"/>
+      <rect x="10" y="10" width="208" height="38" rx="8" fill="#047857"/>
+      <text x="114" y="34" font-family="'Segoe UI', Roboto, sans-serif" font-size="13.5" font-weight="800" fill="#ffffff" text-anchor="middle">ELDELİ TOPLAMA İŞLEMİ</text>
+      <g transform="translate(14, 60)">
+        
+          <g transform="translate(0, 0)">
+            <rect width="200" height="42" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+            <text x="10" y="18" font-family="'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#86efac">Sağdan Sola Başla</text>
+            <text x="10" y="32" font-family="'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#cbd5e1">Birler basamağından başlanır.</text>
+          </g>
+        
+          <g transform="translate(0, 50)">
+            <rect width="200" height="42" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+            <text x="10" y="18" font-family="'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#86efac">Eldeyi Unutma!</text>
+            <text x="10" y="32" font-family="'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#cbd5e1">10 veya üstü çıkan sonuç yandaki basamağa eklenir.</text>
+          </g>
+        
+          <g transform="translate(0, 100)">
+            <rect width="200" height="42" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+            <text x="10" y="18" font-family="'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#86efac">Toplananlar ve Toplam</text>
+            <text x="10" y="32" font-family="'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#cbd5e1">1. Toplanan + 2. Toplanan = Toplam.</text>
+          </g>
+        
+          <g transform="translate(0, 150)">
+            <rect width="200" height="42" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+            <text x="10" y="18" font-family="'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#86efac">Tahmin Etme</text>
+            <text x="10" y="32" font-family="'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#cbd5e1">Sayıları en yakın onluğa yuvarlayarak tahmin et.</text>
+          </g>
+        
+          <g transform="translate(0, 200)">
+            <rect width="200" height="42" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+            <text x="10" y="18" font-family="'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#86efac">Zihinden Toplama</text>
+            <text x="10" y="32" font-family="'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#cbd5e1">Basamaklarına ayırarak kolayca topla.</text>
+          </g>
+        
+      </g>
+    </g>
+
+    <!-- Sütun 3 -->
+    <g transform="translate(492, 0)">
+      <rect width="228" height="325" rx="14" fill="#1e293b" stroke="#f59e0b" stroke-width="1.5" filter="url(#dropSh)"/>
+      <rect x="10" y="10" width="208" height="38" rx="8" fill="#b45309"/>
+      <text x="114" y="34" font-family="'Segoe UI', Roboto, sans-serif" font-size="13.5" font-weight="800" fill="#ffffff" text-anchor="middle">ONLUK BOZARAK ÇIKARMA</text>
+      <g transform="translate(14, 60)">
+        
+          <g transform="translate(0, 0)">
+            <rect width="200" height="42" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+            <text x="10" y="18" font-family="'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#fde047">Eksilen - Çıkan = Fark</text>
+            <text x="10" y="32" font-family="'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#cbd5e1">Çıkarma işleminin temel elemanları.</text>
+          </g>
+        
+          <g transform="translate(0, 50)">
+            <rect width="200" height="42" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+            <text x="10" y="18" font-family="'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#fde047">Onluk Bozma Kuralı</text>
+            <text x="10" y="32" font-family="'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#cbd5e1">Üstteki rakam küçükse soldaki basamaktan 1 onluk alınır.</text>
+          </g>
+        
+          <g transform="translate(0, 100)">
+            <rect width="200" height="42" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+            <text x="10" y="18" font-family="'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#fde047">Sıfırdan Onluk Alma</text>
+            <text x="10" y="32" font-family="'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#cbd5e1">Sıfır varsa bir yandaki basamağa gidilir.</text>
+          </g>
+        
+          <g transform="translate(0, 150)">
+            <rect width="200" height="42" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+            <text x="10" y="18" font-family="'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#fde047">İşlemin Doğruluğu</text>
+            <text x="10" y="32" font-family="'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#cbd5e1">Çıkan + Fark = Eksilen olmalıdır.</text>
+          </g>
+        
+          <g transform="translate(0, 200)">
+            <rect width="200" height="42" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+            <text x="10" y="18" font-family="'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#fde047">Problem Çözme</text>
+            <text x="10" y="32" font-family="'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#cbd5e1">Önce soruyu anla, plan yap, çöz ve kontrol et.</text>
+          </g>
+        
+      </g>
+    </g>
+
+    <!-- İpucu Çubuğu -->
+    <rect x="0" y="338" width="720" height="26" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+    <text x="360" y="355" font-family="'Segoe UI', Roboto, sans-serif" font-size="11.5" font-weight="700" fill="#facc15" text-anchor="middle">
+      💡 Büyük sayıları okurken 3'erli basamak gruplarına (bölüklere) ayır ve araya "BİN" kelimesini koy!
+    </text>
+  </g>
+</svg>

@@ -1,0 +1,154 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 480" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgG" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#090d16"/>
+      <stop offset="100%" stop-color="#1e1b4b"/>
+    </linearGradient>
+    <filter id="dropSh" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000" flood-opacity="0.45"/>
+    </filter>
+  </defs>
+
+  <rect width="800" height="480" rx="20" fill="url(#bgG)" stroke="#334155" stroke-width="2"/>
+
+  <!-- Başlık -->
+  <g transform="translate(40, 24)">
+    <rect width="720" height="52" rx="14" fill="#1e293b" stroke="#475569" stroke-width="1.5"/>
+    <text x="24" y="33" font-family="'Segoe UI', Roboto, sans-serif" font-size="16" font-weight="800" fill="#f8fafc">
+      🧭 EVİMİZ DÜNYA: HARİTALAR VE AFETLER
+    </text>
+    <rect x="520" y="11" width="180" height="30" rx="8" fill="#059669" filter="url(#dropSh)"/>
+    <text x="610" y="31" font-family="'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="800" fill="#ffffff" text-anchor="middle">
+      Coğrafya & Doğa
+    </text>
+  </g>
+
+  <!-- 3 Sütun Düzeni -->
+  <g transform="translate(40, 95)">
+    <!-- Sütun 1 -->
+    <g transform="translate(0, 0)">
+      <rect width="228" height="325" rx="14" fill="#1e293b" stroke="#3b82f6" stroke-width="1.5" filter="url(#dropSh)"/>
+      <rect x="10" y="10" width="208" height="38" rx="8" fill="#1d4ed8"/>
+      <text x="114" y="34" font-family="'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="800" fill="#ffffff" text-anchor="middle">YÖNLER VE HARİTA BİLGİSİ</text>
+      <g transform="translate(14, 60)">
+        
+          <g transform="translate(0, 0)">
+            <rect width="200" height="42" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+            <text x="10" y="18" font-family="'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#93c5fd">Ana Yönler</text>
+            <text x="10" y="32" font-family="'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#cbd5e1">Kuzey, Güney, Doğu, Batı.</text>
+          </g>
+        
+          <g transform="translate(0, 50)">
+            <rect width="200" height="42" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+            <text x="10" y="18" font-family="'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#93c5fd">Ara Yönler</text>
+            <text x="10" y="32" font-family="'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#cbd5e1">Kuzeydoğu, Kuzeybatı, Güneydoğu, Güneybatı.</text>
+          </g>
+        
+          <g transform="translate(0, 100)">
+            <rect width="200" height="42" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+            <text x="10" y="18" font-family="'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#93c5fd">Kutup Yıldızı</text>
+            <text x="10" y="32" font-family="'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#cbd5e1">Daima KUZEY yönünü gösterir.</text>
+          </g>
+        
+          <g transform="translate(0, 150)">
+            <rect width="200" height="42" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+            <text x="10" y="18" font-family="'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#93c5fd">Karınca Yuvaları</text>
+            <text x="10" y="32" font-family="'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#cbd5e1">Toprak yığılan taraf Kuzey, ağzı Güneyi gösterir.</text>
+          </g>
+        
+          <g transform="translate(0, 200)">
+            <rect width="200" height="42" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+            <text x="10" y="18" font-family="'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#93c5fd">Yosunlar</text>
+            <text x="10" y="32" font-family="'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#cbd5e1">Ağaç ve taşların yosunlu tarafı Kuzeyi gösterir.</text>
+          </g>
+        
+      </g>
+    </g>
+
+    <!-- Sütun 2 -->
+    <g transform="translate(246, 0)">
+      <rect width="228" height="325" rx="14" fill="#1e293b" stroke="#10b981" stroke-width="1.5" filter="url(#dropSh)"/>
+      <rect x="10" y="10" width="208" height="38" rx="8" fill="#047857"/>
+      <text x="114" y="34" font-family="'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="800" fill="#ffffff" text-anchor="middle">KROKİ VE FİZİKİ HARİTA</text>
+      <g transform="translate(14, 60)">
+        
+          <g transform="translate(0, 0)">
+            <rect width="200" height="42" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+            <text x="10" y="18" font-family="'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#86efac">Kroki Nedir?</text>
+            <text x="10" y="32" font-family="'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#cbd5e1">Bir yerin kuş bakışı, ölçüsüz (kabataslak) çizimidir.</text>
+          </g>
+        
+          <g transform="translate(0, 50)">
+            <rect width="200" height="42" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+            <text x="10" y="18" font-family="'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#86efac">Fiziki Harita Renkleri</text>
+            <text x="10" y="32" font-family="'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#cbd5e1">Yeryüzü şekillerinin yükseltisini gösterir.</text>
+          </g>
+        
+          <g transform="translate(0, 100)">
+            <rect width="200" height="42" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+            <text x="10" y="18" font-family="'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#86efac">Yeşil Renk (0-500 m)</text>
+            <text x="10" y="32" font-family="'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#cbd5e1">Deniz seviyesine yakın alçak ovalar ve kıyılar.</text>
+          </g>
+        
+          <g transform="translate(0, 150)">
+            <rect width="200" height="42" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+            <text x="10" y="18" font-family="'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#86efac">Sarı Renk (500-1000 m)</text>
+            <text x="10" y="32" font-family="'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#cbd5e1">Orta yükseklikteki düzlük ve platolar.</text>
+          </g>
+        
+          <g transform="translate(0, 200)">
+            <rect width="200" height="42" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+            <text x="10" y="18" font-family="'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#86efac">Kahverengi (1000+ m)</text>
+            <text x="10" y="32" font-family="'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#cbd5e1">Yüksek dağlar ve tepeler.</text>
+          </g>
+        
+      </g>
+    </g>
+
+    <!-- Sütun 3 -->
+    <g transform="translate(492, 0)">
+      <rect width="228" height="325" rx="14" fill="#1e293b" stroke="#f59e0b" stroke-width="1.5" filter="url(#dropSh)"/>
+      <rect x="10" y="10" width="208" height="38" rx="8" fill="#b45309"/>
+      <text x="114" y="34" font-family="'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="800" fill="#ffffff" text-anchor="middle">DOĞAL AFETLER VE TEDBİRLER</text>
+      <g transform="translate(14, 60)">
+        
+          <g transform="translate(0, 0)">
+            <rect width="200" height="42" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+            <text x="10" y="18" font-family="'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#fde047">Deprem</text>
+            <text x="10" y="32" font-family="'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#cbd5e1">Yer kabuğu kırılmasıyla oluşan sarsıntı: Çök-Kapan-Tutun!</text>
+          </g>
+        
+          <g transform="translate(0, 50)">
+            <rect width="200" height="42" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+            <text x="10" y="18" font-family="'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#fde047">Deprem Çantası</text>
+            <text x="10" y="32" font-family="'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#cbd5e1">Su, düdük, el feneri, ilk yardım seti bulundurulmalı.</text>
+          </g>
+        
+          <g transform="translate(0, 100)">
+            <rect width="200" height="42" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+            <text x="10" y="18" font-family="'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#fde047">Heyelan (Toprak Kayması)</text>
+            <text x="10" y="32" font-family="'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#cbd5e1">Eğimli arazileri ağaçlandırmak riski azaltır.</text>
+          </g>
+        
+          <g transform="translate(0, 150)">
+            <rect width="200" height="42" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+            <text x="10" y="18" font-family="'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#fde047">Sel</text>
+            <text x="10" y="32" font-family="'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#cbd5e1">Aşırı yağış sonucu su baskını; dere yataklarına ev yapılmamalı.</text>
+          </g>
+        
+          <g transform="translate(0, 200)">
+            <rect width="200" height="42" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+            <text x="10" y="18" font-family="'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#fde047">Çığ ve Yangın</text>
+            <text x="10" y="32" font-family="'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#cbd5e1">Eğimli karlı yamaçlar ve kuru orman tedbirleri.</text>
+          </g>
+        
+      </g>
+    </g>
+
+    <!-- İpucu Çubuğu -->
+    <rect x="0" y="338" width="720" height="26" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+    <text x="360" y="355" font-family="'Segoe UI', Roboto, sans-serif" font-size="11.5" font-weight="700" fill="#facc15" text-anchor="middle">
+      💡 Fiziki haritadaki yeşil renk ormanları değil, deniz seviyesine yakın alçak yerleri gösterir!
+    </text>
+  </g>
+</svg>

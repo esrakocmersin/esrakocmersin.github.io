@@ -1,0 +1,154 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 480" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgG" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#090d16"/>
+      <stop offset="100%" stop-color="#1e1b4b"/>
+    </linearGradient>
+    <filter id="dropSh" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000" flood-opacity="0.45"/>
+    </filter>
+  </defs>
+
+  <rect width="800" height="480" rx="20" fill="url(#bgG)" stroke="#334155" stroke-width="2"/>
+
+  <!-- Başlık -->
+  <g transform="translate(40, 24)">
+    <rect width="720" height="52" rx="14" fill="#1e293b" stroke="#475569" stroke-width="1.5"/>
+    <text x="24" y="33" font-family="'Segoe UI', Roboto, sans-serif" font-size="16" font-weight="800" fill="#f8fafc">
+      ✍️ YAZIM KURALLARI VE NOKTALAMA İŞARETLERİ
+    </text>
+    <rect x="520" y="11" width="180" height="30" rx="8" fill="#ef4444" filter="url(#dropSh)"/>
+    <text x="610" y="31" font-family="'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="800" fill="#ffffff" text-anchor="middle">
+      Doğru Türkçe
+    </text>
+  </g>
+
+  <!-- 3 Sütun Düzeni -->
+  <g transform="translate(40, 95)">
+    <!-- Sütun 1 -->
+    <g transform="translate(0, 0)">
+      <rect width="228" height="325" rx="14" fill="#1e293b" stroke="#3b82f6" stroke-width="1.5" filter="url(#dropSh)"/>
+      <rect x="10" y="10" width="208" height="38" rx="8" fill="#1d4ed8"/>
+      <text x="114" y="34" font-family="'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="800" fill="#ffffff" text-anchor="middle">BÜYÜK HARFLER & EK YAZIMI</text>
+      <g transform="translate(14, 60)">
+        
+          <g transform="translate(0, 0)">
+            <rect width="200" height="42" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+            <text x="10" y="18" font-family="'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#93c5fd">Cümle & Özel İsimler</text>
+            <text x="10" y="32" font-family="'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#cbd5e1">Her cümle ve özel ad büyük harfle başlar.</text>
+          </g>
+        
+          <g transform="translate(0, 50)">
+            <rect width="200" height="42" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+            <text x="10" y="18" font-family="'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#93c5fd">bağlaç olan "-de / -da"</text>
+            <text x="10" y="32" font-family="'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#cbd5e1">Ayrı yazılır, cümleden çıkınca anlam bozulmaz.</text>
+          </g>
+        
+          <g transform="translate(0, 100)">
+            <rect width="200" height="42" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+            <text x="10" y="18" font-family="'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#93c5fd">bulunma eki "-de / -da"</text>
+            <text x="10" y="32" font-family="'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#cbd5e1">Bitişik yazılır: "Evde kaldım".</text>
+          </g>
+        
+          <g transform="translate(0, 150)">
+            <rect width="200" height="42" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+            <text x="10" y="18" font-family="'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#93c5fd">Soru Eki "-mi / -mı"</text>
+            <text x="10" y="32" font-family="'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#cbd5e1">Daima ayrı yazılır: "Gelir misin?"</text>
+          </g>
+        
+          <g transform="translate(0, 200)">
+            <rect width="200" height="42" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+            <text x="10" y="18" font-family="'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#93c5fd">bağlaç olan "-ki"</text>
+            <text x="10" y="32" font-family="'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#cbd5e1">Ayrı yazılır: "Duydum ki unuttun".</text>
+          </g>
+        
+      </g>
+    </g>
+
+    <!-- Sütun 2 -->
+    <g transform="translate(246, 0)">
+      <rect width="228" height="325" rx="14" fill="#1e293b" stroke="#10b981" stroke-width="1.5" filter="url(#dropSh)"/>
+      <rect x="10" y="10" width="208" height="38" rx="8" fill="#047857"/>
+      <text x="114" y="34" font-family="'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="800" fill="#ffffff" text-anchor="middle">NOKTA, VİRGÜL, İKİ NOKTA</text>
+      <g transform="translate(14, 60)">
+        
+          <g transform="translate(0, 0)">
+            <rect width="200" height="42" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+            <text x="10" y="18" font-family="'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#86efac">Nokta (.)</text>
+            <text x="10" y="32" font-family="'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#cbd5e1">Tamamlanmış cümlenin sonuna konur.</text>
+          </g>
+        
+          <g transform="translate(0, 50)">
+            <rect width="200" height="42" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+            <text x="10" y="18" font-family="'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#86efac">Virgül (,)</text>
+            <text x="10" y="32" font-family="'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#cbd5e1">Eş görevli kelimeleri birbirinden ayırır.</text>
+          </g>
+        
+          <g transform="translate(0, 100)">
+            <rect width="200" height="42" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+            <text x="10" y="18" font-family="'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#86efac">İki Nokta (:)</text>
+            <text x="10" y="32" font-family="'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#cbd5e1">Açıklama veya konuşmadan önce konur.</text>
+          </g>
+        
+          <g transform="translate(0, 150)">
+            <rect width="200" height="42" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+            <text x="10" y="18" font-family="'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#86efac">Sıra Bildirme</text>
+            <text x="10" y="32" font-family="'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#cbd5e1">3. (üçüncü), 4. (dördüncü).</text>
+          </g>
+        
+          <g transform="translate(0, 200)">
+            <rect width="200" height="42" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+            <text x="10" y="18" font-family="'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#86efac">Tarih ve Saat</text>
+            <text x="10" y="32" font-family="'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#cbd5e1">14.05.2025, 09.30 (tek nokta kullanılır).</text>
+          </g>
+        
+      </g>
+    </g>
+
+    <!-- Sütun 3 -->
+    <g transform="translate(492, 0)">
+      <rect width="228" height="325" rx="14" fill="#1e293b" stroke="#f59e0b" stroke-width="1.5" filter="url(#dropSh)"/>
+      <rect x="10" y="10" width="208" height="38" rx="8" fill="#b45309"/>
+      <text x="114" y="34" font-family="'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="800" fill="#ffffff" text-anchor="middle">ÜNLEM, SORU & KESME İŞARETİ</text>
+      <g transform="translate(14, 60)">
+        
+          <g transform="translate(0, 0)">
+            <rect width="200" height="42" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+            <text x="10" y="18" font-family="'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#fde047">Soru İşareti (?)</text>
+            <text x="10" y="32" font-family="'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#cbd5e1">Soru bildiren cümlelerin sonuna gelir.</text>
+          </g>
+        
+          <g transform="translate(0, 50)">
+            <rect width="200" height="42" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+            <text x="10" y="18" font-family="'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#fde047">Ünlem İşareti (!)</text>
+            <text x="10" y="32" font-family="'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#cbd5e1">Korku, sevinç, şaşkınlık ve emir bildirir.</text>
+          </g>
+        
+          <g transform="translate(0, 100)">
+            <rect width="200" height="42" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+            <text x="10" y="18" font-family="'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#fde047">Kesme İşareti (')</text>
+            <text x="10" y="32" font-family="'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#cbd5e1">Özel isimlere gelen ekleri ayırır: "Ali'nin".</text>
+          </g>
+        
+          <g transform="translate(0, 150)">
+            <rect width="200" height="42" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+            <text x="10" y="18" font-family="'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#fde047">Tırnak İşareti (" ")</text>
+            <text x="10" y="32" font-family="'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#cbd5e1">Başkasından aktarılan sözlerde kullanılır.</text>
+          </g>
+        
+          <g transform="translate(0, 200)">
+            <rect width="200" height="42" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+            <text x="10" y="18" font-family="'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#fde047">Kısa Çizgi (-)</text>
+            <text x="10" y="32" font-family="'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#cbd5e1">Satır sonuna sığmayan kelimeleri hecelerinden böler.</text>
+          </g>
+        
+      </g>
+    </g>
+
+    <!-- İpucu Çubuğu -->
+    <rect x="0" y="338" width="720" height="26" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+    <text x="360" y="355" font-family="'Segoe UI', Roboto, sans-serif" font-size="11.5" font-weight="700" fill="#facc15" text-anchor="middle">
+      💡 Saat ve dakika arasına iki nokta değil, TEK NOKTA konur: 08.30 (TDK Kuralı)
+    </text>
+  </g>
+</svg>

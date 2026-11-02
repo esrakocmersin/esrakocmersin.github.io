@@ -1,3 +1,7 @@
 *.pdf
 .env
 node_modules/
+ses_onbellek/
+__pycache__/
+veritabani.json
+veritabani.json.tmp
