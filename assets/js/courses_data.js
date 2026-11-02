@@ -2436,6 +2436,7 @@ const COURSE_LESSONS = {
     "subject": "Matematik",
     "unitNo": "1. Ünite",
     "title": "Doğal Sayılarla Toplama ve Çıkarma",
+    "cover": "assets/images/mat_u1_pixar.jpg",
     "icon": "📐",
     "steps": [
       {
