@@ -1766,6 +1766,7 @@ const COURSE_LESSONS = {
     "subject": "Türkçe",
     "unitNo": "6. Ünite",
     "title": "Yazım Kuralları ve Noktalama İşaretleri",
+    "cover": "assets/images/tr_u6_pixar.jpg",
     "icon": "🇹🇷",
     "steps": [
       {
