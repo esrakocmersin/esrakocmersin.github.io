@@ -278,6 +278,13 @@ td.pw:hover{text-decoration:underline}
 .video-topic-pill{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);font-size:11px;padding:2px 7px;border-radius:6px;color:var(--m);white-space:nowrap}
 .video-card-footer{margin-top:auto;padding-top:8px;border-top:1px solid rgba(255,255,255,0.06);display:flex;align-items:center;justify-content:space-between;font-size:11px;color:var(--m)}
 .video-card-btn-action{color:var(--a);font-weight:800;display:flex;align-items:center;gap:4px}
+.course-mini-progress{width:100%;height:3px;background:rgba(255,255,255,0.1);border-radius:2px;overflow:hidden;margin-top:4px}
+.course-mini-progress i{display:block;height:100%;border-radius:2px;transition:width .3s}
+.home-alert-banner{background:linear-gradient(135deg,rgba(245,158,11,0.2) 0%,rgba(217,119,6,0.1) 100%);border:1px solid rgba(245,158,11,0.5);border-radius:14px;padding:12px 16px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;animation:pulseBorder 2.5s infinite}
+@keyframes pulseBorder{0%,100%{border-color:rgba(245,158,11,0.45)}50%{border-color:rgba(245,158,11,0.9);box-shadow:0 0 14px rgba(245,158,11,0.25)}}
+.resume-card{background:linear-gradient(135deg,rgba(99,102,241,0.18) 0%,rgba(16,185,129,0.15) 100%);border:1px solid rgba(99,102,241,0.35);border-radius:14px;padding:14px 18px;display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;box-shadow:0 4px 16px rgba(0,0,0,0.2)}
+.daily-tip-card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:12px;padding:10px 14px;display:flex;align-items:center;gap:10px;font-size:12px;color:var(--t)}
+.status-filter-tabs{display:flex;gap:6px;flex-wrap:wrap}
 
 .video-modal-screen{position:relative;width:100%;aspect-ratio:16/9;background:radial-gradient(circle at center,#1e1b4b 0%,#09090f 100%);border-radius:12px;overflow:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;border:1px solid rgba(255,255,255,0.15);box-shadow:0 10px 30px rgba(0,0,0,0.5);text-align:center;padding:20px}
 .video-modal-play-pulse{width:72px;height:72px;border-radius:50%;background:linear-gradient(135deg,#ef4444,#f97316);display:flex;align-items:center;justify-content:center;font-size:28px;color:#fff;margin-bottom:12px;box-shadow:0 0 0 0 rgba(239,68,68,0.7);animation:pulse-ring 1.8s infinite}
@@ -558,7 +565,7 @@ function syncInfoText(){return (location.protocol==='file:'?'💾 Dosya olarak a
 
 /* ---------- Oturum ---------- */
 let session = JSON.parse(sessionStorage.getItem(SS_KEY) || 'null') || {uid:null,stack:[]};
-const ui = {tab:{student:0,teacher:0,parent:0,admin:0},q:'',role:'',admClassFilter:'',admBankPool:'all',admBankSub:'all',chat:null,activeCourse:'turkce',courseTerm:'all',courseSearch:''};
+const ui = {tab:{student:0,teacher:0,parent:0,admin:0},q:'',role:'',admClassFilter:'',admBankPool:'all',admBankSub:'all',chat:null,activeCourse:'turkce',courseTerm:'all',courseSearch:'',courseStatus:'all',loginTab:'login'};
 function saveSession(){sessionStorage.setItem(SS_KEY,JSON.stringify(session));}
 const byId = id => db.users.find(x=>x.id===id);
 const byName = n => db.users.find(x=>x.username===n);
@@ -575,7 +582,7 @@ function resetTransient(){
   exam.active=false;exam.result=null;clearInterval(exam.timer);
   lab.mod='m1';lab.qid=null;lab.answered=null;ui.chat=null;ui.q='';ui.role='';
   ui.admClassFilter='';ui.admBankPool='all';ui.admBankSub='all';
-  ui.tab={student:0,teacher:0,parent:0,admin:0};ui.activeCourse='turkce';ui.courseTerm='all';ui.courseSearch='';stopSpeak();
+  ui.tab={student:0,teacher:0,parent:0,admin:0};ui.activeCourse='turkce';ui.courseTerm='all';ui.courseSearch='';ui.courseStatus='all';ui.loginTab='login';stopSpeak();
 }
 function roleAvatar(u,size){const it=ITEMS.find(i=>i.id===u.frame);return `<span class="avatar ${it?it.cls:''}" style="--s:${size||44}px">${ROLE_ICON[u.role]||'🙂'}</span>`;}
 function tabs(role,names){return `<div class="tabs">${names.map((n,i)=>`<button class="tab ${ui.tab[role]===i?'on':''}" onclick="A.tab('${role}',${i})">${n}</button>`).join('')}</div>`;}
@@ -605,24 +612,187 @@ function header(u){
 
 /* ---------- Giriş ---------- */
 function loginView(){
-  const sc=db.users.filter(x=>x.role==='student').length;
-  const demos=[['admin','👑','Admin','admin / admin123'],['ogretmen1','👩‍🏫','Öğretmen','ogretmen1 / 1234'],['ali4a','🧒','Öğrenci','ali4a / 1234'],['veli_ali','👨‍👩‍👧','Veli','veli_ali / 1234']];
-  return `<div class="login"><h1>🌌 Bilgi Evreni <b>4D</b> Ultimate</h1><p class="muted" style="text-align:center">MEB 4. Sınıf müfredatına uygun 3D eğitim portalı</p>
-  <div class="counters"><div class="counter"><b>${sc}</b>Öğrenci</div><div class="counter"><b>${MODULES.length}</b>3D Deney</div><div class="counter"><b>${db.questions.length}</b>Soru</div></div>
-  <div class="card" style="max-width:420px;margin:0 auto 18px"><h3>🔐 Giriş Yap</h3>
-   <label>Kullanıcı Adı<input id="lu" autocomplete="username" onkeydown="if(event.key==='Enter')$('#lp').focus()"></label>
-   <label style="margin-top:10px">Şifre<div class="pwwrap"><input id="lp" type="password" autocomplete="current-password" onkeydown="if(event.key==='Enter')A.login()"><button type="button" onclick="A.showPw()" title="Göster/Gizle">👁️</button></div></label>
-   <div class="row"><button class="btn" style="width:100%" onclick="A.login()">Giriş</button></div></div>
-  <h3 style="text-align:center">⚡ Tek Tıkla Hızlı Demo Giriş</h3>
-  <div class="democards">${demos.map(d=>`<button class="demo" onclick="A.demo('${d[0]}')"><span>${d[1]}</span><b>${d[2]}</b><small>${d[3]}</small></button>`).join('')}</div>
-  <p class="muted" style="text-align:center;margin-top:18px" id="syncInfo"></p></div>`;
+  const sc = db.users.filter(x => x.role === 'student').length;
+  const isReg = ui.loginTab === 'register';
+  const savedUn = localStorage.getItem('be4d_saved_user') || '';
+  const demos = [
+    ['admin', '👑', 'Admin', 'admin / admin123'],
+    ['ogretmen1', '👩‍🏫', 'Öğretmen', 'ogretmen1 / 1234'],
+    ['ali4a', '🧒', 'Öğrenci', 'ali4a / 1234'],
+    ['veli_ali', '👨‍👩‍👧', 'Veli', 'veli_ali / 1234']
+  ];
+  return `<div class="login">
+    <h1>🌌 Bilgi Evreni <b>4D</b> Ultimate</h1>
+    <p class="muted" style="text-align:center">MEB 4. Sınıf müfredatına tam uyumlu 3D interaktif eğitim portalı</p>
+    <div class="counters">
+      <div class="counter"><b>6</b>MEB Dersi</div>
+      <div class="counter"><b>43</b>Video Dersi</div>
+      <div class="counter"><b>173</b>Sesli Adım</div>
+      <div class="counter"><b>${MODULES.length}</b>3D Deney</div>
+      <div class="counter"><b>${db.questions.length}</b>Soru</div>
+      <div class="counter"><b>${sc}</b>Öğrenci</div>
+    </div>
+    <div class="card" style="max-width:440px;margin:0 auto 18px">
+      <div style="display:flex;border-bottom:1px solid var(--b);margin:-16px -16px 16px -16px">
+        <button class="btn ghost" style="flex:1;border-radius:0;border-bottom:${!isReg ? '2px solid #6366f1' : 'none'};font-weight:${!isReg ? 'bold' : 'normal'};color:${!isReg ? 'var(--t)' : 'var(--m)'}" onclick="A.setLoginTab('login')">🔐 Giriş Yap</button>
+        <button class="btn ghost" style="flex:1;border-radius:0;border-bottom:${isReg ? '2px solid #6366f1' : 'none'};font-weight:${isReg ? 'bold' : 'normal'};color:${isReg ? 'var(--t)' : 'var(--m)'}" onclick="A.setLoginTab('register')">📝 Yeni Öğrenci Kaydı</button>
+      </div>
+      ${!isReg ? `
+        <label>Kullanıcı Adı<input id="lu" autocomplete="username" value="${esc(savedUn)}" onkeydown="if(event.key==='Enter')$('#lp').focus()"></label>
+        <label style="margin-top:10px">Şifre
+          <div class="pwwrap"><input id="lp" type="password" autocomplete="current-password" onkeydown="if(event.key==='Enter')A.login()"><button type="button" onclick="A.showPw()" title="Göster/Gizle">👁️</button></div>
+        </label>
+        <div style="display:flex;align-items:center;justify-content:space-between;margin:10px 0 14px;font-size:12px;color:var(--m)">
+          <label style="display:flex;align-items:center;gap:6px;cursor:pointer;margin:0"><input type="checkbox" id="lrem" ${savedUn ? 'checked' : ''} style="width:auto;margin:0"> Beni Hatırla</label>
+          <a href="javascript:void(0)" onclick="A.helpLogin()" style="color:#818cf8;text-decoration:none">Şifremi Unuttum?</a>
+        </div>
+        <div class="row"><button class="btn" style="width:100%" onclick="A.login()">Giriş Yap 🚀</button></div>
+      ` : `
+        <label>Ad Soyad<input id="regName" placeholder="Örn: Mehmet Kaya" autocomplete="name" onkeydown="if(event.key==='Enter')$('#regUser').focus()"></label>
+        <label style="margin-top:10px">Kullanıcı Adı<input id="regUser" placeholder="Örn: mehmet4b" autocomplete="username" onkeydown="if(event.key==='Enter')$('#regClass').focus()"></label>
+        <label style="margin-top:10px">Sınıf
+          <select id="regClass">
+            <option value="4-A">4-A Sınıfı</option>
+            <option value="4-B">4-B Sınıfı</option>
+            <option value="4-C">4-C Sınıfı</option>
+          </select>
+        </label>
+        <label style="margin-top:10px">Şifre
+          <div class="pwwrap"><input id="regPw" type="password" placeholder="En az 3 karakter" autocomplete="new-password" onkeydown="if(event.key==='Enter')A.registerStudent()"><button type="button" onclick="A.showRegPw()" title="Göster/Gizle">👁️</button></div>
+        </label>
+        <div class="row" style="margin-top:14px"><button class="btn ok" style="width:100%" onclick="A.registerStudent()">🎉 Kayıt Ol ve Hemen Başla 🚀</button></div>
+      `}
+    </div>
+    <div style="text-align:center;margin-bottom:18px">
+      <button class="btn ghost sm" onclick="A.exploreCurriculum()" style="border:1px dashed rgba(255,255,255,0.25)">
+        🔍 MEB 4. Sınıf Müfredatını &amp; 3D Laboratuvarı İncele (Girişsiz Keşif)
+      </button>
+    </div>
+    <h3 style="text-align:center">⚡ Tek Tıkla Hızlı Demo Giriş</h3>
+    <div class="democards">${demos.map(d => `<button class="demo" onclick="A.demo('${d[0]}')"><span>${d[1]}</span><b>${d[2]}</b><small>${d[3]}</small></button>`).join('')}</div>
+    <p class="muted" style="text-align:center;margin-top:18px" id="syncInfo"></p>
+  </div>`;
 }
-A.showPw=()=>{const p=$('#lp');p.type=p.type==='password'?'text':'password';};
-A.login=()=>{
-  const un=$('#lu').value.trim().toLowerCase(),pw=$('#lp').value;
-  const u=db.users.find(x=>x.username.toLowerCase()===un&&x.password===pw);
-  if(!u){toast('❌ Kullanıcı adı veya şifre hatalı');return;}
+
+A.setLoginTab = tab => {
+  ui.loginTab = tab;
+  render();
+};
+A.showPw = () => { const p = $('#lp'); if (p) p.type = p.type === 'password' ? 'text' : 'password'; };
+A.showRegPw = () => { const p = $('#regPw'); if (p) p.type = p.type === 'password' ? 'text' : 'password'; };
+A.login = () => {
+  const un = ($('#lu') ? $('#lu').value : '').trim().toLowerCase();
+  const pw = $('#lp') ? $('#lp').value : '';
+  const rem = $('#lrem') ? $('#lrem').checked : false;
+  const u = db.users.find(x => x.username.toLowerCase() === un && x.password === pw);
+  if (!u) { toast('❌ Kullanıcı adı veya şifre hatalı'); return; }
+  if (rem) {
+    try { localStorage.setItem('be4d_saved_user', un); } catch (e) {}
+  } else {
+    try { localStorage.removeItem('be4d_saved_user'); } catch (e) {}
+  }
   startSession(u.id);
+};
+A.registerStudent = () => {
+  const name = ($('#regName') ? $('#regName').value : '').trim();
+  const un = ($('#regUser') ? $('#regUser').value : '').trim().toLowerCase();
+  const cls = $('#regClass') ? $('#regClass').value : '4-A';
+  const pw = ($('#regPw') ? $('#regPw').value : '').trim();
+
+  if (!name || !un || !pw) {
+    toast('⚠️ Lütfen Ad Soyad, Kullanıcı Adı ve Şifre alanlarını doldurun.');
+    return;
+  }
+  if (pw.length < 3) {
+    toast('⚠️ Şifreniz en az 3 karakter olmalıdır.');
+    return;
+  }
+  if (db.users.some(x => x.username.toLowerCase() === un)) {
+    toast('❌ Bu kullanıcı adı zaten kullanılıyor. Başka bir kullanıcı adı seçin.');
+    return;
+  }
+
+  const newStudent = {
+    id: 'u_' + Date.now(),
+    username: un,
+    password: pw,
+    name: name,
+    role: 'student',
+    classId: cls,
+    avatar: '🧒',
+    xp: 0,
+    gold: 50,
+    totalGold: 50,
+    title: 'Yeni Kâşif',
+    inventory: [],
+    labDone: [],
+    courseProgress: {},
+    stats: {},
+    examHistory: []
+  };
+
+  db.users.push(newStudent);
+  save();
+  toast(`🎉 Hoş geldin ${name}! Hesabın oluşturuldu.`);
+  startSession(newStudent.id);
+};
+A.helpLogin = () => {
+  modal(`
+    <div style="display:flex;flex-direction:column;gap:12px;max-width:440px">
+      <h3>🔑 Şifremi Unuttum / Giriş Yardımı</h3>
+      <p style="font-size:13px;line-height:1.5">Öğrenci şifreleri okul veya sınıf öğretmeniniz ya da sistem yöneticisi (admin) tarafından anında görüntülenebilir ve güncellenebilir.</p>
+      <div style="background:rgba(255,255,255,0.05);border-radius:10px;padding:12px;font-size:12px">
+        <b>💡 Hızlı Demo Girişi:</b><br>
+        Aşağıdaki hazır demo butonlarına tıklayarak herhangi bir şifre yazmadan anında giriş yapabilirsiniz:
+        <ul style="margin:6px 0 0 16px;padding:0">
+          <li><b>Öğrenci:</b> ali4a (Şifre: 1234)</li>
+          <li><b>Öğretmen:</b> ogretmen1 (Şifre: 1234)</li>
+          <li><b>Admin:</b> admin (Şifre: admin123)</li>
+        </ul>
+      </div>
+      <div class="row" style="justify-content:flex-end">
+        <button class="btn sm ghost" onclick="closeModal()">Tamam</button>
+      </div>
+    </div>
+  `);
+};
+A.exploreCurriculum = () => {
+  const subjectsHtml = COURSES_DATA.map(c => `
+    <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:12px;padding:12px">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px">
+        <span style="font-size:20px">${c.icon}</span>
+        <b style="color:var(--t)">${esc(c.name)}</b>
+        <span class="badge" style="margin-left:auto">${c.terms.reduce((a, t) => a + t.units.length, 0)} Ünite</span>
+      </div>
+      <p style="font-size:12px;color:var(--m);margin:0 0 8px 0">${esc(c.desc)}</p>
+      <div style="display:flex;flex-wrap:wrap;gap:4px">
+        ${c.terms.flatMap(t => t.units).slice(0, 4).map(u => `<span style="font-size:11px;padding:2px 8px;background:rgba(255,255,255,0.06);border-radius:6px;color:var(--t)">${esc(u.unitTitle)}</span>`).join('')}
+        ${c.terms.reduce((a, t) => a + t.units.length, 0) > 4 ? `<span style="font-size:11px;padding:2px 6px;color:var(--m)">+ daha fazlası</span>` : ''}
+      </div>
+    </div>
+  `).join('');
+
+  modal(`
+    <div style="display:flex;flex-direction:column;gap:14px;max-width:720px;max-height:80vh;overflow-y:auto;padding-right:6px">
+      <div style="display:flex;align-items:center;gap:10px">
+        <span style="font-size:28px">🌌</span>
+        <div>
+          <h3 style="margin:0">MEB 4. Sınıf Müfredatı &amp; 3D Eğitim Dünyası</h3>
+          <small class="muted">Tam 6 Temel Ders · 43 Ünite Videosu · 173 Sesli Anlatım · 12 Adet 3D Deney</small>
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill, minmax(280px, 1fr));gap:10px">
+        ${subjectsHtml}
+      </div>
+      <div style="background:linear-gradient(135deg,rgba(99,102,241,0.15),rgba(168,85,247,0.15));border:1px solid rgba(168,85,247,0.3);border-radius:12px;padding:12px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap">
+        <div>
+          <b>Hemen Ücretsiz Deneyin!</b>
+          <p style="margin:2px 0 0;font-size:12px;color:var(--m)">Tek tıkla Öğrenci (ali4a) veya Öğretmen hesabına giriş yaparak sistemi canlı test edin.</p>
+        </div>
+        <button class="btn ok" onclick="closeModal();A.demo('ali4a')">🧒 Öğrenci Demosu ile Başla ▶</button>
+      </div>
+    </div>
+  `);
 };
 function startSession(id){session={uid:id,stack:[]};saveSession();resetTransient();render();}
 A.demo=un=>{const u=byName(un);if(!u){toast('Bu demo hesap silinmiş.');return;}startSession(u.id);};
@@ -13665,37 +13835,128 @@ function coursesTab(u){
   const activeSubId = ui.activeCourse || 'turkce';
   const sub = COURSES_DATA.find(x => x.id === activeSubId) || COURSES_DATA[0];
   const activeTerm = ui.courseTerm || 'all';
+  const activeStatus = ui.courseStatus || 'all';
   const q = (ui.courseSearch || '').toLowerCase().trim();
   const isTeacher = u && (u.role === 'teacher' || u.role === 'admin');
 
-  // 1. 6 Ders Butonu
+  // Öğrenci tamamlanan ünite verileri
+  const doneUnitIds = u && u.courseProgress ? Object.keys(u.courseProgress) : [];
+  const totalCompletedCount = doneUnitIds.length;
+
+  // 1. Öğretmenden bekleyen ödev kontrolü (varsa uyarı bandı)
+  const myClassAsgs = u && u.classId ? db.assignments.filter(a => a.classId === u.classId) : [];
+  const pendingAsgs = myClassAsgs.filter(a => !a.doneBy.includes(u.id));
+  const alertBannerHtml = pendingAsgs.length ? `
+    <div class="home-alert-banner">
+      <div style="display:flex;align-items:center;gap:12px">
+        <span style="font-size:26px">🔔</span>
+        <div>
+          <b style="color:#fde047;font-size:14px">Öğretmeninden Bekleyen Ödev: ${esc(pendingAsgs[0].title)}</b>
+          <div style="font-size:12px;color:var(--m)">Ödül: ⭐ +${pendingAsgs[0].xp || 0} XP &nbsp; 🪙 +${pendingAsgs[0].gold || 0} Altın ${pendingAsgs[0].desc ? '· ' + esc(pendingAsgs[0].desc) : ''}</div>
+        </div>
+      </div>
+      <button class="btn warn sm" onclick="A.openAsg('${pendingAsgs[0].id}')">📖 Ödevi Çöz &amp; Kazan ▶</button>
+    </div>
+  ` : '';
+
+  // 2. Akıllı "Kaldığın Yerden Devam Et / Sıradaki Ders" önerisi
+  let recUnit = null;
+  let recCourse = sub;
+  for (const t of sub.terms) {
+    for (const un of t.units) {
+      if (!doneUnitIds.includes(un.id)) {
+        recUnit = un;
+        recCourse = sub;
+        break;
+      }
+    }
+    if (recUnit) break;
+  }
+  if (!recUnit) {
+    for (const c of COURSES_DATA) {
+      for (const t of c.terms) {
+        for (const un of t.units) {
+          if (!doneUnitIds.includes(un.id)) {
+            recUnit = un;
+            recCourse = c;
+            break;
+          }
+        }
+        if (recUnit) break;
+      }
+      if (recUnit) break;
+    }
+  }
+
+  const resumeCardHtml = `
+    <div class="resume-card">
+      <div style="display:flex;align-items:center;gap:14px">
+        <span style="font-size:32px">${recCourse ? recCourse.icon : '🎯'}</span>
+        <div>
+          <div style="font-size:11px;font-weight:bold;color:#818cf8;text-transform:uppercase;letter-spacing:.5px">🎯 ${totalCompletedCount > 0 ? 'Kaldığın Yerden Devam Et' : 'Öğrenmeye Buradan Başla'}</div>
+          <b style="font-size:15px;color:var(--t)">${esc(recUnit ? recUnit.unitNo + ': ' + recUnit.unitTitle : 'Tüm 43 Ünite Başarıyla Tamamlandı! 🎉')}</b>
+          <div style="font-size:12px;color:var(--m)">${recCourse ? esc(recCourse.name) + ' · Bilge Baykuş Sesli Anlatımı + 10 Soruluk Test' : 'Tebrikler kâşif, tüm 4. sınıf konularını bitirdin!'}</div>
+        </div>
+      </div>
+      ${recUnit ? `<button class="btn ok" onclick="CoursePlayer.open('${recUnit.id}')">🎬 Dersi Başlat ▶</button>` : ''}
+    </div>
+  `;
+
+  // 3. Günün Bilge Baykuş Tavsiyesi / Eğlenceli Bilgi Kartı
+  const DAILY_TIPS = [
+    { icon: "🌍", title: "Dünya'mızın Hareketi", text: "Dünya kendi ekseni etrafında 24 saatte dönerek gece-gündüzü, Güneş etrafında ise 365 gün 6 saatte dolanarak mevsimleri oluşturur!" },
+    { icon: "🧲", title: "Mıknatısların Gücü", text: "Mıknatısların aynı kutupları (N-N veya S-S) birbirini iterken, zıt kutupları (N-S) birbirini büyük bir kuvvetle çeker!" },
+    { icon: "➗", title: "Bölme Altın Kuralı", text: "Bir bölme işleminde kalan sayı daima bölen sayıdan küçük olmalıdır! (Kalan < Bölen)" },
+    { icon: "✍️", title: "Gerçek ve Mecaz Anlam", text: "Gerçek anlam aklımıza gelen ilk temel anlamdır. 'Soğuk su içtim' gerçektir; 'Bize çok soğuk davrandı' ifadesi ise mecazdır!" },
+    { icon: "🧭", title: "Doğada Yön Bulma", text: "Pusulanın renkli ucu daima Kuzey'i gösterir. Geceleri ise Kutup Yıldızı (Demirkazık) bize her zaman kuzeyi fısıldar!" },
+    { icon: "🥗", title: "Dengeli Beslenme", text: "Karbonhidratlar bize enerji verir, proteinler kaslarımızı onarır, vitamin ve mineraller ise bizi hastalıklardan korur!" },
+    { icon: "🇬🇧", title: "İngilizce İpucu", text: "'What is your job?' mesleğin nedir demektir; 'I am a doctor' veya 'I am a teacher' kalıbıyla cevap verilir!" }
+  ];
+  const todayTip = DAILY_TIPS[(new Date().getDate()) % DAILY_TIPS.length];
+
+  // 4. 6 Ders Butonu (İlerleme çubuğu ve tamamlanan ünite yüzdesi ile)
   const subButtonsHtml = COURSES_DATA.map(c => {
     const isActive = c.id === sub.id;
     const totalUnits = c.terms.reduce((acc, t) => acc + t.units.length, 0);
+    const doneUnits = c.terms.reduce((acc, t) => acc + t.units.filter(un => doneUnitIds.includes(un.id)).length, 0);
+    const pct = totalUnits > 0 ? Math.round((doneUnits / totalUnits) * 100) : 0;
     return `
       <button class="course-card-btn ${isActive ? 'active' : ''}" 
               style="--theme-color:${c.color}" 
               onclick="A.selCourse('${c.id}')"
-              title="${esc(c.name)} dersine ait üniteleri ve videoları aç">
+              title="${esc(c.name)}: ${doneUnits}/${totalUnits} ünite tamamlandı (%${pct})">
         <span class="course-icon">${c.icon}</span>
         <span class="course-name">${esc(c.name)}</span>
-        <span class="course-badge">${totalUnits} Ünite</span>
+        <span class="course-badge">${doneUnits > 0 ? `${doneUnits}/${totalUnits} · %${pct}` : `${totalUnits} Ünite`}</span>
+        <div class="course-mini-progress"><i style="width:${pct}%;background:${c.color}"></i></div>
       </button>
     `;
   }).join('');
 
-  // 2. Dönem filtreleme
+  // 5. Dönem filtreleme
   const termsToDisplay = sub.terms.filter(t => {
     if (activeTerm === '1') return t.term === 1;
     if (activeTerm === '2') return t.term === 2;
     return true;
   });
 
-  // 3. Ünite ve Video Alanı kartları
+  // 6. Ünite ve Video Alanı kartları
   let sectionsHtml = '';
+  let renderedCardCount = 0;
   termsToDisplay.forEach(t => {
-    const unitCardsHtml = t.units.map(unit => {
+    const filteredUnits = t.units.filter(unit => {
+      const prog = u && u.courseProgress ? u.courseProgress[unit.id] : null;
+      const isDone = !!prog;
+      if (activeStatus === 'todo' && isDone) return false;
+      if (activeStatus === 'done' && !isDone) return false;
+      return true;
+    });
+
+    if (!filteredUnits.length) return;
+
+    const unitCardsHtml = filteredUnits.map(unit => {
       const matchSearch = !q || unit.unitTitle.toLowerCase().includes(q) || unit.topics.some(tp => tp.toLowerCase().includes(q));
+      if (matchSearch) renderedCardCount++;
       const topicTags = unit.topics.slice(0, 3).map(tp => `<span class="video-topic-pill">${esc(tp)}</span>`).join('');
       const moreCount = unit.topics.length > 3 ? `<span class="video-topic-pill">+${unit.topics.length - 3}</span>` : '';
       const prog = u && u.courseProgress ? u.courseProgress[unit.id] : null;
@@ -13735,7 +13996,7 @@ function coursesTab(u){
       <div class="term-section">
         <div class="term-section-title">
           <span>${t.term === 1 ? '🍂 1. Dönem' : '🌱 2. Dönem'} Üniteleri</span>
-          <small class="muted" style="font-weight:normal">(${t.units.length} Ünite Video Alanı)</small>
+          <small class="muted" style="font-weight:normal">(${filteredUnits.length} Ünite)</small>
         </div>
         <div class="video-grid">
           ${unitCardsHtml}
@@ -13746,6 +14007,9 @@ function coursesTab(u){
 
   return `
     <div class="courses-wrap">
+      <!-- Ödev Bildirim Bandı (Varsa) -->
+      ${alertBannerHtml}
+
       <!-- Bilge Baykuş Karşılama Banner -->
       <div class="courses-hero">
         <div class="courses-hero-text">
@@ -13753,8 +14017,20 @@ function coursesTab(u){
           <p>Çalışmak istediğin dersi seç; 1. ve 2. dönem ünite videolarıyla konuları eğlenerek öğren!</p>
         </div>
         <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
-          ${u && u.courseProgress && Object.keys(u.courseProgress).length ? `<span class="badge" style="background:rgba(16,185,129,0.25);color:#6ee7b7;border:1px solid #10b981">🏆 Tamamlanan: ${Object.keys(u.courseProgress).length} / 43 Ünite</span>` : ''}
+          <span class="badge" style="background:rgba(16,185,129,0.25);color:#6ee7b7;border:1px solid #10b981">🏆 Tamamlanan: ${totalCompletedCount} / 43 Ünite (${Math.round((totalCompletedCount / 43) * 100)}%)</span>
           <span class="badge" style="background:rgba(255,255,255,0.1);color:#fff">MEB 2025-2026 Uyumlu</span>
+        </div>
+      </div>
+
+      <!-- Akıllı Devam Kartı -->
+      ${resumeCardHtml}
+
+      <!-- Günün Bilge Baykuş Tavsiyesi -->
+      <div class="daily-tip-card">
+        <span style="font-size:22px">${todayTip.icon}</span>
+        <div>
+          <b>Günün İpucu (${todayTip.title}):</b>
+          <span style="color:var(--m)"> ${esc(todayTip.text)}</span>
         </div>
       </div>
 
@@ -13770,6 +14046,11 @@ function coursesTab(u){
           <button class="term-tab-btn ${activeTerm === '1' ? 'active' : ''}" onclick="A.selCourseTerm('1')">🍂 1. Dönem</button>
           <button class="term-tab-btn ${activeTerm === '2' ? 'active' : ''}" onclick="A.selCourseTerm('2')">🌱 2. Dönem</button>
         </div>
+        <div class="status-filter-tabs">
+          <button class="term-tab-btn ${activeStatus === 'all' ? 'active' : ''}" onclick="A.selCourseStatus('all')">🌈 Tümü</button>
+          <button class="term-tab-btn ${activeStatus === 'todo' ? 'active' : ''}" onclick="A.selCourseStatus('todo')">⏳ Bekleyenler</button>
+          <button class="term-tab-btn ${activeStatus === 'done' ? 'active' : ''}" onclick="A.selCourseStatus('done')">🏆 Tamamlananlar</button>
+        </div>
         <div style="display:flex;align-items:center;gap:8px">
           <input type="text" class="courses-search" placeholder="🔍 Ünite veya konu ara..." value="${esc(q)}" oninput="A.filterCourse(this.value)">
         </div>
@@ -13777,7 +14058,22 @@ function coursesTab(u){
 
       <!-- Seçili Dersin Ünite Video Kartları -->
       <div id="courseContentArea">
-        ${sectionsHtml}
+        ${sectionsHtml || `
+          <div class="card" style="text-align:center;padding:32px 16px">
+            <div style="font-size:36px;margin-bottom:8px">🔍</div>
+            <h4 style="margin:0 0 6px 0">Bu filtreye uygun ünite bulunamadı</h4>
+            <p class="muted" style="margin:0 0 14px 0">Filtreleri sıfırlayarak tüm üniteleri görebilirsiniz.</p>
+            <button class="btn sm ghost" onclick="A.clearCourseSearch()">Filtreleri Temizle 🔄</button>
+          </div>
+        `}
+      </div>
+
+      <!-- Arama Sonucu Bulunamadı Kutusu (Canlı Arama İçin) -->
+      <div id="noCourseResults" class="card" style="display:none;text-align:center;padding:32px 16px">
+        <div style="font-size:36px;margin-bottom:8px">🔍</div>
+        <h4 style="margin:0 0 6px 0">Aramanıza uygun ünite bulunamadı</h4>
+        <p class="muted" style="margin:0 0 14px 0">Lütfen aradığınız kelimeyi kontrol edin veya aramayı temizleyin.</p>
+        <button class="btn sm" onclick="A.clearCourseSearch()">Aramayı Temizle 🔄</button>
       </div>
     </div>
   `;
@@ -13791,19 +14087,33 @@ A.selCourseTerm = term => {
   ui.courseTerm = term;
   render();
 };
+A.selCourseStatus = status => {
+  ui.courseStatus = status;
+  render();
+};
 A.filterCourse = val => {
   ui.courseSearch = (val || '').toLowerCase().trim();
   const q = ui.courseSearch;
+  let anyVisible = false;
   document.querySelectorAll('.video-card').forEach(card => {
     const title = (card.getAttribute('data-title') || '').toLowerCase();
     const topics = (card.getAttribute('data-topics') || '').toLowerCase();
     const match = !q || title.includes(q) || topics.includes(q);
     card.style.display = match ? 'flex' : 'none';
+    if (match) anyVisible = true;
   });
   document.querySelectorAll('.term-section').forEach(sec => {
     const visibleCards = Array.from(sec.querySelectorAll('.video-card')).some(c => c.style.display !== 'none');
     sec.style.display = visibleCards ? 'block' : 'none';
   });
+  const noRes = document.getElementById('noCourseResults');
+  if (noRes) noRes.style.display = (q && !anyVisible) ? 'block' : 'none';
+};
+A.clearCourseSearch = () => {
+  ui.courseSearch = '';
+  ui.courseTerm = 'all';
+  ui.courseStatus = 'all';
+  render();
 };
 A.openVideoModal = (courseId, unitId) => {
   const c = COURSES_DATA.find(x => x.id === courseId);
