@@ -13228,6 +13228,15 @@ const CoursePlayer = (() => {
             completedAt: Date.now()
           };
         }
+        // Sınıfa atanmış eşleşen ödev varsa otomatik tamamla ve ödüllendir
+        if (u.classId) {
+          db.assignments.filter(a => a.classId === u.classId && a.moduleId === CP.unitId && !a.doneBy.includes(u.id)).forEach(a => {
+            a.doneBy.push(u.id);
+            u.asgDone = (u.asgDone || 0) + 1;
+            gain(u, a.xp || 15, a.gold || 10);
+            toast('📚 Ödev tamamlandı: ' + esc(a.title));
+          });
+        }
       }
       gain(u, xpReward, goldReward);
       bumpStat(u, lesson.subject, CP.score >= 7);
@@ -13308,6 +13317,7 @@ const CoursePlayer = (() => {
     nextQuizQ,
     finishQuiz,
     updateSpeakerUI,
+    isActive: () => !!CP.unitId && $('#modal') && !$('#modal').classList.contains('hidden'),
     getAudio: () => CP.audio
   };
 })();
@@ -14305,7 +14315,12 @@ function marketTab(u){
   const itemRow=i=>`<div class="item"><div>${i.type==='frame'?'🖼️':'🏷️'} <b>${esc(i.name)}</b> <small>🪙 ${i.price}</small></div>${own(i.id)?`<button class="btn sm ${(i.type==='title'?u.title===i.name:u.frame===i.id)?'ok':'ghost'}" onclick="A.equip('${i.id}')">${(i.type==='title'?u.title===i.name:u.frame===i.id)?'✔ Takılı':'Tak'}</button>`:`<button class="btn sm warn" ${u.gold<i.price?'disabled':''} onclick="A.buy('${i.id}')">Satın Al</button>`}</div>`;
   return `<div class="two" style="margin-top:0"><div class="card"><h3>🏆 Sınıf Liderlik Tablosu (${esc(u.classId)})</h3>${list.map((s,i)=>`<div class="item"><div style="display:flex;gap:10px;align-items:center"><span class="rank">${medal[i]||i+1}</span>${roleAvatar(s,36)}<div><b>${esc(s.name)}</b>${s.id===u.id?' <small>(sen)</small>':''}<br><small>${s.title?esc(s.title)+' • ':''}Seviye ${level(s.xp)}</small></div></div><b style="color:var(--a)">${s.xp} XP</b></div>`).join('')}</div>
   <div class="card"><h3>🎖️ Rozetlerim</h3>${BADGES.map(b=>`<span class="badge ${b.t(u,res)?'':'off'}" title="${esc(b.desc)}">${b.icon} ${b.name}</span>`).join('')}<p class="muted">Rozetlerin üzerine gelince nasıl kazanılacağını görürsün.</p></div></div>
-  <div class="card"><h3>🛒 Altın Marketi <small>(Bakiyen: 🪙 ${u.gold})</small></h3><div class="two" style="margin-top:0"><div>${ITEMS.filter(i=>i.type==='title').map(itemRow).join('')}<div class="row"><button class="btn ghost sm" onclick="A.unequip('title')">Unvanı Kaldır</button></div></div><div>${ITEMS.filter(i=>i.type==='frame').map(itemRow).join('')}<div class="row"><button class="btn ghost sm" onclick="A.unequip('frame')">Çerçeveyi Kaldır</button></div></div></div></div>`;
+  <div class="card"><h3>🛒 Altın Marketi <small>(Bakiyen: 🪙 ${u.gold})</small></h3><div class="two" style="margin-top:0"><div>${ITEMS.filter(i=>i.type==='title').map(itemRow).join('')}<div class="row"><button class="btn ghost sm" onclick="A.unequip('title')">Unvanı Kaldır</button></div></div><div>${ITEMS.filter(i=>i.type==='frame').map(itemRow).join('')}<div class="row"><button class="btn ghost sm" onclick="A.unequip('frame')">Çerçeveyi Kaldır</button></div></div></div></div>
+  <div class="card center" style="margin-top:14px;background:linear-gradient(135deg,rgba(234,179,8,0.12),rgba(245,158,11,0.06));border:1px solid rgba(234,179,8,0.3)">
+    <h3>🎖️ Dijital Başarı &amp; Takdir Belgesi</h3>
+    <p style="font-size:13px;color:var(--m);margin:4px 0 12px">Kazandığın XP'ler, tamamladığın üniteler ve başarınla sana özel hazırlanan resmi takdir belgeni görüntüle!</p>
+    <button class="btn warn" onclick="A.cert('${u.id}')">📜 Belgemi İncele &amp; Yazdır</button>
+  </div>`;
 }
 A.buy=id=>{
   const u=cur(),it=ITEMS.find(i=>i.id===id);
@@ -14544,10 +14559,20 @@ function drawChart(u){
   chart=new Chart(cv,{type:'bar',data:{labels:SUBJECTS,datasets:[{label:'Başarı %',data,backgroundColor:['#ef5350','#3b82f6','#10b981','#f59e0b','#8b5cf6','#ec4899'],borderRadius:8}]},options:{responsive:true,maintainAspectRatio:false,scales:{y:{min:0,max:100,ticks:{color:'#9aa6d1'},grid:{color:'rgba(255,255,255,.1)'}},x:{ticks:{color:'#9aa6d1'},grid:{display:false}}},plugins:{legend:{display:false}}}});
 }
 function certHTML(ch){
-  return `<div class="cert"><div style="font-size:46px">🏅</div><h1>DİJİTAL TAKDİR & BAŞARI BELGESİ</h1><p>Bu belge,</p><h2>${esc(ch.name)}</h2><p>${esc(ch.classId)} sınıfı öğrencisi, <b>Bilgi Evreni 4D Ultimate</b> eğitim portalında gösterdiği üstün çalışkanlık ve başarıdan dolayı takdir edilmiştir.</p><p>⭐ ${ch.xp} XP &nbsp;•&nbsp; 🎖️ Seviye ${level(ch.xp)} &nbsp;•&nbsp; 🧪 ${ch.labDone.length} 3D Deney &nbsp;•&nbsp; 📚 ${ch.asgDone||0} Ödev</p><p>Tarih: ${new Date().toLocaleDateString('tr-TR')}</p><div class="sig"><div>Sınıf Öğretmeni</div><div>Okul Müdürü</div></div></div>`;
+  const courseCount = Object.keys(ch.courseProgress || {}).length;
+  return `<div class="cert"><div style="font-size:46px">🏅</div><h1>DİJİTAL TAKDİR & BAŞARI BELGESİ</h1><p>Bu belge,</p><h2>${esc(ch.name)}</h2><p>${esc(ch.classId)} sınıfı öğrencisi, <b>Bilgi Evreni 4D Ultimate</b> eğitim portalında gösterdiği üstün çalışkanlık ve başarıdan dolayı takdir edilmiştir.</p><p>⭐ ${ch.xp} XP &nbsp;•&nbsp; 🎖️ Seviye ${level(ch.xp)} &nbsp;•&nbsp; 🎬 ${courseCount}/43 MEB Ünitesi &nbsp;•&nbsp; 🧪 ${(ch.labDone||[]).length} 3D Deney &nbsp;•&nbsp; 📚 ${ch.asgDone||0} Ödev</p><p>Tarih: ${new Date().toLocaleDateString('tr-TR')}</p><div class="sig"><div>Sınıf Öğretmeni</div><div>Okul Müdürü</div></div></div>`;
 }
-A.cert=()=>{const ch=byId(cur().childId);if(!ch)return;modal(certHTML(ch)+`<div class="row" style="justify-content:center"><button class="btn" onclick="A.printCert()">🖨️ Yazdır</button><button class="btn ghost" onclick="closeModal()">Kapat</button></div>`);};
-A.printCert=()=>{const ch=byId(cur().childId);if(ch){closeModal();printHTML(certHTML(ch).replace('class="cert"','class="cert" style="border:10px double #c9a227;padding:30px;text-align:center;color:#3e2723"'));}};
+A.cert=targetId=>{
+  const u=cur();
+  const ch=targetId?byId(targetId):(u&&u.role==='parent'?byId(u.childId):(u&&u.role==='student'?u:null));
+  if(!ch)return;
+  modal(certHTML(ch)+`<div class="row" style="justify-content:center;gap:10px;margin-top:10px"><button class="btn ok" onclick="A.printCert('${ch.id}')">🖨️ Yazdır / PDF Kaydet</button><button class="btn ghost" onclick="closeModal()">Kapat</button></div>`);
+};
+A.printCert=targetId=>{
+  const u=cur();
+  const ch=targetId?byId(targetId):(u&&u.role==='parent'?byId(u.childId):(u&&u.role==='student'?u:null));
+  if(ch){closeModal();printHTML(certHTML(ch).replace('class="cert"','class="cert" style="border:10px double #c9a227;padding:30px;text-align:center;color:#3e2723"'));}
+};
 
 /* ================= ADMİN PANELİ ================= */
 function adminView(u){
@@ -14867,7 +14892,25 @@ A.calcAds=()=>{
   if(session.uid&&!byId(session.uid))session={uid:null,stack:[]};
   render();
   if(location.protocol!=='file:')setInterval(()=>pullNow(false),8000);
-  document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();});
+  document.addEventListener('keydown', e => {
+    if (e.target && ['INPUT', 'TEXTAREA', 'SELECT'].includes(e.target.tagName)) return;
+    if (e.key === 'Escape') { closeModal(); return; }
+    if (window.CoursePlayer && CoursePlayer.isActive && CoursePlayer.isActive()) {
+      if (e.key === ' ' || e.code === 'Space') {
+        e.preventDefault();
+        CoursePlayer.togglePause();
+      } else if (e.key === 'ArrowRight') {
+        e.preventDefault();
+        CoursePlayer.nextStep();
+      } else if (e.key === 'ArrowLeft') {
+        e.preventDefault();
+        CoursePlayer.prevStep();
+      } else if (e.key === 'r' || e.key === 'R') {
+        e.preventDefault();
+        CoursePlayer.replayCurrentStep();
+      }
+    }
+  });
   $('#modal').addEventListener('click',e=>{if(e.target.id==='modal')closeModal();});
 })();
 </script><script type="module">
