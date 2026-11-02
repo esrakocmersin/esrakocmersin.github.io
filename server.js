@@ -159,6 +159,24 @@ const server = http.createServer((req, res) => {
     return send(res, 200, fs.readFileSync(INDEX_FILE), 'text/html; charset=utf-8');
   }
 
+  // Kok dizindeki PWA ve statik dosyalar (manifest.json, sw.js, favicon.ico)
+  if (req.method === 'GET' && ['/manifest.json', '/sw.js', '/favicon.ico'].includes(url)) {
+    const filePath = path.join(DIR, url.slice(1));
+    if (fs.existsSync(filePath) && fs.statSync(filePath).isFile()) {
+      const ext = path.extname(filePath).toLowerCase();
+      const mimes = {
+        '.json': 'application/manifest+json; charset=utf-8',
+        '.js': 'application/javascript; charset=utf-8',
+        '.ico': 'image/x-icon'
+      };
+      res.writeHead(200, {
+        'Content-Type': mimes[ext] || 'application/octet-stream',
+        'Cache-Control': 'no-cache'
+      });
+      return fs.createReadStream(filePath).pipe(res);
+    }
+  }
+
   // Statik dosya servisi (assets klasoru altindaki resim, doku ve sesler)
   if (req.method === 'GET' && url.startsWith('/assets/')) {
     const rel = decodeURIComponent(url.replace(/^\/+/, ''));

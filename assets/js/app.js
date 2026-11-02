@@ -47,11 +47,11 @@ const level = xp => Math.floor((xp || 0) / 100) + 1;
 const fmtDate = t => new Date(t).toLocaleString('tr-TR', {dateStyle:'short', timeStyle:'short'});
 const rndPass = () => String(Math.floor(1000 + Math.random() * 9000));
 function slug(s){return String(s||'').toLocaleLowerCase('tr').replace(/ç/g,'c').replace(/ğ/g,'g').replace(/ı/g,'i').replace(/ö/g,'o').replace(/ş/g,'s').replace(/ü/g,'u').replace(/[^a-z0-9]/g,'');}
-function toast(msg){const t=$('#toast');const d=document.createElement('div');d.innerHTML=msg;t.appendChild(d);setTimeout(()=>d.remove(),3200);}
+function toast(msg){const t=$('#toast');if(!t)return;const d=document.createElement('div');d.innerHTML=msg;t.appendChild(d);setTimeout(()=>{try{if(typeof d.remove==='function')d.remove();else if(d.parentNode)d.parentNode.removeChild(d);}catch(e){}},3200);}
 function shuffle(a){a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
 function modal(html){$('#modalBox').innerHTML=html;$('#modal').classList.remove('hidden');}
 function closeModal(){if(window.CoursePlayer)CoursePlayer.stopAudio();$('#modal').classList.add('hidden');$('#modalBox').classList.remove('theater');$('#modalBox').innerHTML='';render();}
-function download(name, text, mime){const b=new Blob([text],{type:mime||'text/plain;charset=utf-8'});const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download=name;document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove();},500);}
+function download(name, text, mime){const b=new Blob([text],{type:mime||'text/plain;charset=utf-8'});const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download=name;document.body.appendChild(a);a.click();setTimeout(()=>{try{URL.revokeObjectURL(a.href);if(typeof a.remove==='function')a.remove();else if(a.parentNode)a.parentNode.removeChild(a);}catch(e){}},500);}
 function printHTML(html){const p=$('#printArea');p.innerHTML=html;document.body.classList.add('printing');const done=()=>{document.body.classList.remove('printing');p.innerHTML='';window.removeEventListener('afterprint',done);};window.addEventListener('afterprint',done);setTimeout(()=>window.print(),150);}
 /* ---------- API Adresi & Bulut (Render.com / GitHub Pages uyumu) ---------- */
 function getApiBase() {
@@ -2598,35 +2598,8 @@ A.calcAds=()=>{
     if (e.target && ['INPUT', 'TEXTAREA', 'SELECT'].includes(e.target.tagName)) return;
     if (e.key === 'Escape') { closeModal(); return; }
 
-    // CoursePlayer Video & Test Kontrolleri
-    if (window.CoursePlayer && CoursePlayer.isActive && CoursePlayer.isActive()) {
-      if (CoursePlayer.isQuizActive && CoursePlayer.isQuizActive()) {
-        const k = e.key.toLowerCase();
-        if (k === 'a' || k === '1') { CoursePlayer.pickAnswer(0); return; }
-        if (k === 'b' || k === '2') { CoursePlayer.pickAnswer(1); return; }
-        if (k === 'c' || k === '3') { CoursePlayer.pickAnswer(2); return; }
-        if (k === 'd' || k === '4') { CoursePlayer.pickAnswer(3); return; }
-        if (['enter', ' ', 'arrowright'].includes(k)) {
-          e.preventDefault();
-          CoursePlayer.nextQuizQ();
-          return;
-        }
-      } else {
-        if (e.key === ' ' || e.code === 'Space') {
-          e.preventDefault();
-          CoursePlayer.togglePause();
-        } else if (e.key === 'ArrowRight') {
-          e.preventDefault();
-          CoursePlayer.nextStep();
-        } else if (e.key === 'ArrowLeft') {
-          e.preventDefault();
-          CoursePlayer.prevStep();
-        } else if (e.key === 'r' || e.key === 'R') {
-          e.preventDefault();
-          CoursePlayer.replayCurrentStep();
-        }
-      }
-    }
+    // CoursePlayer kontrolleri courses_data.js içindeki özel dinleyicide yönetilir
+    if (window.CoursePlayer && CoursePlayer.isActive && CoursePlayer.isActive()) return;
 
     // Deneme Sınavı Klavye Kısayolları (A/B/C/D veya 1/2/3/4)
     if (typeof exam !== 'undefined' && exam && exam.active) {

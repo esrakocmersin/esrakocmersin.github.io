@@ -15114,6 +15114,12 @@ const CoursePlayer = (() => {
         p.catch(e => {
           if (e && e.name === 'AbortError') return;
           if (!alive()) return;
+          if (e && e.name === 'NotAllowedError') {
+            CP.paused = true;
+            updatePlayButtonUI();
+            updateSpeakerUI(false);
+            return;
+          }
           fallbackAudio(text, alive, onEnd);
         });
       }
@@ -15133,6 +15139,7 @@ const CoursePlayer = (() => {
           if (!alive()) return;
           CP.audioPlaying = false;
           updateSpeakerUI(false);
+          updatePlayButtonUI();
           if (onEnd) onEnd();
         };
         CP.audio.onerror = () => {
@@ -15144,6 +15151,12 @@ const CoursePlayer = (() => {
           p.catch(e => {
             if (e && e.name === 'AbortError') return;
             if (!alive()) return;
+            if (e && e.name === 'NotAllowedError') {
+              CP.paused = true;
+              updatePlayButtonUI();
+              updateSpeakerUI(false);
+              return;
+            }
             browserSpeech(text, alive, onEnd);
           });
         }
@@ -15166,25 +15179,31 @@ const CoursePlayer = (() => {
       const u = new SpeechSynthesisUtterance(text);
       u.lang = 'tr-TR';
       u.rate = 0.95 * CP.speed;
+      u.pitch = 1.15;
       const voices = speechSynthesis.getVoices();
-      const v = voices.find(x => x.lang && x.lang.toLowerCase().startsWith('tr') && (
+      const isMale = v => /male|erkek|tolga|ahmet|david|stefan|george/i.test(v.name);
+      const femaleTurkish = voices.find(x => x.lang && x.lang.toLowerCase().startsWith('tr') && !isMale(x) && (
         x.name.toLowerCase().includes('emel') ||
         x.name.toLowerCase().includes('filiz') ||
         x.name.toLowerCase().includes('female') ||
         x.name.toLowerCase().includes('seda') ||
         x.name.toLowerCase().includes('kadın')
-      )) || voices.find(x => x.lang && x.lang.toLowerCase().startsWith('tr'));
+      ));
+      const anyTurkishFemale = voices.find(x => x.lang && x.lang.toLowerCase().startsWith('tr') && !isMale(x));
+      const v = femaleTurkish || anyTurkishFemale;
       if (v) u.voice = v;
       u.onend = () => {
         if (!alive()) return;
         CP.audioPlaying = false;
         updateSpeakerUI(false);
+        updatePlayButtonUI();
         if (onEnd) onEnd();
       };
       u.onerror = (e) => {
         if (!alive() || (e && (e.error === 'interrupted' || e.error === 'canceled'))) return;
         CP.audioPlaying = false;
         updateSpeakerUI(false);
+        updatePlayButtonUI();
         if (onEnd) onEnd();
       };
       speechSynthesis.speak(u);
@@ -15198,7 +15217,16 @@ const CoursePlayer = (() => {
     if (sp) sp.classList.toggle('talking', !!talking);
   }
 
-  function open(unitId) {
+  function open(unitOrCourseId, unitIdx, stepIdx) {
+    let unitId = unitOrCourseId;
+    if (typeof unitIdx === 'number' && typeof COURSES_DATA !== 'undefined' && Array.isArray(COURSES_DATA)) {
+      const course = COURSES_DATA.find(c => c.id === unitOrCourseId);
+      if (course && course.terms) {
+        const allUnits = [];
+        course.terms.forEach(t => { if (t.units) allUnits.push(...t.units); });
+        if (allUnits[unitIdx]) unitId = allUnits[unitIdx].id;
+      }
+    }
     const lesson = COURSE_LESSONS[unitId];
     if (!lesson) {
       console.warn('Lesson not found for unitId:', unitId);
@@ -15209,7 +15237,7 @@ const CoursePlayer = (() => {
       try { CP.audio = new Audio(); } catch (e) {}
     }
     CP.unitId = unitId;
-    CP.step = 0;
+    CP.step = typeof stepIdx === 'number' ? Math.max(0, Math.min(stepIdx, (lesson.steps ? lesson.steps.length - 1 : 0))) : 0;
     CP.speed = 1.0;
     CP.paused = false;
     CP.quizActive = false;
@@ -15744,7 +15772,7 @@ const CoursePlayer = (() => {
   }
 
   // Handle escape or fullscreenchange
-  if (typeof document !== 'undefined') {
+  if (typeof document !== 'undefined' && typeof document.addEventListener === 'function') {
     document.addEventListener('fullscreenchange', () => {
       const stage = document.getElementById('cpStage');
       if (stage && !document.fullscreenElement) {
@@ -15760,11 +15788,26 @@ const CoursePlayer = (() => {
 
 
   // Global Keyboard Shortcuts when Player is Active
-  if (typeof window !== 'undefined') {
+  if (typeof window !== 'undefined' && typeof window.addEventListener === 'function') {
     window.addEventListener('keydown', (e) => {
       const modal = document.getElementById('modal');
       if (!modal || modal.classList.contains('hidden') || !CP.unitId) return;
       if (['INPUT', 'TEXTAREA', 'SELECT'].includes(e.target.tagName)) return;
+
+      // Test (Quiz) Modu Aktifken Klavye Kısayolları
+      if (CP.quizActive) {
+        const k = e.key.toLowerCase();
+        if (k === 'a' || k === '1') { e.preventDefault(); pickAnswer(0); return; }
+        if (k === 'b' || k === '2') { e.preventDefault(); pickAnswer(1); return; }
+        if (k === 'c' || k === '3') { e.preventDefault(); pickAnswer(2); return; }
+        if (k === 'd' || k === '4') { e.preventDefault(); pickAnswer(3); return; }
+        if (k === 'enter' || k === ' ' || k === 'arrowright') {
+          e.preventDefault();
+          nextQuizQ();
+          return;
+        }
+        return;
+      }
 
       if (e.code === 'Space') {
         e.preventDefault();
@@ -15833,7 +15876,7 @@ const CoursePlayer = (() => {
     getAudio: () => CP.audio
   };
 })();
-window.CoursePlayer = CoursePlayer;
+if (typeof window !== 'undefined') window.CoursePlayer = CoursePlayer;
 
 
 /* ================= 2025-2026 MEB 4. SINIF DERSLER & VİDEO MÜFREDATI ================= */
@@ -16356,4 +16399,7 @@ const COURSES_DATA = [
 if (typeof window !== 'undefined') {
   window.COURSE_LESSONS = COURSE_LESSONS;
   window.COURSES_DATA = COURSES_DATA;
+}
+if (typeof module !== 'undefined' && module.exports) {
+  module.exports = { CoursePlayer, COURSE_LESSONS, COURSES_DATA };
 }
