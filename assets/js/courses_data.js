@@ -16,7 +16,7 @@ const COURSE_LESSONS = {
       {
         "title": "Alfabemiz ve 29 Harf Dünyası",
         "badge": "1. Adım: Harfler",
-        "slide": "assets/images/harfler_tablosu.svg",
+        "slide": "assets/images/tr_u1_pixar.jpg",
         "narration": "Merhaba sevgili dördüncü sınıf kâşifim! Ben Bilge Baykuş. Bugün Türkçe dersimizin ilk ve en önemli konusu olan harfleri, heceleri, gerçek, mecaz ve terim anlamı adım adım keşfedeceğiz. Hazır mısın? Güzel dilimiz Türkçenin alfabesinde tam yirmi dokuz harf vardır. Bu harflerin sekiz tanesi ünlü, yani sesli harftir; yirmi bir tanesi ise ünsüz, yani sessiz harftir. Ünlü harflerimiz ikiye ayrılır: Kalın ünlüler A, I, O, U ve ince ünlüler E, İ, Ö, Ü. Kalın ünlüler gırtlaktan tok çıkar, ince ünlüler ise ağzın önünden zarifçe söylenir. Unutma; Türkçede her hecede mutlaka bir ünlü harf bulunur!",
         "audio": "assets/audio/courses/tr-u1_s1.mp3",
         "slideTitle": "Alfabemiz ve 29 Harf Dünyası",
