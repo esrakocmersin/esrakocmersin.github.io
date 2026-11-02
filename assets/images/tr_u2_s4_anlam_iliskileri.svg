@@ -1,0 +1,160 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 480" width="100%" height="100%">
+  <defs>
+    <style>
+      @keyframes pulsePurpleU2 {
+        0%, 100% { transform: scale(1); filter: drop-shadow(0 0 6px rgba(168, 85, 247, 0.4)); }
+        50% { transform: scale(1.03); filter: drop-shadow(0 0 18px rgba(168, 85, 247, 0.95)); }
+      }
+      @keyframes floatCardS4 {
+        0%, 100% { transform: translateY(0px); }
+        50% { transform: translateY(-4px); }
+      }
+      .purple-pulse { animation: pulsePurpleU2 3s ease-in-out infinite; transform-origin: center; transform-box: fill-box; }
+      .card-float-s4-1 { animation: floatCardS4 3.8s ease-in-out infinite; }
+      .card-float-s4-2 { animation: floatCardS4 3.8s ease-in-out 0.6s infinite; }
+      .card-float-s4-3 { animation: floatCardS4 3.8s ease-in-out 1.2s infinite; }
+    </style>
+
+    <linearGradient id="bgGradU2S4" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2e1065"/>
+      <stop offset="50%" stop-color="#1e0a45"/>
+      <stop offset="100%" stop-color="#0b0720"/>
+    </linearGradient>
+    <linearGradient id="cardGradU2S4" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#581c87"/>
+      <stop offset="100%" stop-color="#2e1065"/>
+    </linearGradient>
+    <linearGradient id="btnGradPurple" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#a855f7"/>
+      <stop offset="100%" stop-color="#c084fc"/>
+    </linearGradient>
+    <filter id="shadowU2S4" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#000" flood-opacity="0.6"/>
+    </filter>
+  </defs>
+
+  <!-- Arka Plan -->
+  <rect width="800" height="480" rx="20" fill="url(#bgGradU2S4)" stroke="#a855f7" stroke-width="2.5"/>
+
+  <!-- Üst Başlık -->
+  <g transform="translate(40, 22)">
+    <rect width="720" height="56" rx="16" fill="#4c1d95" stroke="#8b5cf6" stroke-width="2" filter="url(#shadowU2S4)"/>
+    <text x="24" y="36" font-family="'Segoe UI', Roboto, sans-serif" font-size="20" font-weight="900" fill="#ffffff">
+      🎭 4. ADIM: EŞ ANLAM · ZIT ANLAM · SESTEŞ KELİMELER
+    </text>
+    <rect x="520" y="11" width="180" height="34" rx="10" fill="url(#btnGradPurple)" filter="url(#shadowU2S4)"/>
+    <text x="610" y="33" font-family="'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="900" fill="#ffffff" text-anchor="middle">
+      ✨ 3 ANLAM İLİŞKİSİ
+    </text>
+  </g>
+
+  <!-- Ana Tanım Banner'ı -->
+  <g transform="translate(40, 92)" class="purple-pulse">
+    <rect width="720" height="68" rx="14" fill="#1e1045" stroke="#a855f7" stroke-width="2" filter="url(#shadowU2S4)"/>
+    <text x="360" y="28" font-family="'Segoe UI', Roboto, sans-serif" font-size="16" font-weight="900" fill="#e9d5ff" text-anchor="middle">
+      📚 Kelimelerin birbiriyle kurduğu sihirli anlam köprüleri!
+    </text>
+    <text x="360" y="52" font-family="'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="700" fill="#ddd6fe" text-anchor="middle">
+      Eş anlamlılar ikiz kardeş, zıt anlamlılar birbirine küs karşıtlar, sesteşler ise farklı kılıktaki kelimelerdir.
+    </text>
+  </g>
+
+  <!-- 3 BÜYÜK KART -->
+  <!-- KART 1: Eş Anlamlılar -->
+  <g transform="translate(40, 175)" class="card-float-s4-1">
+    <rect width="224" height="215" rx="18" fill="url(#cardGradU2S4)" stroke="#c084fc" stroke-width="2" filter="url(#shadowU2S4)"/>
+    <rect x="14" y="14" width="196" height="42" rx="10" fill="#3b0764" stroke="#a855f7" stroke-width="1.5"/>
+    <text x="112" y="40" font-family="'Segoe UI', Roboto, sans-serif" font-size="14.5" font-weight="900" fill="#f3e8ff" text-anchor="middle">
+      👥 EŞ ANLAMLI
+    </text>
+    
+    <g transform="translate(14, 68)">
+      <rect width="196" height="70" rx="10" fill="#1e0a45"/>
+      <text x="98" y="24" font-family="'Segoe UI', Roboto, sans-serif" font-size="13.5" font-weight="800" fill="#facc15" text-anchor="middle">
+        okul = mektep
+      </text>
+      <text x="98" y="44" font-family="'Segoe UI', Roboto, sans-serif" font-size="13.5" font-weight="800" fill="#facc15" text-anchor="middle">
+        al = kırmızı · ak = beyaz
+      </text>
+      <text x="98" y="62" font-family="'Segoe UI', Roboto, sans-serif" font-size="13.5" font-weight="800" fill="#facc15" text-anchor="middle">
+        hediye = armağan
+      </text>
+    </g>
+
+    <rect x="14" y="152" width="196" height="46" rx="10" fill="#7c3aed"/>
+    <text x="112" y="174" font-family="'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="900" fill="#ffffff" text-anchor="middle">
+      YAZILIŞ FARKLI, ANLAM AYNI
+    </text>
+    <text x="112" y="190" font-family="'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="700" fill="#ddd6fe" text-anchor="middle">
+      Cümlede birbirinin yerine geçer
+    </text>
+  </g>
+
+  <!-- KART 2: Zıt Anlamlılar -->
+  <g transform="translate(288, 175)" class="card-float-s4-2">
+    <rect width="224" height="215" rx="18" fill="url(#cardGradU2S4)" stroke="#c084fc" stroke-width="2" filter="url(#shadowU2S4)"/>
+    <rect x="14" y="14" width="196" height="42" rx="10" fill="#3b0764" stroke="#a855f7" stroke-width="1.5"/>
+    <text x="112" y="40" font-family="'Segoe UI', Roboto, sans-serif" font-size="14.5" font-weight="900" fill="#f3e8ff" text-anchor="middle">
+      ⚖️ ZIT (KARŞIT) ANLAM
+    </text>
+    
+    <g transform="translate(14, 68)">
+      <rect width="196" height="70" rx="10" fill="#1e0a45"/>
+      <text x="98" y="24" font-family="'Segoe UI', Roboto, sans-serif" font-size="13.5" font-weight="800" fill="#38bdf8" text-anchor="middle">
+        sıcak ↔ soğuk
+      </text>
+      <text x="98" y="44" font-family="'Segoe UI', Roboto, sans-serif" font-size="13.5" font-weight="800" fill="#38bdf8" text-anchor="middle">
+        uzun ↔ kısa
+      </text>
+      <text x="98" y="62" font-family="'Segoe UI', Roboto, sans-serif" font-size="13.5" font-weight="800" fill="#38bdf8" text-anchor="middle">
+        dost ↔ düşman
+      </text>
+    </g>
+
+    <rect x="14" y="152" width="196" height="46" rx="10" fill="#7c3aed"/>
+    <text x="112" y="174" font-family="'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="900" fill="#ffffff" text-anchor="middle">
+      BİRBİRİNİN TAM TERSİ
+    </text>
+    <text x="112" y="190" font-family="'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="700" fill="#ddd6fe" text-anchor="middle">
+      Olumsuzu zıt anlam değildir!
+    </text>
+  </g>
+
+  <!-- KART 3: Sesteş Kelimeler -->
+  <g transform="translate(536, 175)" class="card-float-s4-3">
+    <rect width="224" height="215" rx="18" fill="url(#cardGradU2S4)" stroke="#c084fc" stroke-width="2" filter="url(#shadowU2S4)"/>
+    <rect x="14" y="14" width="196" height="42" rx="10" fill="#3b0764" stroke="#a855f7" stroke-width="1.5"/>
+    <text x="112" y="40" font-family="'Segoe UI', Roboto, sans-serif" font-size="14.5" font-weight="900" fill="#f3e8ff" text-anchor="middle">
+      🦆 SESTEŞ (EŞSESLİ)
+    </text>
+    
+    <g transform="translate(14, 68)">
+      <rect width="196" height="70" rx="10" fill="#1e0a45"/>
+      <text x="98" y="24" font-family="'Segoe UI', Roboto, sans-serif" font-size="12.5" font-weight="800" fill="#34d399" text-anchor="middle">
+        🏊 Yüz: Sayı (100) / Denizde yüzmek
+      </text>
+      <text x="98" y="44" font-family="'Segoe UI', Roboto, sans-serif" font-size="12.5" font-weight="800" fill="#34d399" text-anchor="middle">
+        🌸 Gül: Çiçek / Gülümsemek
+      </text>
+      <text x="98" y="62" font-family="'Segoe UI', Roboto, sans-serif" font-size="12.5" font-weight="800" fill="#34d399" text-anchor="middle">
+        🐎 At: Hayvan / Taş atmak
+      </text>
+    </g>
+
+    <rect x="14" y="152" width="196" height="46" rx="10" fill="#7c3aed"/>
+    <text x="112" y="174" font-family="'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="900" fill="#ffffff" text-anchor="middle">
+      YAZILIŞ AYNI, ANLAM BAMBAŞKA
+    </text>
+    <text x="112" y="190" font-family="'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="700" fill="#ddd6fe" text-anchor="middle">
+      Sesleri aynı, anlamları ayrıdır
+    </text>
+  </g>
+
+  <!-- Alt İpucu Şeridi -->
+  <g transform="translate(40, 404)">
+    <rect width="720" height="52" rx="14" fill="#3b0764" stroke="#c084fc" stroke-width="1.5"/>
+    <text x="360" y="32" font-family="'Segoe UI', Roboto, sans-serif" font-size="12.5" font-weight="800" fill="#fef08a" text-anchor="middle">
+      ⚠️ ÇOK ÖNEMLİ KURAL: "Gelmek" eyleminin zıttı "Gelmemek" DEĞİLDİR! O olumsuzudur; zıttı "GİTMEK"tir!
+    </text>
+  </g>
+</svg>

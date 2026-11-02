@@ -75,7 +75,7 @@ const COURSE_LESSONS = {
       {
         "title": "Sözcükte Gerçek (Temel) Anlam",
         "badge": "3. Adım: Gerçek Anlam",
-        "slide": "assets/images/gercek_mecaz_terim.svg",
+        "slide": "assets/images/tr_u1_gercek_anlam.svg",
         "narration": "Geldik sözcüklerin anlam dünyasına! İlk durağımız Gerçek Anlam, yani Temel Anlam. Bir sözcüğü duyduğumuzda veya okuduğumuzda aklımıza gelen ilk, asıl ve sözlükteki anlamıdır. Herkes için aynı somut durumu ifade eder. Örneğin: Sıcak havada dondurma eridi dediğimizde erimek sözcüğü maddenin ısıyla sıvılaşmasıdır, yani gerçek anlamdır! Hava bugün çok sıcak dediğimizde havanın ısısını anlatır, yine gerçek anlamdır. Taş çok ağırdı dediğimizde tartılabilen fiziksel kütledir, tamamen gerçek anlamdır!",
         "audio": "assets/audio/courses/tr-u1_s3.mp3",
         "slideTitle": "Sözcükte Gerçek (Temel) Anlam",
@@ -104,7 +104,7 @@ const COURSE_LESSONS = {
       {
         "title": "Mecaz Anlam: Hayal Gücünün Kanatları",
         "badge": "4. Adım: Mecaz Anlam",
-        "slide": "assets/images/gercek_mecaz_terim.svg",
+        "slide": "assets/images/tr_u1_mecaz_anlam.svg",
         "narration": "Peki ya mecaz anlam nedir? Sözcüğün gerçek anlamından tamamen uzaklaşarak kazandığı yeni ve soyut anlama mecaz anlam denir. Burada sözcükler hayal gücümüzle yepyeni duygular anlatır! Örneğin: Arkadaşının sözlerine kalbi kırıldı cümlesini düşünelim. Bir kalp bardak gibi çıt diye kırılıp parçalanabilir mi? Hayır! Burada kırılmak, gücenmek ve üzülmek anlamındadır; yani mecazdır! Ya da: Bize çok soğuk davrandı dediğimizde hava ısısından değil, ilgisiz ve mesafeli davranmaktan bahsederiz. Bu da mecaz anlamdır!",
         "audio": "assets/audio/courses/tr-u1_s4.mp3",
         "slideTitle": "Mecaz Anlam: Hayal Gücünün Kanatları",
@@ -133,7 +133,7 @@ const COURSE_LESSONS = {
       {
         "title": "Terim Anlam ve Ünite Özeti",
         "badge": "5. Adım: Terim Anlam",
-        "slide": "assets/images/gercek_mecaz_terim.svg",
+        "slide": "assets/images/tr_u1_terim_anlam.svg",
         "narration": "Ve son durağımız: Terim Anlam! Bilim, sanat, spor veya bir meslek alanına ait özel kavramları anlatan sözcüklere terim denir. Matematikte üçgen, açı, kesir; sporda penaltı, korner, smaç; tiyatroda perde ve sahne; müzikte ise nota ve sol anahtarı birer terimdir! Eğer bir doktor 'Gözüne miyop teşhisi koydum' derse miyop tıbbi bir terimdir. Ama 'Öğretmenin gözüne girdi' dersek bu mecaz anlamdır. İşte bu kadar kolay! Harika dinledin, konuyu mükemmel kavradın. Şimdi öğrendiklerini pekiştirmek için on soruluk büyük ünite testine geçiyoruz. Bakalım kaçta kaç yapacaksın, haydi başla!",
         "audio": "assets/audio/courses/tr-u1_s5.mp3",
         "slideTitle": "Terim Anlam ve Ünite Özeti",
@@ -396,7 +396,7 @@ const COURSE_LESSONS = {
       {
         "title": "Kök ve Ek Nedir? Basit Kelimeler",
         "badge": "1. Adım: Kelime Kökü",
-        "slide": "assets/images/kelime_yapisi.svg",
+        "slide": "assets/images/tr_u2_s1_basit_kelimeler.svg",
         "narration": "Merhaba sevgili dördüncü sınıf kâşifim! Bu dersimizde kelimelerin sihirli dünyasına yolculuk yapıyoruz. Bir sözcüğün anlamlı en küçük parçasına kök denir. Örneğin \"göz\", \"ev\", \"balık\" birer köktür. Yapım eki almamış, kök durumundaki sözcüklere ise basit sözcükler diyoruz. \"Kitaplar\" veya \"evimiz\" kelimeleri çekim eki alsa bile anlamları değişmediği için yine basittir.",
         "audio": "assets/audio/courses/tr-u2_s1.mp3",
         "slideTitle": "Kök ve Ek Nedir? Basit Kelimeler",
@@ -425,7 +425,7 @@ const COURSE_LESSONS = {
       {
         "title": "Türemiş Kelimeler ve Yapım Ekleri",
         "badge": "2. Adım: Yeni Kelimeler",
-        "slide": "assets/images/kelime_yapisi.svg",
+        "slide": "assets/images/tr_u2_s2_turemis_kelimeler.svg",
         "narration": "Geldik türemiş kelimelere! Bir köke yapım eki eklenerek yepyeni anlamlı bir sözcük oluşturuluyorsa buna türemiş kelime denir. Örneğin \"göz\" organımızken, sonuna \"lük\" eklenince \"gözlük\" eşyası olur! \"Tuz\" yiyecekken \"tuzluk\" kap olur. Dilimizde en çok kullanılan yapım ekleri lik, ci, li ve siz ekleridir. Unutma, yapım eki yeni bir kelime doğurur!",
         "audio": "assets/audio/courses/tr-u2_s2.mp3",
         "slideTitle": "Türemiş Kelimeler ve Yapım Ekleri",
@@ -454,7 +454,7 @@ const COURSE_LESSONS = {
       {
         "title": "Bileşik Kelimeler: Güçlerini Birleştirenler",
         "badge": "3. Adım: Bileşik Sözcükler",
-        "slide": "assets/images/kelime_yapisi.svg",
+        "slide": "assets/images/tr_u2_s3_bilesik_kelimeler.svg",
         "narration": "Bazen iki ayrı kelime el ele tutuşur ve yepyeni tek bir kavramı anlatır. İşte bunlara bileşik kelimeler denir! Örneğin \"Afyon\" ve \"Karahisar\" birleşince \"Afyonkarahisar\" şehri, \"aslan\" ve \"ağzı\" birleşince \"aslanağzı\" çiçeği, \"kuş\" ve \"burnu\" birleşince lezzetli bir çay olan \"kuşburnu\" oluşur. Bileşik kelimeler daima bitişik yazılır.",
         "audio": "assets/audio/courses/tr-u2_s3.mp3",
         "slideTitle": "Bileşik Kelimeler: Güçlerini Birleştirenler",
@@ -483,7 +483,7 @@ const COURSE_LESSONS = {
       {
         "title": "Eş Anlam, Zıt Anlam ve Sesteş Sözcükler",
         "badge": "4. Adım: Anlam İlişkileri",
-        "slide": "assets/images/kelime_yapisi.svg",
+        "slide": "assets/images/tr_u2_s4_anlam_iliskileri.svg",
         "narration": "Son adımımızda kelimelerin dostluklarına bakalım. Yazılışları farklı ama anlamları aynı olan sözcüklere eş anlamlı kelimeler denir; \"al - kırmızı\", \"mektep - okul\" gibi. Anlamca birbirinin tam tersi olanlara zıt anlamlı kelimeler denir; \"soğuk - sıcak\", \"gece - gündüz\" gibi. Yazılışları aynı fakat anlamları tamamen farklı olanlara ise sesteş kelimeler deriz; nehir kenarındaki \"çay\" ile içtiğimiz \"çay\" gibi!",
         "audio": "assets/audio/courses/tr-u2_s4.mp3",
         "slideTitle": "Eş Anlam, Zıt Anlam ve Sesteş Sözcükler",
@@ -1084,7 +1084,6 @@ const COURSE_LESSONS = {
     "subject": "Türkçe",
     "unitNo": "4. Ünite",
     "title": "Sözcük Türleri ve Cümlenin Öğeleri",
-    "cover": "assets/images/tr_u4_pixar.jpg",
     "icon": "🇹🇷",
     "steps": [
       {
@@ -1428,7 +1427,6 @@ const COURSE_LESSONS = {
     "subject": "Türkçe",
     "unitNo": "5. Ünite",
     "title": "Cümlede Anlam ve Yargılar",
-    "cover": "assets/images/tr_u5_pixar.jpg",
     "icon": "🇹🇷",
     "steps": [
       {
@@ -1766,7 +1764,6 @@ const COURSE_LESSONS = {
     "subject": "Türkçe",
     "unitNo": "6. Ünite",
     "title": "Yazım Kuralları ve Noktalama İşaretleri",
-    "cover": "assets/images/tr_u6_pixar.jpg",
     "icon": "🇹🇷",
     "steps": [
       {
@@ -2098,7 +2095,6 @@ const COURSE_LESSONS = {
     "subject": "Türkçe",
     "unitNo": "7. Ünite",
     "title": "Metin Türleri, Görsel Okuma ve Söz Sanatları",
-    "cover": "assets/images/tr_u7_pixar.jpg",
     "icon": "🇹🇷",
     "steps": [
       {
@@ -2436,7 +2432,6 @@ const COURSE_LESSONS = {
     "subject": "Matematik",
     "unitNo": "1. Ünite",
     "title": "Doğal Sayılarla Toplama ve Çıkarma",
-    "cover": "assets/images/mat_u1_pixar.jpg",
     "icon": "📐",
     "steps": [
       {
@@ -2786,7 +2781,6 @@ const COURSE_LESSONS = {
     "subject": "Matematik",
     "unitNo": "2. Ünite",
     "title": "Doğal Sayılarla Çarpma ve Bölme",
-    "cover": "assets/images/mat_u2_pixar.jpg",
     "icon": "✖️",
     "steps": [
       {
@@ -3124,7 +3118,6 @@ const COURSE_LESSONS = {
     "subject": "Matematik",
     "unitNo": "3. Ünite",
     "title": "Kesirler ve Kesirlerle İşlemler",
-    "cover": "assets/images/mat_u3_pixar.jpg",
     "icon": "🍰",
     "steps": [
       {
@@ -3474,7 +3467,6 @@ const COURSE_LESSONS = {
     "subject": "Matematik",
     "unitNo": "4. Ünite",
     "title": "Zamanı Ölçme ve Veri Değerlendirme",
-    "cover": "assets/images/mat_u4_pixar.jpg",
     "icon": "⏱️",
     "steps": [
       {
