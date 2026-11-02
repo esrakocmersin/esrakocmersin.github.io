@@ -11244,6 +11244,7 @@ const CoursePlayer = (() => {
     unitId: null,
     step: 0,
     speed: 1.0,
+    autoAdvance: true,
     paused: false,
     tok: 0,
     audio: null,
@@ -11404,7 +11405,96 @@ const CoursePlayer = (() => {
     }
 
     renderStep();
-    playStepAudio(lesson.steps[0]);
+    playStepAudio(lesson.steps[0], onStepEnded);
+    if (lesson.steps[1] && lesson.steps[1].audio) { const pre = new Audio(); pre.src = lesson.steps[1].audio; }
+  }
+
+  function onStepEnded() {
+    const lesson = COURSE_LESSONS[CP.unitId];
+    if (!lesson) return;
+    if (lesson.steps[CP.step + 1] && lesson.steps[CP.step + 1].audio) {
+      const pre = new Audio();
+      pre.src = lesson.steps[CP.step + 1].audio;
+    }
+    if (CP.autoAdvance && !CP.paused) {
+      if (CP.step < lesson.steps.length - 1) {
+        setTimeout(() => {
+          if (!CP.paused && CP.autoAdvance && !CP.quizActive) {
+            nextStep();
+          }
+        }, 1200);
+      } else {
+        setTimeout(() => {
+          toast('🎉 Konu anlatımı bitti! Teste başlayabilirsin.');
+        }, 800);
+      }
+    }
+  }
+
+  function toggleAutoAdvance() {
+    CP.autoAdvance = !CP.autoAdvance;
+    const btn = document.getElementById('cpAutoBtn');
+    if (btn) {
+      btn.textContent = CP.autoAdvance ? '⏩ Otomatik: Açık' : '⏸ Otomatik: Kapalı';
+      btn.style.color = CP.autoAdvance ? '#86efac' : 'inherit';
+    }
+    toast(CP.autoAdvance ? '⏩ Otomatik ilerleme açıldı' : '⏸ Otomatik ilerleme kapatıldı');
+  }
+
+  function printWorksheet(unitId) {
+    const lesson = COURSE_LESSONS[unitId || CP.unitId];
+    if (!lesson) return;
+    const L = ['A', 'B', 'C', 'D'];
+    const qBoxes = lesson.quiz.map((q, i) => `
+      <div style="border:1px solid #94a3b8;border-radius:8px;padding:12px;margin-bottom:12px;page-break-inside:avoid;background:#fff;color:#0f172a">
+        <b style="font-size:13.5px;color:#1e293b">Soru ${i + 1}:</b>
+        <p style="margin:5px 0 8px 0;font-size:13px;line-height:1.45;color:#1e293b">${esc(q.q).replace(/\r?\n|\\n/g, '<br>')}</p>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;font-size:12px">
+          ${q.options.map((opt, oi) => `
+            <div style="border:1px solid #cbd5e1;border-radius:6px;padding:4px 8px;background:#f8fafc;color:#1e293b">
+              <b>${L[oi]})</b> ${esc(opt)}
+            </div>
+          `).join('')}
+        </div>
+      </div>
+    `).join('');
+
+    const html = `
+      <div style="font-family:'Segoe UI',Roboto,sans-serif;color:#0f172a;padding:24px;max-width:860px;margin:0 auto;background:#fff">
+        <div style="border-bottom:2px solid #1e293b;padding-bottom:12px;margin-bottom:16px;text-align:center">
+          <div style="font-size:12px;font-weight:bold;letter-spacing:1px;color:#475569">T.C. MİLLİ EĞİTİM BAKANLIĞI · 4. SINIF MÜFREDATI</div>
+          <h2 style="margin:4px 0 2px 0;font-size:20px;color:#0f172a">${lesson.subject.toUpperCase()} DERSİ PEKİŞTİRME &amp; KAZANIM TESTİ</h2>
+          <h3 style="margin:0 0 10px 0;font-size:15px;color:#2563eb">${esc(lesson.unitNo)}: ${esc(lesson.title)}</h3>
+          <div style="display:flex;justify-content:space-between;font-size:13px;font-weight:600;border-top:1px dashed #94a3b8;padding-top:8px">
+            <span>Öğrencinin Adı Soyadı: .................................................</span>
+            <span>Sınıfı / No: ............ / ............</span>
+            <span>Tarih: ....../....../2026</span>
+          </div>
+        </div>
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
+          ${qBoxes}
+        </div>
+
+        <div style="margin-top:20px;border-top:2px solid #1e293b;padding-top:12px;page-break-inside:avoid">
+          <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px">
+            <b style="font-size:13px">OPTİK CEVAP FORMU:</b>
+            <div style="display:flex;gap:10px;font-size:12px">
+              ${[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(n => `<span><b>${n}</b>: (A) (B) (C) (D)</span>`).join(' ')}
+            </div>
+          </div>
+          <div style="margin-top:8px;font-size:11px;color:#64748b;text-align:center">
+            Bilgi Evreni 4D Ultimate · MEB 4. Sınıf Akıllı Eğitim Portalı
+          </div>
+        </div>
+      </div>
+    `;
+
+    if (typeof printHTML === 'function') {
+      printHTML(html);
+    } else {
+      window.print();
+    }
   }
 
   function renderStep() {
@@ -11428,8 +11518,10 @@ const CoursePlayer = (() => {
               <small>${esc(lesson.subject)} · ${esc(lesson.unitNo)} · Adım ${CP.step + 1} / ${totalSteps}</small>
             </div>
           </div>
-          <div style="display:flex;align-items:center;gap:6px">
+          <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap">
+            <button class="btn sm ghost" onclick="CoursePlayer.toggleAutoAdvance()" id="cpAutoBtn" title="Anlatım bitince sonraki adıma otomatik geç" style="font-size:11px;color:${CP.autoAdvance ? '#86efac' : 'inherit'}">${CP.autoAdvance ? '⏩ Otomatik: Açık' : '⏸ Otomatik: Kapalı'}</button>
             <button class="btn sm ghost" onclick="CoursePlayer.toggleSpeed()" title="Oynatma Hızı" id="cpSpeedBtn">⚡ ${CP.speed}x</button>
+            <button class="btn sm ghost" onclick="CoursePlayer.printWorksheet('${lesson.id}')" title="Bu ünitenin 10 soruluk testini A4 çalışma kağıdı olarak yazdır">🖨️ Test Çıktısı</button>
             <button class="btn sm warn" onclick="CoursePlayer.startQuiz('${lesson.id}')" title="Testi Başlat">📝 10 Soruluk Test</button>
             <button class="btn sm ghost" onclick="closeModal()" title="Kapat">✕</button>
           </div>
@@ -11481,7 +11573,11 @@ const CoursePlayer = (() => {
     if (CP.step < lesson.steps.length - 1) {
       CP.step++;
       renderStep();
-      playStepAudio(lesson.steps[CP.step]);
+      playStepAudio(lesson.steps[CP.step], onStepEnded);
+      if (lesson.steps[CP.step + 1] && lesson.steps[CP.step + 1].audio) {
+        const pre = new Audio();
+        pre.src = lesson.steps[CP.step + 1].audio;
+      }
     } else {
       startQuiz(lesson.id);
     }
@@ -11494,7 +11590,7 @@ const CoursePlayer = (() => {
     if (CP.step > 0) {
       CP.step--;
       renderStep();
-      playStepAudio(lesson.steps[CP.step]);
+      playStepAudio(lesson.steps[CP.step], onStepEnded);
     }
   }
 
@@ -11771,6 +11867,8 @@ const CoursePlayer = (() => {
     nextQuizQ,
     finishQuiz,
     updateSpeakerUI,
+    toggleAutoAdvance,
+    printWorksheet,
     isActive: () => !!CP.unitId && $('#modal') && !$('#modal').classList.contains('hidden'),
     getAudio: () => CP.audio
   };

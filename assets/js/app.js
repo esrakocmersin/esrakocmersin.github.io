@@ -265,7 +265,7 @@ function render(){
   }
 }
 function header(u){
-  return `<div class="topbar"><div class="logo">🌌 Bilgi Evreni <b>4D</b> Ultimate</div><div class="who"><small id="syncBadge"></small><button class="btn ghost sm" onclick="A.toggleSound()" id="soundToggleBtn" title="${soundMuted?'Sesi Aç':'Sesi Kapat'}" style="padding:4px 8px;font-size:14px">${soundMuted?'🔇':'🔊'}</button><button class="btn ghost sm" onclick="A.toggleFullscreen()" title="Tam Ekran" style="padding:4px 8px;font-size:14px">⛶</button>${roleAvatar(u)}<div><b>${esc(u.name)}</b><small>${ROLE[u.role]}${u.role==='student'?' • Seviye '+level(u.xp):''}${u.classId?' • '+esc(u.classId):''}</small></div><button class="btn ghost sm" onclick="A.logout()">🚪 Çıkış</button></div></div>`;
+  return `<div class="topbar"><div class="logo">🌌 Bilgi Evreni <b>4D</b> Ultimate</div><div class="who"><small id="syncBadge"></small><button class="btn ghost sm" onclick="A.toggleSound()" id="soundToggleBtn" title="${soundMuted?'Sesi Aç':'Sesi Kapat'}" style="padding:4px 8px;font-size:14px">${soundMuted?'🔇':'🔊'}</button><button class="btn ghost sm" onclick="A.toggleFullscreen()" title="Tam Ekran" style="padding:4px 8px;font-size:14px">⛶</button><button class="btn sm ok" id="pwaInstallBtn" onclick="A.installPWA()" style="display:none;padding:4px 10px;font-size:12px" title="Cihaza uygulama olarak kur">📲 Yükle</button>${roleAvatar(u)}<div><b>${esc(u.name)}</b><small>${ROLE[u.role]}${u.role==='student'?' • Seviye '+level(u.xp):''}${u.classId?' • '+esc(u.classId):''}</small></div><button class="btn ghost sm" onclick="A.logout()">🚪 Çıkış</button></div></div>`;
 }
 
 /* ---------- Giriş ---------- */
@@ -1170,6 +1170,35 @@ A.toggleFullscreen = () => {
   }
 };
 
+let deferredInstallPrompt = null;
+if (typeof window !== 'undefined') {
+  window.addEventListener('beforeinstallprompt', e => {
+    e.preventDefault();
+    deferredInstallPrompt = e;
+    const btn = document.getElementById('pwaInstallBtn');
+    if (btn) btn.style.display = 'inline-flex';
+    const lBtn = document.getElementById('pwaLoginBtn');
+    if (lBtn) lBtn.style.display = 'inline-flex';
+  });
+}
+
+A.installPWA = async () => {
+  if (!deferredInstallPrompt) {
+    toast('ℹ️ Uygulama tarayıcınızın adres çubuğundaki yükle butonundan yüklenebilir.');
+    return;
+  }
+  deferredInstallPrompt.prompt();
+  const choice = await deferredInstallPrompt.userChoice;
+  deferredInstallPrompt = null;
+  const btn = document.getElementById('pwaInstallBtn');
+  if (btn) btn.style.display = 'none';
+  const lBtn = document.getElementById('pwaLoginBtn');
+  if (lBtn) lBtn.style.display = 'none';
+  if (choice && choice.outcome === 'accepted') {
+    toast('🎉 Bilgi Evreni 4D başarıyla cihazınıza yüklendi!');
+  }
+};
+
 let appAudioCtx = null;
 function appTone(f, t0, d, type, vol) {
   if (soundMuted) return;
@@ -1388,7 +1417,7 @@ function coursesTab(u){
               <span>${isDone ? `⭐ Başarı: <b>${prog.score}/10</b> Puan` : (COURSE_LESSONS[unit.id] ? '✅ Sesli Anlatım + 10 Soru' : '⏳ Hazırlanıyor')}</span>
               <div class="row" style="margin:0;gap:4px">
                 ${isTeacher ? `<button class="btn sm ghost" style="padding:4px 8px;font-size:11px" title="Bu üniteyi sınıfına ödev ata" onclick="event.stopPropagation();A.quickAssignCourse('${unit.id}')">📤 Ödev Ver</button>` : ''}
-                <span class="video-card-btn-action" style="${isDone ? 'color:#facc15' : 'color:#10b981'}" onclick="event.stopPropagation();CoursePlayer.open('${unit.id}')">${isDone ? 'Tekrar İzle / Çöz 🔄' : 'Dersi Başlat ▶'}</span>
+                <button class="btn sm ghost" style="padding:3px 7px;font-size:11px" title="10 soruluk testi A4 çalışma kağıdı olarak yazdır" onclick="event.stopPropagation();CoursePlayer.printWorksheet('${unit.id}')">🖨️ Test</button><span class="video-card-btn-action" style="${isDone ? 'color:#facc15' : 'color:#10b981'}" onclick="event.stopPropagation();CoursePlayer.open('${unit.id}')">${isDone ? 'Tekrar İzle 🔄' : 'Dersi Başlat ▶'}</span>
               </div>
             </div>
           </div>
