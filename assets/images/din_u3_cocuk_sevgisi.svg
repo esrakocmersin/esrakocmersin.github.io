@@ -33,12 +33,12 @@
 
   <!-- Title Banner -->
   <rect x="150" y="18" width="500" height="44" rx="22" fill="url(#goldGrad)" filter="url(#shadow)"/>
-  <text x="400" y="46" text-anchor="middle" font-family="Arial, sans-serif" font-size="19" font-weight="bold" fill="#1e293b">🕊️ Hz. Muhammed'in Çocuk Sevgisi</text>
+  <text x="400" y="46" text-anchor="middle" font-family="Arial, sans-serif" font-size="19" font-weight="bold" fill="#1e293b">🕊️ Hazreti Muhammed'in Çocuk Sevgisi</text>
 
   <!-- Center oval / hub -->
   <ellipse cx="400" cy="248" rx="75" ry="65" fill="#1e3a5f" stroke="#f59e0b" stroke-width="3" filter="url(#shadow)"/>
   <text x="400" y="238" text-anchor="middle" font-size="34">🕊️</text>
-  <text x="400" y="260" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#f59e0b">Hz. Muhammed</text>
+  <text x="400" y="260" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#f59e0b">Hazreti Muhammed</text>
   <text x="400" y="276" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#cbd5e1">(s.a.v.)</text>
 
   <!-- Connector lines -->
@@ -65,7 +65,7 @@
   <!-- RIGHT TOP: Hasan Hüseyin -->
   <rect x="580" y="145" width="160" height="90" rx="14" fill="#1e3a5f" stroke="#f59e0b" stroke-width="2" filter="url(#shadow)"/>
   <text x="660" y="173" text-anchor="middle" font-size="22">🤲</text>
-  <text x="660" y="194" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#f59e0b">Hz. Hasan &amp; Hüseyin</text>
+  <text x="660" y="194" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#f59e0b">Hazreti Hasan &amp; Hüseyin</text>
   <text x="660" y="210" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#94a3b8">Namaz secdede</text>
   <text x="660" y="224" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#94a3b8">torunları inene beklerdi</text>
 
@@ -80,7 +80,7 @@
   <rect x="230" y="385" width="340" height="80" rx="14" fill="#312e81" stroke="#a78bfa" stroke-width="2" filter="url(#shadow)"/>
   <text x="400" y="410" text-anchor="middle" font-size="18">📖</text>
   <text x="400" y="430" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#c4b5fd">"Çocukları sevin ve onlara</text>
-  <text x="400" y="448" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#c4b5fd">iyi davranın." — Hz. Muhammed</text>
+  <text x="400" y="448" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#c4b5fd">iyi davranın." — Hazreti Muhammed</text>
 
   <!-- Footer -->
   <text x="400" y="490" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#475569">Din Kültürü 4. Sınıf · 3. Ünite: Peygamberlerin Sevgisi</text>

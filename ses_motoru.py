@@ -60,11 +60,37 @@ def clamp(v, lo, hi):
     return max(lo, min(hi, v))
 
 
+def fix_pronunciation_tr(t):
+    """Kısaltmaları Türkçe doğru seslendirmeye dönüştürür."""
+    # Dini saygı ve unvan kısaltmaları
+    t = re.sub(r'\bHz\.\s*', 'Hazreti ', t)
+    t = re.sub(r'\b\(s\.a\.v\.\)', 'sallallahu aleyhi ve sellem', t, flags=re.I)
+    t = re.sub(r'\bs\.a\.v\.', 'sallallahu aleyhi ve sellem', t, flags=re.I)
+    t = re.sub(r'\b\(a\.s\.\)', 'aleyhisselam', t, flags=re.I)
+    t = re.sub(r'\ba\.s\.', 'aleyhisselam', t, flags=re.I)
+    t = re.sub(r'\b\(r\.a\.\)', 'radıyallahu anh', t, flags=re.I)
+    t = re.sub(r'\br\.a\.', 'radıyallahu anh', t, flags=re.I)
+    t = re.sub(r'\b\(c\.c\.\)', 'celle celaluhu', t, flags=re.I)
+    t = re.sub(r'\bc\.c\.', 'celle celaluhu', t, flags=re.I)
+
+    # Genel akademik ve günlük kısaltmalar
+    t = re.sub(r'\bProf\.\s*Dr\.\s*', 'Profesör Doktor ', t, flags=re.I)
+    t = re.sub(r'\bProf\.\s*', 'Profesör ', t, flags=re.I)
+    t = re.sub(r'\bDr\.\s*', 'Doktor ', t, flags=re.I)
+    t = re.sub(r'\bvb\.', 've benzeri', t, flags=re.I)
+    t = re.sub(r'\bvs\.', 've saire', t, flags=re.I)
+    t = re.sub(r'\börn\.', 'örneğin', t, flags=re.I)
+    t = re.sub(r'\bM\.Ö\.', 'Milattan Önce', t, flags=re.I)
+    t = re.sub(r'\bM\.S\.', 'Milattan Sonra', t, flags=re.I)
+    t = re.sub(r'\byy\.', 'yüzyıl', t, flags=re.I)
+    return t
+
 def normalize_text(text, lang):
     """Sesli okuma icin metni temizler (emoji, sembol, kesir...)."""
     t = EMOJI_RE.sub("", text)
     t = t.replace("\r", "\n")
     if lang.startswith("tr"):
+        t = fix_pronunciation_tr(t)
         t = re.sub(r"(\d+)\s*/\s*(\d+)", r"\1 bölü \2", t)
         t = t.replace("×", " çarpı ").replace("÷", " bölü ").replace("°", " derece ")
         t = re.sub(r"(?<=\d)\s*\+\s*(?=\d)", " artı ", t)

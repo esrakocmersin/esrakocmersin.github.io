@@ -47,16 +47,16 @@
   <text x="207" y="196" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#1e293b">alâ Muhammed ve alâ âli Muhammed...</text>
 
   <text x="207" y="222" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#fbbf24">Anlamı:</text>
-  <text x="207" y="240" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#e2e8f0">"Allah'ım! Hz. Muhammed'e ve</text>
-  <text x="207" y="257" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#e2e8f0">ailesine, Hz. İbrahim ve ailesine</text>
+  <text x="207" y="240" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#e2e8f0">"Allah'ım! Hazreti Muhammed'e ve</text>
+  <text x="207" y="257" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#e2e8f0">ailesine, Hazreti İbrahim ve ailesine</text>
   <text x="207" y="274" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#e2e8f0">rahmet ettiğin gibi rahmet et."</text>
 
   <line x1="60" y1="285" x2="355" y2="285" stroke="#fbbf24" stroke-width="1" opacity="0.4"/>
 
   <text x="207" y="305" text-anchor="middle" font-size="18">🌙 ⭐</text>
   <text x="207" y="325" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#fde68a">SALLİ = Salât = Rahmet &amp; Şan</text>
-  <text x="207" y="343" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#94a3b8">Hz. İbrahim'e yapılan dua gibi</text>
-  <text x="207" y="359" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#94a3b8">Hz. Muhammed'e dua ederiz.</text>
+  <text x="207" y="343" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#94a3b8">Hazreti İbrahim'e yapılan dua gibi</text>
+  <text x="207" y="359" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#94a3b8">Hazreti Muhammed'e dua ederiz.</text>
 
   <!-- BARIK BOX (RIGHT) -->
   <rect x="420" y="152" width="345" height="220" rx="16" fill="url(#barikGrad)" stroke="#60a5fa" stroke-width="2.5" filter="url(#shadow4)"/>
@@ -67,15 +67,15 @@
   <text x="592" y="196" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#bfdbfe">alâ Muhammed ve alâ âli Muhammed...</text>
 
   <text x="592" y="222" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#60a5fa">Anlamı:</text>
-  <text x="592" y="240" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#e2e8f0">"Allah'ım! Hz. Muhammed'e ve</text>
-  <text x="592" y="257" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#e2e8f0">ailesine, Hz. İbrahim ve ailesine</text>
+  <text x="592" y="240" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#e2e8f0">"Allah'ım! Hazreti Muhammed'e ve</text>
+  <text x="592" y="257" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#e2e8f0">ailesine, Hazreti İbrahim ve ailesine</text>
   <text x="592" y="274" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#e2e8f0">bereket verdiğin gibi bereket ver."</text>
 
   <line x1="445" y1="285" x2="740" y2="285" stroke="#60a5fa" stroke-width="1" opacity="0.4"/>
 
   <text x="592" y="305" text-anchor="middle" font-size="18">✨ 💎</text>
   <text x="592" y="325" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#93c5fd">BARİK = Bereket &amp; Hayır</text>
-  <text x="592" y="343" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#94a3b8">Hz. İbrahim gibi bereketli</text>
+  <text x="592" y="343" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#94a3b8">Hazreti İbrahim gibi bereketli</text>
   <text x="592" y="359" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#94a3b8">kılınmasını dileriz.</text>
 
   <!-- SALAVAT Bottom Banner -->

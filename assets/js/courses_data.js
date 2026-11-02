@@ -3746,7 +3746,7 @@ const COURSE_LESSONS = {
           "Ali Kuşçu"
         ],
         "answer": 1,
-        "explanation": "Prof. Dr. Aziz Sancar, hücrelerin hasar gören DNA'ları nasıl onardığını haritalandırarak Nobel Kimya Ödülü kazanmıştır."
+        "explanation": "Profesör Doktor Aziz Sancar, hücrelerin hasar gören DNA'ları nasıl onardığını haritalandırarak Nobel Kimya Ödülü kazanmıştır."
       },
       {
         "q": "Bilimsel bir bilginin doğrulanması için aşağıdakilerden hangisi şarttır?",
@@ -3858,7 +3858,7 @@ const COURSE_LESSONS = {
           "Ali Kuşçu"
         ],
         "answer": 1,
-        "explanation": "Prof. Dr. Aziz Sancar, hücrelerin hasar gören DNA'ları nasıl onardığını haritalandırarak Nobel Kimya Ödülü kazanmıştır."
+        "explanation": "Profesör Doktor Aziz Sancar, hücrelerin hasar gören DNA'ları nasıl onardığını haritalandırarak Nobel Kimya Ödülü kazanmıştır."
       },
       {
         "q": "Bilimsel bir bilginin doğrulanması için aşağıdakilerden hangisi şarttır?",
@@ -3985,7 +3985,7 @@ const COURSE_LESSONS = {
           "Su"
         ],
         "answer": 0,
-        "explanation": "Yapıcı ve onarıcı temel besin maddesi Proteinlerdir (Et, süt, yumurta vb.)."
+        "explanation": "Yapıcı ve onarıcı temel besin maddesi Proteinlerdir (Et, süt, yumurta ve benzeri )."
       },
       {
         "q": "Bizi hastalıklardan koruyan ve vücudumuzda DÜZENLEYİCİ olarak görev yapan besin grubu hangisidir?",
@@ -4097,7 +4097,7 @@ const COURSE_LESSONS = {
           "Su"
         ],
         "answer": 0,
-        "explanation": "Yapıcı ve onarıcı temel besin maddesi Proteinlerdir (Et, süt, yumurta vb.)."
+        "explanation": "Yapıcı ve onarıcı temel besin maddesi Proteinlerdir (Et, süt, yumurta ve benzeri )."
       },
       {
         "q": "Bizi hastalıklardan koruyan ve vücudumuzda DÜZENLEYİCİ olarak görev yapan besin grubu hangisidir?",
@@ -7607,7 +7607,7 @@ const COURSE_LESSONS = {
         "title": "Kelime-i Tevhid ve Kelime-i Şehadet",
         "badge": "3. Adım: İman Sözleri",
         "slide": "assets/images/allah_sevgisi.svg",
-        "narration": "İslam'ın anahtarı olan iki kutlu cümle vardır. İlki Kelime-i Tevhid: \"Lâ ilâhe illallah, Muhammedün Resûlullah\"tır; yani Allah'tan başka ilah yoktur, Hz. Muhammed O'nun elçisidir. İkincisi Kelime-i Şehadet: \"Eşhedü en lâ ilâhe illallah ve eşhedü enne Muhammeden abdühû ve resûlüh\"tür; yani Şahitlik ederim ki Allah'tan başka ilah yoktur ve Hz. Muhammed O'nun kulu ve elçisidir.",
+        "narration": "İslam'ın anahtarı olan iki kutlu cümle vardır. İlki Kelime-i Tevhid: \"Lâ ilâhe illallah, Muhammedün Resûlullah\"tır; yani Allah'tan başka ilah yoktur, Hazreti Muhammed O'nun elçisidir. İkincisi Kelime-i Şehadet: \"Eşhedü en lâ ilâhe illallah ve eşhedü enne Muhammeden abdühû ve resûlüh\"tür; yani Şahitlik ederim ki Allah'tan başka ilah yoktur ve Hazreti Muhammed O'nun kulu ve elçisidir.",
         "audio": "assets/audio/courses/din-u2_s3.mp3"
       },
       {
@@ -7639,7 +7639,7 @@ const COURSE_LESSONS = {
           "Fatiha"
         ],
         "answer": 1,
-        "explanation": "Bu ifade \"Kelime-i Tevhid\"dir; anlamı Allah'tan başka ilah yoktur, Hz. Muhammed O'nun elçisidir."
+        "explanation": "Bu ifade \"Kelime-i Tevhid\"dir; anlamı Allah'tan başka ilah yoktur, Hazreti Muhammed O'nun elçisidir."
       },
       {
         "q": "\"Eşhedü en lâ ilâhe illallah ve eşhedü enne Muhammeden abdühû ve resûlüh\" sözüne ne denir?",
@@ -7751,7 +7751,7 @@ const COURSE_LESSONS = {
           "Fatiha"
         ],
         "answer": 1,
-        "explanation": "Bu ifade \"Kelime-i Tevhid\"dir; anlamı Allah'tan başka ilah yoktur, Hz. Muhammed O'nun elçisidir."
+        "explanation": "Bu ifade \"Kelime-i Tevhid\"dir; anlamı Allah'tan başka ilah yoktur, Hazreti Muhammed O'nun elçisidir."
       },
       {
         "q": "\"Eşhedü en lâ ilâhe illallah ve eşhedü enne Muhammeden abdühû ve resûlüh\" sözüne ne denir?",
@@ -7851,22 +7851,22 @@ const COURSE_LESSONS = {
     "icon": "🕊️",
     "steps": [
       {
-            "title": "Hz. Muhammed'in Çocuk Sevgisi",
+            "title": "Hazreti Muhammed'in Çocuk Sevgisi",
             "badge": "1. Adım: Çocuk Sevgisi",
             "slide": "assets/images/din_u3_cocuk_sevgisi.svg",
-            "slideTitle": "Hz. Muhammed'in Çocuklara Sevgisi",
-            "narration": "Merhaba sevgili kaşif! Peygamberimiz Hz. Muhammed (s.a.v.) çocukları çok ama çok severdi. Sokakta yürürken karşılaştığı çocuklara ilk selamı o verirdi; bu onların ne kadar değerli olduğunu hissettirirdi. Torunları Hz. Hasan ve Hz. Hüseyin namaz kılarken sırtına çıktığında, onlar inene kadar secdeden kalkmazdı. Kız ve erkek çocuklar arasında hiçbir zaman ayrım yapmaz, hepsini eşit sevgi ve şefkatle kucaklardı.",
+            "slideTitle": "Hazreti Muhammed'in Çocuklara Sevgisi",
+            "narration": "Merhaba sevgili kaşif! Peygamberimiz Hazreti Muhammed (sallallahu aleyhi ve sellem) çocukları çok ama çok severdi. Sokakta yürürken karşılaştığı çocuklara ilk selamı o verirdi; bu onların ne kadar değerli olduğunu hissettirirdi. Torunları Hazreti Hasan ve Hazreti Hüseyin namaz kılarken sırtına çıktığında, onlar inene kadar secdeden kalkmazdı. Kız ve erkek çocuklar arasında hiçbir zaman ayrım yapmaz, hepsini eşit sevgi ve şefkatle kucaklardı.",
             "audio": "assets/audio/courses/din-u3_s1.mp3",
             "emo": "🕊️",
             "then": [
                   {
-                        "text": "Torunları Hz. Hasan ve Hz. Hüseyin namaz sırasında dedelerinin sırtına tırmanırdı. Peygamberimiz onlar inmeden secdeden kalkmazdı; çünkü torunlarının mutluluğu ve ibadeti sevmeleri her şeyden önemliydi.",
+                        "text": "Torunları Hazreti Hasan ve Hazreti Hüseyin namaz sırasında dedelerinin sırtına tırmanırdı. Peygamberimiz onlar inmeden secdeden kalkmazdı; çünkü torunlarının mutluluğu ve ibadeti sevmeleri her şeyden önemliydi.",
                         "lang": "tr-TR",
                         "cap": "🤗 Torunlarını Çok Severdi",
                         "emo": "🤗"
                   },
                   {
-                        "text": "Hz. Muhammed kız ve erkek çocuklar arasında asla ayrım yapmazdı. 'Kız çocukları Allah'ın birer rahmetidir' buyurarak döneminin yanlış anlayışını tamamen yıktı.",
+                        "text": "Hazreti Muhammed kız ve erkek çocuklar arasında asla ayrım yapmazdı. 'Kız çocukları Allah'ın birer rahmetidir' buyurarak döneminin yanlış anlayışını tamamen yıktı.",
                         "lang": "tr-TR",
                         "cap": "⚖️ Kız ve Erkek Çocuk Eşittir",
                         "emo": "⚖️"
@@ -7884,7 +7884,7 @@ const COURSE_LESSONS = {
             "badge": "2. Adım: Toplum Sevgisi",
             "slide": "assets/images/din_u3_toplum_sevgisi.svg",
             "slideTitle": "Toplum Sevgisi: Merhamet ve Eşitlik",
-            "narration": "Peygamberimiz Hz. Muhammed (s.a.v.) tüm insanlara karşı derin bir sevgi ve merhamet beslerdi. Hastaları bizzat ziyaret eder, yoksulların ve yetimlerin yanında olur, onlara elinden gelen yardımı yapardı. Kendisine kötülük edenlere bile beddua etmez; 'Allah'ım onları bağışla, çünkü bilmiyorlar' diyerek af dilerdi. Onun meclisinde zengin ile fakir, güçlü ile zayıf aynı değeri görürdü; hiç kimse diğerinden üstün tutulmazdı.",
+            "narration": "Peygamberimiz Hazreti Muhammed (sallallahu aleyhi ve sellem) tüm insanlara karşı derin bir sevgi ve merhamet beslerdi. Hastaları bizzat ziyaret eder, yoksulların ve yetimlerin yanında olur, onlara elinden gelen yardımı yapardı. Kendisine kötülük edenlere bile beddua etmez; 'Allah'ım onları bağışla, çünkü bilmiyorlar' diyerek af dilerdi. Onun meclisinde zengin ile fakir, güçlü ile zayıf aynı değeri görürdü; hiç kimse diğerinden üstün tutulmazdı.",
             "audio": "assets/audio/courses/din-u3_s2.mp3",
             "emo": "❤️",
             "then": [
@@ -7918,7 +7918,7 @@ const COURSE_LESSONS = {
                         "emo": "🌱"
                   },
                   {
-                        "text": "Hz. Muhammed kendi söküğünü bizzat diker, kendi ayakkabısını tamir ederdi. 'Alın teriyle kazanılan rızık en hayırlı rızıktır' diyerek çalışmayı ve üretmeyi övdü.",
+                        "text": "Hazreti Muhammed kendi söküğünü bizzat diker, kendi ayakkabısını tamir ederdi. 'Alın teriyle kazanılan rızık en hayırlı rızıktır' diyerek çalışmayı ve üretmeyi övdü.",
                         "lang": "tr-TR",
                         "cap": "💪 Alın Teriyle Çalışmak",
                         "emo": "💪"
@@ -7930,12 +7930,12 @@ const COURSE_LESSONS = {
             "badge": "4. Adım: Salavat Duaları",
             "slide": "assets/images/din_u3_salli_barik.svg",
             "slideTitle": "Namazın Son Oturuşu: Salli ve Barik Duaları",
-            "narration": "Namazların son oturuşunda Ettehiyyatü'den sonra okunan Allahümme Salli ve Allahümme Barik duaları, Peygamber Efendimize ve onun kutlu ailesine yönelik birer sevgi, saygı ve rahmet duasıdır. Bu dualarda Hz. İbrahim'e ve ailesine yapılan dua gibi Hz. Muhammed'e de rahmet, bereket ve şan dilenmektedir. Peygamberimizin adı her anıldığında 'Sallallahu aleyhi ve sellem' demek de ona duyulan sevginin ve vefanın bir göstergesidir.",
+            "narration": "Namazların son oturuşunda Ettehiyyatü'den sonra okunan Allahümme Salli ve Allahümme Barik duaları, Peygamber Efendimize ve onun kutlu ailesine yönelik birer sevgi, saygı ve rahmet duasıdır. Bu dualarda Hazreti İbrahim'e ve ailesine yapılan dua gibi Hazreti Muhammed'e de rahmet, bereket ve şan dilenmektedir. Peygamberimizin adı her anıldığında 'Sallallahu aleyhi ve sellem' demek de ona duyulan sevginin ve vefanın bir göstergesidir.",
             "audio": "assets/audio/courses/din-u3_s4.mp3",
             "emo": "🤲",
             "then": [
                   {
-                        "text": "Allahümme Salli duasında Allah'tan Hz. Muhammed'e ve ailesine, Hz. İbrahim ve ailesine verilen rahmet gibi rahmet vermesi dilenir. 'Salli' kelimesi rahmet ve yücelik anlamına gelir.",
+                        "text": "Allahümme Salli duasında Allah'tan Hazreti Muhammed'e ve ailesine, Hazreti İbrahim ve ailesine verilen rahmet gibi rahmet vermesi dilenir. 'Salli' kelimesi rahmet ve yücelik anlamına gelir.",
                         "lang": "tr-TR",
                         "cap": "🌙 Allahümme Salli — Rahmet Duası",
                         "emo": "🌙"
@@ -7951,15 +7951,15 @@ const COURSE_LESSONS = {
 ],
     "questions": [
       {
-        "q": "Peygamber Efendimiz Hz. Muhammed'in (s.a.v.) torunlarının isimleri nelerdir?",
+        "q": "Peygamber Efendimiz Hazreti Muhammed'in (sallallahu aleyhi ve sellem) torunlarının isimleri nelerdir?",
         "options": [
-          "Hz. Ali ve Hz. Osman",
-          "Hz. Hasan ve Hz. Hüseyin",
-          "Hz. Ömer ve Hz. Ebubekir",
-          "Hz. Hamza ve Hz. Bilal"
+          "Hazreti Ali ve Hazreti Osman",
+          "Hazreti Hasan ve Hazreti Hüseyin",
+          "Hazreti Ömer ve Hazreti Ebubekir",
+          "Hazreti Hamza ve Hazreti Bilal"
         ],
         "answer": 1,
-        "explanation": "Peygamberimizin çok sevdiği torunları Hz. Fatıma'nın evlatları Hz. Hasan ve Hz. Hüseyin'dir."
+        "explanation": "Peygamberimizin çok sevdiği torunları Hazreti Fatıma'nın evlatları Hazreti Hasan ve Hazreti Hüseyin'dir."
       },
       {
         "q": "Peygamberimizin çocuklara karşı tutumu nasıldı?",
@@ -7970,7 +7970,7 @@ const COURSE_LESSONS = {
           "Yalnızca erkek çocukları severdi."
         ],
         "answer": 1,
-        "explanation": "Hz. Muhammed çocuklara büyük bir sevgi ve şefkat besler, onları daima dinler ve sevindirirdi."
+        "explanation": "Hazreti Muhammed çocuklara büyük bir sevgi ve şefkat besler, onları daima dinler ve sevindirirdi."
       },
       {
         "q": "\"Kıyametin kopacağını bilseniz dahi elinizdeki ........................ dikiniz.\" Hadis-i Şerifindeki boşluğa ne gelmelidir?",
@@ -7984,7 +7984,7 @@ const COURSE_LESSONS = {
         "explanation": "Peygamberimiz doğayı ve yeşili korumak için son anda bile fidan dikmeyi öğütlemiştir."
       },
       {
-        "q": "Peygamberimizin adı anıldığında veya yazıldığında söylenen \"Sallallahu aleyhi ve sellem\" (s.a.v.) ifadesine ne ad verilir?",
+        "q": "Peygamberimizin adı anıldığında veya yazıldığında söylenen \"Sallallahu aleyhi ve sellem\" (sallallahu aleyhi ve sellem) ifadesine ne ad verilir?",
         "options": [
           "Tekbir",
           "Salavat",
@@ -7997,13 +7997,13 @@ const COURSE_LESSONS = {
       {
         "q": "Namazların oturuş kısımlarında okunan \"Allahümme Salli\" ve \"Allahümme Barik\" dualarında hangi peygambere atıf yapılır?",
         "options": [
-          "Hz. Musa",
-          "Hz. İbrahim",
-          "Hz. İsa",
-          "Hz. Nuh"
+          "Hazreti Musa",
+          "Hazreti İbrahim",
+          "Hazreti İsa",
+          "Hazreti Nuh"
         ],
         "answer": 1,
-        "explanation": "Salli ve Barik dualarında \"kemâ salleyte alâ İbrâhîme...\" denilerek Hz. İbrahim anılır."
+        "explanation": "Salli ve Barik dualarında \"kemâ salleyte alâ İbrâhîme...\" denilerek Hazreti İbrahim anılır."
       },
       {
         "q": "Peygamber Efendimiz gençlik yıllarında hangi mesleklerle uğraşarak el emeğiyle geçinmiştir?",
@@ -8063,15 +8063,15 @@ const COURSE_LESSONS = {
     ],
     "quiz": [
       {
-        "q": "Peygamber Efendimiz Hz. Muhammed'in (s.a.v.) torunlarının isimleri nelerdir?",
+        "q": "Peygamber Efendimiz Hazreti Muhammed'in (sallallahu aleyhi ve sellem) torunlarının isimleri nelerdir?",
         "options": [
-          "Hz. Ali ve Hz. Osman",
-          "Hz. Hasan ve Hz. Hüseyin",
-          "Hz. Ömer ve Hz. Ebubekir",
-          "Hz. Hamza ve Hz. Bilal"
+          "Hazreti Ali ve Hazreti Osman",
+          "Hazreti Hasan ve Hazreti Hüseyin",
+          "Hazreti Ömer ve Hazreti Ebubekir",
+          "Hazreti Hamza ve Hazreti Bilal"
         ],
         "answer": 1,
-        "explanation": "Peygamberimizin çok sevdiği torunları Hz. Fatıma'nın evlatları Hz. Hasan ve Hz. Hüseyin'dir."
+        "explanation": "Peygamberimizin çok sevdiği torunları Hazreti Fatıma'nın evlatları Hazreti Hasan ve Hazreti Hüseyin'dir."
       },
       {
         "q": "Peygamberimizin çocuklara karşı tutumu nasıldı?",
@@ -8082,7 +8082,7 @@ const COURSE_LESSONS = {
           "Yalnızca erkek çocukları severdi."
         ],
         "answer": 1,
-        "explanation": "Hz. Muhammed çocuklara büyük bir sevgi ve şefkat besler, onları daima dinler ve sevindirirdi."
+        "explanation": "Hazreti Muhammed çocuklara büyük bir sevgi ve şefkat besler, onları daima dinler ve sevindirirdi."
       },
       {
         "q": "\"Kıyametin kopacağını bilseniz dahi elinizdeki ........................ dikiniz.\" Hadis-i Şerifindeki boşluğa ne gelmelidir?",
@@ -8096,7 +8096,7 @@ const COURSE_LESSONS = {
         "explanation": "Peygamberimiz doğayı ve yeşili korumak için son anda bile fidan dikmeyi öğütlemiştir."
       },
       {
-        "q": "Peygamberimizin adı anıldığında veya yazıldığında söylenen \"Sallallahu aleyhi ve sellem\" (s.a.v.) ifadesine ne ad verilir?",
+        "q": "Peygamberimizin adı anıldığında veya yazıldığında söylenen \"Sallallahu aleyhi ve sellem\" (sallallahu aleyhi ve sellem) ifadesine ne ad verilir?",
         "options": [
           "Tekbir",
           "Salavat",
@@ -8109,13 +8109,13 @@ const COURSE_LESSONS = {
       {
         "q": "Namazların oturuş kısımlarında okunan \"Allahümme Salli\" ve \"Allahümme Barik\" dualarında hangi peygambere atıf yapılır?",
         "options": [
-          "Hz. Musa",
-          "Hz. İbrahim",
-          "Hz. İsa",
-          "Hz. Nuh"
+          "Hazreti Musa",
+          "Hazreti İbrahim",
+          "Hazreti İsa",
+          "Hazreti Nuh"
         ],
         "answer": 1,
-        "explanation": "Salli ve Barik dualarında \"kemâ salleyte alâ İbrâhîme...\" denilerek Hz. İbrahim anılır."
+        "explanation": "Salli ve Barik dualarında \"kemâ salleyte alâ İbrâhîme...\" denilerek Hazreti İbrahim anılır."
       },
       {
         "q": "Peygamber Efendimiz gençlik yıllarında hangi mesleklerle uğraşarak el emeğiyle geçinmiştir?",
@@ -11338,6 +11338,26 @@ const CoursePlayer = (() => {
     }
   }
 
+    function fixPronunciation(t) {
+    if (!t || typeof t !== 'string') return '';
+    return t
+      .replace(/\bHz\.\s*/g, 'Hazreti ')
+      .replace(/\(s\.a\.v\.\)/gi, 'sallallahu aleyhi ve sellem')
+      .replace(/\bs\.a\.v\./gi, 'sallallahu aleyhi ve sellem')
+      .replace(/\(a\.s\.\)/gi, 'aleyhisselam')
+      .replace(/\ba\.s\./gi, 'aleyhisselam')
+      .replace(/\(r\.a\.\)/gi, 'radıyallahu anh')
+      .replace(/\br\.a\./gi, 'radıyallahu anh')
+      .replace(/\(c\.c\.\)/gi, 'celle celaluhu')
+      .replace(/\bc\.c\./gi, 'celle celaluhu')
+      .replace(/\bProf\.\s*Dr\.\s*/gi, 'Profesör Doktor ')
+      .replace(/\bProf\.\s*/gi, 'Profesör ')
+      .replace(/\bDr\.\s*/gi, 'Doktor ')
+      .replace(/\bvb\./gi, 've benzeri')
+      .replace(/\bvs\./gi, 've saire')
+      .replace(/\börn\./gi, 'örneğin');
+  }
+
   function playStepAudio(stepOrText, onEnd) {
     stopAudio();
     const myTok = ++CP.tok;
@@ -11350,7 +11370,7 @@ const CoursePlayer = (() => {
     }
 
     const stepObj = (typeof stepOrText === 'object' && stepOrText !== null) ? stepOrText : null;
-    const text = stepObj ? stepObj.narration : String(stepOrText || '');
+    const text = fixPronunciation(stepObj ? stepObj.narration : String(stepOrText || ''));
     const audioUrl = stepObj ? stepObj.audio : null;
 
     if (audioUrl) {

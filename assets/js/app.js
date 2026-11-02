@@ -80,10 +80,30 @@ function hasServerEndpoint() {
 
 /* ---------- Doğal ses: Microsoft Emel Neural (sunucu + Python edge-tts), yedek: tarayıcı sesi ---------- */
 const voice = {audio:null, tok:0, fail:0, cache:new Map()};
+function fixPronunciation(t) {
+  if (!t || typeof t !== 'string') return '';
+  return t
+    .replace(/\bHz\.\s*/g, 'Hazreti ')
+    .replace(/\(s\.a\.v\.\)/gi, 'sallallahu aleyhi ve sellem')
+    .replace(/\bs\.a\.v\./gi, 'sallallahu aleyhi ve sellem')
+    .replace(/\(a\.s\.\)/gi, 'aleyhisselam')
+    .replace(/\ba\.s\./gi, 'aleyhisselam')
+    .replace(/\(r\.a\.\)/gi, 'radıyallahu anh')
+    .replace(/\br\.a\./gi, 'radıyallahu anh')
+    .replace(/\(c\.c\.\)/gi, 'celle celaluhu')
+    .replace(/\bc\.c\./gi, 'celle celaluhu')
+    .replace(/\bProf\.\s*Dr\.\s*/gi, 'Profesör Doktor ')
+    .replace(/\bProf\.\s*/gi, 'Profesör ')
+    .replace(/\bDr\.\s*/gi, 'Doktor ')
+    .replace(/\bvb\./gi, 've benzeri')
+    .replace(/\bvs\./gi, 've saire')
+    .replace(/\börn\./gi, 'örneğin');
+}
+
 function browserSpeak(text, lang){
   if(!('speechSynthesis' in window)){toast('Tarayıcın sesli okumayı desteklemiyor.');return;}
   speechSynthesis.cancel();
-  const u=new SpeechSynthesisUtterance(text);const l=lang||'tr-TR';u.lang=l;u.rate=.9;
+  const u=new SpeechSynthesisUtterance(lang.startsWith("tr")?fixPronunciation(text):text);const l=lang||'tr-TR';u.lang=l;u.rate=.9;
   const v=speechSynthesis.getVoices().find(v=>v.lang&&v.lang.toLowerCase().startsWith(l.slice(0,2).toLowerCase()));
   if(v)u.voice=v;speechSynthesis.speak(u);
 }
@@ -105,7 +125,7 @@ function speak(text, lang, style){
   if(!serverVoiceOn()){browserSpeak(text,lang);return;}
   const a=new Audio();voice.audio=a;   // tıklama anında oluşturulur: tarayıcı otomatik oynatma engelini aşar
   const slow=setTimeout(()=>{if(tok===voice.tok)toast('🎙️ Emel sesi hazırlanıyor...');},700);
-  ttsFetch(text,lang,style||'ders').then(url=>{
+  ttsFetch(lang.startsWith("tr")?fixPronunciation(text):text,lang,style||'ders').then(url=>{
     clearTimeout(slow);if(tok!==voice.tok)return;
     a.src=url;a.onended=()=>{if(voice.audio===a)voice.audio=null;};
     return a.play();
