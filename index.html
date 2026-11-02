@@ -581,6 +581,7 @@ function tabs(role,names){return `<div class="tabs">${names.map((n,i)=>`<button 
 A.tab=(r,i)=>{ui.tab[r]=i;render();};
 
 function render(){
+  if(window.CoursePlayer)CoursePlayer.stopAudio();
   if(window.Lesson)Lesson.reset();if(window.Lab3D)Lab3D.dispose();
   if(chart){chart.destroy();chart=null;}
   const u=cur();
@@ -12488,10 +12489,14 @@ const CoursePlayer = (() => {
           if (!alive()) return;
           browserSpeech(text, alive, onEnd);
         };
-        CP.audio.play().catch(e => {
-          if (!alive()) return;
-          browserSpeech(text, alive, onEnd);
-        });
+        const playPromise = CP.audio.play();
+        if (playPromise !== undefined) {
+          playPromise.catch(e => {
+            if (e && e.name === 'AbortError') return;
+            if (!alive()) return;
+            browserSpeech(text, alive, onEnd);
+          });
+        }
       }).catch(e => {
         if (!alive()) return;
         browserSpeech(text, alive, onEnd);
@@ -12520,8 +12525,8 @@ const CoursePlayer = (() => {
         updateSpeakerUI(false);
         if (onEnd) onEnd();
       };
-      u.onerror = () => {
-        if (!alive()) return;
+      u.onerror = (e) => {
+        if (!alive() || (e && (e.error === 'interrupted' || e.error === 'canceled'))) return;
         CP.audioPlaying = false;
         updateSpeakerUI(false);
         if (onEnd) onEnd();
@@ -12658,9 +12663,22 @@ const CoursePlayer = (() => {
     if (btn) btn.textContent = CP.paused ? '▶ Sesi Sürdür' : '⏸ Duraklat';
 
     if (CP.audio) {
-      if (CP.paused) CP.audio.pause(); else CP.audio.play();
+      if (CP.paused) {
+        try { CP.audio.pause(); } catch (e) {}
+      } else {
+        const p = CP.audio.play();
+        if (p !== undefined) {
+          p.catch(e => {
+            if (e && e.name === 'AbortError') return;
+          });
+        }
+      }
     } else if ('speechSynthesis' in window) {
-      if (CP.paused) speechSynthesis.pause(); else speechSynthesis.resume();
+      if (CP.paused) {
+        try { speechSynthesis.pause(); } catch (e) {}
+      } else {
+        try { speechSynthesis.resume(); } catch (e) {}
+      }
     }
     updateSpeakerUI(!CP.paused);
   }
@@ -13452,8 +13470,8 @@ function coursesTab(u){
         <div class="video-card" 
              data-title="${esc(unit.unitTitle)}" 
              data-topics="${esc(unit.topics.join(' '))}"
-             style="${matchSearch ? '' : 'display:none;'}"
-             onclick="CoursePlayer.open('${unit.id}')" style="cursor:pointer;">
+             style="${matchSearch ? '' : 'display:none;'}cursor:pointer;"
+             onclick="CoursePlayer.open('${unit.id}')">
           <div class="video-thumb" style="background:linear-gradient(135deg, ${sub.color}33 0%, #0f172a 100%)">
             <div class="video-thumb-bg">${sub.icon}</div>
             <span class="video-badge-unit">${t.term}. Dönem · ${esc(unit.unitNo)}</span>
