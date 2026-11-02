@@ -515,36 +515,35 @@ html { scroll-behavior: smooth; }
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
-  width: 68px;
-  height: 68px;
-  background: rgba(15, 23, 42, 0.75);
+  transform: translate(-50%, -50%) scale(1);
+  width: 64px;
+  height: 64px;
+  background: rgba(15, 23, 42, 0.72);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   border: 2px solid rgba(255, 255, 255, 0.4);
   border-radius: 50%;
   color: #fff;
-  font-size: 28px;
+  font-size: 26px;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   z-index: 25;
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-  box-shadow: 0 6px 25px rgba(0,0,0,0.6);
+  transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), background 0.2s;
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.6);
+  opacity: 1;
+  pointer-events: auto;
 }
 .cp-stage-play-btn:hover {
-  transform: translate(-50%, -50%) scale(1.12);
+  transform: translate(-50%, -50%) scale(1.1);
   background: rgba(99, 102, 241, 0.9);
   border-color: #fff;
 }
 .cp-stage-play-btn.playing {
-  opacity: 0;
-  pointer-events: none;
-}
-.cp-stage:hover .cp-stage-play-btn.playing {
-  opacity: 0.85;
-  pointer-events: auto;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  transform: translate(-50%, -50%) scale(0.65) !important;
 }
 
 /* Tıklanabilir ve Canlı İlerleyen Zaman Çubuğu */

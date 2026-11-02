@@ -14784,16 +14784,47 @@ const CoursePlayer = (() => {
     return m + ':' + (s < 10 ? '0' : '') + s;
   }
 
+  function updatePlayButtonUI() {
+    const isPlaying = !CP.paused && CP.audioPlaying;
+    const playBtn = document.getElementById('cpStagePlayBtn');
+    if (playBtn) {
+      if (isPlaying) {
+        playBtn.classList.add('playing');
+        playBtn.innerHTML = '⏸';
+      } else {
+        playBtn.classList.remove('playing');
+        playBtn.innerHTML = '▶';
+      }
+    }
+    const pauseBtn = document.getElementById('cpPauseBtn');
+    if (pauseBtn) {
+      pauseBtn.textContent = CP.paused ? '▶ Sesi Sürdür' : '⏸ Duraklat';
+    }
+  }
+
+  function initAudioListeners() {
+    if (!CP.audio) {
+      try { CP.audio = new Audio(); } catch (e) {}
+    }
+    if (CP.audio && !CP.audio._hasListeners) {
+      CP.audio._hasListeners = true;
+      CP.audio.ontimeupdate = updateProgressUI;
+      CP.audio.onplay = () => {
+        CP.audioPlaying = true;
+        updatePlayButtonUI();
+      };
+      CP.audio.onpause = () => {
+        updatePlayButtonUI();
+      };
+    }
+  }
+
   function updateProgressUI() {
     const curTimeEl = document.getElementById('cpCurTime');
     const totTimeEl = document.getElementById('cpTotTime');
     const bar = document.getElementById('cpTimelineFill');
-    const playBtn = document.getElementById('cpStagePlayBtn');
     
-    if (playBtn) {
-      playBtn.classList.toggle('playing', !CP.paused && CP.audioPlaying);
-      playBtn.innerHTML = (CP.paused || !CP.audioPlaying) ? '▶' : '⏸';
-    }
+    updatePlayButtonUI();
 
     if (CP.audio && CP.audio.duration) {
       const cur = CP.audio.currentTime;
@@ -15194,8 +15225,8 @@ const CoursePlayer = (() => {
           <img class="cp-slide-img" src="${s.slide}" alt="${esc(s.title)}"/>
           
           <!-- Merkez Oynat/Durdur Butonu (Oynatılırken gizlenir, videonun üstünü kapatmaz) -->
-          <div class="cp-stage-play-btn" id="cpStagePlayBtn" onclick="event.stopPropagation();CoursePlayer.togglePause()">
-            ${CP.paused ? '▶' : '⏸'}
+          <div class="cp-stage-play-btn ${(!CP.paused && CP.audioPlaying) ? 'playing' : ''}" id="cpStagePlayBtn" onclick="event.stopPropagation();CoursePlayer.togglePause()">
+            ${(!CP.paused && CP.audioPlaying) ? '⏸' : '▶'}
           </div>
 
           <!-- Tam ekranda görünen çıkış butonu -->
