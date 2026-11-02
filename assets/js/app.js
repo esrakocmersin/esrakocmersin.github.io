@@ -66,8 +66,11 @@ function getApiBase() {
   } catch (e) {}
   const saved = localStorage.getItem('be4d_api_url');
   if (saved && saved.trim()) return saved.trim().replace(/\/+$/, '');
-  if (window.DEFAULT_RENDER_API && window.DEFAULT_RENDER_API.trim()) {
+  if (typeof window !== 'undefined' && window.DEFAULT_RENDER_API && window.DEFAULT_RENDER_API.trim()) {
     return window.DEFAULT_RENDER_API.trim().replace(/\/+$/, '');
+  }
+  if (typeof location !== 'undefined' && location.hostname && location.hostname.includes('github.io')) {
+    return 'https://bilgi-evreni-api.onrender.com';
   }
   return '';
 }
@@ -291,21 +294,21 @@ function adopt(d,doRender){
 function updSync(){
   const e=$('#syncBadge');
   const base=getApiBase();
-  const isGh=location.hostname.includes('github.io');
-  let label='';
-  if(location.protocol==='file:'&&!base){
-    label='💾 Yerel mod';
-  }else if(base){
-    label=syncState.server?'☁️ Render Bulut Aktif':'🟠 Render Aranıyor...';
-  }else if(isGh){
-    label='⚙️ Render API Gerekli';
-  }else{
-    label=syncState.server?'🟢 Sunucu bağlı':'🟠 Sunucuya ulaşılamıyor';
-  }
+  const u = (typeof cur === 'function') ? cur() : null;
+
+  // Öğrenci, veli veya öğretmen video izleme ekranında buton/yazı gösterme! Sadece admin panelinde görünsün
   if(e){
-    e.innerHTML=label;
-    e.style.cursor='pointer';
-    e.onclick=()=>A.quickApiModal();
+    if(!u || u.role !== 'admin'){
+      e.style.display = 'none';
+      e.innerHTML = '';
+      e.onclick = null;
+    } else {
+      e.style.display = 'inline-block';
+      let label = base ? (syncState.server ? '☁️ Bulut Aktif' : '🟠 Bulut Aranıyor...') : '⚙️ Render API Ayarla';
+      e.innerHTML = label;
+      e.style.cursor = 'pointer';
+      e.onclick = () => A.quickApiModal();
+    }
   }
   const s=$('#syncInfo');
   if(s)s.innerHTML=syncInfoText();
@@ -1406,61 +1409,6 @@ function coursesTab(u){
     </div>
   ` : '';
 
-  // 2. Akıllı "Kaldığın Yerden Devam Et / Sıradaki Ders" önerisi
-  let recUnit = null;
-  let recCourse = sub;
-  for (const t of sub.terms) {
-    for (const un of t.units) {
-      if (!doneUnitIds.includes(un.id)) {
-        recUnit = un;
-        recCourse = sub;
-        break;
-      }
-    }
-    if (recUnit) break;
-  }
-  if (!recUnit) {
-    for (const c of COURSES_DATA) {
-      for (const t of c.terms) {
-        for (const un of t.units) {
-          if (!doneUnitIds.includes(un.id)) {
-            recUnit = un;
-            recCourse = c;
-            break;
-          }
-        }
-        if (recUnit) break;
-      }
-      if (recUnit) break;
-    }
-  }
-
-  const resumeCardHtml = `
-    <div class="resume-card">
-      <div style="display:flex;align-items:center;gap:14px">
-        <span style="font-size:32px">${recCourse ? recCourse.icon : '🎯'}</span>
-        <div>
-          <div style="font-size:11px;font-weight:bold;color:#818cf8;text-transform:uppercase;letter-spacing:.5px">🎯 ${totalCompletedCount > 0 ? 'Kaldığın Yerden Devam Et' : 'Öğrenmeye Buradan Başla'}</div>
-          <b style="font-size:15px;color:var(--t)">${esc(recUnit ? recUnit.unitNo + ': ' + recUnit.unitTitle : 'Tüm 43 Ünite Başarıyla Tamamlandı! 🎉')}</b>
-          <div style="font-size:12px;color:var(--m)">${recCourse ? esc(recCourse.name) + ' · Bilge Baykuş Sesli Anlatımı + 10 Soruluk Test' : 'Tebrikler kâşif, tüm 4. sınıf konularını bitirdin!'}</div>
-        </div>
-      </div>
-      ${recUnit ? `<button class="btn ok" onclick="CoursePlayer.open('${recUnit.id}')">🎬 Dersi Başlat ▶</button>` : ''}
-    </div>
-  `;
-
-  // 3. Günün Bilge Baykuş Tavsiyesi / Eğlenceli Bilgi Kartı
-  const DAILY_TIPS = [
-    { icon: "🌍", title: "Dünya'mızın Hareketi", text: "Dünya kendi ekseni etrafında 24 saatte dönerek gece-gündüzü, Güneş etrafında ise 365 gün 6 saatte dolanarak mevsimleri oluşturur!" },
-    { icon: "🧲", title: "Mıknatısların Gücü", text: "Mıknatısların aynı kutupları (N-N veya S-S) birbirini iterken, zıt kutupları (N-S) birbirini büyük bir kuvvetle çeker!" },
-    { icon: "➗", title: "Bölme Altın Kuralı", text: "Bir bölme işleminde kalan sayı daima bölen sayıdan küçük olmalıdır! (Kalan < Bölen)" },
-    { icon: "✍️", title: "Gerçek ve Mecaz Anlam", text: "Gerçek anlam aklımıza gelen ilk temel anlamdır. 'Soğuk su içtim' gerçektir; 'Bize çok soğuk davrandı' ifadesi ise mecazdır!" },
-    { icon: "🧭", title: "Doğada Yön Bulma", text: "Pusulanın renkli ucu daima Kuzey'i gösterir. Geceleri ise Kutup Yıldızı (Demirkazık) bize her zaman kuzeyi fısıldar!" },
-    { icon: "🥗", title: "Dengeli Beslenme", text: "Karbonhidratlar bize enerji verir, proteinler kaslarımızı onarır, vitamin ve mineraller ise bizi hastalıklardan korur!" },
-    { icon: "🇬🇧", title: "İngilizce İpucu", text: "'What is your job?' mesleğin nedir demektir; 'I am a doctor' veya 'I am a teacher' kalıbıyla cevap verilir!" }
-  ];
-  const todayTip = DAILY_TIPS[(new Date().getDate()) % DAILY_TIPS.length];
-
   // 4. 6 Ders Butonu (İlerleme çubuğu ve tamamlanan ünite yüzdesi ile)
   const subButtonsHtml = COURSES_DATA.map(c => {
     const isActive = c.id === sub.id;
@@ -1570,16 +1518,7 @@ function coursesTab(u){
       </div>
 
       <!-- Akıllı Devam Kartı -->
-      ${resumeCardHtml}
-
-      <!-- Günün Bilge Baykuş Tavsiyesi -->
-      <div class="daily-tip-card">
-        <span style="font-size:22px">${todayTip.icon}</span>
-        <div>
-          <b>Günün İpucu (${todayTip.title}):</b>
-          <span style="color:var(--m)"> ${esc(todayTip.text)}</span>
-        </div>
-      </div>
+      
 
       <!-- 6 Ders Seçim Alanı -->
       <div class="courses-sub-grid">
@@ -1587,7 +1526,7 @@ function coursesTab(u){
       </div>
 
       <!-- Filtre ve Arama Çubuğu -->
-      <div class="courses-toolbar">
+      <div class="courses-toolbar" id="courseVideoSection">
         <div class="term-filter-tabs">
           <button class="term-tab-btn ${activeTerm === 'all' ? 'active' : ''}" onclick="A.selCourseTerm('all')">🌟 Tüm Dönemler</button>
           <button class="term-tab-btn ${activeTerm === '1' ? 'active' : ''}" onclick="A.selCourseTerm('1')">🍂 1. Dönem</button>
@@ -1629,6 +1568,12 @@ function coursesTab(u){
 A.selCourse = id => {
   ui.activeCourse = id;
   render();
+  setTimeout(() => {
+    const el = document.getElementById('courseVideoSection') || document.querySelector('.courses-toolbar') || document.querySelector('.term-section');
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }, 60);
 };
 A.selCourseTerm = term => {
   ui.courseTerm = term;
