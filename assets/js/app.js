@@ -379,35 +379,20 @@ function header(u){
 
 /* ---------- Giriş ---------- */
 function loginView(){
-  const sc = db.users.filter(x => x.role === 'student').length;
   const isReg = ui.loginTab === 'register';
   const savedUn = localStorage.getItem('be4d_saved_user') || '';
-  const demos = [
-    ['admin', '👑', 'Admin', 'admin / admin123'],
-    ['ogretmen1', '👩‍🏫', 'Öğretmen', 'ogretmen1 / 1234'],
-    ['ali4a', '🧒', 'Öğrenci', 'ali4a / 1234'],
-    ['veli_ali', '👨‍👩‍👧', 'Veli', 'veli_ali / 1234']
-  ];
   return `<div class="login">
     <h1>🌌 Bilgi Evreni <b>4D</b> Ultimate</h1>
     <p class="muted" style="text-align:center">MEB 4. Sınıf müfredatına tam uyumlu 3D interaktif eğitim portalı</p>
-    <div class="counters">
-      <div class="counter"><b>6</b>MEB Dersi</div>
-      <div class="counter"><b>43</b>Video Dersi</div>
-      <div class="counter"><b>173</b>Sesli Adım</div>
-      <div class="counter"><b>${MODULES.length}</b>3D Deney</div>
-      <div class="counter"><b>${db.questions.length}</b>Soru</div>
-      <div class="counter"><b>${sc}</b>Öğrenci</div>
-    </div>
-    <div class="card" style="max-width:440px;margin:0 auto 18px">
+    <div class="card" style="max-width:440px;margin:24px auto 18px">
       <div style="display:flex;border-bottom:1px solid var(--b);margin:-16px -16px 16px -16px">
         <button class="btn ghost" style="flex:1;border-radius:0;border-bottom:${!isReg ? '2px solid #6366f1' : 'none'};font-weight:${!isReg ? 'bold' : 'normal'};color:${!isReg ? 'var(--t)' : 'var(--m)'}" onclick="A.setLoginTab('login')">🔐 Giriş Yap</button>
         <button class="btn ghost" style="flex:1;border-radius:0;border-bottom:${isReg ? '2px solid #6366f1' : 'none'};font-weight:${isReg ? 'bold' : 'normal'};color:${isReg ? 'var(--t)' : 'var(--m)'}" onclick="A.setLoginTab('register')">📝 Yeni Öğrenci Kaydı</button>
       </div>
       ${!isReg ? `
-        <label>Kullanıcı Adı<input id="lu" autocomplete="username" value="${esc(savedUn)}" onkeydown="if(event.key==='Enter')$('#lp').focus()"></label>
+        <label>Kullanıcı Adı<input id="lu" autocomplete="username" placeholder="Kullanıcı adınızı girin" value="${esc(savedUn)}" onkeydown="if(event.key==='Enter')$('#lp').focus()"></label>
         <label style="margin-top:10px">Şifre
-          <div class="pwwrap"><input id="lp" type="password" autocomplete="current-password" onkeydown="if(event.key==='Enter')A.login()"><button type="button" onclick="A.showPw()" title="Göster/Gizle">👁️</button></div>
+          <div class="pwwrap"><input id="lp" type="password" autocomplete="current-password" placeholder="Şifrenizi girin" onkeydown="if(event.key==='Enter')A.login()"><button type="button" onclick="A.showPw()" title="Göster/Gizle">👁️</button></div>
         </label>
         <div style="display:flex;align-items:center;justify-content:space-between;margin:10px 0 14px;font-size:12px;color:var(--m)">
           <label style="display:flex;align-items:center;gap:6px;cursor:pointer;margin:0"><input type="checkbox" id="lrem" ${savedUn ? 'checked' : ''} style="width:auto;margin:0"> Beni Hatırla</label>
@@ -435,9 +420,6 @@ function loginView(){
         🔍 MEB 4. Sınıf Müfredatını &amp; 3D Laboratuvarı İncele (Girişsiz Keşif)
       </button>
     </div>
-    <h3 style="text-align:center">⚡ Tek Tıkla Hızlı Demo Giriş</h3>
-    <div class="democards">${demos.map(d => `<button class="demo" onclick="A.demo('${d[0]}')"><span>${d[1]}</span><b>${d[2]}</b><small>${d[3]}</small></button>`).join('')}</div>
-    <p class="muted" style="text-align:center;margin-top:18px" id="syncInfo"></p>
   </div>`;
 }
 
@@ -448,13 +430,42 @@ A.setLoginTab = tab => {
 A.showPw = () => { const p = $('#lp'); if (p) p.type = p.type === 'password' ? 'text' : 'password'; };
 A.showRegPw = () => { const p = $('#regPw'); if (p) p.type = p.type === 'password' ? 'text' : 'password'; };
 A.login = () => {
-  const un = ($('#lu') ? $('#lu').value : '').trim().toLowerCase();
-  const pw = $('#lp') ? $('#lp').value : '';
+  const un = String(($('#lu') && $('#lu').value) || '').trim();
+  const pw = String(($('#lp') && $('#lp').value) || '').trim();
   const rem = $('#lrem') ? $('#lrem').checked : false;
-  const u = db.users.find(x => x.username.toLowerCase() === un && x.password === pw);
-  if (!u) { toast('❌ Kullanıcı adı veya şifre hatalı'); return; }
+
+  if (!un && !pw) {
+    toast('⚠️ Lütfen kullanıcı adı veya şifrenizi girin');
+    return;
+  }
+
+  // 1. Standart eşleştirme: Kullanıcı adı ve şifre
+  let u = db.users.find(x => x.username.toLowerCase() === un.toLowerCase() && x.password === pw);
+
+  // 2. Kullanıcı adı boş girilip sadece şifre yazılmışsa (şifre tek bir kullanıcıya aitse)
+  if (!u && !un && pw) {
+    const matches = db.users.filter(x => x.password === pw);
+    if (matches.length === 1) u = matches[0];
+  }
+
+  // 3. Şifre kutusu boş bırakılıp sadece şifre kullanıcı adı kutusuna yazılmışsa
+  if (!u && un && !pw) {
+    const matches = db.users.filter(x => x.password === un);
+    if (matches.length === 1) u = matches[0];
+  }
+
+  // 4. Kullanıcı adı ve şifre ters kutulara girilmişse esnek algılama
+  if (!u && un && pw) {
+    u = db.users.find(x => x.username.toLowerCase() === pw.toLowerCase() && x.password === un);
+  }
+
+  if (!u) {
+    toast('❌ Kullanıcı adı veya şifre hatalı');
+    return;
+  }
+
   if (rem) {
-    try { localStorage.setItem('be4d_saved_user', un); } catch (e) {}
+    try { localStorage.setItem('be4d_saved_user', u.username); } catch (e) {}
   } else {
     try { localStorage.removeItem('be4d_saved_user'); } catch (e) {}
   }
@@ -507,16 +518,7 @@ A.helpLogin = () => {
   modal(`
     <div style="display:flex;flex-direction:column;gap:12px;max-width:440px">
       <h3>🔑 Şifremi Unuttum / Giriş Yardımı</h3>
-      <p style="font-size:13px;line-height:1.5">Öğrenci şifreleri okul veya sınıf öğretmeniniz ya da sistem yöneticisi (admin) tarafından anında görüntülenebilir ve güncellenebilir.</p>
-      <div style="background:rgba(255,255,255,0.05);border-radius:10px;padding:12px;font-size:12px">
-        <b>💡 Hızlı Demo Girişi:</b><br>
-        Aşağıdaki hazır demo butonlarına tıklayarak herhangi bir şifre yazmadan anında giriş yapabilirsiniz:
-        <ul style="margin:6px 0 0 16px;padding:0">
-          <li><b>Öğrenci:</b> ali4a (Şifre: 1234)</li>
-          <li><b>Öğretmen:</b> ogretmen1 (Şifre: 1234)</li>
-          <li><b>Admin:</b> admin (Şifre: admin123)</li>
-        </ul>
-      </div>
+      <p style="font-size:13px;line-height:1.5">Şifrenizi unuttuysanız sınıf öğretmeniniz veya sistem yöneticisi (admin) panelden şifrenizi anında görebilir ve güncelleyebilir.</p>
       <div class="row" style="justify-content:flex-end">
         <button class="btn sm ghost" onclick="closeModal()">Tamam</button>
       </div>
@@ -556,7 +558,7 @@ A.exploreCurriculum = () => {
           <b>Hemen Ücretsiz Deneyin!</b>
           <p style="margin:2px 0 0;font-size:12px;color:var(--m)">Tek tıkla Öğrenci (ali4a) veya Öğretmen hesabına giriş yaparak sistemi canlı test edin.</p>
         </div>
-        <button class="btn ok" onclick="closeModal();A.demo('ali4a')">🧒 Öğrenci Demosu ile Başla ▶</button>
+        <button class="btn sm ghost" onclick="closeModal()">Kapat ✕</button>
       </div>
     </div>
   `);
@@ -2090,7 +2092,7 @@ function drawChart(u){
   const msg=$('#chartMsg');
   if(msg)msg.textContent=data.some(v=>v>0)?'Başarı, 3D laboratuvar soruları ve deneme sınavlarındaki ilk denemelere göre hesaplanır.':'Henüz yeterli veri yok. Çocuğunuz soru çözdükçe grafik dolacak.';
   const cv=$('#chartC');if(!cv)return;
-  if(typeof Chart==='undefined'){cv.parentNode.innerHTML='<p class="muted">Grafik kütüphanesi yüklenemedi (internet gerekli).</p>';return;}
+  if(typeof Chart==='undefined'){if(cv.parentNode)cv.parentNode.innerHTML='<p class="muted">Grafik kütüphanesi yüklenemedi (internet gerekli).</p>';return;}
   chart=new Chart(cv,{type:'bar',data:{labels:SUBJECTS,datasets:[{label:'Başarı %',data,backgroundColor:['#ef5350','#3b82f6','#10b981','#f59e0b','#8b5cf6','#ec4899'],borderRadius:8}]},options:{responsive:true,maintainAspectRatio:false,scales:{y:{min:0,max:100,ticks:{color:'#9aa6d1'},grid:{color:'rgba(255,255,255,.1)'}},x:{ticks:{color:'#9aa6d1'},grid:{display:false}}},plugins:{legend:{display:false}}}});
 }
 function certHTML(ch){
@@ -2114,7 +2116,17 @@ function adminView(u){
   const T=['👥 Kullanıcı Yönetimi','📊 Raporlar & İlerleme','🧠 Soru & Sınav Merkezi','🏠 Ev Sunucusu & Bakım','💰 AdSense Merkezi'];
   const cnt=r=>db.users.filter(x=>x.role===r).length;
   const totalCompletedUnits=db.users.filter(x=>x.role==='student').reduce((a,s)=>a+Object.keys(s.courseProgress||{}).length,0);
-  return `<div class="statbar"><div class="chip">👑 Admin <b>${cnt('admin')}</b></div><div class="chip">👩‍🏫 Öğretmen <b>${cnt('teacher')}</b></div><div class="chip">🧒 Öğrenci <b>${cnt('student')}</b></div><div class="chip">👨‍👩‍👧 Veli <b>${cnt('parent')}</b></div><div class="chip">🧠 Soru <b>${db.questions.length}</b></div><div class="chip">📝 Sınav <b>${db.results.length}</b></div><div class="chip">🎬 Ünite Bitirme <b>${totalCompletedUnits}</b></div></div>`+tabs('admin',T)+`<div class="panel">${([admUsers,admReports,admQuestions,admServer,admAds][ui.tab.admin]||admUsers)(u)}</div>`;
+  const syncFooter = `<div class="card" style="margin-top:24px;border:1px solid rgba(99,102,241,0.3);background:linear-gradient(180deg,rgba(99,102,241,0.06),transparent)">
+    <div class="row between" style="margin-top:0;flex-wrap:wrap;gap:8px">
+      <div style="display:flex;align-items:center;gap:8px">
+        <span style="font-size:20px">☁️</span>
+        <b style="font-size:14px">GitHub Pages Yayını &amp; Bulut Veritabanı (Render.com)</b>
+      </div>
+      <button class="btn sm ok" onclick="A.quickApiModal()">⚙️ Render API Adresini Gir / Güncelle</button>
+    </div>
+    <p id="syncInfo" class="muted" style="margin:8px 0 0 0;font-size:12px;line-height:1.5">${syncInfoText()}</p>
+  </div>`;
+  return `<div class="statbar"><div class="chip">👑 Admin <b>${cnt('admin')}</b></div><div class="chip">👩‍🏫 Öğretmen <b>${cnt('teacher')}</b></div><div class="chip">🧒 Öğrenci <b>${cnt('student')}</b></div><div class="chip">👨‍👩‍👧 Veli <b>${cnt('parent')}</b></div><div class="chip">🧠 Soru <b>${db.questions.length}</b></div><div class="chip">📝 Sınav <b>${db.results.length}</b></div><div class="chip">🎬 Ünite Bitirme <b>${totalCompletedUnits}</b></div></div>`+tabs('admin',T)+`<div class="panel">${([admUsers,admReports,admQuestions,admServer,admAds][ui.tab.admin]||admUsers)(u)}</div>`+syncFooter;
 }
 
 function admUsers(u){
