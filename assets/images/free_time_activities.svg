@@ -29,7 +29,7 @@
     <g transform="translate(0, 0)">
       <rect width="228" height="325" rx="14" fill="#1e293b" stroke="#3b82f6" stroke-width="1.5" filter="url(#dropSh)"/>
       <rect x="10" y="10" width="208" height="38" rx="8" fill="#1d4ed8"/>
-      <text x="114" y="34" font-family="'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="800" fill="#ffffff" text-anchor="middle">HOBBIES & ACTIVITIES</text>
+      <text x="114" y="34" font-family="'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="800" fill="#ffffff" text-anchor="middle">HOBBIES &amp; ACTIVITIES</text>
       <g transform="translate(14, 60)">
         
           <g transform="translate(0, 0)">
@@ -52,7 +52,7 @@
         
           <g transform="translate(0, 150)">
             <rect width="200" height="42" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
-            <text x="10" y="18" font-family="'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#93c5fd">Drawing & Coloring</text>
+            <text x="10" y="18" font-family="'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#93c5fd">Drawing &amp; Coloring</text>
             <text x="10" y="32" font-family="'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#cbd5e1">Resim çizmek ve boyamak.</text>
           </g>
         
@@ -109,7 +109,7 @@
     <g transform="translate(492, 0)">
       <rect width="228" height="325" rx="14" fill="#1e293b" stroke="#f59e0b" stroke-width="1.5" filter="url(#dropSh)"/>
       <rect x="10" y="10" width="208" height="38" rx="8" fill="#b45309"/>
-      <text x="114" y="34" font-family="'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="800" fill="#ffffff" text-anchor="middle">BOARD GAMES & FUN</text>
+      <text x="114" y="34" font-family="'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="800" fill="#ffffff" text-anchor="middle">BOARD GAMES &amp; FUN</text>
       <g transform="translate(14, 60)">
         
           <g transform="translate(0, 0)">

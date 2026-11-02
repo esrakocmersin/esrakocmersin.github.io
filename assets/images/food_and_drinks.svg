@@ -29,7 +29,7 @@
     <g transform="translate(0, 0)">
       <rect width="228" height="325" rx="14" fill="#1e293b" stroke="#3b82f6" stroke-width="1.5" filter="url(#dropSh)"/>
       <rect x="10" y="10" width="208" height="38" rx="8" fill="#1d4ed8"/>
-      <text x="114" y="34" font-family="'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="800" fill="#ffffff" text-anchor="middle">BREAKFAST & FOODS</text>
+      <text x="114" y="34" font-family="'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="800" fill="#ffffff" text-anchor="middle">BREAKFAST &amp; FOODS</text>
       <g transform="translate(14, 60)">
         
           <g transform="translate(0, 0)">
@@ -40,19 +40,19 @@
         
           <g transform="translate(0, 50)">
             <rect width="200" height="42" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
-            <text x="10" y="18" font-family="'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#93c5fd">Egg & Olives</text>
+            <text x="10" y="18" font-family="'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#93c5fd">Egg &amp; Olives</text>
             <text x="10" y="32" font-family="'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#cbd5e1">Yumurta ve zeytin.</text>
           </g>
         
           <g transform="translate(0, 100)">
             <rect width="200" height="42" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
-            <text x="10" y="18" font-family="'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#93c5fd">Honey & Jam</text>
+            <text x="10" y="18" font-family="'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#93c5fd">Honey &amp; Jam</text>
             <text x="10" y="32" font-family="'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#cbd5e1">Bal ve reçel.</text>
           </g>
         
           <g transform="translate(0, 150)">
             <rect width="200" height="42" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
-            <text x="10" y="18" font-family="'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#93c5fd">Pancake & Cereal</text>
+            <text x="10" y="18" font-family="'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#93c5fd">Pancake &amp; Cereal</text>
             <text x="10" y="32" font-family="'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#cbd5e1">Krep ve mısır gevreği.</text>
           </g>
         
@@ -69,24 +69,24 @@
     <g transform="translate(246, 0)">
       <rect width="228" height="325" rx="14" fill="#1e293b" stroke="#10b981" stroke-width="1.5" filter="url(#dropSh)"/>
       <rect x="10" y="10" width="208" height="38" rx="8" fill="#047857"/>
-      <text x="114" y="34" font-family="'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="800" fill="#ffffff" text-anchor="middle">DRINKS & FRUITS</text>
+      <text x="114" y="34" font-family="'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="800" fill="#ffffff" text-anchor="middle">DRINKS &amp; FRUITS</text>
       <g transform="translate(14, 60)">
         
           <g transform="translate(0, 0)">
             <rect width="200" height="42" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
-            <text x="10" y="18" font-family="'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#86efac">Water & Milk</text>
+            <text x="10" y="18" font-family="'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#86efac">Water &amp; Milk</text>
             <text x="10" y="32" font-family="'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#cbd5e1">Su ve süt (En sağlıklı içecekler).</text>
           </g>
         
           <g transform="translate(0, 50)">
             <rect width="200" height="42" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
-            <text x="10" y="18" font-family="'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#86efac">Orange juice & Lemonade</text>
+            <text x="10" y="18" font-family="'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#86efac">Orange juice &amp; Lemonade</text>
             <text x="10" y="32" font-family="'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#cbd5e1">Portakal suyu ve limonata.</text>
           </g>
         
           <g transform="translate(0, 100)">
             <rect width="200" height="42" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
-            <text x="10" y="18" font-family="'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#86efac">Tea & Coffee</text>
+            <text x="10" y="18" font-family="'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#86efac">Tea &amp; Coffee</text>
             <text x="10" y="32" font-family="'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#cbd5e1">Çay ve kahve.</text>
           </g>
         
@@ -98,7 +98,7 @@
         
           <g transform="translate(0, 200)">
             <rect width="200" height="42" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
-            <text x="10" y="18" font-family="'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#86efac">Strawberry & Grapes</text>
+            <text x="10" y="18" font-family="'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#86efac">Strawberry &amp; Grapes</text>
             <text x="10" y="32" font-family="'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#cbd5e1">Çilek ve üzüm.</text>
           </g>
         
@@ -109,7 +109,7 @@
     <g transform="translate(492, 0)">
       <rect width="228" height="325" rx="14" fill="#1e293b" stroke="#f59e0b" stroke-width="1.5" filter="url(#dropSh)"/>
       <rect x="10" y="10" width="208" height="38" rx="8" fill="#b45309"/>
-      <text x="114" y="34" font-family="'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="800" fill="#ffffff" text-anchor="middle">MEALS & ORDERING DIALOGUES</text>
+      <text x="114" y="34" font-family="'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="800" fill="#ffffff" text-anchor="middle">MEALS &amp; ORDERING DIALOGUES</text>
       <g transform="translate(14, 60)">
         
           <g transform="translate(0, 0)">

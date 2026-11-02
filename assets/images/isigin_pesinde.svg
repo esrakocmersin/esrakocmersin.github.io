@@ -19,7 +19,7 @@
     </text>
     <rect x="520" y="11" width="180" height="30" rx="8" fill="#eab308" filter="url(#dropSh)"/>
     <text x="610" y="31" font-family="'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="800" fill="#ffffff" text-anchor="middle">
-      Işık & Görme
+      Işık &amp; Görme
     </text>
   </g>
 

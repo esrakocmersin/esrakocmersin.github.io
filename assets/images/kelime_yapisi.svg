@@ -19,7 +19,7 @@
     </text>
     <rect x="540" y="11" width="160" height="30" rx="8" fill="#3b82f6" filter="url(#dropSh)"/>
     <text x="620" y="31" font-family="'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="800" fill="#ffffff" text-anchor="middle">
-      Kök & Ek Bilgisi
+      Kök &amp; Ek Bilgisi
     </text>
   </g>
 

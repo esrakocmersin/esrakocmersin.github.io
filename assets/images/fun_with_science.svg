@@ -40,7 +40,7 @@
         
           <g transform="translate(0, 50)">
             <rect width="200" height="42" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
-            <text x="10" y="18" font-family="'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#93c5fd">Bottle & Glass</text>
+            <text x="10" y="18" font-family="'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#93c5fd">Bottle &amp; Glass</text>
             <text x="10" y="32" font-family="'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#cbd5e1">Şişe ve cam bardak.</text>
           </g>
         
@@ -52,7 +52,7 @@
         
           <g transform="translate(0, 150)">
             <rect width="200" height="42" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
-            <text x="10" y="18" font-family="'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#93c5fd">Brush & Paper towel</text>
+            <text x="10" y="18" font-family="'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#93c5fd">Brush &amp; Paper towel</text>
             <text x="10" y="32" font-family="'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#cbd5e1">Fırça ve kâğıt havlu.</text>
           </g>
         
