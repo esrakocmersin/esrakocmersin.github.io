@@ -1084,6 +1084,7 @@ const COURSE_LESSONS = {
     "subject": "Türkçe",
     "unitNo": "4. Ünite",
     "title": "Sözcük Türleri ve Cümlenin Öğeleri",
+    "cover": "assets/images/tr_u4_pixar.jpg",
     "icon": "🇹🇷",
     "steps": [
       {
