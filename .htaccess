@@ -1,0 +1,30 @@
+# Bilgi Evreni 4D Ultimate - Apache / cPanel / LiteSpeed Yapılandırması
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+
+  # /api isteklerini doğrudan api.php dosyasına yönlendir
+  RewriteRule ^api/(.*)$ api.php?route=$1 [QSA,L]
+</IfModule>
+
+# Güvenlik: veritabanı yedeğini doğrudan webden indirmeyi koru
+<Files "veritabani.json">
+  <IfModule mod_authz_core.c>
+    Require all granted
+  </IfModule>
+</Files>
+
+# Statik Dosyalar İçin Önbellek ve GZIP Sıkıştırma (Sitenin 3 kat hızlı açılması için)
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType image/svg+xml "access plus 1 month"
+  ExpiresByType audio/mpeg "access plus 1 month"
+  ExpiresByType text/css "access plus 1 week"
+  ExpiresByType application/javascript "access plus 1 week"
+  ExpiresByType image/png "access plus 1 month"
+  ExpiresByType image/jpeg "access plus 1 month"
+</IfModule>
+
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css application/javascript application/json image/svg+xml
+</IfModule>

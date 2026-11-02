@@ -1,0 +1,18 @@
+{
+  "name": "Bilgi Evreni 4D Ultimate",
+  "short_name": "BilgiEvreni4D",
+  "description": "MEB 4. Sınıf Müfredatına Uygun 3D ve Sesli Eğitim Portalı",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#0b1026",
+  "theme_color": "#6366f1",
+  "icons": [
+    {
+      "src": "assets/images/evimiz_dunya.svg",
+      "sizes": "192x192 512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

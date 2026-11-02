@@ -265,7 +265,7 @@ function render(){
   }
 }
 function header(u){
-  return `<div class="topbar"><div class="logo">🌌 Bilgi Evreni <b>4D</b> Ultimate</div><div class="who"><small id="syncBadge"></small>${roleAvatar(u)}<div><b>${esc(u.name)}</b><small>${ROLE[u.role]}${u.role==='student'?' • Seviye '+level(u.xp):''}${u.classId?' • '+esc(u.classId):''}</small></div><button class="btn ghost sm" onclick="A.logout()">🚪 Çıkış</button></div></div>`;
+  return `<div class="topbar"><div class="logo">🌌 Bilgi Evreni <b>4D</b> Ultimate</div><div class="who"><small id="syncBadge"></small><button class="btn ghost sm" onclick="A.toggleSound()" id="soundToggleBtn" title="${soundMuted?'Sesi Aç':'Sesi Kapat'}" style="padding:4px 8px;font-size:14px">${soundMuted?'🔇':'🔊'}</button><button class="btn ghost sm" onclick="A.toggleFullscreen()" title="Tam Ekran" style="padding:4px 8px;font-size:14px">⛶</button>${roleAvatar(u)}<div><b>${esc(u.name)}</b><small>${ROLE[u.role]}${u.role==='student'?' • Seviye '+level(u.xp):''}${u.classId?' • '+esc(u.classId):''}</small></div><button class="btn ghost sm" onclick="A.logout()">🚪 Çıkış</button></div></div>`;
 }
 
 /* ---------- Giriş ---------- */
@@ -1151,8 +1151,28 @@ function examResultView(u){
 A.examClose=()=>{exam.result=null;render();};
 
 /* ================= 4. SINIF DERSLER: KONU ANLATIM VE TEST MOTORU (COURSE PLAYER) ================= */
+let soundMuted = (typeof localStorage !== 'undefined' && localStorage.getItem('be4d_sound_muted') === '1');
+A.toggleSound = () => {
+  soundMuted = !soundMuted;
+  try { localStorage.setItem('be4d_sound_muted', soundMuted ? '1' : '0'); } catch (e) {}
+  const btn = document.getElementById('soundToggleBtn');
+  if (btn) {
+    btn.textContent = soundMuted ? '🔇' : '🔊';
+    btn.title = soundMuted ? 'Sesi Aç' : 'Sesi Kapat';
+  }
+  toast(soundMuted ? '🔇 Ses efektleri kapatıldı' : '🔊 Ses efektleri açıldı');
+};
+A.toggleFullscreen = () => {
+  if (!document.fullscreenElement) {
+    document.documentElement.requestFullscreen().catch(() => {});
+  } else {
+    document.exitFullscreen().catch(() => {});
+  }
+};
+
 let appAudioCtx = null;
 function appTone(f, t0, d, type, vol) {
+  if (soundMuted) return;
   try {
     const C = window.AudioContext || window.webkitAudioContext;
     if (!appAudioCtx && C) appAudioCtx = new C();
