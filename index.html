@@ -352,7 +352,7 @@ const MODULES = [
  {id:'m5',icon:'🧭',name:'Pusula ve Yeryüzü Şekilleri',subject:'Sosyal Bilgiler',topic:'Yönleri bulmak için pusula kullanırız. Pusula iğnesi her zaman kuzeyi gösterir. Ana yönler kuzey, güney, doğu ve batıdır. Kuzeye bakarsak sağımız doğu, solumuz batı, arkamız güney olur. Ara yönler kuzeydoğu, güneydoğu, güneybatı ve kuzeybatıdır. Yeryüzü şekilleri ovalar, tepeler ve dağlardır. Yükseklik farkı renklerle gösterilir.'},
  {id:'m6',icon:'💎',name:'İngilizce Kelime Kristalleri',subject:'İngilizce',topic:'Bu kristallerde dördüncü sınıf İngilizce kelimeleri var. Bir kristale tıkla; İngilizce kelimeyi duyacak ve Türkçe karşılığını göreceksin. Kristallerin dönme hızını kaydırıcıyla değiştirebilirsin.'}
 ];
-const modById = id => MODULES.find(m => m.id === id);
+const modById = id => MODULES.find(m => m.id === id) || (typeof COURSE_LESSONS !== 'undefined' && COURSE_LESSONS[id] ? { id, name: COURSE_LESSONS[id].title, icon: COURSE_LESSONS[id].icon, subject: COURSE_LESSONS[id].subject, topic: COURSE_LESSONS[id].subject + ' • ' + COURSE_LESSONS[id].unitNo } : null);
 
 const ITEMS = [
  {id:'t1',type:'title',name:'Küçük Kaşif',price:30},
@@ -385,7 +385,7 @@ function slug(s){return String(s||'').toLocaleLowerCase('tr').replace(/ç/g,'c')
 function toast(msg){const t=$('#toast');const d=document.createElement('div');d.innerHTML=msg;t.appendChild(d);setTimeout(()=>d.remove(),3200);}
 function shuffle(a){a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
 function modal(html){$('#modalBox').innerHTML=html;$('#modal').classList.remove('hidden');}
-function closeModal(){if(window.CoursePlayer)CoursePlayer.stopAudio();$('#modal').classList.add('hidden');$('#modalBox').classList.remove('theater');$('#modalBox').innerHTML='';}
+function closeModal(){if(window.CoursePlayer)CoursePlayer.stopAudio();$('#modal').classList.add('hidden');$('#modalBox').classList.remove('theater');$('#modalBox').innerHTML='';render();}
 function download(name, text, mime){const b=new Blob([text],{type:mime||'text/plain;charset=utf-8'});const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download=name;document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove();},500);}
 function printHTML(html){const p=$('#printArea');p.innerHTML=html;document.body.classList.add('printing');const done=()=>{document.body.classList.remove('printing');p.innerHTML='';window.removeEventListener('afterprint',done);};window.addEventListener('afterprint',done);setTimeout(()=>window.print(),150);}
 /* ---------- Doğal ses: Microsoft Emel Neural (sunucu + Python edge-tts), yedek: tarayıcı sesi ---------- */
@@ -489,7 +489,7 @@ function seedQuestions(){
 }
 
 /* ---------- Veri modeli ---------- */
-function mkUser(o){return Object.assign({id:uid('u'),username:'',password:'',role:'student',name:'',classId:'',xp:0,gold:0,totalGold:0,owned:[],title:'',frame:'',labDone:[],qDone:[],qSeen:[],asgDone:0,stats:{},childId:''},o);}
+function mkUser(o){return Object.assign({id:uid('u'),username:'',password:'',role:'student',name:'',classId:'',xp:0,gold:0,totalGold:0,owned:[],title:'',frame:'',labDone:[],qDone:[],qSeen:[],asgDone:0,stats:{},courseProgress:{},childId:''},o);}
 function seedDb(){
  const users=[];
  const mk=o=>{const x=mkUser(o);users.push(x);return x;};
@@ -512,7 +512,7 @@ function normalize(d){
  d.settings=d.settings||{};d.version=3;d.updatedAt=d.updatedAt||0;
  return d;
 }
-function mkUserKeep(x){const b=mkUser({});for(const k in b){if(x[k]===undefined||x[k]===null)x[k]=b[k];}if(!x.stats||typeof x.stats!=='object')x.stats={};return x;}
+function mkUserKeep(x){const b=mkUser({});for(const k in b){if(x[k]===undefined||x[k]===null)x[k]=b[k];}if(!x.stats||typeof x.stats!=='object')x.stats={};if(!x.courseProgress||typeof x.courseProgress!=='object')x.courseProgress={};return x;}
 
 /* ---------- Kayıt & Senkronizasyon (LocalStorage + Node sunucusu) ---------- */
 let db = null;
@@ -648,7 +648,7 @@ function bumpStat(u,subject,ok){const s=u.stats[subject]||(u.stats[subject]={c:0
 function statsBar(u){return `<div class="statbar" id="statbar"><div class="chip">⭐ XP <b>${u.xp}</b></div><div class="chip">🎖️ Seviye <b>${level(u.xp)}</b></div><div class="chip">🪙 Altın <b>${u.gold}</b></div>${u.title?`<div class="chip">🏷️ ${esc(u.title)}</div>`:''}<div class="xpbar" title="Sonraki seviyeye: ${100-u.xp%100} XP"><i style="width:${u.xp%100}%"></i></div></div>`;}
 function studentView(u){
   const T=['📚 Dersler','⏱️ Deneme Sınavı','📢 Ödevler & Duyurular','🏆 Liderlik & Market'];
-  return statsBar(u)+tabs('student',T)+`<div class="panel">${[coursesTab,examTab,asgTab,marketTab][ui.tab.student](u)}</div>`;
+  return statsBar(u)+tabs('student',T)+`<div class="panel">${([coursesTab,examTab,asgTab,marketTab][ui.tab.student]||coursesTab)(u)}</div>`;
 }
 
 /* --- Sekme 1: 3D Laboratuvar --- */
@@ -12632,12 +12632,15 @@ const CoursePlayer = (() => {
   function replayCurrentStep() {
     const lesson = COURSE_LESSONS[CP.unitId];
     if (!lesson) return;
+    CP.paused = false;
+    renderStep();
     playStepAudio(lesson.steps[CP.step].narration);
   }
 
   function nextStep() {
     const lesson = COURSE_LESSONS[CP.unitId];
     if (!lesson) return;
+    CP.paused = false;
     if (CP.step < lesson.steps.length - 1) {
       CP.step++;
       renderStep();
@@ -12650,6 +12653,7 @@ const CoursePlayer = (() => {
   function prevStep() {
     const lesson = COURSE_LESSONS[CP.unitId];
     if (!lesson) return;
+    CP.paused = false;
     if (CP.step > 0) {
       CP.step--;
       renderStep();
@@ -12757,7 +12761,7 @@ const CoursePlayer = (() => {
             <span style="font-size:24px">🎯</span>
             <div>
               <h3>${esc(lesson.title)} · 10 Soruluk Ünite Testi</h3>
-              <small>Soru ${CP.qIdx + 1} / ${totalQ} · Doğru: ${CP.score} / ${CP.qIdx}</small>
+              <small>Soru ${CP.qIdx + 1} / ${totalQ} · Doğru: ${CP.score} / ${CP.answers.filter(a => a !== undefined).length}</small>
             </div>
           </div>
           <div style="display:flex;align-items:center;gap:8px">
@@ -12775,7 +12779,7 @@ const CoursePlayer = (() => {
           </div>
 
           <!-- Soru Metni -->
-          <div class="cp-qtext">${esc(q.q).replace(/\\n/g, '<br>')}</div>
+          <div class="cp-qtext">${esc(q.q).replace(/\r?\n|\\n/g, '<br>')}</div>
 
           <!-- Seçenekler -->
           <div class="cp-opts">${optsHtml}</div>
@@ -12831,6 +12835,17 @@ const CoursePlayer = (() => {
     const goldReward = Math.max(5, CP.score * 3);
 
     if (u) {
+      if (u.role === 'student') {
+        if (!u.courseProgress) u.courseProgress = {};
+        const prev = u.courseProgress[CP.unitId];
+        if (!prev || CP.score > prev.score) {
+          u.courseProgress[CP.unitId] = {
+            score: CP.score,
+            total: totalQ,
+            completedAt: Date.now()
+          };
+        }
+      }
       gain(u, xpReward, goldReward);
       bumpStat(u, lesson.subject, CP.score >= 7);
       save();
@@ -12854,9 +12869,12 @@ const CoursePlayer = (() => {
             <b>${i + 1}. Soru</b>
             <span class="badge" style="background:${ok ? 'rgba(34,197,94,0.2)' : 'rgba(239,68,68,0.2)'};color:${ok ? '#86efac' : '#fca5a5'}">${ok ? '✅ Doğru' : '❌ Yanlış'}</span>
           </div>
-          <p style="margin:4px 0;font-size:13px">${esc(q.q).replace(/\\n/g, ' ')}</p>
-          <small class="muted">Doğru Cevap: <b>${LTR[q.answer]}) ${esc(q.options[q.answer])}</b></small><br>
-          <small style="color:#94a3b8">💡 ${esc(q.explanation)}</small>
+          <p style="margin:4px 0;font-size:13px">${esc(q.q).replace(/\r?\n|\\n/g, ' ')}</p>
+          <div style="margin:4px 0">
+            ${!ok && a && a.selected !== undefined ? `<span style="color:#fca5a5;margin-right:12px;font-size:12px">Senin Yanıtın: <b>${LTR[a.selected]}) ${esc(q.options[a.selected])}</b></span>` : ''}
+            <span style="color:#86efac;font-size:12px">Doğru Yanıt: <b>${LTR[q.answer]}) ${esc(q.options[q.answer])}</b></span>
+          </div>
+          <small style="color:#94a3b8;display:block;margin-top:2px">💡 ${esc(q.explanation)}</small>
         </div>
       `;
     }).join('');
@@ -13465,9 +13483,11 @@ function coursesTab(u){
       const matchSearch = !q || unit.unitTitle.toLowerCase().includes(q) || unit.topics.some(tp => tp.toLowerCase().includes(q));
       const topicTags = unit.topics.slice(0, 3).map(tp => `<span class="video-topic-pill">${esc(tp)}</span>`).join('');
       const moreCount = unit.topics.length > 3 ? `<span class="video-topic-pill">+${unit.topics.length - 3}</span>` : '';
+      const prog = u && u.courseProgress ? u.courseProgress[unit.id] : null;
+      const isDone = !!prog;
 
       return `
-        <div class="video-card" 
+        <div class="video-card ${isDone ? 'done' : ''}" 
              data-title="${esc(unit.unitTitle)}" 
              data-topics="${esc(unit.topics.join(' '))}"
              style="${matchSearch ? '' : 'display:none;'}cursor:pointer;"
@@ -13475,7 +13495,7 @@ function coursesTab(u){
           <div class="video-thumb" style="background:linear-gradient(135deg, ${sub.color}33 0%, #0f172a 100%)">
             <div class="video-thumb-bg">${sub.icon}</div>
             <span class="video-badge-unit">${t.term}. Dönem · ${esc(unit.unitNo)}</span>
-            <span class="video-badge-ready" style="${COURSE_LESSONS[unit.id] ? 'background:rgba(16,185,129,0.3);border-color:#10b981;color:#6ee7b7' : ''}">${COURSE_LESSONS[unit.id] ? '🎬 Ders & Test Hazır!' : '🎬 Video Alanı'}</span>
+            <span class="video-badge-ready" style="${isDone ? 'background:rgba(16,185,129,0.35);border-color:#10b981;color:#6ee7b7' : (COURSE_LESSONS[unit.id] ? 'background:rgba(16,185,129,0.3);border-color:#10b981;color:#6ee7b7' : '')}">${isDone ? `🏆 Tamamlandı (${prog.score}/10)` : (COURSE_LESSONS[unit.id] ? '🎬 Ders & Test Hazır!' : '🎬 Video Alanı')}</span>
             <div class="play-btn-circle" title="Videoyu İzle" onclick="event.stopPropagation();CoursePlayer.open('${unit.id}')">▶</div>
             <span class="video-badge-duration">⏱️ ${unit.duration || '12 dk'}</span>
           </div>
@@ -13485,8 +13505,8 @@ function coursesTab(u){
               ${topicTags}${moreCount}
             </div>
             <div class="video-card-footer">
-              <span>${COURSE_LESSONS[unit.id] ? '✅ Sesli Anlatım + 10 Soru' : '⏳ Hazırlanıyor'}</span>
-              <span class="video-card-btn-action" style="${COURSE_LESSONS[unit.id] ? 'color:#10b981' : ''}" onclick="event.stopPropagation();CoursePlayer.open('${unit.id}')">${COURSE_LESSONS[unit.id] ? 'Dersi Başlat ▶' : 'İzle ▶'}</span>
+              <span>${isDone ? `⭐ Başarı: <b>${prog.score}/10</b> Puan` : (COURSE_LESSONS[unit.id] ? '✅ Sesli Anlatım + 10 Soru' : '⏳ Hazırlanıyor')}</span>
+              <span class="video-card-btn-action" style="${isDone ? 'color:#facc15' : 'color:#10b981'}" onclick="event.stopPropagation();CoursePlayer.open('${unit.id}')">${isDone ? 'Tekrar İzle / Çöz 🔄' : 'Dersi Başlat ▶'}</span>
             </div>
           </div>
         </div>
@@ -13514,7 +13534,8 @@ function coursesTab(u){
           <h2><span>🦉</span> 4. Sınıf Dersler & Video Müfredatı</h2>
           <p>Çalışmak istediğin dersi seç; 1. ve 2. dönem ünite videolarıyla konuları eğlenerek öğren!</p>
         </div>
-        <div style="display:flex;align-items:center;gap:8px">
+        <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+          ${u && u.courseProgress && Object.keys(u.courseProgress).length ? `<span class="badge" style="background:rgba(16,185,129,0.25);color:#6ee7b7;border:1px solid #10b981">🏆 Tamamlanan: ${Object.keys(u.courseProgress).length} / 43 Ünite</span>` : ''}
           <span class="badge" style="background:rgba(255,255,255,0.1);color:#fff">MEB 2025-2026 Uyumlu</span>
         </div>
       </div>
@@ -13659,6 +13680,7 @@ A.openAsg=aid=>{
   const a=db.assignments.find(x=>x.id===aid||x.moduleId===aid);
   if(!a)return;
   const m=modById(a.moduleId);
+  const isCourse=typeof COURSE_LESSONS!=='undefined'&&!!COURSE_LESSONS[a.moduleId];
   modal(`
     <div style="display:flex;flex-direction:column;gap:12px;max-width:500px">
       <h3>📚 ${esc(a.title)}</h3>
@@ -13667,6 +13689,7 @@ A.openAsg=aid=>{
       ${m?`<div style="background:rgba(255,255,255,0.05);padding:10px;border-radius:8px"><b>${m.icon} ${esc(m.name)}:</b><p style="margin:6px 0 0 0;font-size:13px">${esc(m.topic)}</p></div>`:''}
       <div class="row end" style="margin-top:10px">
         <button class="btn ghost" onclick="closeModal()">Kapat</button>
+        ${isCourse ? `<button class="btn" onclick="closeModal();CoursePlayer.open('${a.moduleId}')">🎬 Ders Videosu & Testini Aç</button>` : ''}
         ${!a.doneBy.includes(u.id)?`<button class="btn ok" onclick="A.finishAsg('${a.id}')">✔ Ödevi Tamamla</button>`:'<span class="badge">Zaten Tamamlandı</span>'}
       </div>
     </div>
@@ -13702,7 +13725,7 @@ A.unequip=t=>{const u=cur();if(t==='title')u.title='';else u.frame='';save();ren
 /* ================= ÖĞRETMEN PANELİ ================= */
 function teacherView(u){
   const T=['👥 Öğrenci & Veli Hesapları','📚 Dersler & Video Müfredat','📝 Ödev & Duyuru','🧠 Soru Bankası','💬 Veli İletişim & Sonuçlar'];
-  return `<div class="statbar"><div class="chip">🏫 Sınıf <b>${esc(u.classId||'-')}</b></div><div class="chip">👥 Öğrenci <b>${classStudents(u.classId).length}</b></div><div class="chip">📝 Ödev <b>${db.assignments.filter(a=>a.classId===u.classId).length}</b></div><div class="chip">🧠 Soru <b>${db.questions.length}</b></div></div>`+tabs('teacher',T)+`<div class="panel">${[tchAccounts,coursesTab,tchAssign,tchBank,tchComm][ui.tab.teacher](u)}</div>`;
+  return `<div class="statbar"><div class="chip">🏫 Sınıf <b>${esc(u.classId||'-')}</b></div><div class="chip">👥 Öğrenci <b>${classStudents(u.classId).length}</b></div><div class="chip">📝 Ödev <b>${db.assignments.filter(a=>a.classId===u.classId).length}</b></div><div class="chip">🧠 Soru <b>${db.questions.length}</b></div></div>`+tabs('teacher',T)+`<div class="panel">${([tchAccounts,coursesTab,tchAssign,tchBank,tchComm][ui.tab.teacher]||tchAccounts)(u)}</div>`;
 }
 const parentOf = sid => db.users.find(x=>x.role==='parent'&&x.childId===sid);
 
@@ -13776,7 +13799,10 @@ function tchAssign(u){
   const st=classStudents(u.classId);
   return `<div class="two" style="margin-top:0"><div class="card"><h3>🧪 3D Ödev Ata</h3>
    <label>Ödev Başlığı<input id="aTitle" placeholder="Örn: Mevsimleri keşfet"></label>
-   <label style="margin-top:8px">3D Modül<select id="aMod">${MODULES.map(m=>`<option value="${m.id}">${m.icon} ${m.name}</option>`).join('')}</select></label>
+   <label style="margin-top:8px">Ödev İçeriği (3D Deney veya MEB Dersi)<select id="aMod">
+     <optgroup label="3D Laboratuvar Modülleri">${MODULES.map(m=>`<option value="${m.id}">${m.icon} ${m.name}</option>`).join('')}</optgroup>
+     <optgroup label="MEB Ders Üniteleri">${COURSES_DATA.map(c=>c.terms.map(t=>t.units.map(un=>`<option value="${un.id}">${c.icon} ${esc(c.name)}: ${esc(un.unitTitle)}</option>`).join('')).join('')).join('')}</optgroup>
+   </select></label>
    <div class="grid3" style="margin-top:8px"><label>Ödül XP<input id="aXp" type="number" value="30" min="0" max="500"></label><label>Ödül Altın<input id="aGold" type="number" value="15" min="0" max="500"></label></div>
    <label style="margin-top:8px">Açıklama<textarea id="aDesc" placeholder="İsteğe bağlı"></textarea></label>
    <div class="row"><button class="btn" onclick="A.addAsg()">📤 Sınıfa Gönder</button></div></div>
@@ -13836,11 +13862,11 @@ A.chat=id=>{ui.chat=id;render();};
 function tchComm(u){
   const parents=classStudents(u.classId).map(s=>parentOf(s.id)).filter(Boolean);
   if(!ui.chat||!parents.find(p=>p.id===ui.chat))ui.chat=parents[0]?parents[0].id:null;
-  const sel=ui.chat?byId(ui.chat):null;
+  const sel=(ui.chat?byId(ui.chat):null)||(parents[0]||null);
   const st=classStudents(u.classId);
   const rows=st.map(s=>{const rs=db.results.filter(r=>r.studentId===s.id);const last=rs[rs.length-1];const avg=rs.length?rs.reduce((a,r)=>a+r.score,0)/rs.length:null;return `<tr><td>${esc(s.name)}</td><td>${rs.length}</td><td>${last?last.net.toFixed(2):'-'}</td><td>${last?last.score.toFixed(0):'-'}</td><td>${avg!==null?avg.toFixed(0):'-'}</td></tr>`;}).join('');
   const all=db.results.filter(r=>r.classId===u.classId).slice().reverse().slice(0,15);
-  return `<div class="two" style="margin-top:0"><div class="card"><h3>💬 Veli ile Mesajlaşma</h3>${parents.length?`<label>Veli seç<select onchange="A.chat(this.value)">${parents.map(p=>`<option value="${p.id}" ${p.id===ui.chat?'selected':''}>${esc(p.name)} (${esc(byId(p.childId)?byId(p.childId).name:'')})</option>`).join('')}</select></label><div style="margin-top:8px">${threadHTML(u.id,sel.id)}</div><textarea id="msgText" placeholder="Mesajınız..."></textarea><div class="row"><button class="btn" onclick="A.sendMsg('${sel.id}')">📨 Gönder</button><button class="btn ghost" onclick="A.imp('${sel.id}')">Veliye Geç</button></div>`:'<p class="muted">Veli hesabı yok.</p>'}</div>
+  return `<div class="two" style="margin-top:0"><div class="card"><h3>💬 Veli ile Mesajlaşma</h3>${parents.length&&sel?`<label>Veli seç<select onchange="A.chat(this.value)">${parents.map(p=>`<option value="${p.id}" ${p.id===sel.id?'selected':''}>${esc(p.name)} (${esc(byId(p.childId)?byId(p.childId).name:'')})</option>`).join('')}</select></label><div style="margin-top:8px">${threadHTML(u.id,sel.id)}</div><textarea id="msgText" placeholder="Mesajınız..."></textarea><div class="row"><button class="btn" onclick="A.sendMsg('${sel.id}')">📨 Gönder</button><button class="btn ghost" onclick="A.imp('${sel.id}')">Veliye Geç</button></div>`:'<p class="muted">Veli hesabı yok.</p>'}</div>
   <div class="card"><h3>📊 Deneme Sınavı Netleri</h3><div class="tablewrap"><table><tr><th>Öğrenci</th><th>Sınav</th><th>Son Net</th><th>Son Puan</th><th>Ort.</th></tr>${rows||'<tr><td colspan="5" class="muted">Öğrenci yok</td></tr>'}</table></div></div></div>
   <div class="card"><h3>🕒 Son Sınav Sonuçları</h3>${all.length?`<div class="tablewrap"><table><tr><th>Tarih</th><th>Öğrenci</th><th>D</th><th>Y</th><th>B</th><th>Net</th><th>Puan</th></tr>${all.map(r=>{const s=byId(r.studentId);return `<tr><td>${fmtDate(r.date)}</td><td>${esc(s?s.name:'?')}</td><td>${r.c}</td><td>${r.w}</td><td>${r.b}</td><td>${r.net.toFixed(2)}</td><td><b>${r.score.toFixed(0)}</b></td></tr>`;}).join('')}</table></div>`:'<p class="muted">Henüz sınav çözülmedi.</p>'}</div>`;
 }
@@ -13851,8 +13877,9 @@ function parentView(u){
   const rs=db.results.filter(r=>r.studentId===ch.id);
   const avg=rs.length?rs.reduce((a,r)=>a+r.score,0)/rs.length:null;
   const teacher=db.users.find(x=>x.role==='teacher'&&x.classId===ch.classId);
+  const courseCount = Object.keys(ch.courseProgress || {}).length;
   return `<div class="card"><div class="row between" style="margin:0"><div style="display:flex;gap:12px;align-items:center">${roleAvatar(ch,56)}<div><h2 style="margin:0">${esc(ch.name)}</h2><small>${esc(ch.classId)} Sınıfı${ch.title?' • '+esc(ch.title):''}</small></div></div><button class="btn warn" onclick="A.cert()">🎖️ Dijital Takdir & Başarı Belgesi</button></div></div>
-  <div class="grid4"><div class="card center"><small>⭐ Toplam XP</small><h2>${ch.xp}</h2></div><div class="card center"><small>🎖️ Seviye</small><h2>${level(ch.xp)}</h2></div><div class="card center"><small>🧪 Çözülen 3D Deney</small><h2>${ch.labDone.length}/${MODULES.length}</h2></div><div class="card center"><small>📚 Tamamlanan Ödev</small><h2>${ch.asgDone||0}</h2></div><div class="card center"><small>⏱️ Deneme Ortalaması</small><h2>${avg!==null?avg.toFixed(0):'-'}</h2><small>${rs.length} sınav</small></div></div>
+  <div class="grid3"><div class="card center"><small>⭐ Toplam XP</small><h2>${ch.xp}</h2></div><div class="card center"><small>🎖️ Seviye</small><h2>${level(ch.xp)}</h2></div><div class="card center"><small>🎬 Tamamlanan Ünite</small><h2>${courseCount}/43</h2></div><div class="card center"><small>🧪 Çözülen 3D Deney</small><h2>${ch.labDone.length}/${MODULES.length}</h2></div><div class="card center"><small>📚 Tamamlanan Ödev</small><h2>${ch.asgDone||0}</h2></div><div class="card center"><small>⏱️ Deneme Ortalaması</small><h2>${avg!==null?avg.toFixed(0):'-'}</h2><small>${rs.length} sınav</small></div></div>
   <div class="two"><div class="card"><h3>📈 Ders Bazlı Başarı (%)</h3><div style="height:280px"><canvas id="chartC"></canvas></div><p class="muted" id="chartMsg"></p></div>
   <div class="card"><h3>💬 Sınıf Öğretmeni ile Mesajlaşma</h3>${teacher?`${threadHTML(u.id,teacher.id)}<textarea id="msgText" placeholder="Öğretmene mesajınız..."></textarea><div class="row"><button class="btn" onclick="A.sendMsg('${teacher.id}')">📨 Gönder</button></div><small>Öğretmen: ${esc(teacher.name)}</small>`:'<p class="muted">Sınıf öğretmeni bulunamadı.</p>'}</div></div>
   <div class="card"><h3>🕒 Son Deneme Sınavları</h3>${rs.length?`<div class="tablewrap"><table><tr><th>Tarih</th><th>D</th><th>Y</th><th>B</th><th>Net</th><th>Puan</th></tr>${rs.slice().reverse().slice(0,8).map(r=>`<tr><td>${fmtDate(r.date)}</td><td>${r.c}</td><td>${r.w}</td><td>${r.b}</td><td>${r.net.toFixed(2)}</td><td><b>${r.score.toFixed(0)}</b></td></tr>`).join('')}</table></div>`:'<p class="muted">Henüz deneme sınavı çözülmedi.</p>'}</div>
@@ -13877,7 +13904,7 @@ A.printCert=()=>{const ch=byId(cur().childId);if(ch){closeModal();printHTML(cert
 function adminView(u){
   const T=['👥 Kullanıcı Yönetimi','🏠 Ev Sunucusu & Yedekleme','💰 AdSense Merkezi'];
   const cnt=r=>db.users.filter(x=>x.role===r).length;
-  return `<div class="statbar"><div class="chip">👑 Admin <b>${cnt('admin')}</b></div><div class="chip">👩‍🏫 Öğretmen <b>${cnt('teacher')}</b></div><div class="chip">🧒 Öğrenci <b>${cnt('student')}</b></div><div class="chip">👨‍👩‍👧 Veli <b>${cnt('parent')}</b></div><div class="chip">🧠 Soru <b>${db.questions.length}</b></div><div class="chip">📝 Sınav <b>${db.results.length}</b></div></div>`+tabs('admin',T)+`<div class="panel">${[admUsers,admServer,admAds][ui.tab.admin](u)}</div>`;
+  return `<div class="statbar"><div class="chip">👑 Admin <b>${cnt('admin')}</b></div><div class="chip">👩‍🏫 Öğretmen <b>${cnt('teacher')}</b></div><div class="chip">🧒 Öğrenci <b>${cnt('student')}</b></div><div class="chip">👨‍👩‍👧 Veli <b>${cnt('parent')}</b></div><div class="chip">🧠 Soru <b>${db.questions.length}</b></div><div class="chip">📝 Sınav <b>${db.results.length}</b></div></div>`+tabs('admin',T)+`<div class="panel">${([admUsers,admServer,admAds][ui.tab.admin]||admUsers)(u)}</div>`;
 }
 function admUsers(u){
   const students=db.users.filter(x=>x.role==='student');
@@ -13904,7 +13931,7 @@ A.addUser=()=>{
   if(byName(un)){toast('Bu kullanıcı adı zaten var.');return;}
   const o={username:un,password:pw,role,name};
   if(role!=='admin')o.classId=$('#nuClass').value.trim().toUpperCase();
-  if(role==='parent'){const c=$('#nuChild').value;if(!c){toast('Önce bir öğrenci ekleyin.');return;}o.childId=c;o.classId=byId(c).classId;}
+  if(role==='parent'){const c=$('#nuChild').value;if(!c){toast('Önce bir öğrenci ekleyin.');return;}const ch=byId(c);if(!ch){toast('Öğrenci bulunamadı.');return;}o.childId=c;o.classId=ch.classId;}
   db.users.push(mkUser(o));save();render();toast('✅ Kullanıcı eklendi');
 };
 A.delUser=id=>{
