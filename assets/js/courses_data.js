@@ -14802,6 +14802,76 @@ const CoursePlayer = (() => {
     }
   }
 
+
+  function toggleMute() {
+    if (!CP.audio) {
+      try { CP.audio = new Audio(); } catch (e) {}
+    }
+    if (CP.audio) {
+      CP.audio.muted = !CP.audio.muted;
+      const btn = document.getElementById('cpMuteBtn');
+      if (btn) btn.innerHTML = CP.audio.muted ? '🔇 Sessiz' : '🔊 Ses Açık';
+      toast(CP.audio.muted ? '🔇 Ses kapatıldı' : '🔊 Ses açıldı');
+    }
+  }
+
+  function cancelAutoAdvance() {
+    if (CP.countdownTimer) {
+      clearInterval(CP.countdownTimer);
+      CP.countdownTimer = null;
+    }
+    const cdEl = document.getElementById('cpNextCountdown');
+    if (cdEl) cdEl.remove();
+    toast('⏸ Otomatik geçiş durduruldu');
+  }
+
+  function initStageSwipe() {
+    const stage = document.getElementById('cpStage');
+    if (!stage || stage._swipeAttached) return;
+    stage._swipeAttached = true;
+    let startX = 0, startY = 0;
+    stage.addEventListener('touchstart', (e) => {
+      if (e.touches.length === 1) {
+        startX = e.touches[0].clientX;
+        startY = e.touches[0].clientY;
+      }
+    }, { passive: true });
+    stage.addEventListener('touchend', (e) => {
+      if (e.changedTouches.length === 1) {
+        const dx = e.changedTouches[0].clientX - startX;
+        const dy = e.changedTouches[0].clientY - startY;
+        if (Math.abs(dx) > 60 && Math.abs(dx) > Math.abs(dy) * 1.5) {
+          if (dx < 0) {
+            nextStep();
+            toast('Sonraki Adım ⏭');
+          } else {
+            prevStep();
+            toast('⏮ Önceki Adım');
+          }
+        }
+      }
+    }, { passive: true });
+  }
+
+  function initTimelineHover() {
+    const tl = document.getElementById('cpTimeline');
+    const tip = document.getElementById('cpTimeTip');
+    if (!tl || !tip || tl._hoverAttached) return;
+    tl._hoverAttached = true;
+    tl.addEventListener('mousemove', (e) => {
+      if (!CP.audio || !CP.audio.duration) return;
+      const rect = tl.getBoundingClientRect();
+      const pct = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
+      const sec = pct * CP.audio.duration;
+      tip.textContent = fmtTime(sec);
+      tip.style.left = (e.clientX - rect.left) + 'px';
+      tip.style.display = 'block';
+    });
+    tl.addEventListener('mouseleave', () => {
+      tip.style.display = 'none';
+    });
+  }
+
   function initAudioListeners() {
     if (!CP.audio) {
       try { CP.audio = new Audio(); } catch (e) {}
@@ -15206,10 +15276,10 @@ const CoursePlayer = (() => {
 
         <!-- Sinematik 16:9 Video Sahnesi -->
         <!-- Bölüm Adımları Hızlı Geçiş Butonları (Chapter Pills) -->
-        <div class="cp-steps-bar">
+        <div class="cp-steps-bar" id="cpStepsBar">
           ${lesson.steps.map((st, i) => `
-            <div class="cp-step-pill ${i === CP.step ? 'active' : ''}" onclick="CoursePlayer.jumpToStep(${i})">
-              ${i + 1}. Adım ${i === CP.step ? '▶' : ''}
+            <div class="cp-step-pill ${i === CP.step ? 'active' : ''} ${CP.completedSteps.has(i) ? 'completed' : ''}" onclick="CoursePlayer.jumpToStep(${i})">
+              ${CP.completedSteps.has(i) ? '✓ ' : ''}${i + 1}. Adım ${i === CP.step ? '▶' : ''}
             </div>
           `).join('')}
         </div>
@@ -15247,9 +15317,11 @@ const CoursePlayer = (() => {
 
         <!-- Etkileşimli Canlı İlerleme Çubuğu ve Süre Göstergesi -->
         <div style="display:flex;flex-direction:column;gap:4px">
-          <div class="cp-timeline" id="cpTimeline" onclick="CoursePlayer.seek(event)" title="İstediğin saniyeye atlamak için tıkla">
+          <div class="cp-timeline" id="cpTimeline" onclick="CoursePlayer.seek(event)" title="İstediğin saniyeye atlamak için tıkla" style="position:relative">
+            <div class="cp-timeline-tip" id="cpTimeTip">0:00</div>
             <div class="cp-timeline-fill" id="cpTimelineFill" style="width:0%"></div>
           </div>
+          <div id="cpCountdownHost"></div>
           <div style="display:flex;justify-content:space-between;align-items:center;padding:0 2px">
             <span class="cp-time-text" id="cpCurTime">0:00</span>
             <small class="muted" style="font-size:10px">İstediğin yere atlamak için çizgiye dokun</small>
@@ -15261,6 +15333,7 @@ const CoursePlayer = (() => {
         <div class="cp-controls">
           <div class="cp-ctrl-btns">
             <button class="btn sm" onclick="CoursePlayer.togglePause()" id="cpPauseBtn">${CP.paused ? '▶ Sesi Sürdür' : '⏸ Duraklat'}</button>
+            <button class="btn sm ghost" onclick="CoursePlayer.toggleMute()" id="cpMuteBtn" title="Sesi Aç / Kapat">${CP.audio && CP.audio.muted ? '🔇 Sessiz' : '🔊 Ses Açık'}</button>
             <button class="btn sm ghost" onclick="CoursePlayer.skipSeconds(-5)" title="5 saniye geri al">⏪ -5sn</button>
             <button class="btn sm ghost" onclick="CoursePlayer.skipSeconds(5)" title="5 saniye ileri sar">⏩ +5sn</button>
             <button class="btn sm ghost" onclick="CoursePlayer.replayCurrentStep()" title="Adımı Baştan Dinle">🔄 Tekrar</button>
@@ -15605,8 +15678,55 @@ const CoursePlayer = (() => {
     });
   }
 
+
+  // Global Keyboard Shortcuts when Player is Active
+  if (typeof window !== 'undefined') {
+    window.addEventListener('keydown', (e) => {
+      const modal = document.getElementById('modal');
+      if (!modal || modal.classList.contains('hidden') || !CP.unitId) return;
+      if (['INPUT', 'TEXTAREA', 'SELECT'].includes(e.target.tagName)) return;
+
+      if (e.code === 'Space') {
+        e.preventDefault();
+        togglePause();
+      } else if (e.code === 'ArrowLeft' || e.key === 'j' || e.key === 'J') {
+        e.preventDefault();
+        skipSeconds(-5);
+      } else if (e.code === 'ArrowRight' || e.key === 'l' || e.key === 'L') {
+        e.preventDefault();
+        skipSeconds(5);
+      } else if (e.code === 'ArrowUp') {
+        e.preventDefault();
+        if (!CP.audio) { try { CP.audio = new Audio(); } catch(x){} }
+        if (CP.audio) {
+          CP.audio.volume = Math.min(1, Math.round((CP.audio.volume + 0.1) * 10) / 10);
+          toast(`🔊 Ses Düzeyi: %${Math.round(CP.audio.volume * 100)}`);
+        }
+      } else if (e.code === 'ArrowDown') {
+        e.preventDefault();
+        if (!CP.audio) { try { CP.audio = new Audio(); } catch(x){} }
+        if (CP.audio) {
+          CP.audio.volume = Math.max(0, Math.round((CP.audio.volume - 0.1) * 10) / 10);
+          toast(`🔉 Ses Düzeyi: %${Math.round(CP.audio.volume * 100)}`);
+        }
+      } else if (e.key === 'm' || e.key === 'M') {
+        toggleMute();
+      } else if (e.key === 'f' || e.key === 'F') {
+        toggleStageFullscreen();
+      } else if (e.key === 'n' || e.key === 'N') {
+        nextStep();
+      } else if (e.key === 'p' || e.key === 'P') {
+        prevStep();
+      } else if (e.key === 'r' || e.key === 'R') {
+        replayCurrentStep();
+      }
+    });
+  }
+
   return {
     toggleStageFullscreen,
+    toggleMute,
+    cancelAutoAdvance,
     seek,
     jumpToStep,
     skipSeconds,
