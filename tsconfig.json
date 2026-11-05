@@ -1,0 +1,30 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "jsx": "react-jsx",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true
+  },
+  "include": [
+    "remotion.config.ts",
+    "remotion.entry.ts",
+    "design-tokens.ts",
+    "Root.tsx",
+    "animation-presets/**/*",
+    "character-system/**/*",
+    "infographic-components/**/*",
+    "scene-template/**/*",
+    "demo-scene/**/*",
+    "courses/**/*"
+  ],
+  "exclude": [
+    "node_modules",
+    "_test"
+  ]
+}

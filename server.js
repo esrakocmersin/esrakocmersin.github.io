@@ -12,6 +12,11 @@ const DIR = __dirname;
 const DB_FILE = path.join(DIR, 'veritabani.json');
 const INDEX_FILE = path.join(DIR, 'index.html');
 const MAX_BODY = 8 * 1024 * 1024;
+const API_TOKEN = process.env.API_TOKEN || '';
+const ALLOWED_ORIGINS = (process.env.CORS_ORIGINS || 'https://esrakocmersin.github.io')
+  .split(',')
+  .map((origin) => origin.trim())
+  .filter(Boolean);
 
 // ---------- Dogal ses (Microsoft Emel Neural, Python edge-tts) ----------
 const PY_SCRIPT = path.join(DIR, 'ses_motoru.py');
@@ -120,10 +125,33 @@ function writeDb(obj) {
   fs.renameSync(tmp, DB_FILE);
 }
 
-function setCors(res) {
-  res.setHeader('Access-Control-Allow-Origin', '*');
+function setCors(res, origin) {
+  if (origin && ALLOWED_ORIGINS.includes(origin)) {
+    res.setHeader('Access-Control-Allow-Origin', origin);
+    res.setHeader('Vary', 'Origin');
+  }
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type, X-Force, Authorization');
+}
+
+function requireApiToken(req, res) {
+  if (API_TOKEN.length < 32) {
+    send(res, 503, { ok: false, error: 'API_TOKEN en az 32 karakter olarak yapılandırılmalı' });
+    return false;
+  }
+  const authorization = req.headers.authorization || '';
+  const match = /^Bearer ([^\s]{32,})$/.exec(authorization);
+  if (!match) {
+    send(res, 401, { ok: false, error: 'Yetkilendirme gerekli' });
+    return false;
+  }
+  const supplied = Buffer.from(match[1]);
+  const expected = Buffer.from(API_TOKEN);
+  if (supplied.length !== expected.length || !crypto.timingSafeEqual(supplied, expected)) {
+    send(res, 401, { ok: false, error: 'Yetkilendirme başarısız' });
+    return false;
+  }
+  return true;
 }
 
 function send(res, code, body, type) {
@@ -136,10 +164,17 @@ function send(res, code, body, type) {
 }
 
 const server = http.createServer((req, res) => {
-  setCors(res);
+  const origin = req.headers.origin;
+  setCors(res, origin);
+  if (origin && !ALLOWED_ORIGINS.includes(origin)) {
+    return send(res, 403, { ok: false, error: 'Kaynağa izin verilmiyor' });
+  }
 
   // Preflight OPTIONS sorgusu (GitHub Pages / Render.com CORS uyumu)
   if (req.method === 'OPTIONS') {
+    if (origin && !ALLOWED_ORIGINS.includes(origin)) {
+      return send(res, 403, { ok: false, error: 'Kaynağa izin verilmiyor' });
+    }
     res.writeHead(204);
     return res.end();
   }
@@ -179,9 +214,23 @@ const server = http.createServer((req, res) => {
 
   // Statik dosya servisi (assets klasoru altindaki resim, doku ve sesler)
   if (req.method === 'GET' && url.startsWith('/assets/')) {
-    const rel = decodeURIComponent(url.replace(/^\/+/, ''));
-    const safePath = path.normalize(path.join(DIR, rel));
-    if (safePath.startsWith(DIR) && fs.existsSync(safePath) && fs.statSync(safePath).isFile()) {
+    let safePath;
+    try {
+      const assetsDir = path.resolve(DIR, 'assets');
+      safePath = path.resolve(assetsDir, decodeURIComponent(url.slice('/assets/'.length)));
+      const relativePath = path.relative(assetsDir, safePath);
+      if (!relativePath || relativePath === '..' || relativePath.startsWith('..' + path.sep) || path.isAbsolute(relativePath)) {
+        return send(res, 404, { ok: false, error: 'Dosya bulunamadi' });
+      }
+      safePath = fs.realpathSync(safePath);
+      const realRelativePath = path.relative(fs.realpathSync(assetsDir), safePath);
+      if (!realRelativePath || realRelativePath === '..' || realRelativePath.startsWith('..' + path.sep) || path.isAbsolute(realRelativePath)) {
+        return send(res, 404, { ok: false, error: 'Dosya bulunamadi' });
+      }
+    } catch (e) {
+      return send(res, 404, { ok: false, error: 'Dosya bulunamadi' });
+    }
+    if (fs.statSync(safePath).isFile()) {
       const ext = path.extname(safePath).toLowerCase();
       const mimes = {
         '.jpg': 'image/jpeg',
@@ -204,6 +253,7 @@ const server = http.createServer((req, res) => {
   }
 
   if (req.method === 'GET' && url === '/api/ping') {
+    if (!requireApiToken(req, res)) return;
     const db = readDb();
     return send(res, 200, {
       ok: true,
@@ -215,6 +265,7 @@ const server = http.createServer((req, res) => {
   }
 
   if (req.method === 'GET' && url === '/api/db') {
+    if (!requireApiToken(req, res)) return;
     const db = readDb();
     return send(res, 200, { ok: true, db: db });
   }
@@ -255,6 +306,7 @@ const server = http.createServer((req, res) => {
   }
 
   if (req.method === 'GET' && url === '/api/backup') {
+    if (!requireApiToken(req, res)) return;
     const db = readDb() || {};
     res.writeHead(200, {
       'Content-Type': 'application/json; charset=utf-8',
@@ -264,6 +316,7 @@ const server = http.createServer((req, res) => {
   }
 
   if (req.method === 'POST' && url === '/api/db') {
+    if (!requireApiToken(req, res)) return;
     let size = 0;
     const chunks = [];
     req.on('data', (c) => {

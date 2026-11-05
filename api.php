@@ -6,9 +6,20 @@
 
 header('Content-Type: application/json; charset=utf-8');
 header('Cache-Control: no-store');
-header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Methods: GET, POST, OPTIONS');
-header('Access-Control-Allow-Headers: Content-Type, X-Force');
+header('Access-Control-Allow-Headers: Content-Type, X-Force, Authorization');
+
+$origin = $_SERVER['HTTP_ORIGIN'] ?? '';
+$allowedOrigins = array_filter(array_map('trim', explode(',', getenv('CORS_ORIGINS') ?: 'https://esrakocmersin.github.io')));
+if ($origin !== '') {
+    if (!in_array($origin, $allowedOrigins, true)) {
+        http_response_code(403);
+        echo json_encode(['ok' => false, 'error' => 'Kaynağa izin verilmiyor']);
+        exit;
+    }
+    header('Access-Control-Allow-Origin: ' . $origin);
+    header('Vary: Origin');
+}
 
 if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
     http_response_code(200);
@@ -16,6 +27,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
 }
 
 $dbFile = __DIR__ . '/veritabani.json';
+$apiToken = getenv('API_TOKEN') ?: '';
+
+function require_api_token($apiToken) {
+    if (strlen($apiToken) < 32) {
+        http_response_code(503);
+        echo json_encode(['ok' => false, 'error' => 'API_TOKEN en az 32 karakter olarak yapılandırılmalı']);
+        exit;
+    }
+    $headers = function_exists('getallheaders') ? getallheaders() : [];
+    $authorization = $_SERVER['HTTP_AUTHORIZATION'] ?? $_SERVER['REDIRECT_HTTP_AUTHORIZATION'] ?? $headers['Authorization'] ?? $headers['authorization'] ?? '';
+    if (!preg_match('/^Bearer ([^\s]{32,})$/', $authorization, $matches) || !hash_equals($apiToken, $matches[1])) {
+        http_response_code(401);
+        echo json_encode(['ok' => false, 'error' => 'Yetkilendirme başarısız']);
+        exit;
+    }
+}
 
 // İstek URI ayrıştırma
 $uri = $_SERVER['REQUEST_URI'] ?? '';
@@ -42,6 +69,7 @@ function write_db($file, $data) {
 
 // 1. PING
 if ($route === 'ping' && $_SERVER['REQUEST_METHOD'] === 'GET') {
+    require_api_token($apiToken);
     $db = read_db($dbFile);
     echo json_encode([
         'ok' => true,
@@ -54,6 +82,7 @@ if ($route === 'ping' && $_SERVER['REQUEST_METHOD'] === 'GET') {
 
 // 2. GET DB
 if ($route === 'db' && $_SERVER['REQUEST_METHOD'] === 'GET') {
+    require_api_token($apiToken);
     $db = read_db($dbFile);
     echo json_encode([
         'ok' => true,
@@ -64,6 +93,7 @@ if ($route === 'db' && $_SERVER['REQUEST_METHOD'] === 'GET') {
 
 // 3. POST DB
 if ($route === 'db' && $_SERVER['REQUEST_METHOD'] === 'POST') {
+    require_api_token($apiToken);
     $input = file_get_contents('php://input');
     $incoming = json_decode($input, true);
 
@@ -96,6 +126,7 @@ if ($route === 'db' && $_SERVER['REQUEST_METHOD'] === 'POST') {
 
 // 4. BACKUP
 if ($route === 'backup' && $_SERVER['REQUEST_METHOD'] === 'GET') {
+    require_api_token($apiToken);
     $db = read_db($dbFile);
     header('Content-Type: application/json; charset=utf-8');
     header('Content-Disposition: attachment; filename="veritabani-yedek.json"');
@@ -116,4 +147,3 @@ if ($route === 'tts' && ($_SERVER['REQUEST_URI'] ?? '') && strpos($_SERVER['REQU
 
 http_response_code(404);
 echo json_encode(['ok' => false, 'error' => 'Bulunamadı']);
-

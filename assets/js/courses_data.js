@@ -15210,6 +15210,8 @@ const CoursePlayer = (() => {
   function updateSpeakerUI(talking) {
     const sp = document.getElementById('cpSpeakerPill');
     if (sp) sp.classList.toggle('talking', !!talking);
+    const stg = document.getElementById('cpStage');
+    if (stg) stg.classList.toggle('cp-owl-speaking', !!talking);
   }
 
   function open(unitOrCourseId, unitIdx, stepIdx) {
@@ -15345,7 +15347,268 @@ const CoursePlayer = (() => {
     }
   }
 
-  function renderStep() {
+  
+  function getOwlSvg(size) {
+    return `
+      <svg viewBox="0 0 200 200" width="${size}" height="${size}" style="overflow:visible;animation:owlBreathe 3.5s ease-in-out infinite;">
+        <defs>
+          <radialGradient id="owlBodyGrad" cx="35%" cy="30%" r="70%">
+            <stop offset="0%" stop-color="#3b82f6" />
+            <stop offset="50%" stop-color="#1d4ed8" />
+            <stop offset="100%" stop-color="#0f172a" />
+          </radialGradient>
+          <radialGradient id="owlBellyGrad" cx="40%" cy="35%" r="65%">
+            <stop offset="0%" stop-color="#fef08a" />
+            <stop offset="60%" stop-color="#f59e0b" />
+            <stop offset="100%" stop-color="#b45309" />
+          </radialGradient>
+          <linearGradient id="goldGlasses" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#fef08a" />
+            <stop offset="50%" stop-color="#f59e0b" />
+            <stop offset="100%" stop-color="#d97706" />
+          </linearGradient>
+        </defs>
+        <ellipse cx="100" cy="115" rx="65" ry="72" fill="url(#owlBodyGrad)" />
+        <ellipse cx="100" cy="125" rx="42" ry="48" fill="url(#owlBellyGrad)" />
+        <path d="M 35 110 Q 15 125 30 155 Q 50 145 55 120 Z" fill="#1e40af" />
+        <path d="M 165 110 Q 185 125 170 155 Q 150 145 145 120 Z" fill="#1e40af" />
+        <polygon points="50,60 70,30 80,68" fill="#1e3a8a" />
+        <polygon points="150,60 130,30 120,68" fill="#1e3a8a" />
+        <circle cx="70" cy="85" r="24" fill="#ffffff" stroke="#e2e8f0" stroke-width="2" />
+        <circle cx="130" cy="85" r="24" fill="#ffffff" stroke="#e2e8f0" stroke-width="2" />
+        <ellipse cx="72" cy="85" rx="12" ry="12" fill="#0f172a" style="animation:owlBlink 4s infinite;" />
+        <ellipse cx="128" cy="85" rx="12" ry="12" fill="#0f172a" style="animation:owlBlink 4s infinite;" />
+        <circle cx="68" cy="80" r="4" fill="#ffffff" />
+        <circle cx="124" cy="80" r="4" fill="#ffffff" />
+        <circle cx="70" cy="85" r="26" fill="none" stroke="url(#goldGlasses)" stroke-width="4" />
+        <circle cx="130" cy="85" r="26" fill="none" stroke="url(#goldGlasses)" stroke-width="4" />
+        <line x1="96" y1="85" x2="104" y2="85" stroke="url(#goldGlasses)" stroke-width="4" />
+        <polygon id="owlBeak" points="92,102 108,102 100,118" fill="#f59e0b" />
+        <path d="M 50 48 L 100 28 L 150 48 L 100 64 Z" fill="#0f172a" />
+        <rect x="75" y="44" width="50" height="14" fill="#1e293b" rx="2" />
+        <circle cx="100" cy="46" r="4" fill="#f59e0b" />
+        <line x1="100" y1="46" x2="140" y2="60" stroke="#f59e0b" stroke-width="2" />
+        <circle cx="140" cy="60" r="3" fill="#f59e0b" />
+      </svg>
+    `;
+  }
+
+  function getInfographicHtml(unitId, stepIdx, stepObj) {
+    if (unitId === 'tr-u1') {
+      if (stepIdx === 0) {
+        return `
+          <div style="width:100%;display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px">
+            <div style="background:linear-gradient(135deg,rgba(6,182,212,0.2),rgba(7,11,20,0.9));border:1.8px solid #06b6d4;border-radius:10px;padding:6px 10px;text-align:center">
+              <div style="font-size:20px;font-weight:900;color:#67e8f9">8</div>
+              <div style="font-size:10px;font-weight:800;color:#fff">ÜNLÜ (SESLİ)</div>
+              <div style="font-size:8.5px;color:#cbd5e1">Tek başına seslenir</div>
+            </div>
+            <div style="background:linear-gradient(135deg,rgba(37,99,235,0.2),rgba(7,11,20,0.9));border:1.8px solid #2563eb;border-radius:10px;padding:6px 10px;text-align:center">
+              <div style="font-size:20px;font-weight:900;color:#60a5fa">21</div>
+              <div style="font-size:10px;font-weight:800;color:#fff">ÜNSÜZ (SESSİZ)</div>
+              <div style="font-size:8.5px;color:#cbd5e1">Ünlüyle seslenir</div>
+            </div>
+          </div>
+          <div style="width:100%;display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px">
+            <div style="background:#201015;border:1.5px solid #f43f5e;border-radius:10px;padding:6px 8px">
+              <span style="background:#f43f5e;color:#fff;font-size:8.5px;font-weight:800;padding:1px 5px;border-radius:4px">KALIN ÜNLÜLER</span>
+              <div style="font-size:11px;font-weight:800;color:#f43f5e;margin-top:2px">A · I · O · U</div>
+              <div style="font-size:8.5px;color:#cbd5e1;line-height:1.2">Gırtlaktan tok çıkar (Okul, Balık)</div>
+            </div>
+            <div style="background:#091a26;border:1.5px solid #06b6d4;border-radius:10px;padding:6px 8px">
+              <span style="background:#06b6d4;color:#fff;font-size:8.5px;font-weight:800;padding:1px 5px;border-radius:4px">İNCE ÜNLÜLER</span>
+              <div style="font-size:11px;font-weight:800;color:#67e8f9;margin-top:2px">E · İ · Ö · Ü</div>
+              <div style="font-size:8.5px;color:#cbd5e1;line-height:1.2">Ağzın önünden zarifçe (Güneş, Çiçek)</div>
+            </div>
+          </div>
+          <div style="width:100%;background:#1c1917;border:1.5px solid #f59e0b;border-radius:8px;padding:6px 10px;display:flex;align-items:center;gap:8px">
+            <span style="background:#f59e0b;color:#000;font-size:8.5px;font-weight:900;padding:2px 6px;border-radius:4px">🎯 ALTIN KURAL</span>
+            <span style="font-size:10px;font-weight:700;color:#fef08a">Her hecede mutlaka 1 TANE ünlü harf bulunur!</span>
+          </div>
+        `;
+      } else if (stepIdx === 1) {
+        return `
+          <div style="width:100%;display:flex;align-items:center;justify-content:space-between;background:rgba(13,20,36,0.9);border:1.5px solid #2563eb;border-radius:10px;padding:8px 10px;margin-bottom:8px">
+            <div style="text-align:center;flex:1"><span style="background:#f43f5e;color:#fff;padding:2px 6px;border-radius:50%;font-size:9px;font-weight:900">1</span><div style="font-size:10px;font-weight:800;color:#fff;margin-top:2px">Cum-hu</div><small style="font-size:8px;color:#cbd5e1">2 Ünlü (u, u)</small></div>
+            <span style="color:#06b6d4">➔</span>
+            <div style="text-align:center;flex:1"><span style="background:#2563eb;color:#fff;padding:2px 6px;border-radius:50%;font-size:9px;font-weight:900">2</span><div style="font-size:10px;font-weight:800;color:#fff;margin-top:2px">ri-yet</div><small style="font-size:8px;color:#cbd5e1">2 Ünlü (i, e)</small></div>
+            <span style="color:#06b6d4">➔</span>
+            <div style="text-align:center;flex:1"><span style="background:#10b981;color:#fff;padding:2px 6px;border-radius:50%;font-size:9px;font-weight:900">✓</span><div style="font-size:10px;font-weight:800;color:#10b981;margin-top:2px">= 4 Hece!</div><small style="font-size:8px;color:#cbd5e1">4 Ünlü = 4 Hece</small></div>
+          </div>
+          <div style="width:100%;background:rgba(13,20,36,0.9);border:1.5px solid #f59e0b;border-radius:10px;padding:8px 10px;margin-bottom:8px">
+            <div style="font-size:11px;font-weight:800;color:#fef08a">✂️ Satır Sonu Bölme Kuralı</div>
+            <div style="font-size:9.5px;color:#cbd5e1;margin-top:2px;line-height:1.3">Tek harf satır sonunda yalnız kalamaz: <b>a- / raba ❌</b> · <b>ara- / ba ✔️</b>. Özel isimde kesme (') gelirse kısa çizgi konmaz!</div>
+          </div>
+          <div style="width:100%;background:#1c1917;border:1.5px solid #f59e0b;border-radius:8px;padding:6px 10px;display:flex;align-items:center;gap:8px">
+            <span style="background:#f59e0b;color:#000;font-size:8.5px;font-weight:900;padding:2px 6px;border-radius:4px">🎯 ALTIN KURAL</span>
+            <span style="font-size:10px;font-weight:700;color:#fef08a">Satır sonunda veya başında asla tek harf yalnız bırakılamaz!</span>
+          </div>
+        `;
+      } else if (stepIdx === 2) {
+        return `
+          <div style="width:100%;display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;margin-bottom:8px">
+            <div style="background:#1c1014;border:1.5px solid #f43f5e;border-radius:8px;padding:8px 6px;text-align:center">
+              <div style="font-size:18px">🔥</div>
+              <div style="font-size:10px;font-weight:800;color:#fda4af">SICAK ÇORBA</div>
+              <small style="font-size:8px;color:#cbd5e1">Fiziksel ısı</small>
+            </div>
+            <div style="background:#0e1728;border:1.5px solid #2563eb;border-radius:8px;padding:8px 6px;text-align:center">
+              <div style="font-size:18px">🪨</div>
+              <div style="font-size:10px;font-weight:800;color:#60a5fa">AĞIR TAŞ</div>
+              <small style="font-size:8px;color:#cbd5e1">Tartılan kütle</small>
+            </div>
+            <div style="background:#0c1c1a;border:1.5px solid #10b981;border-radius:8px;padding:8px 6px;text-align:center">
+              <div style="font-size:18px">🧊</div>
+              <div style="font-size:10px;font-weight:800;color:#86efac">BUZ ERİDİ</div>
+              <small style="font-size:8px;color:#cbd5e1">Sıvılaşma</small>
+            </div>
+          </div>
+          <div style="width:100%;background:rgba(13,20,36,0.9);border:1.5px solid #06b6d4;border-radius:10px;padding:8px 10px;margin-bottom:8px">
+            <div style="font-size:11px;font-weight:800;color:#67e8f9">📖 Sözlükteki 1 Numaralı Anlam</div>
+            <div style="font-size:9.5px;color:#cbd5e1;margin-top:2px;line-height:1.3">Sözcüğü duyduğumuzda aklımıza gelen ilk, somut ve herkesçe bilinen fiziksel gerçektir. 5 duyu organımızla algılanır.</div>
+          </div>
+          <div style="width:100%;background:#1c1917;border:1.5px solid #f59e0b;border-radius:8px;padding:6px 10px;display:flex;align-items:center;gap:8px">
+            <span style="background:#f59e0b;color:#000;font-size:8.5px;font-weight:900;padding:2px 6px;border-radius:4px">🎯 ALTIN KURAL</span>
+            <span style="font-size:10px;font-weight:700;color:#fef08a">Aklına ilk gelen fiziksel görüntü gerçek anlamın ta kendisidir!</span>
+          </div>
+        `;
+      } else if (stepIdx === 3) {
+        return `
+          <div style="width:100%;display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px">
+            <div style="background:#201015;border:1.5px solid #f43f5e;border-radius:10px;padding:6px 8px">
+              <span style="background:#f43f5e;color:#fff;font-size:8.5px;font-weight:800;padding:1px 5px;border-radius:4px">🥛 GERÇEK ANLAM</span>
+              <div style="font-size:11px;font-weight:800;color:#f43f5e;margin-top:2px">Bardak Kırıldı</div>
+              <div style="font-size:8.5px;color:#cbd5e1;line-height:1.2">Cam parçalandı; somut fiziksel olay.</div>
+            </div>
+            <div style="background:#180d2c;border:1.5px solid #8b5cf6;border-radius:10px;padding:6px 8px">
+              <span style="background:#8b5cf6;color:#fff;font-size:8.5px;font-weight:800;padding:1px 5px;border-radius:4px">💔 MECAZ ANLAM</span>
+              <div style="font-size:11px;font-weight:800;color:#c084fc;margin-top:2px">Kalbi Kırıldı</div>
+              <div style="font-size:8.5px;color:#cbd5e1;line-height:1.2">Sözlere üzüldü, gücendi; soyut duygu.</div>
+            </div>
+          </div>
+          <div style="width:100%;background:rgba(13,20,36,0.9);border:1.5px solid #06b6d4;border-radius:10px;padding:8px 10px;margin-bottom:8px">
+            <div style="font-size:11px;font-weight:800;color:#67e8f9">❄️ 'Bize Çok Soğuk Davrandı'</div>
+            <div style="font-size:9.5px;color:#cbd5e1;margin-top:2px;line-height:1.3">Hava sıcaklığı değil, sevgisizlik ve ilgisizlik anlatılır. Sözcük gerçek anlamından tamamen kopmuştur.</div>
+          </div>
+          <div style="width:100%;background:#1c1917;border:1.5px solid #f59e0b;border-radius:8px;padding:6px 10px;display:flex;align-items:center;gap:8px">
+            <span style="background:#f59e0b;color:#000;font-size:8.5px;font-weight:900;padding:2px 6px;border-radius:4px">🎯 ALTIN KURAL</span>
+            <span style="font-size:10px;font-weight:700;color:#fef08a">Mecaz anlamda sözcük ilk anlamından bütünüyle kopar!</span>
+          </div>
+        `;
+      } else {
+        return `
+          <div style="width:100%;display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:8px">
+            <div style="background:rgba(6,182,212,0.18);border:1.5px solid #06b6d4;border-radius:8px;padding:6px 8px">
+              <b style="font-size:9px;color:#67e8f9">📐 MATEMATİK</b>
+              <div style="font-size:10.5px;font-weight:800;color:#fff;margin-top:2px">Üçgen · Açı · Kesir</div>
+            </div>
+            <div style="background:rgba(16,185,129,0.18);border:1.5px solid #10b981;border-radius:8px;padding:6px 8px">
+              <b style="font-size:9px;color:#86efac">⚽ SPOR ALANI</b>
+              <div style="font-size:10.5px;font-weight:800;color:#fff;margin-top:2px">Penaltı · Korner · Smaç</div>
+            </div>
+            <div style="background:rgba(139,92,246,0.18);border:1.5px solid #8b5cf6;border-radius:8px;padding:6px 8px">
+              <b style="font-size:9px;color:#c084fc">🎭 TİYATRO & SANAT</b>
+              <div style="font-size:10.5px;font-weight:800;color:#fff;margin-top:2px">Perde · Sahne · Kostüm</div>
+            </div>
+            <div style="background:rgba(245,158,11,0.18);border:1.5px solid #f59e0b;border-radius:8px;padding:6px 8px">
+              <b style="font-size:9px;color:#fef08a">🎵 MÜZİK ALANI</b>
+              <div style="font-size:10.5px;font-weight:800;color:#fff;margin-top:2px">Nota · Sol Anahtarı</div>
+            </div>
+          </div>
+          <div style="width:100%;display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:8px">
+            <div style="background:#091a26;border:1.5px solid #06b6d4;border-radius:8px;padding:6px 8px">
+              <span style="font-size:8.5px;color:#67e8f9;font-weight:800">🩺 TERİM ANLAM</span>
+              <div style="font-size:9px;color:#cbd5e1;margin-top:2px">Miyop teşhisi (Tıp terimidir)</div>
+            </div>
+            <div style="background:#201015;border:1.5px solid #f43f5e;border-radius:8px;padding:6px 8px">
+              <span style="font-size:8.5px;color:#f43f5e;font-weight:800">👀 MECAZ ANLAM</span>
+              <div style="font-size:9px;color:#cbd5e1;margin-top:2px">Göze girdi (Beğeni kazandı)</div>
+            </div>
+          </div>
+          <div style="width:100%;background:#1c1917;border:1.5px solid #f59e0b;border-radius:8px;padding:6px 10px;display:flex;align-items:center;gap:8px">
+            <span style="background:#f59e0b;color:#000;font-size:8.5px;font-weight:900;padding:2px 6px;border-radius:4px">🏆 ÜNİTE ŞAMPİYONU</span>
+            <span style="font-size:10px;font-weight:700;color:#fef08a">1. Üniteyi başarıyla tamamladın! Teste hazırsın!</span>
+          </div>
+        `;
+      }
+    }
+
+    // Default dynamic interactive 3D layout for all other units
+    return `
+      <div style="width:100%;background:rgba(13,20,36,0.92);border:1.8px solid #06b6d4;border-radius:12px;padding:12px 14px;box-shadow:0 8px 24px rgba(0,0,0,0.6);margin-bottom:8px">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
+          <span style="font-size:12px;font-weight:800;color:#67e8f9">📌 ${esc(stepObj.badge || 'Kavram Kartı')}</span>
+          <span style="background:rgba(6,182,212,0.2);color:#06b6d4;border:1px solid #06b6d4;padding:1px 6px;border-radius:10px;font-size:8.5px;font-weight:800">ÖĞRENME HEDEFİ</span>
+        </div>
+        <div style="font-size:12.5px;font-weight:800;color:#fff;margin-bottom:4px">${esc(stepObj.title)}</div>
+        <div style="font-size:10px;line-height:1.4;color:#cbd5e1">${esc(stepObj.narration ? stepObj.narration.slice(0, 160) + '...' : '')}</div>
+      </div>
+      <div style="width:100%;background:#1c1917;border:1.5px solid #f59e0b;border-radius:8px;padding:6px 10px;display:flex;align-items:center;gap:8px">
+        <span style="background:#f59e0b;color:#000;font-size:8.5px;font-weight:900;padding:2px 6px;border-radius:4px">🎯 ALTIN KURAL</span>
+        <span style="font-size:10px;font-weight:700;color:#fef08a">${esc(stepObj.title)} konusunu dikkatle dinle ve öğren!</span>
+      </div>
+    `;
+  }
+
+  function buildCinematic4x6Stage(lesson, stepIdx, stepObj, isPlaying) {
+    const isOwlSpeaking = isPlaying && !CP.paused;
+    const narrationText = esc(stepObj.narration ? stepObj.narration.replace(/\s+/g, ' ').slice(0, 140) + '...' : '');
+
+    return `
+      <div class="cp-stage-4x6">
+        <!-- 1. Üst Oran Takip HUD -->
+        <div style="position:absolute;top:6px;left:10px;right:10px;display:flex;align-items:center;justify-content:space-between;padding:3px 8px;background:rgba(7,11,20,0.85);border-radius:9999px;border:1px solid rgba(255,255,255,0.1);z-index:99">
+          <div style="display:flex;align-items:center;gap:4px">
+            <span style="font-size:8px;color:#94a3b8;font-weight:700">RATIO:</span>
+            <span style="font-size:8px;padding:1px 5px;border-radius:3px;background:#2563eb;color:#fff;font-weight:800">%35 Karakter</span>
+            <span style="font-size:8px;padding:1px 5px;border-radius:3px;background:#10b981;color:#fff;font-weight:800">%50 İnfografik</span>
+            <span style="font-size:8px;padding:1px 5px;border-radius:3px;background:#f59e0b;color:#000;font-weight:800">%15 Başlık</span>
+          </div>
+          <span style="font-size:8px;color:#06b6d4;font-weight:900">4:6 · 540x810</span>
+        </div>
+
+        <!-- 2. BÖLÜM: BAŞLIK VE KAVRAM VURGULARI (%15 Hacim) -->
+        <div class="cp-4x6-top">
+          <div style="font-size:9px;letter-spacing:1.5px;color:#06b6d4;font-weight:800;text-transform:uppercase;margin-bottom:2px">
+            ● 4. SINIF ${esc(lesson.subject).toUpperCase()} · ${esc(lesson.unitNo).toUpperCase()}
+          </div>
+          <h2 style="margin:0;font-size:16px;font-weight:900;line-height:1.2;background:linear-gradient(135deg,#fff 40%,#67e8f9 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-shadow:0 2px 10px rgba(6,182,212,0.4)">
+            ${esc(stepObj.title)}
+          </h2>
+          <small style="font-size:9.5px;color:#cbd5e1;margin-top:2px">${esc(stepObj.badge || 'Kavram Haritası')}</small>
+        </div>
+
+        <!-- 3. BÖLÜM: EĞİTİCİ İNFOGRAFİK (%50 Hacim) -->
+        <div class="cp-4x6-mid">
+          ${getInfographicHtml(lesson.id, stepIdx, stepObj)}
+        </div>
+
+        <!-- 4. BÖLÜM: KARAKTER VE HİKÂYE ANİMASYONU (%35 Hacim) -->
+        <div class="cp-4x6-bot ${isOwlSpeaking ? 'cp-owl-speaking' : ''}">
+          <div style="display:flex;align-items:center;width:100%;gap:10px;justify-content:center">
+            <div style="flex-shrink:0;filter:drop-shadow(0 6px 14px rgba(0,0,0,0.6));">
+              ${getOwlSvg(100)}
+            </div>
+            <div style="flex:1;background:rgba(13,20,36,0.95);border:1.6px solid #06b6d4;border-radius:12px;padding:8px 10px;box-shadow:0 0 14px rgba(6,182,212,0.3);position:relative">
+              <div style="position:absolute;left:-6px;top:20px;width:0;height:0;border-top:6px solid transparent;border-bottom:6px solid transparent;border-right:6px solid #06b6d4"></div>
+              <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:3px">
+                <span style="font-size:9px;font-weight:800;color:#67e8f9;text-transform:uppercase;letter-spacing:0.5px">🦉 Bilge Baykuş</span>
+                <div style="display:flex;align-items:center;gap:2px">
+                  <div class="cp-eq-bar" style="width:2.5px;height:4px;background:#10b981;border-radius:2px"></div>
+                  <div class="cp-eq-bar" style="width:2.5px;height:7px;background:#10b981;border-radius:2px"></div>
+                  <div class="cp-eq-bar" style="width:2.5px;height:10px;background:#10b981;border-radius:2px"></div>
+                  <div class="cp-eq-bar" style="width:2.5px;height:6px;background:#10b981;border-radius:2px"></div>
+                  <div class="cp-eq-bar" style="width:2.5px;height:4px;background:#10b981;border-radius:2px"></div>
+                </div>
+              </div>
+              <div style="font-size:10px;line-height:1.32;color:#fff;font-weight:600">${narrationText}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    `;
+  }
+function renderStep() {
     const lesson = COURSE_LESSONS[CP.unitId];
     if (!lesson) return;
     const s = lesson.steps[CP.step];
@@ -15403,7 +15666,7 @@ const CoursePlayer = (() => {
 
         <!-- Sinematik 16:9 Video Sahnesi (Dokunmatik ve Tıklanabilir - Tamamen Temiz) -->
         <div class="cp-stage" id="cpStage" onclick="CoursePlayer.handleStageTap(event)" ondblclick="event.preventDefault();CoursePlayer.toggleStageFullscreen()" title="Tek tık: Durdur / Başlat · Çift tık: Tam Ekran">
-          <img class="cp-slide-img" src="${s.slide}" alt="${esc(s.title)}"/>
+          ${buildCinematic4x6Stage(lesson, CP.step, s, CP.audioPlaying)}
 
           <!-- Tam ekranda görünen çıkış butonu -->
           <button class="cp-fullscreen-exit-btn" onclick="event.stopPropagation();CoursePlayer.toggleStageFullscreen()" title="Tam Ekrandan Çık">✕ Küçült</button>

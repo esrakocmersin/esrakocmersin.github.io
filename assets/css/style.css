@@ -255,7 +255,7 @@ td.pw:hover{text-decoration:underline}
 
 .video-card{background:var(--p);border:1px solid var(--b);border-radius:16px;overflow:hidden;display:flex;flex-direction:column;transition:all .22s ease;cursor:pointer;position:relative}
 .video-card:hover{transform:translateY(-3px);border-color:rgba(255,255,255,0.25);box-shadow:0 10px 28px rgba(0,0,0,0.45)}
-.video-thumb{position:relative;width:100%;aspect-ratio:16/9;background:linear-gradient(135deg,#1e1b4b 0%,#311042 100%);display:flex;align-items:center;justify-content:center;overflow:hidden}
+.video-thumb{position:relative;width:100%;aspect-ratio:4/6;background:linear-gradient(135deg,#1e1b4b 0%,#311042 100%);display:flex;align-items:center;justify-content:center;overflow:hidden}
 .video-thumb-bg{position:absolute;inset:0;opacity:.18;display:flex;align-items:center;justify-content:center;font-size:80px;user-select:none}
 .video-badge-unit{position:absolute;top:10px;left:10px;background:rgba(0,0,0,0.7);backdrop-filter:blur(4px);border:1px solid rgba(255,255,255,0.15);padding:3px 8px;border-radius:8px;font-size:11px;font-weight:800;color:#fff;letter-spacing:.3px}
 .video-badge-ready{position:absolute;top:10px;right:10px;background:rgba(245,158,11,0.25);border:1px solid rgba(245,158,11,0.5);color:#fbbf24;padding:3px 8px;border-radius:8px;font-size:10px;font-weight:800;backdrop-filter:blur(4px)}
@@ -276,19 +276,19 @@ td.pw:hover{text-decoration:underline}
 .daily-tip-card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:12px;padding:10px 14px;display:flex;align-items:center;gap:10px;font-size:12px;color:var(--t)}
 .status-filter-tabs{display:flex;gap:6px;flex-wrap:wrap}
 
-.video-modal-screen{position:relative;width:100%;aspect-ratio:16/9;background:radial-gradient(circle at center,#1e1b4b 0%,#09090f 100%);border-radius:12px;overflow:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;border:1px solid rgba(255,255,255,0.15);box-shadow:0 10px 30px rgba(0,0,0,0.5);text-align:center;padding:20px}
+.video-modal-screen{position:relative;width:100%;aspect-ratio:4/6;background:radial-gradient(circle at center,#1e1b4b 0%,#09090f 100%);border-radius:12px;overflow:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;border:1px solid rgba(255,255,255,0.15);box-shadow:0 10px 30px rgba(0,0,0,0.5);text-align:center;padding:20px}
 .video-modal-play-pulse{width:72px;height:72px;border-radius:50%;background:linear-gradient(135deg,#ef4444,#f97316);display:flex;align-items:center;justify-content:center;font-size:28px;color:#fff;margin-bottom:12px;box-shadow:0 0 0 0 rgba(239,68,68,0.7);animation:pulse-ring 1.8s infinite}
 @keyframes pulse-ring{0%{box-shadow:0 0 0 0 rgba(239,68,68,0.6)}70%{box-shadow:0 0 0 18px rgba(239,68,68,0)}100%{box-shadow:0 0 0 0 rgba(239,68,68,0)}}
 
 /* ================= DERS VİDEO VE TEST OYNATICI (COURSE PLAYER) ================= */
-.modal-box.theater{max-width:980px;padding:16px}
+.modal-box.theater{max-width:580px;padding:14px;margin:0 auto;border-radius:18px}
 .cp-wrap{display:flex;flex-direction:column;gap:12px;width:100%}
 .cp-header{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-bottom:10px;border-bottom:1px solid var(--b);flex-wrap:wrap}
 .cp-header-title{display:flex;align-items:center;gap:10px}
 .cp-header-title h3{margin:0;font-size:17px;font-weight:800;color:var(--t)}
 .cp-header-title small{color:var(--m);font-size:12px}
-.cp-stage{position:relative;width:100%;aspect-ratio:16/9;background:#090d16;border-radius:14px;overflow:hidden;border:1px solid rgba(255,255,255,0.12);box-shadow:0 8px 30px rgba(0,0,0,0.6);display:flex;align-items:center;justify-content:center}
-@media(max-width:640px){.cp-stage{aspect-ratio:4/3}}
+.cp-stage{position:relative;width:100%;aspect-ratio:4/6;background:#090d16;border-radius:14px;overflow:hidden;border:1px solid rgba(255,255,255,0.12);box-shadow:0 8px 30px rgba(0,0,0,0.6);display:flex;align-items:center;justify-content:center}
+@media(max-width:640px){.cp-stage{aspect-ratio:4/6}}
 .cp-slide-img{width:100%;height:100%;object-fit:contain;background:#090d16;user-select:none;animation:slideFadeIn 0.35s ease-out}
 @keyframes slideFadeIn{0%{opacity:0;transform:scale(0.985)}100%{opacity:1;transform:scale(1)}}
 /* Video Üstü Başlık ve Bilgi Barı (Videonun Üzerini Asla Örtmez) */
@@ -465,7 +465,7 @@ html { scroll-behavior: smooth; }
     display: none !important;
   }
   .cp-stage {
-    aspect-ratio: 16/9 !important;
+    aspect-ratio: 4/6 !important;
     width: 100% !important;
     max-height: 52vh !important;
     min-height: unset !important;
@@ -548,7 +548,7 @@ html { scroll-behavior: smooth; }
 .cp-stage {
   position: relative;
   width: 100%;
-  aspect-ratio: 16/9;
+  aspect-ratio: 4/6;
   background: radial-gradient(circle at center, #111827 0%, #030712 100%);
   border-radius: 14px;
   overflow: hidden;
@@ -715,4 +715,76 @@ html { scroll-behavior: smooth; }
   .cp-shortcuts-hint {
     display: none;
   }
+}
+
+/* ================= 4:6 CINEMATIC EDUCATIONAL STAGE ================= */
+.cp-stage-4x6 {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', sans-serif;
+  color: #fff;
+  user-select: none;
+  background: radial-gradient(circle at 50% 12%, rgba(6, 182, 212, 0.22) 0%, rgba(7, 11, 20, 0.98) 65%), linear-gradient(180deg, #070b14 0%, #03060c 100%);
+}
+.cp-4x6-top {
+  height: 15%;
+  min-height: 85px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 16px 2px 16px;
+  box-sizing: border-box;
+  text-align: center;
+  position: relative;
+  z-index: 10;
+}
+.cp-4x6-mid {
+  height: 52%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 14px;
+  box-sizing: border-box;
+  position: relative;
+  z-index: 20;
+  overflow: hidden;
+}
+.cp-4x6-bot {
+  height: 33%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 16px 10px 16px;
+  box-sizing: border-box;
+  position: relative;
+  z-index: 30;
+}
+@keyframes owlBreathe {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-3px); }
+}
+@keyframes owlBlink {
+  0%, 90%, 100% { transform: scaleY(1); }
+  95% { transform: scaleY(0.1); }
+}
+@keyframes owlTalk {
+  0%, 100% { transform: scaleY(1); }
+  50% { transform: scaleY(1.4) translateY(1px); }
+}
+@keyframes eqBarLive {
+  0%, 100% { height: 3px; }
+  50% { height: 12px; }
+}
+.cp-owl-speaking svg #owlBeak {
+  animation: owlTalk 0.3s infinite ease-in-out !important;
+  transform-origin: 100px 105px;
+}
+.cp-owl-speaking .cp-eq-bar {
+  animation: eqBarLive 0.35s infinite ease-in-out alternate;
 }

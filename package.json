@@ -4,7 +4,10 @@
   "description": "Bilgi Evreni 4D Ultimate - 4. Sinif Egitim Platformu ve Veritabani Sunucusu",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "remotion:preview": "remotion preview remotion.entry.ts --port 3333 --public-dir assets",
+    "remotion:render": "remotion render remotion.entry.ts TurkishUnit1Video out/turkish_unit1.mp4 --public-dir assets",
+    "remotion:render-demo": "remotion render remotion.entry.ts Demo60sScene out/demo_60s.mp4 --public-dir assets"
   },
   "engines": {
     "node": ">=18.0.0"
@@ -18,5 +21,15 @@
     "github-pages"
   ],
   "author": "Esra Koc Mersin",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "@types/react": "^19.3.0",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "remotion": "^4.0.540",
+    "typescript": "^7.0.2"
+  },
+  "devDependencies": {
+    "@remotion/cli": "^4.0.540"
+  }
 }
