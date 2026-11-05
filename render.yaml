@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: bilgi-evreni-api
+    name: esrakocmersin-github-io
     env: node
     plan: free
     buildCommand: ""

@@ -65,12 +65,19 @@ function getApiBase() {
     }
   } catch (e) {}
   const saved = localStorage.getItem('be4d_api_url');
-  if (saved && saved.trim()) return saved.trim().replace(/\/+$/, '');
+  if (saved && saved.trim()) {
+    const savedUrl = saved.trim().replace(/\/+$/, '');
+    if (savedUrl === 'https://bilgi-evreni-api.onrender.com') {
+      localStorage.setItem('be4d_api_url', 'https://esrakocmersin-github-io.onrender.com');
+      return 'https://esrakocmersin-github-io.onrender.com';
+    }
+    return savedUrl;
+  }
   if (typeof window !== 'undefined' && window.DEFAULT_RENDER_API && window.DEFAULT_RENDER_API.trim()) {
     return window.DEFAULT_RENDER_API.trim().replace(/\/+$/, '');
   }
   if (typeof location !== 'undefined' && location.hostname && location.hostname.includes('github.io')) {
-    return 'https://bilgi-evreni-api.onrender.com';
+    return 'https://esrakocmersin-github-io.onrender.com';
   }
   return '';
 }
@@ -2365,7 +2372,7 @@ function admServer(){
     <div style="background:var(--card);border:1px solid var(--border);border-radius:8px;padding:12px;margin:10px 0">
       <label style="font-weight:600;display:block;margin-bottom:6px">Render.com Backend Servis Adresiniz (API URL):</label>
       <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center">
-        <input id="cfgRenderUrl" type="url" placeholder="https://bilgi-evreni-api.onrender.com" value="${esc(base)}" style="flex:1;min-width:260px;padding:9px 12px;border-radius:8px;border:1px solid var(--border);background:var(--bg);color:var(--txt)">
+        <input id="cfgRenderUrl" type="url" placeholder="https://esrakocmersin-github-io.onrender.com" value="${esc(base)}" style="flex:1;min-width:260px;padding:9px 12px;border-radius:8px;border:1px solid var(--border);background:var(--bg);color:var(--txt)">
         <button class="btn ok" onclick="A.testAndSaveApi()">🔗 Bağlan & Test Et</button>
         <button class="btn ghost" onclick="A.resetApiUrl()">🔄 Sıfırla (Yerel Mod)</button>
       </div>
@@ -2457,7 +2464,7 @@ A.quickApiModal = () => {
       Mevcut Durum: <b>${location.protocol==='file:'?'💾 Yerel Dosya Modu':(syncState.server?'🟢 Bağlı ('+(base?esc(base):'localhost')+')':'🟠 Bağlantı Bekleniyor')}</b>
     </p>
     <label style="display:block;margin-top:10px;font-weight:600">Render.com veya Uzak API Sunucu Adresi:</label>
-    <input id="quickRenderUrl" type="url" placeholder="https://bilgi-evreni-api.onrender.com" value="${esc(base)}" style="width:100%;margin-top:6px;padding:9px 12px;border-radius:8px;border:1px solid var(--border);background:var(--bg);color:var(--txt)">
+    <input id="quickRenderUrl" type="url" placeholder="https://esrakocmersin-github-io.onrender.com" value="${esc(base)}" style="width:100%;margin-top:6px;padding:9px 12px;border-radius:8px;border:1px solid var(--border);background:var(--bg);color:var(--txt)">
     <label style="display:block;margin-top:10px;font-weight:600">API erişim anahtarı:</label>
     <input id="quickApiToken" type="password" autocomplete="new-password" placeholder="Sunucudaki API_TOKEN" style="width:100%;margin-top:6px;padding:9px 12px;border-radius:8px;border:1px solid var(--border);background:var(--bg);color:var(--txt)">
     <div id="quickApiStatus" style="margin-top:8px;font-size:0.88rem"></div>
